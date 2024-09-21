@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Regnerekkefølge </title>
+        <meta charset="UTF-8">
+        
+        <style> 
+            body {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                width: 550px;
+                margin: auto;
+                font-size: 12pt;
+            }
+            .math-table {
+                margin: auto;
+            }
+            .math-left-column {
+                text-align: right;
+            }
+            .math-right-column {
+                text-align: left;
+            }
+            .math-center-column {
+                text-align: center;
+                max-width: 3%;
+                padding: 0%;
+            }
+            math {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2> Regnerekkefølge </h2>
+        <span> Se på følgende regnestykke:</span>
+        <p><math display="block">
+            <mrow>
+              <mn>2</mn>
+              <mo>+</mo>
+              <mn>3</mn>
+              <mo>⋅</mo>
+              <mn>4</mn>
+            </mrow>
+        </math> </p>
+        <span> Et slikt regnestykke <i>kunne</i> man tolket på to måter:
+            <ol type="i">
+                <li>''2 pluss 3 er 5. 5 ganget med 4 er 20. Svaret er 20.''</li>
+                <li>''3 ganget med 4 er 12. 2 pluss 12 er 14. Svaret er 14.''</li>
+            </ol>
+            Men svarene blir ikke like! Det er altså behov for å ha noen regler om hva vi skal regne ut først. Den ene regelen er at vi må regne ut ganging eller deling <i>før</i> vi legger sammen eller trekker ifra. Dette betyr at    
+        </span>
+        <div is="custom-rule">
+        <table class="math-table"> </table>
+        </div>
+          Men hva om vi ønsket å legge sammen 2 og 3 først, og så gange summen med 4? Å fortelle at noe skal regnes ut først gjør vi ved hjelp av parenteser:
+          <div is="custom-rule">
+            <table class="math-table"> </table>
+          </div>
+          <div is="custom-theorem" data-heading="Regnerekkefølge">
+            <ol type="1">
+                <li>  Uttrykk med parentes </li>
+                <li>  Ganging eller deling</li> 
+                <li>  Pluss eller minus </li>
+            </ol>    
+          </div>
+          <div is="custom-example" data-number="1">
+            Regn ut
+            <math display="block">
+                <mrow>
+                  <mn>23</mn>
+                  <mo>−</mo>
+                </mrow>
+                <mrow>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mn>3</mn>
+                  <mo>+</mo>
+                  <mn>9</mn>
+                  <mo form="postfix" stretchy="false">)</mo>
+                  <mo>+</mo>
+                </mrow>
+                <mrow>
+                  <mn>4</mn>
+                  <mo>⋅</mo>
+                </mrow>
+                <mrow>
+                  <mn>7</mn>
+                </mrow>
+              </math>
+              <b>Svar</b>
+              <table class="math-table">
+              </table>
+          </div>
+          <div is="custom-example" data-number="2">
+            Regn ut
+            <math display="block">
+                  <mn>18</mn>
+                  <mo lspace="0.2222em" rspace="0.2222em">:</mo>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mn>7</mn>
+                  <mo>-</mo>
+                  <mn>5</mn>
+                  <mo form="postfix" stretchy="false">)</mo>
+                  <mo>-</mo>
+                  <mn>3</mn>
+              </math>
+              <b>Svar</b>
+              <table class="math-table">
+              </table>
+          </div>
+
+    
+        <script src="../../global.js">
+        </script>
+          <script>
+            mathTables = [
+                `<tbody>
+                <tr>
+                    <td class="math-left-column">
+                        <math>
+                        <mrow>
+                          <mn>2</mn>
+                          <mo>+</mo>
+                          <mn>3</mn>
+                          <mo>⋅</mo>
+                          <mn>4</mn>
+                        </mrow>  
+                        </math>
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                       <td class="math-right-column">
+                            <math>
+                                <mrow>
+                                    <mtext>”Regn ut&nbsp </mtext> <mn> 3 </mn> <mo> ⋅ </mo> <mn> 4</mn>
+                                    <mtext> , og legg til 2</mtext>
+                                  </mrow>
+                                </math>    
+                       </td>   
+                </tr>
+                <tr>
+                    <td class="math-left-column">
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                       <td class="math-right-column">
+                            <math>
+                                <mrow>
+                                    <mn>
+                                        5
+                                    </mn>
+                                    <mo>
+                                        ⋅
+                                    </mo>
+                                    <mn>
+                                        4
+                                    </mn>
+                                  </mrow>
+                                </math>    
+                       </td>   
+                </tr>
+                <tr>
+                    <td class="math-left-column">
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                       <td class="math-right-column">
+                            <math>
+                                <mrow>
+                                    <mn>
+                                        20
+                                    </mn>
+                                </math>    
+                       </td>   
+                </tr>
+            </tbody>`,
+            `<tbody>
+                <tr>
+                    <td class="math-left-column">
+                        <math>
+                        <mrow>
+                          <mo form="prefix" stretchy="false">(</mo>
+                          <mn>2</mn>
+                          <mo>+</mo>
+                          <mn>3</mn>
+                          <mo form="postfix" stretchy="false">)</mo>
+                          <mo>⋅</mo>
+                          <mn>4</mn>
+                        </mrow>  
+                        </math>
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                       <td class="math-right-column">
+                            <math>
+                                <mrow>
+                                    <mtext>”Legg sammen 2 og 3, og gang med 4 etterpå”</mtext>
+                                  </mrow>
+                                </math>    
+                       </td>   
+                </tr>
+                <tr>
+                    <td class="math-left-column">
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                       <td class="math-right-column">
+                            <math>
+                                <mrow>
+                                    <mn>
+                                        5
+                                    </mn>
+                                    <mo>
+                                        ⋅
+                                    </mo>
+                                    <mn>
+                                        4
+                                    </mn>
+                                  </mrow>
+                                </math>    
+                       </td>   
+                </tr>
+                <tr>
+                    <td class="math-left-column">
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                       <td class="math-right-column">
+                            <math>
+                                <mrow>
+                                    <mn>
+                                        20
+                                    </mn>
+                                </math>    
+                       </td>   
+                </tr>
+            </tbody>`,
+            `<tbody>
+                    <tr> 
+                        <td class="math-left-column"> 
+                            <math>
+                                <mrow>
+                                    <mn>23</mn>
+                                    <mo>−</mo>
+                                  </mrow>
+                                  <mrow>
+                                    <mo form="prefix" stretchy="false">(</mo>
+                                    <mn>3</mn>
+                                    <mo>+</mo>
+                                    <mn>9</mn>
+                                    <mo form="postfix" stretchy="false">)</mo>
+                                    <mo>+</mo>
+                                  </mrow>
+                                  <mrow>
+                                    <mn>4</mn>
+                                    <mo>⋅</mo>
+                                  </mrow>
+                                  <mrow>
+                                    <mn>7</mn>
+                                  </mrow>
+                            </math>
+                        </td>
+                        <td class="math-center-column">
+                            <math> <mo>=</mo> </math>
+                        </td>
+                        <td class="math-right-column"> 
+                            <math>
+                                <mrow>
+                                  <mn>23</mn>
+                                  <mo>−</mo>
+                                </mrow>
+                                <mrow>
+                                  <mn>12</mn>
+                                  <mo>+</mo>
+                                </mrow>
+                                <mrow>
+                                  <mn>4</mn>
+                                  <mo>⋅</mo>
+                                </mrow>
+                                <mrow>
+                                  <mn>7</mn>
+                                </mrow>
+                              </math>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;Parentes
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                        </td>
+                        <td class="math-center-column">
+                            <math> <mo>=</mo> </math>
+                        </td>
+                        <td class="math-right-column"> 
+                            <math>
+                                <mrow>
+                                  <mn>23</mn>
+                                  <mo>−</mo>
+                                </mrow>
+                                <mrow>
+                                  <mn>12</mn>
+                                  <mo>+</mo>
+                                </mrow>
+                                <mrow>
+                                  <mn> 28</mn>
+                                </mrow>
+                              </math>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;Ganging
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                        </td>
+                        <td class="math-center-column">
+                            <math> <mo>=</mo> </math>
+                        </td>
+                        <td class="math-right-column"> 
+                            <math>
+                                <mn> 39 </mn>
+                              </math>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;Addisjon og subtraksjon
+                        </td>
+                    </tr>
+                </tbody>`,
+                `<tbody>
+                    <tr> 
+                        <td class="math-left-column"> 
+                            <math>
+                                <mn>18</mn>
+                                <mo lspace="0.2222em" rspace="0.2222em">:</mo>
+                                <mo form="prefix" stretchy="false">(</mo>
+                                <mn>7</mn>
+                                <mo>−</mo>
+                                <mn>5</mn>
+                                <mo form="postfix" stretchy="false">)</mo>
+                                <mo>−</mo>
+                                <mn>3</mn>
+                            </math>
+                        </td>
+                        <td class="math-center-column">
+                            <math> <mo>=</mo> </math>
+                        </td>
+                        <td class="math-right-column"> 
+                            <math>
+                                <mn>18</mn>
+                                <mo lspace="0.2222em" rspace="0.2222em">:</mo>
+                                <mn>2</mn>
+                                <mo>−</mo>
+                                <mn>3</mn>
+                              </math>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;Parentes
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                        </td>
+                        <td class="math-center-column">
+                            <math> <mo>=</mo> </math>
+                        </td>
+                        <td class="math-right-column"> 
+                            <math>
+                                <mn>9</mn>
+                                <mo>−</mo>
+                                <mn>3</mn>
+                              </math>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;Deling
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> 
+                        </td>
+                        <td class="math-center-column">
+                            <math> <mo>=</mo> </math>
+                        </td>
+                        <td class="math-right-column"> 
+                            <math>
+                                <mn> 6 </mn>
+                              </math>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;Subtraksjon
+                        </td>
+                    </tr>
+                </tbody>`
+            ]
+            
+            let i = 0
+            for (table of document.getElementsByClassName("math-table")) {
+                table.innerHTML = mathTables[i]
+                ++i
+            }
+          </script>
+    </body>
+
+
+
+</html>

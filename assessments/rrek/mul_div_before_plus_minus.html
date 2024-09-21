@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div {
+                width: 50%;
+                margin: auto;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script src="../calc_modules.js"></script> 
+        <script> 
+            var id = "mulDivBeforePlusMinus"
+            var lim = 4
+            make_status_bar(lim)
+
+            function make_task() {
+                let a = Math.floor(Math.random() * 9) + 1
+                let b = Math.floor(Math.random() * 9) + 1
+                let c = Math.floor(Math.random() * 8) + 2
+                let op = `<mo> + </mo>`
+                let minus = false
+                let sign = 1
+                if ( Math.floor(Math.random() * 2) === 0 ) {
+                    op = `<mo> − </mo>`
+                    minus = true
+                    sign = -1
+                }
+                let A = `<mn> ${a} </mn>`
+                let BC = `<mn> ${b} </mn> <mo> ⋅ </mo> <mn> ${c} </mn>`
+                if ( Math.floor(Math.random() * 2) === 0 ) {
+                    if (minus) {
+                        if (b*c > a) {
+                            a = b*c + Math.floor(Math.random() * 9)
+                            A = `<mn> ${a} </mn>`
+                        }
+                    }
+                    document.getElementsByTagName("math")[0].innerHTML = A + op +  BC + `<mo>=</mo>`
+                    answer = a + sign*b*c
+                } else {
+                    if (minus) {
+                        if (a > b*c) {
+                            a = Math.floor(Math.random() * (b*c - 1)) + 1
+                            A = `<mn> ${a} </mn>`
+                        }
+                    }
+                    document.getElementsByTagName("math")[0].innerHTML = BC + op + A + `<mo>=</mo>`
+                    answer = b*c + sign*a
+                }    
+            }            
+            make_task()
+
+        </script>
+    </body
+</html>
+
