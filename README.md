@@ -1,2 +1,0 @@
-# openmathapp
-Math education app

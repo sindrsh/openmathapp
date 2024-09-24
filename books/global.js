@@ -14,7 +14,7 @@ class Example extends HTMLDivElement {
         const paragraph = document.createElement("p")
         paragraph.style.marginTop = "0px"
         const heading = document.createElement("b") 
-        const heading_number = this.getAttribute("data-number")
+        var heading_number = this.getAttribute("data-number")
         if (heading_number == null) {
             heading_number = ""
         }
@@ -77,8 +77,35 @@ class Theorem extends HTMLDivElement {
         this.style.borderWidth = "2px"
         this.style.marginLeft = "auto"
         this.style.marginRight = "auto";
-        this.style.backgroundColor = "rgb(0, 0, 255, 0.5)"
+        this.style.backgroundColor = "rgb(204, 224, 255)"
     }
 }
 
 customElements.define("custom-theorem", Theorem, { extends: "div"} )
+
+class LangBox extends HTMLDivElement {
+    
+    constructor() {
+        super()
+    }
+
+    connectedCallback() {
+        const tempHTML = this.innerHTML
+        this.innerHTML = ""
+        const heading = document.createElement("b") 
+        heading.appendChild(document.createTextNode("Språkboksen"))
+        this.appendChild(heading)
+        this.insertAdjacentHTML("beforeend", tempHTML)
+        this.style.padding = "5px"
+        this.style.marginTop = "10px"
+        this.style.marginTop = "10px"
+        this.style.marginBottom = "10px"
+        this.style.borderStyle = "solid"
+        this.style.borderWidth = "2px"
+        this.style.marginLeft = "auto"
+        this.style.marginRight = "auto";
+        this.style.backgroundColor = "rgb(255, 255, 0, 0.2)"
+    }
+}
+
+customElements.define("custom-lang-box", LangBox, { extends: "div"} )

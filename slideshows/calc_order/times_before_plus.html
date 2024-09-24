@@ -1,48 +1,98 @@
 <!DOCTYPE html>
 <html>
-    <head> <title> Multiplikasjon før addisjon </title> </head>
+    <head> <title> Multiplikasjon før addisjon </title> 
+        <style>
+            td, th {
+                padding-top: 10px;
+                padding-bottom: 20px;
+            }
+        </style>
+    </head>
     <body>
         <div class="videoPlayer"> </div>
-        <p>
-            <math>
-                <mn>2</mn>
-                <mo>+</mo>
-                <mn>3</mn>
-                <mo>⋅</mo>
-                <mn>5</mn>
-                <mo>=</mo>
-            </math>
-        </p>
-        <p> 
-            <math>
-                <mrow>
-                    <mn>2</mn>
-                    <mo>+</mo>
-                    <mn style="color: var(--select);">3</mn>
-                    <mo>⋅</mo>
-                    <mn style="color: var(--select);">5</mn>
-                    <mo>=</mo>
-                </mrow>
-                <mrow>
-                    <mn>2</mn>
-                    <mo>+</mo>
-                    <mn style="color: var(--select);">15</mn>
-                </mrow>
-            </math>
-        </p>
+        
+        <table class="slide">
+            <tr> 
+                <td class="math-left-column"> 
+                    <math>
+                        <mn>2</mn>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mo>⋅</mo>
+                        <mn>5</mn>
+                    </math>
+                </td>
+                <td class="math-center-column">
+                    <math> <mo>=</mo> </math>
+                </td>
+            </tr>
+        </table>
 
-        <p> 
-            <math>
-                <mn>2</mn>
-                <mo>+</mo>
-                <mspace width="5px"/>
-                <mn style="color: var(--select);">15</mn>
-                <mspace width="7px"/>
-                <mo>=</mo>
-                <mn>17</mn>
-            </math>
-        </p>
-    <script src="../../modules.js"> </script>    
+        <table class="slide">
+            <tbody>
+                <tr> 
+                    <td class="math-left-column"> 
+                        <math>
+                            <mn>2</mn>
+                            <mo>+</mo>
+                            <mn style="color: var(--select);">3</mn>
+                            <mo>⋅</mo>
+                            <mn style="color: var(--select);">5</mn>
+                        </math>
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                    <td class="math-right-column"> 
+                        <math>
+                            <mn>2</mn>
+                            <mo>+</mo>
+                            <mn style="color: var(--select);">15</mn>
+                          </math>
+                    </td>
+                </tr>
+            </tbody>    
+        </table>
+
+        <table class="slide">
+            <tbody>
+                <tr> 
+                    <td class="math-left-column"> 
+                        <math>
+                            <mn>2</mn>
+                            <mo>+</mo>
+                            <mn>3</mn>
+                            <mo>⋅</mo>
+                            <mn>5</mn>
+                        </math>
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                    <td class="math-right-column"> 
+                        <math>
+                            <mn>2</mn>
+                            <mo>+</mo>
+                            <mn style="color: var(--select);">15</mn>
+                          </math>
+                    </td>
+                </tr>
+                <tr> 
+                    <td> 
+                    </td>
+                    <td class="math-center-column">
+                        <math> <mo>=</mo> </math>
+                    </td>
+                    <td class="math-right-column"> 
+                        <math>
+                            <mn>17</mn>
+                          </math>
+                    </td>
+                </tr>
+              
+            </tbody>
+        </table>
+    <script src="../slides_modules.js"> </script>    
     </body
 </html>
 

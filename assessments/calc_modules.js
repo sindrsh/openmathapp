@@ -6,8 +6,15 @@ const _userInput = document.createElement("input")
 const _submitButton = document.createElement("input")
 const _restartButton = document.createElement("button")
 
+_body.style.fontSize = "32px"
 _statusBar.setAttribute("width", "100%")
 _statusBar.setAttribute("height", "35")
+_userInput.style.fontSize = _body.style.fontSize
+_userInput.setAttribute("size", "5")
+_userInput.setAttribute("maxlength", "9")
+_submitButton.style.fontSize = _body.style.fontSize
+_submitButton.value = "Enter"
+_restartButton.style.fontSize = _body.style.fontSize
 
 
 _submitButton.setAttribute("type", "submit")
@@ -62,7 +69,10 @@ function correctAnswer() {
         }, 1000);
         }
     else {
-        console.log(id)
+        console.log(localStorage.getItem("tests"))
+        if (localStorage.getItem("tests")) {
+            console.log(localStorage)
+        }
         //location.replace("../../topics.html")
     }
     }

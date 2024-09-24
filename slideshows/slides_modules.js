@@ -1,11 +1,11 @@
 //baseling
 const header = document.getElementsByTagName("head")[0]
 const _base = document.createElement("base")
-_base.href = "http://127.0.0.1:3000/review/"
+_base.href = "http://127.0.0.1:3000/review/slideshows/"
 header.appendChild(_base)
 const _link = document.createElement("link")
 _link.rel = "stylesheet"
-_link.href = "styles.css"
+_link.href = "slides_styles.css"
 header.appendChild(_link)
 
 
@@ -27,7 +27,7 @@ forward.appendChild(forward_image);
 document.getElementsByClassName("videoPlayer")[0].appendChild(forward);
 forward.addEventListener('click', nextSlide);
 var currentSlideNumber = 0;
-var slides = document.getElementsByTagName("p");
+var slides = document.getElementsByClassName("slide");
 
 for (var _i = 0, slides_1 = slides; _i < slides_1.length; _i++) {
     element = slides_1[_i];
