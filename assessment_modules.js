@@ -72,4 +72,4 @@ async function updateTestRecord() {
 }
 
 
-export default { signIn, updateTestRecord,  }
+export { signIn, updateTestRecord }

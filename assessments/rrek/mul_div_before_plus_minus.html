@@ -10,16 +10,14 @@
     </head>
 
     <body>
-        <script src="../calc_modules.js"></script>
-        <script type="module"> 
-            import updateTestRecord from "../../assessment_modules.js"
-        </script>
-        <script> 
-            var id = "mulDivBeforePlusMinus"
-            var lim = 4
-            make_status_bar(lim)
+        <script type="module">
 
-            function make_task() {
+            import calcTask from "../calc_modules.js"
+
+            const task = new calcTask("mulDivBeforePlusMinus", makeTask, 4)
+            task.prepare()
+            function makeTask() {
+                let answer
                 let a = Math.floor(Math.random() * 9) + 1
                 let b = Math.floor(Math.random() * 9) + 1
                 let c = Math.floor(Math.random() * 8) + 2
@@ -51,10 +49,11 @@
                     }
                     document.getElementsByTagName("math")[0].innerHTML = BC + op + A + `<mo>=</mo>`
                     answer = b*c + sign*a
-                }    
-            }            
-            make_task()
-
+                }
+                return answer    
+            }    
+            
+            task.a()
         </script>
     </body
 </html>
