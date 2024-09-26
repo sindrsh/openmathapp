@@ -84,16 +84,28 @@ export default class calcTask {
             }, 1000);
             }
         else {
-            let tests = localStorage.getItem("tests") 
+            let tests = localStorage.getItem("tests")
+            if (!tests) {
+                tests = {}
+            }
+              
+            tests[this.id] = { "score": 2 }
+            console.log(tests)
+            let testsString = JSON.stringify( { "tests": tests } )
+            this.updateRecord(testsString)
         }
         }
     }
 
-    a() {
-        import("../assessment_modules.js").then ( (value) =>
-            console.log(value)
+    async updateRecord(testsString) {
+        import("../assessment_modules.js").then ( (supabase) => {
+            supabase.signIn()
+            setTimeout(() => {
+                supabase.updateTestRecord(testsString)    
+            }, 500);
+            
+        }
         )
-        signIn()    
     }
     
     wrongAnswer() {

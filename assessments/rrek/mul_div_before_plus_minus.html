@@ -14,13 +14,15 @@
 
             import calcTask from "../calc_modules.js"
 
-            const task = new calcTask("mulDivBeforePlusMinus", makeTask, 4)
+            const task = new calcTask("mulDivBeforePlusMinus", makeTask, 1)
             task.prepare()
             function makeTask() {
                 let answer
                 let a = Math.floor(Math.random() * 9) + 1
                 let b = Math.floor(Math.random() * 9) + 1
                 let c = Math.floor(Math.random() * 8) + 2
+                a = 100
+                b = 0
                 let op = `<mo> + </mo>`
                 let minus = false
                 let sign = 1
@@ -53,7 +55,6 @@
                 return answer    
             }    
             
-            task.a()
         </script>
     </body
 </html>

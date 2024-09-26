@@ -17,7 +17,6 @@ async function signIn() {
         }
         
         const json = await response.json()
-        console.log(json)
         user.access_token = json["access_token"]
         user.id = json["user"]["id"]
         console.log(user)
@@ -44,17 +43,17 @@ async function getTestRecord() {
         }
         
         const json = await response.json()
-        console.log(json)
     } catch (error) {
         console.error(error.message);
     }
 }
 
-async function updateTestRecord() {
+async function updateTestRecord(testsString) {
+    console.log(testsString)
     try {
         const response = await fetch("https://ewfkoaogwqeyhkysxsar.supabase.co/rest/v1/students?id=eq." + user.id, {
             method: "PATCH",
-            body: JSON.stringify({ "tests": 0 }),
+            body: testsString,
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
