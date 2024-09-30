@@ -2,21 +2,40 @@
 
 export default class calcTask {
 
+    taskArguments = []
+
     constructor(id, makeTask, tasksAmount) {
         this.id = id
         this.makeTask = makeTask
         this.tasksAmount = tasksAmount
         this.circles = []
         this.answer
-        this.body = document.getElementsByTagName("body")[0]
+        this.body = document.createElement("body")
+        document.getElementsByTagName("html")[0].appendChild(this.body)
         this.userInput = document.createElement("input")
         this.submitButton = document.createElement("input")
         this.restartButton = document.createElement("button")
+        this.showAnswer = document.createElement("p")
+        this.showAnswer.hidden = true
     }
 
-    prepare() {
-        const _div = document.createElement("div")
-        const _math = document.createElement("math")
+    prepare(figure=null, mathElement=null) {
+        const containerDiv = document.createElement("div")
+        
+        const containerTable = document.createElement("table")
+        const tableRow = document.createElement("tr")
+        const leftColumn = document.createElement("td")
+        const rightColumn = document.createElement("td")
+        if (mathElement) {
+            const _math = document.createElement("math")
+            leftColumn.appendChild(_math)
+        }
+        if (figure) {
+            const figDiv = document.createElement("div")
+            figDiv.appendChild(figure)
+            figDiv.id = "fig"
+            leftColumn.appendChild(figDiv)
+        }
         
         this.body.style.fontSize = "32px"
         this.userInput.style.fontSize = this.body.style.fontSize
@@ -26,15 +45,23 @@ export default class calcTask {
         this.submitButton.value = "Enter"
         this.restartButton.style.fontSize = this.body.style.fontSize
         
+        this.userInput.style.display = "inline"
         
         this.submitButton.setAttribute("type", "submit")
         this.restartButton.innerHTML= "Omstart"
-        this.makeStatusBar(_div)
-        _div.appendChild(_math)
-        _div.appendChild(this.userInput)
-        _div.appendChild(this.submitButton)
-        _div.appendChild(this.restartButton)
-        this.body.appendChild(_div)
+        this.makeStatusBar(containerDiv)
+        
+        rightColumn.appendChild(this.userInput)
+        rightColumn.appendChild(this.submitButton)
+        rightColumn.appendChild(this.restartButton)
+        rightColumn.append(this.showAnswer)
+
+        tableRow.appendChild(leftColumn)
+        tableRow.appendChild(rightColumn)
+        containerTable.appendChild(tableRow)
+        containerDiv.appendChild(containerTable)
+        
+        this.body.appendChild(containerDiv)
         
         this.restartButton.hidden = true
         
@@ -46,7 +73,7 @@ export default class calcTask {
         
         this.submitButton.addEventListener("click", () => { this.validate() })
         this.restartButton.addEventListener("click", () => { location.reload() })
-        this.answer = this.makeTask()
+        this.answer = this.makeTask(...this.taskArguments)
     }
     
     validate() {
@@ -109,9 +136,8 @@ export default class calcTask {
     }
     
     wrongAnswer() {
-        let showAnswer = document.createElement("p")
-        showAnswer.innerHTML = `<p> Svar: ${this.answer} </p>`
-        this.body.appendChild(showAnswer)
+        this.showAnswer.innerHTML = `Svar: ${this.answer}`
+        this.showAnswer.hidden = false
         this.restartButton.hidden = false
     }
     
@@ -142,5 +168,4 @@ export default class calcTask {
     
     }        
 }
-
 
