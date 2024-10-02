@@ -5,19 +5,21 @@
             import calkTask from "../calc_modules.js"
             import { shuffleArray, getRandomInt } from "../random_modules.js"
             
-            let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            let numbers = [10, 11, 12, 14, 15, 16, 17, 18, 19, 20]
             let spacing = 5
             let x = 300
-            let r = Math.floor(x/6 - spacing)
-            let xLim = Math.floor(x/(2*r))
+            let y = 245
+            let r = Math.floor(x/10 - spacing)
+            let xLim = 4
+            let yLim = 5
             shuffleArray(numbers)
 
             const task = new calkTask("count_amounts_to_9", makeTask, 1)
             let fig = new Figure()
             var positions = []
-            fig.makePolygon([[0, 0], [x, 0], [x, x], [0, x]])
+            fig.makePolygon([[0, 0], [x, 0], [x, y], [0, y]], false)
             for (let i of Array(xLim).keys()) {
-                for (let j of Array(xLim).keys()) {
+                for (let j of Array(yLim).keys()) {
                     positions.push([(i+0.5)*2*(r + spacing), (0.5+j)*2*(r + spacing)])
                 }
             }
@@ -25,17 +27,15 @@
             task.prepare(fig.svgElement)
             
             
-            
             function makeTask(r, positions, fig) {
-                
+                fig.removeTemporaryElements()
                 shuffleArray(positions)
-                let answer = getRandomInt(1, 9)
+                let answer = 20
                 let centers = positions.slice(0, answer)
-                console.log(centers)
                 for (let center of centers) {
-                    fig.makeCircle(r, center, "rgb(0, 240, 0, 1)")
+                    fig.makeCircle(r, center, true, "rgb(0, 240, 0, 1)")
                 }
-                return 9               
+                return answer               
             }
         </script>
 </html>

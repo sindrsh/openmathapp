@@ -111,6 +111,8 @@ export default class calcTask {
             }, 1000);
             }
         else {
+            console.log("yep!")
+            return
             let tests = localStorage.getItem("tests")
             if (!tests) {
                 tests = {}
