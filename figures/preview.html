@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <p> Heisannn</p>
-        <script src="figure_modules.js"></script>
-        <script>
-            let fig = new Figure()
-            fig.makeOnes(50)
-        </script>
-        
-    </body
+
+    </body>
+    <script type="module">
+        import Figure from "./figure_modules.js"
+        let fig = new Figure()
+        document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+        //fig.makeOnes(5, false, 50, 10)
+        //fig.makeTens(4, false, 10, 5)
+    </script>
 </html>
 

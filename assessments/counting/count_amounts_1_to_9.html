@@ -16,6 +16,8 @@
             let fig = new Figure()
             var positions = []
             fig.makePolygon([[0, 0], [x, 0], [x, x], [0, x]], false)
+            
+            fig.makePolygon([[0, 0], [x, 0], [x, x], [0, x]], false)
             for (let i of Array(xLim).keys()) {
                 for (let j of Array(xLim).keys()) {
                     positions.push([(i+0.5)*2*(r + spacing), (0.5+j)*2*(r + spacing)])
@@ -23,7 +25,6 @@
             }
             task.taskArguments = [r, positions, fig]
             task.prepare(fig.svgElement)
-            
             
             
             function makeTask(r, positions, fig) {

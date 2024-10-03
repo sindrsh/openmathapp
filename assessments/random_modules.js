@@ -1,5 +1,5 @@
 function getRandomInt(min, max) {
-    return Math.floor((Math.random() + min) * (max + 1));
+    return Math.floor(min + Math.random() * (max - min + 1));
 }
 
 function shuffleArray(arr) {

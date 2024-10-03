@@ -13,7 +13,6 @@ export default class Figure {
     }
 
     addToSVGContainer(fig, isTemp=true) {
-        
         this.svgContainer.appendChild(fig)
         let boundingBox = this.svgElement.getBBox()
         boundingBox.x += Math.sign(boundingBox.x)*10
@@ -60,7 +59,7 @@ export default class Figure {
         return line
     }
 
-    makePolygon(points, isTemp=true, fill="white", strokeColor = "black") {
+    makePolygon(points, isTemp=true, fill="white", strokeColor = "black", add=true) {
         let polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
         let firstPoint = points.shift()
         let pointsString = firstPoint[0].toString() + " " + firstPoint[1].toString()
@@ -70,14 +69,53 @@ export default class Figure {
         polygon.setAttribute("points", pointsString)
         polygon.setAttribute("fill", fill)
         polygon.setAttribute("stroke", strokeColor)  
-        this.addToSVGContainer(polygon, isTemp)
+        if (add) {
+            console.log("?")
+            this.addToSVGContainer(polygon, isTemp)
+        }
         return polygon      
     }
     
-    makeOnes(amount, isTemp=true, size=10, space=5, fill="blue", strokeColor = "black") {
-        let one = this.makePolygon([[0,0], [size, 0], [size, size], [0, size]], isTemp, fill, strokeColor)
-        this.addToSVGContainer(one, isTemp)
-        return this.makeOnes
+    makeOnes(amount, isTemp=true, size=15, ySpace=5, fill="blue", strokeColor = "black", addToSvg=true) {
+        let one = this.makePolygon([[0,0], [size, 0], [size, size], [0, size]], isTemp, fill, strokeColor, false)
+        let onesCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
+        onesCollection.appendChild(one)
+        let dy = 0
+        for (let i of Array(amount - 1).keys()) {
+            one = one.cloneNode()
+            dy = (i+1)*(size + ySpace)
+            one.setAttribute("transform", `translate(0 ${dy})` )
+            onesCollection.appendChild(one)   
+        }
+        if (addToSvg) {
+            this.addToSVGContainer(onesCollection, isTemp)
+        }
+        
+        return onesCollection
+        
+    }
+
+    makeTens(amount, isTemp=true, xSize=15, xSpace=5, fill="red", strokeColor="black", addToSvg=true) {
+        let ten = this.makeOnes(10, isTemp, xSize, 0, fill, strokeColor, false)
+        let tensCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
+        tensCollection.appendChild(ten)
+        let dx = 0
+        for (let i of Array(amount - 1).keys()) {
+            ten = ten.cloneNode(true)
+            dx = (i+1)*(xSize + xSpace)
+            ten.setAttribute("transform", `translate(${dx} 0)`)
+            console.log(ten)
+            tensCollection.appendChild(ten)   
+        }
+        if (addToSvg) {
+            this.addToSVGContainer(tensCollection, isTemp)
+        }
+
+        return tensCollection
+    }
+
+    test({amount= 1, isTemp=true, xSize=15, xSpace=5, fill="red", strokeColor="black", addToSvg=true} = {}) {
+        console.log(amount, fill)
     }
 }
 
