@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <body>
-
-    </body>
     <script type="module">
         import Figure from "./figure_modules.js"
         let fig = new Figure()
         document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
-        //fig.makeOnes(5, false, 50, 10)
-        //fig.makeTens(4, false, 10, 5)
+        /*fig.makeOnes({amount: 5, isTemp: false, size: 50, spacing: 10})
+        //fig.makeTens({amount:4, xSize:10, xSpace:5, isTemp:false})
+        //fig.svgContainer.setAttribute("transform", "translate(10 10)")
+        fig.svgContainer.addEventListener("mousedown", mouseDown)
+        document.addEventListener("mouseup", mouseUp)
+        var xpos = 0
+        var ypos = 0
+        var prevMouseX = 0
+        var prevMouseY = 0
+
+        function mouseDown(event) {
+            prevMouseX = event.offsetX
+            prevMouseY = event.offsetY
+            document.addEventListener("mousemove", mouseMoving)
+        }
+
+        function mouseUp(event) {
+            console.log(event)
+            document.addEventListener("mousemove", null)
+        }
+
+        function mouseMoving(mouse) {
+            prevMouseX = mouse.clientX
+            prevMouseY = mouse.clientY
+            fig.svgContainer.setAttribute("transform", `translate(${prevMouseX} ${prevMouseY})`)
+            fig.svgContainer.getAttribute("transform")
+        }*/
+        
+        fig.makeCircleSegment({angle0: -Math.PI/2, angle1: 0, origo: [0, 0]})
+    
     </script>
 </html>
 
