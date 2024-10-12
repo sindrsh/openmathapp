@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+            import Figure from "../../figures/figure_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
+            
+            let numbers = [10, 11, 12, 14, 15, 16, 17, 18, 19, 20]
+            let ySpace = 10
+            let x = 600
+            let y = 260
+            let marginTopBottom = 10
+
+            shuffleArray(numbers)
+            const infoFig = new Figure()
+            infoFig.makeBoundingBox({xSize: 500, ySize: 170})
+            let one = infoFig.makeOnes({amount: 1})
+            let hundred = infoFig.makeHundreds({amount: 1})
+            infoFig.move(hundred, 0, 10)
+            infoFig.makeEquals({number: 100, pos: [155, 60]})
+            infoFig.move(one, 300, 75)
+            infoFig.makeEquals({number: 1, pos: [320, 60]})
+
+            const task = new CalcTask("count_amounts_100_to_999", makeTask, 1)
+            let fig = new Figure()
+            var positions = []
+            fig.makeBoundingBox({xSize: x, ySize: y, strokeColor: "black"})
+
+            task.prepare({figure: fig, info: infoFig.svgElement})
+
+           
+           
+            function makeTask(){
+                let onesAmount = getRandomInt(0, 9)
+                let ones = fig.makeOnes({amount: onesAmount, addToSvg: true, ySpace: ySpace})
+                if (ones) {
+                    fig.move(ones, x - 40, marginTopBottom)
+                }
+                let tensAmount = getRandomInt(0, 9)
+                if (onesAmount == 0) {
+                    tensAmount = getRandomInt(1, 9)
+                }
+                let tens = fig.makeTens({amount: tensAmount, addToSvg: true, xSpace: 15})
+                if (tens) {
+                    fig.move(tens, x-90, 10)  
+                }
+                let hundredsAmount = getRandomInt(0, 9)
+                let hundreds = fig.makeHundreds({amount: hundredsAmount, addToSvg:true})
+                    if (hundreds) {
+                        fig.move(hundreds, 100, 10)
+                    }
+
+                return onesAmount + 10*tensAmount + 100*hundredsAmount
+            }
+        </script>
+</html>
+

@@ -32,7 +32,9 @@
             fig.svgContainer.getAttribute("transform")
         }*/
         
-        fig.makeCircleSegment({angle0: -Math.PI/2, angle1: 0, origo: [0, 0]})
+        fig.makeBoundingBox({xSize: 100, ySize: 100, strokeColor: "black"})
+        fig.makeVector({A: [0, 0], B: [100, 0], pos: [0, 10]})
+        fig.makeXTick({pos: [5, 10], label: "9", addToSvg: true})
     
     </script>
 </html>

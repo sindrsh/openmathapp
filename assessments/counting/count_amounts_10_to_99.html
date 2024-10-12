@@ -2,8 +2,8 @@
 <html>
         <script type="module">
             import Figure from "../../figures/figure_modules.js"
-            import calkTask from "../calc_modules.js"
-            import { shuffleArray, getRandomInt } from "../random_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
             
             let numbers = [10, 11, 12, 14, 15, 16, 17, 18, 19, 20]
             let ySpace = 10
@@ -14,31 +14,30 @@
 
             shuffleArray(numbers)
 
-            const task = new calkTask("count_amounts_to_9", makeTask, 1)
+            const task = new CalcTask("count_amounts_to_9", makeTask, 1)
             let fig = new Figure()
-            task.prepare(fig.svgElement)
-
             var positions = []
-            fig.makePolygon({
-                points: [[0, 0], [x, 0], [x, y], [0, y]],
-                fill: "rgb(0, 0, 0, 0)", 
-                isTemp: false,
-            })
+            fig.makeBoundingBox({xSize: 400, ySize: 300, strokeColor: "black"})
+
+            task.prepare({figure: fig})
+
+           
            
             function makeTask(){
-                //this.removeTemporaryElements()
                 let onesAmount = getRandomInt(0, 9)
-                onesAmount = 9
                 let ones = fig.makeOnes({amount: onesAmount, size: size, addToSvg: true, ySpace: ySpace})
                 if (ones) {
                     fig.move(ones, x - 40, marginTopBottom)
                 }
                 let tensAmount = getRandomInt(0, 9)
+                if (onesAmount == 0) {
+                    tensAmount = getRandomInt(1, 9)
+                }
                 let tens = fig.makeTens({amount: tensAmount, addToSvg: true, xSpace: 15})
                 if (tens) {
-                    fig.move(tens, 10, 10)  
+                    fig.move(tens, 300, 10)  
                 }
-                
+                return onesAmount + 10*tensAmount
             }
         </script>
 </html>

@@ -14,13 +14,82 @@ class Task {
         this.answer
         this.body = document.getElementsByTagName("body")[0]
         this.body.style.maxWidth = "1080px"
-        this.body.margin = "auto"
-        //document.getElementsByTagName("html")[0].appendChild(this.body)
         this.menuContainer = document.createElement("div")
         this.submitButton = document.createElement("input")
         this.restartButton = document.createElement("button")
         this.showAnswer = document.createElement("p")
         this.showAnswer.hidden = true
+    }
+
+    prepare({figure=null, mathElement=null, info=null} = {}) {
+        const containerDiv = document.createElement("div")
+        const containerTable = document.createElement("table")
+        const tableRow = document.createElement("tr")
+        const taskColumn = document.createElement("td")
+        const answerColumn = document.createElement("td")
+        const submitColumn = document.createElement("td")
+        const equalsColumn = document.createElement("td")
+        
+
+        this.body.appendChild(this.menuContainer)
+
+        if (mathElement) {
+            const _math = document.createElement("math")
+            taskColumn.appendChild(_math)
+        }
+        if (figure) {
+            this.fig = figure
+            const figDiv = document.createElement("div")
+            figDiv.appendChild(this.fig.svgElement)
+            figDiv.id = "fig"
+            taskColumn.appendChild(figDiv)
+        }
+        if (info) {
+            const infoDiv = document.createElement("div")
+            infoDiv.appendChild(info)
+            infoDiv.style.borderTop = "2px solid black"
+            infoDiv.style.borderBottom = "2px solid black"
+            this.body.appendChild(infoDiv)
+            infoDiv.style.margin = "auto"
+        }
+        
+        this.body.style.fontSize = "32px"
+        this.submitButton.style.fontSize = this.body.style.fontSize
+        this.submitButton.value = "Enter"
+        this.restartButton.style.fontSize = this.body.style.fontSize
+        
+        this.submitButton.setAttribute("type", "submit")
+        this.restartButton.innerHTML= "Omstart"
+        this.makeStatusBar(containerDiv)
+        
+        equalsColumn.style.fontSize = this.body.style.fontSize
+        equalsColumn.innerHTML = "="
+        
+
+        submitColumn.appendChild(this.submitButton)
+        submitColumn.appendChild(this.restartButton)
+        
+
+        tableRow.appendChild(taskColumn)
+        tableRow.appendChild(equalsColumn)
+        tableRow.appendChild(answerColumn)
+        tableRow.appendChild(submitColumn)
+        containerTable.appendChild(tableRow)
+        containerDiv.appendChild(containerTable)
+        
+        this.body.appendChild(containerDiv)
+        this.body.appendChild(this.showAnswer)
+        
+        this.restartButton.hidden = true
+        
+        this.submitButton.addEventListener("click", () => { this.checkAnswer() })
+        this.restartButton.addEventListener("click", () => { location.reload() })
+        
+        this.prepareSpecifics(answerColumn)
+        
+        this.submitButton.addEventListener("click", () => { this.validate() })
+        this.restartButton.addEventListener("click", () => { location.reload() })
+        this.answer = this.makeTask(...this.taskArguments)
     }
 
     checkAnswer() {
@@ -77,6 +146,8 @@ class Task {
         }
     }
     
+    prepareSpecifics() {}
+
     evaluateAnswer() {}
 
     resetInputFields(){}
@@ -131,63 +202,40 @@ class CalcTask extends Task {
     constructor(id, makeTask, tasksAmount) {
         super(id, makeTask, tasksAmount)
         this.userInput = document.createElement("input")
+        this.userInput.size = "9"
+        this.userInput.maxLength = "9"
     }
     
-    prepare({figure=null, mathElement=null} = {}) {
-        const containerDiv = document.createElement("div")
-        
-        const containerTable = document.createElement("table")
-        const tableRow = document.createElement("tr")
-        const leftColumn = document.createElement("td")
-        const rightColumn = document.createElement("td")
-        if (mathElement) {
-            const _math = document.createElement("math")
-            leftColumn.appendChild(_math)
-        }
-        if (figure) {
-            const figDiv = document.createElement("div")
-            figDiv.appendChild(figure)
-            figDiv.id = "fig"
-            leftColumn.appendChild(figDiv)
-        }
-        
-        this.body.style.fontSize = "32px"
+    prepareSpecifics(answerColumn) {
         this.userInput.style.fontSize = this.body.style.fontSize
-        this.userInput.setAttribute("size", "5")
-        this.userInput.setAttribute("maxlength", "9")
-        this.submitButton.style.fontSize = this.body.style.fontSize
-        this.submitButton.value = "Enter"
-        this.restartButton.style.fontSize = this.body.style.fontSize
-        
-        this.userInput.style.display = "inline"
-        
-        this.submitButton.setAttribute("type", "submit")
-        this.restartButton.innerHTML= "Omstart"
-        this.makeStatusBar(containerDiv)
-        
-        rightColumn.appendChild(this.userInput)
-        rightColumn.appendChild(this.submitButton)
-        rightColumn.appendChild(this.restartButton)
-        rightColumn.append(this.showAnswer)
-
-        tableRow.appendChild(leftColumn)
-        tableRow.appendChild(rightColumn)
-        containerTable.appendChild(tableRow)
-        containerDiv.appendChild(containerTable)
-        
-        this.body.appendChild(containerDiv)
-        
-        this.restartButton.hidden = true
-        
+        answerColumn.appendChild(this.userInput)
         this.userInput.addEventListener("keydown", (e) => {
             if (e.key === 'Enter') {
                 this.checkAnswer()
             }
         })
-        
-        this.submitButton.addEventListener("click", () => { this.validate() })
-        this.restartButton.addEventListener("click", () => { location.reload() })
-        this.answer = this.makeTask(...this.taskArguments)
+    }
+
+    evaluateAnswer() {
+        this.userInput.disabled = "true"
+        if (this.inputIsValid(this.userInput)) {
+            if (this.answer == parseFloat(this.userInput.value)) {
+                this.correctAnswer()
+            } else {
+                this.wrongAnswer()
+            }    
+        } else {
+            this.wrongAnswer()
+        }    
+    }
+
+    resetInputFields() {
+        this.userInput.disabled = "false"
+        this.userInput.readOnly = "false"
+    }
+
+    addAnswerContent() {
+        this.showAnswer.innerHTML = `Svar: ${this.answer}`
     }
 }
 
@@ -200,64 +248,11 @@ class FracCalcTask extends Task {
         this.denominatorInput = document.createElement("input")
     }
 
-    prepare( { figure=null, mathElement=null, info=null } = {} ) {
-        
-        const containerDiv = document.createElement("div")
-        
-        const containerTable = document.createElement("table")
-        const tableRow = document.createElement("tr")
-        const taskColumn = document.createElement("td")
-        const answerColumn = document.createElement("td")
-        const submitColumn = document.createElement("td")
-        const inputTable = document.createElement("table")
-        const inputTableRow = document.createElement("tr")
-        const equlsColumn = document.createElement("td")
+    prepareSpecifics(answerColumn) {
         const fracColumn = document.createElement("td")
 
-        this.body.appendChild(this.menuContainer)
-
-        if (mathElement) {
-            const _math = document.createElement("math")
-            taskColumn.appendChild(_math)
-        }
-        if (figure) {
-            this.fig = figure
-            const figDiv = document.createElement("div")
-            figDiv.appendChild(this.fig.svgElement)
-            figDiv.id = "fig"
-            taskColumn.appendChild(figDiv)
-        }
-        if (info) {
-            const infoDiv = document.createElement("div")
-            infoDiv.appendChild(info)
-            infoDiv.style.borderTop = "2px solid black"
-            infoDiv.style.borderBottom = "2px solid black"
-            this.body.appendChild(infoDiv)
-            infoDiv.style.margin = "auto"
-        }
-        
-        this.body.style.fontSize = "32px"
-        this.submitButton.style.fontSize = this.body.style.fontSize
-        this.submitButton.value = "Enter"
-        this.restartButton.style.fontSize = this.body.style.fontSize
-        
-        this.submitButton.setAttribute("type", "submit")
-        this.restartButton.innerHTML= "Omstart"
-        this.makeStatusBar(containerDiv)
-        
-        equlsColumn.style.fontSize = this.body.style.fontSize
-        equlsColumn.innerHTML = "="
-        inputTableRow.appendChild(equlsColumn)
-
-        
-        this.fracInput.style.display = "grid"
-        this.fracInput.style.gridTemplateColumns = "90px"
-        this.fracInput.style.backgroundColor = "black"
-        this.fracInput.style.rowGap = "5px"
-        fracColumn.appendChild(this.fracInput)
-        inputTableRow.appendChild(fracColumn)
-
-        inputTable.appendChild(inputTableRow)
+        const inputTable = document.createElement("table")
+        const inputTableRow = document.createElement("tr")
 
         this.numeratorInput.style.textAlign = "center"
         this.numeratorInput.style.fontSize = this.body.style.fontSize
@@ -271,29 +266,16 @@ class FracCalcTask extends Task {
         
         this.fracInput.appendChild(this.numeratorInput)
         this.fracInput.appendChild(this.denominatorInput)
+        this.fracInput.style.display = "grid"
+        this.fracInput.style.gridTemplateColumns = "90px"
+        this.fracInput.style.backgroundColor = "black"
+        this.fracInput.style.rowGap = "5px"
+        fracColumn.appendChild(this.fracInput)
+        inputTableRow.appendChild(fracColumn)
         
-
+        inputTable.appendChild(inputTableRow)
         answerColumn.appendChild(inputTable)
-
-        submitColumn.appendChild(this.submitButton)
-        submitColumn.appendChild(this.restartButton)
         
-
-        tableRow.appendChild(taskColumn)
-        tableRow.appendChild(answerColumn)
-        tableRow.appendChild(submitColumn)
-        containerTable.appendChild(tableRow)
-        containerDiv.appendChild(containerTable)
-        
-        this.body.appendChild(containerDiv)
-        this.body.appendChild(this.showAnswer)
-        
-        this.restartButton.hidden = true
-        
-        this.submitButton.addEventListener("click", () => { this.checkAnswer() })
-        this.restartButton.addEventListener("click", () => { location.reload() })
-        this.answer = this.makeTask(...this.taskArguments)
-
         this.numeratorInput.addEventListener("keydown", (e) => {
             if (e.key === 'Enter') {
                 this.checkAnswer()
@@ -308,7 +290,6 @@ class FracCalcTask extends Task {
     }
 
     evaluateAnswer() {
-        console.log("d")
         if (!(this.inputIsValid(this.numeratorInput) && this.inputIsValid(this.denominatorInput))) {
             this.wrongAnswer()        
         }
@@ -333,4 +314,4 @@ class FracCalcTask extends Task {
     }
 }
 
-export { FracCalcTask }
+export { CalcTask, FracCalcTask }

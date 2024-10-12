@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script type="module">
+            import Book from "../book.js"
+            import { algebraIntro } from "./algebra.js"
+
+            let book = new Book("no_bm")
+            book.addSection("algebraIntro", algebraIntro)
+        </script>
+    </body>
+</html>
