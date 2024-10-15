@@ -19,6 +19,7 @@
             .customTable td:hover {background-color: #ddd;}
 
             .customTable th {
+                width: 150px;
                 padding-top: 12px;
                 padding-bottom: 12px;
                 text-align: left;
@@ -40,37 +41,92 @@
                 width: 100%;
                 margin: auto;
             }
+
+            .test {
+                visibility: hidden;
+            }
+            .interactive {
+                visibility: hidden;
+            }
         </style>
     </head>
 
     <body>
         <div> 
-            <table class="customTable"> 
+            <table class="customTable" hidden> 
               <tbody id="titallsystemet">
                 <tr>
                     <th rowspan="4"> Titallsystemet</th>
                     <td rowspan="4">Mengde</td>
                 </tr>
-                <tr>
-                    <td>Video</td>
+                <tr class="interactives">
+                    <td >Video</td>
+                    <td class="interactive">0 -9 </td>
+                    <td class="interactive">10 -20 </td>
                 </tr>
-                <tr>
+                <tr class="book">
                     <td>Bok</td>
-                    <td> <a class="book" href="books/MB/cnt/cnt.html"> Mengder </a> </td>
+                    <td> <a class="section" href="books/MB/cnt/cnt.html"> Mengder </a> </td>
                 </tr>
-                <tr>
+                <tr class="tests">
                     <td>Oppgaver</td> 
                     <td id="count_amounts_1_to_9.html">
-                        <a href="assessments/counting/count_amounts_1_to_9.html"> Test 1</a>
+                        <a class="test" href="assessments/counting/count_amounts_1_to_9.html"> Test 1</a>
                     </td>
                     <td>
-                        <a href="assessments/counting/count_amounts_10_to_99.html"> Test 2</a>
+                        <a class="test" href="assessments/counting/count_amounts_10_to_99.html"> Test 2</a>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="customTable" id="negativeNumbers"> 
+              <tbody id="titallsystemet">
+                <tr>
+                    <th rowspan="4"> Negative tal </th>
+                    <td rowspan="4">Rekning</td>
+                </tr>
+                <tr class="interactives">
+                    <td >Video</td>
+                    <td class="interactive"> </td>
+                </tr>
+                <tr class="book">
+                    <td>Bok</td>
+                    <td> <a class="section" href="books/MB/neg/neg.html"> Negative tall </a> </td>
+                </tr>
+                <tr class="tests">
+                    <td>Oppgaver</td> 
+                    <td id="count_amounts_1_to_9.html">
+                        <a class="test" href="assessments/rrek/mul_div_before_plus_minus.html"> Test 1</a>
                     </td>
                 </tr>
               </tbody>
             </table>
         </div>
     <script>
+        console.log(localStorage.getItem("tests"))
+        for (let row of document.getElementsByClassName("tests")) {
+            let tests = Array.from(row.getElementsByClassName("test"))
+            tests[0].style.visibility = "visible"
+            tests = tests.slice(0)
+            let cnt = 0
+            for (let test of tests) {
+                if (localStorage.getItem(test.id)) {
+                    if (localStorage.getItem(test.id)["score"] == 2) {
+                        ++cnt
+                        test.style.visibility = "visible"    
+                    }
+                    else {
+                        break
+                    }
+                }
+            }
+            let interactives = Array.from(row.parentNode.getElementsByClassName("interactive"))
+            interactives[0].style.visibility = "visible"
+            interactives = interactives.slice(0)
+            for (i of [...Array(interactives.length - cnt - 1)].keys()) {
+                interactives[i].style.visibility = "visible"
+            }
+        }
     </script>    
     </body
 </html>

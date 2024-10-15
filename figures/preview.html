@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <script type="module">
-        import Figure from "./figure_modules.js"
-        let fig = new Figure()
+        import { Figure } from "./figure_modules.js"
+        let fig = new Figure({useViewBox: true})
         document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
         /*fig.makeOnes({amount: 5, isTemp: false, size: 50, spacing: 10})
         //fig.makeTens({amount:4, xSize:10, xSpace:5, isTemp:false})
@@ -32,9 +32,12 @@
             fig.svgContainer.getAttribute("transform")
         }*/
         
-        fig.makeBoundingBox({xSize: 100, ySize: 100, strokeColor: "black"})
-        fig.makeVector({A: [0, 0], B: [100, 0], pos: [0, 10]})
-        fig.makeXTick({pos: [5, 10], label: "9", addToSvg: true})
+        //fig.makeBoundingBox({xSize: 100, ySize: 100, strokeColor: "black"})
+        fig.makeVector({A: [0, 0], B: [100, 0], pos: [0, 0]})
+        let vec = fig.makeVector({A: [0, 0], B: [100, 0]})
+        fig.move(vec, 0, 20)
+        fig.makeXTick({pos: [10, 0], label: "9", addToSvg: true})
+        //console.log(fig.svgElement)
     
     </script>
 </html>

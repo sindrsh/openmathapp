@@ -1,24 +1,35 @@
-export default class Figure {
+class Figure {
 
     svgElement
     svgContainer
-    svgRect
     strokeWidth = "2"
     oneSize = 15
     temporaryElements = []
+    useViewBox
 
-    constructor({svgID = null} = {}) {
+    constructor({svgID = null, useViewBox=false} = {}) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
         this.svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
         this.svgElement.appendChild(this.svgContainer)
+        this.useViewBox = useViewBox
     }
 
     addToSVGContainer({fig=null, isTemp=true, id=null}) {
         this.svgContainer.appendChild(fig)
+        if (this.useViewBox) {
+            
+            let boundingBox = this.svgElement.getBBox({"stroke": true})
+            console.log(boundingBox)
+            this.svgElement.setAttribute("viewBox", boundingBox.x.toString()+ " " + boundingBox.y.toString() + " " + boundingBox.width.toString() + " " + boundingBox.height.toString())
+            boundingBox.width -= boundingBox.x
+            boundingBox.height -= boundingBox.y
+            this.svgElement.setAttribute("height", boundingBox.height.toString())
+            this.svgElement.setAttribute("width", boundingBox.width.toString())
+        }
         if (isTemp) {
             this.temporaryElements.push(fig)
         }
-        //this.svgElement.setAttribute("viewBox", boundingBox.x.toString()+ " " + boundingBox.y.toString() + " " + boundingBox.width.toString() + " " + boundingBox.height.toString())
+        
     }
     
     removeTemporaryElements() {
@@ -28,7 +39,7 @@ export default class Figure {
         this.temporaryElements = []
     }
 
-    makeBoundingBox( {xSize, ySize, fill="transparent", strokeColor="transparent"} ) {
+    makeBoundingBox( {xSize, ySize, strokeColor="transparent", fill= "transparent"} ) {
         this.svgElement.setAttribute("width", xSize)
         this.svgElement.setAttribute("height", ySize)
         this.makePolygon({
@@ -40,10 +51,10 @@ export default class Figure {
     }
 
     
-    makeCircle({r, pos = [0, 0], isTemp=true, fill="white", strokeColor = "black"}) {
+    makeCircle({r, pos = [0, 0], isTemp=true, fill="white", strokeColor = "black", strokeWidth= this.strokeWidth}) {
         let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
         circle.setAttribute("stroke", "black")
-        circle.setAttribute("stroke-width", this.strokeWidth)
+        circle.setAttribute("stroke-width", strokeWidth)
         circle.setAttribute("fill", fill)
         circle.setAttribute("cy", pos[0].toString())
         circle.setAttribute("cx", pos[1].toString())
@@ -52,10 +63,10 @@ export default class Figure {
         return circle
     }
     
-    makeLine({A, B, isTemp=true, strokeColor = "black", addToSvg=true}) {
+    makeLine({A, B, isTemp=true, strokeColor = "black", addToSvg=true, strokeWidth= this.strokeWidth}) {
         let line = document.createElementNS("http://www.w3.org/2000/svg", "line")
         line.setAttribute("stroke", strokeColor)
-        line.setAttribute("stroke-width", this.strokeWidth)
+        line.setAttribute("stroke-width", strokeWidth)
         line.setAttribute("x1", A[0].toString())
         line.setAttribute("y1", (A[1]).toString())
         line.setAttribute("x2", B[0].toString())
@@ -66,7 +77,7 @@ export default class Figure {
         return line
     }
 
-    makePolygon({points, isTemp=true, fill="white", strokeColor = "black", addToSvg=true}) {
+    makePolygon({points, isTemp=true, fill="white", strokeColor = "black", addToSvg=true, strokeWidth = this.strokeWidth}) {
         let polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
         let firstPoint = points.shift()
         let pointsString = firstPoint[0].toString() + " " + firstPoint[1].toString()
@@ -75,6 +86,7 @@ export default class Figure {
         }
         polygon.setAttribute("points", pointsString)
         polygon.setAttribute("fill", fill)
+        polygon.setAttribute("stroke-width", strokeWidth)
         polygon.setAttribute("stroke", strokeColor)  
         if (addToSvg) {
             this.addToSVGContainer({fig: polygon, isTemp: isTemp})
@@ -84,11 +96,11 @@ export default class Figure {
     
 
 
-    makeOnes({amount, isTemp=true, size=this.oneSize, ySpace=5, fill="blue", strokeColor = "black", addToSvg=true}) {
+    makeOnes({amount, isTemp=true, size=this.oneSize, ySpace=5, fill="blue", strokeColor = "black", addToSvg=true, strokeWidth=this.strokeWidth}) {
         if (amount == 0 || amount == null) {
             return null;
         }
-        let one = this.makePolygon({points: [[0,0], [size, 0], [size, size], [0, size]], isTemp: isTemp, fill: fill, strokeColor: strokeColor, addToSvg: false})
+        let one = this.makePolygon({points: [[0,0], [size, 0], [size, size], [0, size]], isTemp: isTemp, fill: fill, strokeColor: strokeColor, strokeWidth: strokeWidth, addToSvg: false})
         let onesCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
         onesCollection.appendChild(one)
         let dy = 0
@@ -106,17 +118,28 @@ export default class Figure {
         
     }
 
-    makeTens({amount, isTemp=true, xSize=this.oneSize, xSpace=5, fill="red", strokeColor="black", addToSvg=true, id=null, direction=-1}) {
+    makeTens({amount, isTemp=true, xSize=this.oneSize, xSpace=5, fill="red", strokeColor="black", addToSvg=true, id=null, direction=-1, strokeWidth=this.strokeWidth, unit=1}) {
         if (amount == 0 || amount == null) {
             return null;
         }
-        let ten = this.makeOnes({
-            amount: 10, 
-            isTemp:isTemp, 
-            size: xSize, 
-            ySpace: 0, 
-            fill: fill, 
-            addToSvg: false})
+
+        let ten
+        if (unit == 1) { 
+                ten = this.makeOnes({
+                amount: 10, 
+                size: xSize, 
+                ySpace: 0, 
+                fill: fill, 
+                addToSvg: false})
+        }
+        
+        if (unit == 10) {
+            ten = this.makePolygon({
+                points: [[0, 0], [xSize, 0], [xSize, 10*xSize], [0, 10*xSize]], 
+                fill:fill, 
+                addToSvg: false
+            })    
+        }
         let tensCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
         tensCollection.appendChild(ten)
         let dx = 0
@@ -133,7 +156,7 @@ export default class Figure {
         return tensCollection
     }
 
-    makeHundreds({amount, isTemp=true, xSize=this.oneSize, space=10, fill="green", strokeColor="black", addToSvg=true, id=null, unit=100}) {
+    makeHundreds({amount, isTemp=true, xSize=this.oneSize, space=10, fill="green", strokeColor="black", addToSvg=true, id=null, unit=100, strokeWidth=this.strokeWidth}) {
         
         let hundred
         if (amount == 0 || amount == null) {
@@ -143,7 +166,7 @@ export default class Figure {
 
         }
         if (unit == 100) {
-            hundred = this.makePolygon({points: [[0, 0], [10*xSize, 0], [10*xSize, 10*xSize], [0, 10*xSize]], addToSvg: false, fill: fill, strokeColor: strokeColor})
+            hundred = this.makePolygon({points: [[0, 0], [10*xSize, 0], [10*xSize, 10*xSize], [0, 10*xSize]], addToSvg: false, fill: fill, strokeWidth: strokeWidth, strokeColor: strokeColor})
         }
          
         let hundredsCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
@@ -167,7 +190,7 @@ export default class Figure {
         return [r*Math.cos(angle), -r*Math.sin(angle)]
     }
 
-    makeCircleArc({r=50, angle0=0, angle1, pos=[0, 0], fill="white", density=100, stroke="black"} = {}) {
+    makeCircleArc({r=50, angle0=0, angle1, pos=[0, 0], fill="white", density=100, strokeColor="black", strokeWidth=this.strokeWidth} = {}) {
         let arc = document.createElementNS("http://www.w3.org/2000/svg", "path")
         let p = this.getCirclePoint({r: r, angle: angle0})
         let pathD = `M ${p[0]} ${p[1]}`
@@ -185,15 +208,16 @@ export default class Figure {
         
         arc.setAttribute("d", pathD)
         arc.setAttribute("fill", fill)
-        arc.setAttribute("stroke", stroke)
+        arc.setAttribute("stroke", strokeColor)
+        arc.setAttribute("stroke-width", strokeWidth)
        
         this.addToSVGContainer({fig:arc})
         arc.setAttribute("transform", `translate(${pos[0]} ${pos[1]})`)
         return arc
     }
 
-    makeCircleSegment({r=50, angle0=0, angle1, pos=[0, 0], density=100, fill= "white"} = {}) {
-        let segment = this.makeCircleArc({r:50, angle0: angle0, angle1: angle1, density:density, fill: fill})
+    makeCircleSegment({r=50, angle0=0, angle1, pos=[0, 0], density=100, fill= "white", strokeColor="black", strokeWidth= this.strokeWidth} = {}) {
+        let segment = this.makeCircleArc({r:50, angle0: angle0, angle1: angle1, density:density, fill: fill, strokeColor: strokeColor, strokeWidth: this.strokeWidth})
         let pathD = segment.getAttribute("d") + " L 0 0 Z"
         // making the arc a segment
         segment.setAttribute("d", pathD)
@@ -244,7 +268,7 @@ export default class Figure {
         let line = this.makeLine({A: A, B: B, addToSvg: false, isTemp: false})
         line.setAttribute("stroke", strokeColor)
         lineContainer.appendChild(line)
-        
+
         if (addToSvg) {
             this.addToSVGContainer({fig:lineContainer, isTemp:isTemp})
         }
@@ -289,4 +313,10 @@ export default class Figure {
     }
 }
 
-   
+class BookFigure extends Figure {
+    constructor() {
+        super()
+    }
+}   
+
+export { Figure, BookFigure }

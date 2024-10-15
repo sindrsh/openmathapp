@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+            import { CalcTask } from "../task_modules.js"
+            import { getRandomInt } from "../global_modules.js"
+            
+           
+            let task = new CalcTask("", makeTask, 6)
+            let mathElement = document.createElement("math")
+            task.prepare({mathElement: mathElement})
+            console.log(getRandomInt(-4,1))
+            var pos = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            var neg = [-1, -2, -3, -4, -5, -6, -7, -8, -9]
+            
+            function makeTask() {
+                let a = getRandomInt(1,9)*(-1)**getRandomInt(0, 1)
+                let c = getRandomInt(0, 1)
+                let d = 0
+                if (c==0) {
+                    d=1
+                }
+
+            }
+        </script>
+</html>
+

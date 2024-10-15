@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
         <script type="module">
-            import Figure from "../../figures/figure_modules.js"
+            import { Figure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
@@ -10,9 +10,9 @@
 
             let fig = new Figure()
             fig.makeBoundingBox({xSize: 550, ySize: 200})
-            let numberLine = fig.makeVector({ B: [oneLength*10, 0], arrow: "axisArrow" })
-            fig.makeXTick({pos: [0, 0], fig: numberLine, label: "0"})
-            fig.makeXTick({pos: [oneLength, 0], fig: numberLine, label: "1"})
+            let numberLine = fig.makeVector({ B: [oneLength*10, 0], arrow: "axisArrow", isTemp: false })
+            fig.makeXTick({pos: [0, 0], fig: numberLine, label: "0", isTemp: false})
+            fig.makeXTick({pos: [oneLength, 0], fig: numberLine, label: "1", isTemp: false})
             let task = new CalcTask("", makeTask)
             
             

@@ -16,7 +16,7 @@
                 padding-left: 2px;
                 padding-right: 2px;
             }
-            .fig {
+            .figure {
                 text-align: center;
             }
             .math-table {
@@ -36,7 +36,7 @@
             math {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
-            .outl {
+            .outline {
                 color: teal;
                 font-weight: bold;
             }
@@ -46,7 +46,7 @@
     <body>
         <h2> Introduksjon</h2>
         <p> Vi har tidligere sett at (for eksempel) tallet 5 på ei tallinje ligger 5 enerlengder til høyre for 0.  </p>
-        <div class="fig"> 
+        <div class="figure"> 
             <svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='126.367258pt' height='29.252554pt' viewBox='60.532612 68.406496 126.367258 29.252554'>
                 <defs>
                 <path id='g0-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
@@ -107,19 +107,12 @@
         <p>
             Men hva om vi går andre veien, altså mot venstre? Dette spørsmålet svarer vi på ved å innføre <i>negative tall</i>. <!-- \index{tall!negativt}\index{tall!positivt}. -->
         </p>
-        <div is="custom-rule">
-        <table class="math-table"> </table>
-        </div>
-          Men hva om vi ønsket å legge sammen 2 og 3 først, og så gange summen med 4? 
-          Å fortelle at noe skal regnes ut først gjør vi ved hjelp av parenteser:
-          <div is="custom-rule">
-            <table class="math-table"> </table>
-          </div>
-          <div is="custom-theorem" data-heading="Positive og negative tall">
+
+          <div is="custom-rule" data-heading="Positive og negative tall">
             <p> På en tallinje gjelder følgende: </p>
             <ul>
-                <li>  Tall plassert <em>til høyre</em> for 0 er <span class="outl"> positive tall </span>. </li>
-                <li>  Tall plassert <em>til venstre</em> for 0 er <span class="outl">negative tal</span>.</li> 
+                <li>  Tall plassert <em>til høyre</em> for 0 er <span class="outline"> positive tall</span>. </li>
+                <li>  Tall plassert <em>til venstre</em> for 0 er <span class="outline">negative tal</span>.</li> 
             </ul>    
           </div>
           <p>
@@ -133,7 +126,7 @@
                 <li>  −5 ligger 5 enerlengder <em>til venstre</em> for 0.</li> 
             </ul>  
           </p>
-          <div class="fig">
+          <div class="figure">
             <svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='244.488189pt' height='40.082905pt' viewBox='178.653543 78.327756 244.488189 40.082905'>
                 <defs>
                 <path id='g1-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
@@ -235,9 +228,9 @@
                 </svg>
           </div>
           Den store forskjellen på 5 og −5 er altså på hvilken side av 0 tallene ligger. Da 5 og −5 har samme avstand til 0, 
-          sier vi at 5 og -5 har samme <span class="outl"> lengde</span>. 
+          sier vi at 5 og −5 har samme <span class="outline"> lengde</span>. 
           
-          <div is="custom-theorem" data-heading="Lengde"> 
+          <div is="custom-rule" data-heading="Lengde"> 
             <p> Lengden til et tall skrives ved symbolet <span class="sym">| |</span>.</p> 
             <p> Lengden til et positivt tall er verdien til tallet. </p>
             <p> Lengden til et negativt tall er verdien til det positive tallet med samme siffer. </p>
@@ -251,11 +244,218 @@
           </div>
 
           <div is="custom-language-box">
-            <p>Andre ord for lengde er <span class="outl">tallverdi</span> og <span class="outl">absoluttverdi</span>.</p>
+            <p>Andre ord for lengde er <span class="outline">tallverdi</span> og <span class="outline">absoluttverdi</span>.</p>
             
-            <p> <span class="outl">Fortegn</span> er en samlebetegnelse for <span class="sym">+</span> og <span class="sym">−</span> 
+            <p> <span class="outline">Fortegn</span> er en samlebetegnelse for <span class="sym">+</span> og <span class="sym">−</span> 
                 . 5 har <span class="sym">+</span> som fortegn og −5 har <span class="sym">−</span> som fortegn. </p>
           </div>
+
+          <h2 is="custom-section"> De fire regneartene med negative tall</h2>
+            Ved innføringen av negative tall får de fire regneartene nye sider som vi må se på trinnvis. Når vi adderer, subtraherer, multipliserer eller dividerer 
+            med negative tall vil vi ofte, for tydeligheten sin skyld, skrive negative tall med parentes rundt. Da skriver vi for eksempel −4 som (−4). 
+          
+          <h3 is="custom-subsection"> Addisjon</h3>
+            Når vi adderte i seksjon?? så vi på <span class="sym">+</span> som vandring <span class="outline">mot høyre</span>. Negative tall gjør at vi må utvide begrepet for <span class="sym">+</span>:
+            <div is="custom-language-box">
+                <div style="text-align: center;">+  ''Like langt og i <span class="outline"> samme</span> retning som''</div>
+            </div>
+        
+            La oss se på regnestykket
+            <math display="block"><mrow><mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo></mrow></math>
+            Vår utvidede definisjon av <span class="sym">+</span> sier oss nå at
+            <p style="text-align: center;">
+                <math></mat><mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo><mo>=</mo></math>''7 og like langt og i <i>samme</i> retning som <math><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo></math>''
+            </p>
+            $ (-4) $ har lengde 4 og retning \textsl{mot venstre}. Vårt regnestykke sier altså at vi skal starte på 7, og deretter gå lengden 4 \textsl{mot venstre}.
+            \[ 7+(-4)=3 \]
+            \fig{neg6}
+
+            \reg[Addisjon med negative tall]{
+            Å addere et negativt tall er det samme som å subtrahere tallet med samme tallverdi.
+            }
+            \eks[1]{ \vs
+                \[ 4+(-3)=4-3=1 \]
+            }
+            \eks[2]{ \vs
+                \[ -8+(-3)=-8-3=-11 \]
+            }
+            \info{Addisjon er kommutativ}{
+            \hrs{adkom}{Regel} er gjeldende også etter innføringen av negative tall, for eksempel er	
+            \[ 7+(-3)=4=-3+7 \]	
+            }
+
+            \subsection*{Subtraksjon}
+            I \hrs{Subtraksjon}{seksjon} så vi på \sym{$ - $} som vandring \textsl{mot venstre}. Også betydningen av \sym{$ - $} må utvides når vi jobber med negative tall:\regv
+
+            \st{\begin{center}
+                \begin{tabular}{cl}
+                    $ - $&''Like langt og i \textsl{motsatt} retning som''	
+                \end{tabular}
+            \end{center}}
+            La oss se på regnestykket
+            \[ 2-(-6) \]
+            Med vår utvidede betydning av \sym{$-$}, kan vi skrive
+            \[ 2-(-6)=\text{''}2 \text{ og like langt og i \textsl{motsatt} retning som } (-6)\text{''} \]
+            $ -6 $ har lengde 6 og retning \textsl{mot venstre}. Når vi skal gå samme lengde, men i \textsl{motsatt} retning, må vi altså gå lengden 6 \textsl{mot høyre}\footnote{Vi minner enda en gang om at rødfargen på pila indikerer at man skal vandre fra pilspissen til andre enden.}. Dette er det samme som å addere 6:
+            \[ 2-(-6)=2+6=8 \] \vs
+            \fig{neg7}
+            \reg[Subtraksjon med negative tall]{
+            Å subtrahere et negativt tall er det samme som å addere det positive tallet med samme tallverdi.
+            }
+            \eks[1]{ \vs
+            \[ 11-(-9)=11+9=20 \]
+            }
+            \eks[2]{ \vs
+                \[ -3-(-7)=-3+7=4 \]
+            }
+            \begin{comment}
+                \info{Merk}{
+                Med innføringen av negative tall kan subtraksjon bli sett på som addisjon med negative tal. For eksempel er $ {7-3=7+(-3)} $ og $ {2-7=2+(-7)} $.
+                }
+            \end{comment}
+
+            \subsection*{Multiplikasjon}
+            I \hrs{Gonging}{seksjon} introduserte vi ganging med positive heltall som gjentatt addisjon. Med våre utvidede begrep av addisjon og subtraksjon, kan vi nå også utvide begrepet multiplikasjon: \regv
+
+            \reg[Multiplikasjon med positive og negative tall\label{gongneg}]{
+            Ganging med et positivt heltall er det samme som gjentatt addisjon.\vsk
+
+            Ganging med et negativt heltal er det samme som gjentatt subtraksjon.
+            }
+            \eks[1]{ \vs \vs \label{negeksempel}
+            \alg{
+                2\cdot3 &=\text{''Like langt og i \textsl{samme} retning som 2, 3 ganger''}\\
+                &=2+2+2 \\
+                &=6
+            }
+            }
+            \eks[2]{ \vs \vs
+            \alg{
+                (-2)\cdot3&=\text{''Like langt og i \textsl{samme} retning som }(-2) \text{, 3 ganger''} \\
+                &=-2-2-2\\
+                &=-6
+            }
+            }
+            \eks[3]{ \vs \vs
+            \alg{
+                2\cdot(-3)&=\text{''Like langt og i \textsl{motsatt} retning som 2, 3 ganger''} \\
+                &=-2-2-2 \\
+                &=-6
+            }
+            }
+            \eks[4]{ \vs \vs
+                \alg{
+                    (-3)\cdot(-4)&=\text{''Like langt og i \textsl{motsatt} retning som $ -3 $, 4 ganger''}\\
+                    &=3+3+3+3\\
+                    &=12
+                }	 	 
+            }
+            \info{Multiplikasjon er kommutativ}{
+            \textsl{Eksempel 2} og \textsl{Eksempel 3} på side \pageref{negeksempel} illustrerer at \rref{gangkom} også er gjeldende etter innføringen av negative tall:
+            \[ (-2)\cdot3=3\cdot(-2) \]
+            }  \vsk
+            Det blir tungvint å regne ganging som gjentatt addisjon/subtraksjon hver gang vi har et negativt tall involvert, men som en direkte konsekvens av \rref{gongneg} kan vi lage oss følgende to regler:\regv
+
+            \reg[\gangmnegto \label{gangmnegto}]{
+            Produktet av et negativt og et positivt tall er et negativt tall. \vsk
+
+            Tallverdien til faktorene ganget sammen gir tallverdien til\\ produktet.
+            }
+            \eks[1]{
+            Regn ut $ (-7)\cdot8 $
+
+            \sv
+            Siden $ 7\cdot8=56 $, er $ (-7)\cdot8=-56 $
+            }
+            \eks[2]{
+                Regn ut $ 3\cdot(-9) $.
+                
+                \sv
+                Siden $ 3\cdot9=27 $, er $ 3\cdot(-9)=-27 $
+            }
+            \vsk
+
+            \reg[\gangmnegtre \label{gangmnegtre}]{
+            Produktet av to negative tall er et positivt tall. \vsk
+
+            Tallverdien til faktorene ganget sammen gir verdien til produktet.
+            } 
+            \eks[1]{ \vsb
+            \[ (-5)\cdot(-10)=5\cdot10=50 \]
+            }
+            \eks[2]{
+            \vsb
+            \[ (-2)\cdot(-8)=2\cdot8=16 \]
+            }
+            \subsection*{Divisjon}
+            Definisjonen av divisjon (se \hrs{Divisjon}{seksjon}), kombinert med det vi vet om multiplikasjon med negative tall, gir oss nå dette:\regv
+
+            \st{\begin{center}
+                    \algv{
+                        -18:6=\text{''Tallet jeg må gange 6 med for å få $ -18 $''}
+                    }
+                    $ 6\cdot(-3)=-18 $, altså er $ -18:6=-3 $
+            \end{center}} \vsk
+            \st{
+            \begin{center}
+                \algv{
+                    42:(-7)=\text{''Tallet jeg må gange $ -7 $ med for å få 42''}
+                }
+                $ (-7)\cdot(-8)=42 $, altså er $ 42:(-7)=-8 $
+            \end{center}
+            }\vsk
+            \st{
+            \begin{center}
+                \algv{
+                    -45:(-5)=\text{''Tallet jeg må gange $ -5 $ med for å få $ -45 $''}
+                }
+                $ (-5)\cdot9=-45 $, altså er $ -45:(-5)=9 $
+            \end{center}
+            }\vsk
+            \reg[Divisjon med negative tall]{
+            Divisjon mellom et positivt og et negativt tall gir et negativt tall.\vsk
+
+            Divisjon mellom to negative tall gir et positivt tall. \vsk
+
+            Tallverdien til dividenden delt med tallverdien til divisoren gir tallverdien til kvotienten. 
+            }
+            \eks[1]{ \vsb
+                \[ -24:6=-4 \]
+            }
+            \eks[2]{ \vsb
+                \[ 24:(-2)=-12 \]
+            }
+            \eks[3]{ \vsb
+                \[ -24:(-3)=8 \]
+            }
+            \eks[4]{ \vsb
+            \[ \frac{2}{-3}=-\frac{2}{3} \]
+            }
+            \eks[5]{ \vsb
+                \[ \frac{-10}{7}=-\frac{10}{7} \]
+            }
+            \newpage
+
+            \newpage
+            \section{\negmeng \label{negmeng}}
+            \textit{Obs! Denne tolkningen av negative tall blir først brukt i \hrs{likloysfire}{seksjon}, som er en seksjon noen lesere uten tap av forståelse kan hoppe over.}\vsk
+
+            Så langt har vi sett på negative tall ved hjelp av tallinjer. Å se på negative tall ved hjelp av mengder er i første omgang vanskelig, fordi vi har likestilt mengder med antall, og negative antall gir ikke mening! For å skape en forståelse av negative tall ut ifra et mengdeperspektiv, bruker vi det vi skal kalle \outl{vektprinsippet}. Dette innebærer at vi ser på tallene som krefter. De positive tallene er antall krefter som virker nedover og de negative tallene er antall krefter som virker oppover\footnote{Fra virkeligheten kan man se på de positive og negative tallene som ballonger fylt med henholdsvis luft og helium. Ballonger fylt med luft virker med en kraft nedover (de faller), mens heliumballonger virker med en kraft oppover (de stiger).}. Svarene på regnestykker med positive og negative tall kan man da se på som resultatet av en veiing av de forskjellige mengdene. Slik vil altså et positivt tall og et negativt tall med samme tallverdi \textsl{utligne} hverandre.
+            \vsk
+
+            \regdef[Negative tall som mengde]{
+            Negative tall vil vi indikere som en lyseblå mengde:
+            \fig{negm1}
+            }
+            \eks[]{
+            \[ 1+(-1)=0 \]
+            \fig{negm2}
+            }
+
+
+
+
+
           <script type="module"> 
             import "../../global.js"
           </script>

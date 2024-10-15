@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+    <script type="module">
+        import { Figure } from "../../figures/figure_modules.js"
+
+        let figure = new Figure()
+        figure.oneSize = 40
+        document.getElementsByTagName("body")[0].appendChild(figure.svgElement)
+
+        let box = figure.makeBoundingBox({xSize: 1000, ySize: 800, strokeColor: "black"})
+
+        let onesFigure = figure.makeOnes({amount:9})
+        let onesArray = getNumbersArray(onesFigure, "polygon")
+       
+        let tenX = 600
+        let tenY = 200
+        let tensFigure = figure.makeTens({amount:9, fill: "blue"})
+        let tensArray = getNumbersArray(tensFigure, "g")
+        figure.move(tensFigure, tenX, tenY)
+
+        let altTensFigure = figure.makeTens({amount: 9, unit:10})
+        let altTensArray = getNumbersArray(altTensFigure, "polygon")
+        figure.move(altTensFigure, tenX, tenY)
+
+        let ones = 0
+        let tens = 0
+
+        let oneUpButton = figure.makePolygon({points: [[0, 0], [50, 0], [50, 50], [0, 50]], fill: "green"})
+        
+        oneUpButton.addEventListener("click", oneUp)
+        figure.move(oneUpButton, 200, 200)
+        function getNumbersArray(numbersCollection, tagName) {
+            let numbersArray = Array.from(numbersCollection.getElementsByTagName(tagName))
+            for (let number of numbersArray) {
+                number.setAttribute("visibility", "hidden")
+            }
+            return numbersArray
+        }
+
+        function oneUp() {
+            if (ones < 9) {
+                ++ones
+                for (let i of [...Array(ones).keys()]) {
+                    onesArray[8-i].setAttribute("visibility", "visible")
+            }
+            }
+            else {
+                addTen()
+            }
+            
+        }
+
+        function tenUp() {
+            if (tens < 9) {
+                ++tens
+            }
+        }
+
+        function addTen() {
+            if (tens == 9) {
+                return
+            } else {
+                console.log(tensArray[tens + 1])
+                let tenOnes = Array.from(tensArray[tens + 1].getElementsByTagName("polygon"))
+                console.log(tenOnes.length)
+                for (let i of [...tenOnes.keys()]) {
+                    setInterval(() => {
+                        tenOnes[i].setAttribute("visibility", "visible")
+                        if (i > 0) {
+                            onesArray[i-1].setAttribute("visibility", "hidden")
+                        }
+                        console.log("ss")
+                    }, 1000);
+                }
+            }
+        }
+    </script>    
+    </body
+</html>
+

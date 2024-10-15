@@ -98,7 +98,6 @@ class Task {
     }
 
     inputIsValid(inputElement) {
-        inputElement.readOnly = true
         let userAnswer = inputElement.value
         userAnswer = userAnswer.replaceAll(" ", "")
         if (userAnswer === "") {
@@ -106,10 +105,13 @@ class Task {
         }
 
         userAnswer = userAnswer.replaceAll(",", ".")
-        let characters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."]
+        let characters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "-"]
         for (let char of userAnswer) {
             if (!(char in characters)) {
-                return false;
+                if (char != "-") {
+                    return false;
+                }
+                
             }
         }
 
@@ -230,8 +232,9 @@ class CalcTask extends Task {
     }
 
     resetInputFields() {
-        this.userInput.disabled = "false"
-        this.userInput.readOnly = "false"
+        console.log("hei")
+        this.userInput.disabled = false
+        this.userInput.value = ""
     }
 
     addAnswerContent() {
