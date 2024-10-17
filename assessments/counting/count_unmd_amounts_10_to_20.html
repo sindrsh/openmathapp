@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
         <script type="module">
-            import Figure from "../../figures/figure_modules.js"
-            import calkTask from "../calc_modules.js"
-            import { shuffleArray, getRandomInt } from "../random_modules.js"
+            import { Figure } from "../../figures/figure_modules.js"
+            import { CalcTask }from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
             
             let numbers = [10, 11, 12, 14, 15, 16, 17, 18, 19, 20]
             let spacing = 5
@@ -14,7 +14,7 @@
             let yLim = 5
             shuffleArray(numbers)
 
-            const task = new calkTask("count_amounts_to_9", makeTask, 1)
+            const task = new CalcTask("count_amounts_to_9", makeTask, 1)
             let fig = new Figure()
             var positions = []
             fig.makePolygon({

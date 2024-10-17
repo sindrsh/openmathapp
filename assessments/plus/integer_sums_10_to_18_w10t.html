@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <script type="module">
+
+        localStorage.setItem("tests", "count_amounts_1_to_9")
+        import { Figure } from "../../figures/figure_modules.js"
+        import { CalcTask } from "../task_modules.js"
+        import { getRandomInt } from "../global_modules.js"
+        
+        let task = new CalcTask("", makeTask)
+        let mathElement = document.createElement("math")
+        task.prepare({mathElement: mathElement})
+        
+        
+        function makeTask() {
+            let a = getRandomInt(2, 9)
+            let b = getRandomInt(11-a, 9)
+            mathElement.innerHTML = `<mn>${a}</mn><mo> + </mo><mn>${b}</mn>`
+            return a+b               
+        }
+    </script>
+</html>
+

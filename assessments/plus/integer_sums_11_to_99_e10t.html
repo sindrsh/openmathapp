@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <script type="module">
+
+        localStorage.setItem("tests", "count_amounts_1_to_9")
+        import { Figure } from "../../figures/figure_modules.js"
+        import { CalcTask } from "../task_modules.js"
+        import { getRandomInt } from "../global_modules.js"
+        
+        let task = new CalcTask("", makeTask)
+        let mathElement = document.createElement("math")
+        task.prepare({mathElement: mathElement})
+        
+        function makeTask() {
+            let a10 = getRandomInt(1, 9)
+            let b10 = getRandomInt(0, 9-a10)
+            let a1 = getRandomInt(0, 9)
+            let b1 = 0
+            if (a1 != 9) {
+                b1 = getRandomInt(1, 9-a1)
+            }
+            if (b10 == 0 && b1 == 0) {
+                a10 = getRandomInt(1, 9)
+                b10 = getRandomInt(1,9-a10)
+            }
+            if (getRandomInt(0, 1) == 1) {
+                mathElement.innerHTML = `<mn>${a10*10+a1}</mn><mo> + </mo><mn>${b10*10+b1}</mn>`
+            } else {
+                mathElement.innerHTML = `<mn>${b10*10+b1}</mn><mo> + </mo><mn>${a10*10+a1}</mn>`
+            }
+            
+            return a10*10 + a1 + b10*10 + b1               
+        }
+    </script>
+</html>
+

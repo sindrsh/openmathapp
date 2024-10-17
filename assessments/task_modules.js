@@ -34,8 +34,7 @@ class Task {
         this.body.appendChild(this.menuContainer)
 
         if (mathElement) {
-            const _math = document.createElement("math")
-            taskColumn.appendChild(_math)
+            taskColumn.appendChild(mathElement)
         }
         if (figure) {
             this.fig = figure
