@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-size: 32px;
+            }
+        </style>
+    </head>
+        <script type="module">
+            import { Figure } from "../../figures/figure_modules.js"
+            
+            let xStart = 10
+            let tickList = []
+
+            let fig = new Figure()
+            fig.oneSize = 1000/21
+            fig.makeBoundingBox({xSize: 1080, ySize: 200})
+            let numberLine = fig.makeVector({A:[-10, 0], B: [10, 0], arrow: "axisArrow", isTemp: false })
+            let x0 = fig.makeXTick({pos: [0, 0], fig: numberLine, label: "0", isTemp: false})
+            let x1 = fig.makeXTick({pos: [1, 0], fig: numberLine, label: "1", isTemp: false})
+            tickList.push(x0)
+            tickList.push(x1)
+
+            let button = fig.makeRectangle({y: 50, width: 100, height: 100})
+            button.addEventListener("click", showTicks)
+            
+            for (let i of [2, 3, 4, 5, 6, 7, 8, 9]) {
+                let tick = fig.makeXTick({pos: [i, 0], fig: numberLine, label: `${i}`})
+            }
+
+            for (let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+                let tick = fig.makeXTick({pos: [-i, 0], fig: numberLine, label: `${-i}`, visible: false})
+                tickList.push(tick)
+            }
+           
+
+            fig.move(fig.svgContainer, 10*fig.oneSize, 10)
+            
+            document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+
+            function showTicks() {
+                for (let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+                    setTimeout(() => {
+                        tickList[i-1].setAttribute("visibility", "visible")
+                    }, (i-1)*1000 + 400);
+                }
+            }
+            
+            
+        </script>
+</html>
+

@@ -7,7 +7,7 @@ class Figure {
     temporaryElements = []
     useViewBox
 
-    constructor({svgID = null, useViewBox=false} = {}) {
+    constructor({svgID = null, useViewBox=true} = {}) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
         this.svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
         this.svgElement.appendChild(this.svgContainer)
@@ -19,7 +19,6 @@ class Figure {
         if (this.useViewBox) {
             
             let boundingBox = this.svgElement.getBBox({"stroke": true})
-            console.log(boundingBox)
             this.svgElement.setAttribute("viewBox", boundingBox.x.toString()+ " " + boundingBox.y.toString() + " " + boundingBox.width.toString() + " " + boundingBox.height.toString())
             boundingBox.width -= boundingBox.x
             boundingBox.height -= boundingBox.y
@@ -40,6 +39,7 @@ class Figure {
     }
 
     makeBoundingBox( {xSize, ySize, strokeColor="transparent", fill= "transparent"} ) {
+        this.useViewBox = false
         this.svgElement.setAttribute("width", xSize)
         this.svgElement.setAttribute("height", ySize)
         this.makePolygon({
@@ -75,6 +75,22 @@ class Figure {
             this.addToSVGContainer({fig:line, isTemp: isTemp})
         }
         return line
+    }
+
+    makeRectangle({x=0, y=0, width, height, fill="white", strokeColor="black", addToSvg=true, strokeWidth=this.strokeWidth, isTemp=true}) {
+        let rectangle = document.createElementNS("http://www.w3.org/2000/svg", "rect")  
+        rectangle.setAttribute("x", x.toString())
+        rectangle.setAttribute("y", y.toString())
+        rectangle.setAttribute("width", width.toString())
+        rectangle.setAttribute("height", height.toString())
+        rectangle.setAttribute("stroke", strokeColor)
+        rectangle.setAttribute("stroke-width", strokeWidth)
+        rectangle.setAttribute("fill", fill)
+        
+        if (addToSvg) {
+            this.addToSVGContainer({fig: rectangle, isTemp: isTemp})
+        }
+        return rectangle
     }
 
     makePolygon({points, isTemp=true, fill="white", strokeColor = "black", addToSvg=true, strokeWidth = this.strokeWidth}) {
@@ -234,8 +250,10 @@ class Figure {
         equals.setAttribute("width", width)
     }
     
-    makeVector({ A=[0, 0], B, arrow="triangle", arrowScale=1, pos=[0, 0], addToSvg=true, isTemp=true, strokeColor="black"} = {} ) {
+    makeVector({ A=[0, 0], B, arrow="triangle", arrowScale=1, pos=[0, 0], addToSvg=true, isTemp=true, strokeColor="black", oneLength=this.oneSize} = {} ) {
         
+        A = [A[0]*oneLength, A[1]*oneLength]
+        B = [B[0]*oneLength, B[1]*oneLength]
         let lineContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
 
         let arrowHead = null
@@ -254,7 +272,6 @@ class Figure {
             let endPoint = [-arrowScale*10, arrowScale*10]
             let curvePoint = [-arrowScale*7, arrowScale*3]
             arrowHead.setAttribute("d", `M ${endPoint[0]} ${endPoint[1]} Q ${curvePoint[0]} ${curvePoint[1]} 0 0 Q ${curvePoint[0]} ${-curvePoint[1]} ${endPoint[0]} ${-endPoint[1]}`)
-            console.log(arrowHead.getAttribute("d"))
             arrowHead.setAttribute("stroke", strokeColor)
             arrowHead.setAttribute("fill", "transparent")
         }
@@ -283,12 +300,15 @@ class Figure {
         return angle*180/Math.PI
     }
 
-    makeXTick({pos, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black"}) {
+    makeXTick({pos, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true}) {
+        
+        pos = [pos[0]*oneLength, pos[1]*oneLength]
         let tickContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
         let tick = document.createElementNS("http://www.w3.org/2000/svg", "path")
         tick.setAttribute("d", `M ${pos[0]} ${pos[1] - height} L ${pos[0]} ${pos[1] + height}`)
         tick.setAttribute("stroke", strokeColor)
         tick.setAttribute("stroke-linecap", "round")
+        tick.setAttribute("stroke-width", strokeWidth)
         tickContainer.appendChild(tick)
         if (label) {
             let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
@@ -296,16 +316,20 @@ class Figure {
             text.setAttribute("y", (pos[1] + height).toString())
             text.setAttribute("dy", "30")
             text.style.textAnchor = "middle"
+            text.style.fill = strokeColor
             text.innerHTML = `${label}`
             tickContainer.appendChild(text)
         }
-        
+        if (!visible) {
+            tickContainer.setAttribute("visibility", "hidden")
+        }
         if (addToSvg) {
             this.addToSVGContainer( {fig: tickContainer, isTemp: isTemp} )
         }
         if (fig) {
             fig.appendChild(tickContainer)
         }
+        return tickContainer
     }
 
     move(shape, x=0, y=0) {

@@ -26,22 +26,9 @@
                 background-color: #04AA6D;
                 color: white;
                 }
-            .videoPlayer {
-                height: 50px;
-                background-color: cadetblue;
-            }
             body {
                 font-family: sans-serif;   
             }
-            math {
-                font-size: 50px;
-                --select: rgb(9, 95, 9);
-            }
-            iframe {
-                width: 100%;
-                margin: auto;
-            }
-
             .test {
                 visibility: hidden;
             }
@@ -53,7 +40,7 @@
 
     <body>
         <div> 
-            <table class="customTable" hidden> 
+            <table class="customTable"> 
               <tbody id="titallsystemet">
                 <tr>
                     <th rowspan="4"> Titallsystemet</th>
@@ -103,7 +90,6 @@
             </table>
         </div>
     <script>
-        console.log(localStorage.getItem("tests"))
         for (let row of document.getElementsByClassName("tests")) {
             let tests = Array.from(row.getElementsByClassName("test"))
             tests[0].style.visibility = "visible"

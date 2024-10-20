@@ -1,7 +1,7 @@
 //baseling
 const header = document.getElementsByTagName("head")[0]
 const _base = document.createElement("base")
-_base.href = "http://127.0.0.1:3000/review/slideshows/"
+_base.href = "http://127.0.0.1:3000/openmathapp/slideshows/"
 header.appendChild(_base)
 const _link = document.createElement("link")
 _link.rel = "stylesheet"

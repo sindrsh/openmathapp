@@ -3,12 +3,27 @@
                 background-color: cadetblue;
             }
 body {
+    font-size: 50px;
     width: 80%;
     margin: auto;
     font-family: sans-serif;   
 }
 math {
+    font-family: sans-serif;   
     font-size: 50px;
     --select: rgb(9, 95, 9);
 }
+
+table {
+  margin: auto;
+}
+
+table.table-method {
+  text-align: right;
+  border: 1px solid black;
+}
+
+
+
+
 

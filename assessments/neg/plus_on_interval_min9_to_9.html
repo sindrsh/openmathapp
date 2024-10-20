@@ -12,24 +12,14 @@
             var neg = [-1, -2, -3, -4, -5, -6, -7, -8, -9]
             
             function makeTask() {
-                let a = getRandomInt(1,9)
-                let b = 0
+                let a = getRandomInt(1,9)*(-1)*getRandomInt(0, 1)
+                let b = getRandomInt(1, 9)
                 if (getRandomInt(0, 1) == 0) {
-                    b = getRandomInt(0, 9-a)
+                    mathElement.innerHTML = `<mo>(</mo><mo>−</mo><mn>${Math.abs(a)}</mn><mo>)</mo> + </mo><mn>${b}</mn>`
                 } else {
-                    b = getRandomInt(0, 9)*(-1)
+                    mathElement.innerHTML = `<mn>${b}</mn><mo>−</mo><mo>(</mo><mo>+</mo><mn>${Math.abs(a)}</mn><mo>)</mo>`
                 }
-                if (b==0) {
-                    b = getRandomInt(0, 9)*(-1)
-                }
-                a *= (-1)
-                let aString = `<mo>(</mo><mo>−</mo><mn>${Math.abs(a)}</mn><mo>)</mo>`
-                let bString = `<mo>(</mo><mo>−</mo><mn>${Math.abs(b)}</mn><mo>)</mo>`
-                if (b > 0) {
-                    bString = `<mn>${b}</mn>`
-                }
-                mathElement.innerHTML = aString + "<mo> − </mo>" + bString
-                return a-b
+                return a+b
             }
         </script>
 </html>
