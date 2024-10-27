@@ -44,7 +44,7 @@ class Rule extends HTMLDivElement {
 
     connectedCallback() {
         const heading = document.createElement("b") 
-        const heading_text = this.getAttribute("data-heading")
+        const heading_text = this.getAttribute("data-title")
         heading.appendChild(document.createTextNode(heading_text))
         heading.appendChild(document.createElement("p"))
         this.insertAdjacentElement("afterbegin", heading)
@@ -68,7 +68,7 @@ class Info extends HTMLDivElement {
 
     connectedCallback() {
         const heading = document.createElement("b") 
-        const heading_text = this.getAttribute("data-heading")
+        const heading_text = this.getAttribute("data-title")
         heading.appendChild(document.createTextNode(heading_text))
         heading.appendChild(document.createElement("p"))
         this.insertAdjacentElement("afterbegin", heading)
@@ -92,7 +92,7 @@ class LangBox extends HTMLDivElement {
 
     connectedCallback() {
         const heading = document.createElement("b") 
-        const heading_text = this.getAttribute("data-heading")
+        const heading_text = this.getAttribute("data-title")
         heading.appendChild(document.createTextNode("Språkboksen"))
         heading.appendChild(document.createElement("p"))
         this.insertAdjacentElement("afterbegin", heading)

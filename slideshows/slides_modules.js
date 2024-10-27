@@ -1,11 +1,10 @@
 //baseling
 const header = document.getElementsByTagName("head")[0]
 const _base = document.createElement("base")
-_base.href = "http://127.0.0.1:3000/openmathapp/slideshows/"
 header.appendChild(_base)
 const _link = document.createElement("link")
 _link.rel = "stylesheet"
-_link.href = "slides_styles.css"
+_link.href = "../slides_styles.css"
 header.appendChild(_link)
 
 
@@ -13,7 +12,7 @@ header.appendChild(_link)
 var back = document.createElement("button");
 back.setAttribute("id", "back");
 var back_image = document.createElement("img");
-back_image.setAttribute("src", "prev_frame.png");
+back_image.setAttribute("src", "../prev_frame.png");
 back_image.style.width = "40px";
 back.appendChild(back_image);
 document.getElementsByClassName("videoPlayer")[0].appendChild(back);
@@ -21,7 +20,7 @@ back.addEventListener('click', nextSlide);
 var forward = document.createElement("button");
 forward.setAttribute("id", "forward");
 var forward_image = document.createElement("img");
-forward_image.setAttribute("src", "next_frame.png");
+forward_image.setAttribute("src", "../next_frame.png");
 forward_image.style.width = "40px";
 forward.appendChild(forward_image);
 document.getElementsByClassName("videoPlayer")[0].appendChild(forward);

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Negative tall </title>
+        <meta charset="UTF-8">
+        
+        <style> 
+            body {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                width: 550px;
+                margin: auto;
+                font-size: 12pt;
+            }
+            .symbol {
+                background-color: rgb(179, 204, 255);
+                padding-left: 2px;
+                padding-right: 2px;
+            }
+            .figure {
+                text-align: center;
+            }
+            .math-table {
+                margin: auto;
+            }
+            .math-left-column {
+                text-align: right;
+            }
+            .math-right-column {
+                text-align: left;
+            }
+            .math-center-column {
+                text-align: center;
+                max-width: 3%;
+                padding: 0%;
+            }
+            math {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .outline {
+                color: teal;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+		<h2 is="custom-section">\negintro</h2>
+		Vi har tidligere sett at (for eksempel) tallet 5 på ei tallinje ligger 5 enerlengder til høyre for 0. 
+		<div class="figure">neg1 </div>
+		Men hva om vi går andre veien, altså mot venstre? Dette spørsmålet svarer vi på ved å innføre <i>negative tall</i>. .
+		
+		<div is="custom-rule" data-title="Positive og negative tal">
+			På en tallinje gjelder følgende:
+			<ul>
+				\item Tall plassert <i>til høyre </i> for 0 er <span class="outline">positive tall</span>.
+				\item Tall plassert <i>til venstre </i> for 0 er <span class="outline">negative tal</span>.
+			 </ul>
+			<div class="figure">neg2 </div>
+		</div> 
+		Vi kan ikke hele tiden bruke en tallinje for å avgjøre om et tall er\\ negativt eller positivt, og derfor bruker vi et tegn for å vise at tall er negative. Dette tegnet er rett og slett <span class="symbol"> <math> <mo>−</mo></math></span>, altså det samme tegnet som vi bruker ved subtraksjon. <math>  <mn>5</mn>  </math> er med dét et positivt tall, mens <math>  <mo>−</mo><mn>5</mn>  </math> er et negativt tall. På tallinja er det slik at
+		<ul>
+			\item 5 ligger 5 enerlengder <i>til høyre </i> for 0.
+			\item <math>  <mo>−</mo><mn>5</mn>  </math> ligger 5 enerlengder <i>til venstre </i> for 0.
+		 </ul>
+		<div class="figure">neg3 </div>
+		Den store forskjellen på <math>  <mn>5</mn>  </math> og <math>  <mo>−</mo><mn>5</mn>  </math> er altså på hvilken side av 0 tallene ligger. Da <math>  <mn>5</mn>  </math> og <math>  <mo>−</mo><mn>5</mn>  </math> har samme avstand til 0, sier vi at <math>  <mn>5</mn>  </math> og <math>  <mo>−</mo><mn>5</mn>  </math> har samme <span class="outline">lengde</span>. 
+		
+		<div is="custom-rule" data-title="Lengde ">
+			Lengden til et tall skrives ved symbolet <span class="symbol"> | |</span>.	
+			
+			Lengden til et positivt tall er verdien til tallet.
+			
+			Lengden til et negativt tall er verdien til det positive tallet med samme siffer.
+		</div> 
+		<div is="custom-example" data-number="1"">  
+			<p><math display="block"> <mo>|</mo><mn><mn>27</mn></mn><mo>|</mo><mo>=</mo><mn><mn>27</mn></mn> </math></p>
+		</div>
+		<div is="custom-example" data-number="2"">  
+			<p><math display="block"><mo>|</mo><mrow><mo>−</mo><mn><mn>27</mn></mn></mrow><mo>|</mo><mo>=</mo><mn><mn>27</mn></mn> </math></p>
+		</div>
+		<div is="custom-language-box">
+			Andre ord for lengde er <span class="outline">tallverdi</span> og <span class="outline">absoluttverdi</span>.
+		</div>
+		<div is="custom-info" data-title="Fortegn">
+			<span class="outline">Fortegn</span> er en samlebetegnelse for <span class="symbol"> <math>  <mo>+</mo>  </math></span> og <span class="symbol"> <math>  <mo>−</mo>  </math></span>. <math>  <mn>5</mn>  </math> har <span class="symbol"> <math>  <mo>+</mo>  </math></span> som fortegn og <math>  <mo>−</mo><mn>5</mn>  </math> har <span class="symbol"> <math>  <mo>−</mo>  </math></span> som fortegn.
+		</div>
+		
+		<h2 is="custom-section">\negrekn </h2>
+		Ved innføringen av negative tall får de fire regneartene nye sider som vi må se på trinnvis. Når vi adderer, subtraherer, multipliserer eller dividerer med negative tall vil vi ofte, for tydeligheten sin skyld, skrive negative tall med parentes rundt. Da skriver vi for eksempel <math>  <mo>−</mo><mn>4</mn>  </math> som <math>  <mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo>  </math>. 
+		
+		<h2 is="custom-subsection">Addisjon</h2>
+		Når vi adderte i seksjon ?? så vi på <span class="symbol"> <math>  <mo>+</mo>  </math></span> som vandring <i>mot høyre </i>. Negative tall gjør at vi må utvide begrepet for <span class="symbol"> <math>  <mo>+</mo>  </math></span>\,: 
+		<div is="custom-statement">
+				\begin{tabular</div>{cl}
+					<math>  <mo>+</mo>  </math>&''Like langt og i <i>samme </i> retning som''	
+				\end{tabular}
+		}
+		La oss se på regnestykket
+		<p><math display="block"> <mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo> </math></p>
+		Vår utvidede definisjon av <span class="symbol"> <math>  <mo>+</mo>  </math></span> sier oss nå at
+		<p><math display="block"> <mn><mn>7</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>4</mn></mn><mo>)</mo><mo>=</mo><mtext>''7 og like langt og i <i>samme  retning som</i> </mtext> <mo>(</mo><mo>−</mo><mn><mn>4</mn></mn><mo>)</mo><mtext>''</mtext> </math></p>
+		<math>  <mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo>  </math> har lengde 4 og retning <i>mot venstre </i>. Vårt regnestykke sier altså at vi skal starte på 7, og deretter gå lengden 4 <i>mot venstre </i>.
+		<p><math display="block"> <mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo><mo>=</mo><mn>3</mn> </math></p>
+		<div class="figure">neg6 </div>
+		
+		<div is="custom-rule" data-title="Addisjon med negative tall">
+			Å addere et negativt tall er det samme som å subtrahere tallet med samme tallverdi.
+		</div>
+		<div is="custom-example" data-number="1""> 
+			<p><math display="block"> <mn><mn>4</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>3</mn></mn><mo>)</mo><mo>=</mo><mn><mn>4</mn></mn><mo>−</mo><mn><mn>3</mn></mn><mo>=</mo><mn>1</mn> </math></p>
+		</div>
+		<div is="custom-example" data-number="2""> 
+			<p><math display="block"> <mo>−</mo><mn><mn>8</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>3</mn></mn><mo>)</mo><mo>=</mo><mo>−</mo><mn><mn>8</mn></mn><mo>−</mo><mn><mn>3</mn></mn><mo>=</mo><mo>−</mo><mn>11</mn> </math></p>
+		</div>
+		<div is="custom-info" data-title="Addisjon er kommutativ">
+			\hrs{adkom</div>{Regel} er gjeldende også etter innføringen av negative tall, for eksempel er	
+			<p><math display="block"> <mn><mn>7</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>3</mn></mn><mo>)</mo><mo>=</mo><mn>4</mn><mo>=</mo><mo>−</mo><mn><mn>3</mn></mn><mo>+</mo><mn><mn>7</mn></mn> </math></p>	
+		}
+		
+		<h2 is="custom-subsection">Subtraksjon</h2>
+		I seksjon ?? så vi på <span class="symbol"> <math>  <mo>−</mo>  </math></span> som vandring <i>mot venstre </i>. Også betydningen av <span class="symbol"> <math>  <mo>−</mo>  </math></span> må utvides når vi jobber med negative tall:
+		
+		<div is="custom-statement">
+				\begin{tabular</div>{cl}
+					<math>  <mo>−</mo>  </math>&''Like langt og i <i>motsatt </i> retning som''	
+				\end{tabular}
+		}
+		La oss se på regnestykket
+		<p><math display="block"> <mn>2</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>6</mn><mo>)</mo> </math></p>
+		Med vår utvidede betydning av <span class="symbol"> <math> <mo>−</mo> </math></span>, kan vi skrive
+		<p><math display="block"> <mn><mn>2</mn></mn><mo>−</mo><mo>(</mo><mo>−</mo><mn><mn>6</mn></mn><mo>)</mo><mo>=</mo><mtext>''</mtext><mn><mn>2</mn></mn> <mtext> og like langt og i <i>motsatt </i> retning som </mtext> <mo>(</mo><mo>−</mo><mn><mn>6</mn></mn><mo>)</mo><mtext>''</mtext> </math></p>
+		<math>  <mo>−</mo><mn>6</mn>  </math> har lengde 6 og retning <i>mot venstre </i>. Når vi skal gå samme lengde, men i <i>motsatt </i> retning, må vi altså gå lengden 6 <i>mot høyre </i>\footnote{Vi minner enda en gang om at rødfargen på pila indikerer at man skal vandre fra pilspissen til andre enden.}. Dette er det samme som å addere 6:
+		<p><math display="block"> <mn><mn>2</mn></mn><mo>−</mo><mo>(</mo><mo>−</mo><mn><mn>6</mn></mn><mo>)</mo><mo>=</mo><mn><mn>2</mn></mn><mo>+</mo><mn><mn>6</mn></mn><mo>=</mo><mn>8</mn> </math></p> 
+		<div class="figure">neg7 </div>
+		<div is="custom-rule" data-title="Subtraksjon med negative tall">
+			Å subtrahere et negativt tall er det samme som å addere det positive tallet med samme tallverdi.
+		</div>
+		<div is="custom-example" data-number="1""> 
+			<p><math display="block"> <mn><mn>11</mn></mn><mo>−</mo><mo>(</mo><mo>−</mo><mn><mn>9</mn></mn><mo>)</mo><mo>=</mo><mn><mn>11</mn></mn><mo>+</mo><mn><mn>9</mn></mn><mo>=</mo><mn>20</mn> </math></p>
+		</div>
+		<div is="custom-example" data-number="2""> 
+			<p><math display="block"> <mo>−</mo><mn><mn>3</mn></mn><mo>−</mo><mo>(</mo><mo>−</mo><mn><mn>7</mn></mn><mo>)</mo><mo>=</mo><mo>−</mo><mn><mn>3</mn></mn><mo>+</mo><mn><mn>7</mn></mn><mo>=</mo><mn>4</mn> </math></p>
+		</div>
+		\begin{comment}
+			<div is="custom-info" data-title="Merk">
+				Med innføringen av negative tall kan subtraksjon bli sett på som addisjon med negative tal. For eksempel er <math>  <mrow><mn><mn>7</mn></mn><mo>−</mo><mn><mn>3</mn></mn><mo>=</mo><mn><mn>7</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>3</mn></mn><mo>)</mo>  </math> og <math>  <mrow><mn><mn>2</mn></mn><mo>−</mo><mn><mn>7</mn></mn><mo>=</mo><mn><mn>2</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>7</mn></mn><mo>)</mo></mrow>  </math>.
+			}
+		\end{comment}
+		
+		<h2 is="custom-subsection">Multiplikasjon</h2>
+		I seksjon ?? introduserte vi ganging med positive heltall som gjentatt addisjon. Med våre utvidede begrep av addisjon og subtraksjon, kan vi nå også utvide begrepet multiplikasjon: 
+		
+		<div is="custom-rule" data-title="Multiplikasjon med positive og negative tall">
+			Ganging med et positivt heltall er det samme som gjentatt addisjon.
+			
+			Ganging med et negativt heltal er det samme som gjentatt subtraksjon.
+		</div>
+		<div is="custom-example" data-number="1"">   
+			<td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td> </tr>
+		</div>
+		<div is="custom-example" data-number="2"">  
+			<td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn>  </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn>  </td> </tr>
+		</div>
+		<div is="custom-example" data-number="3"">  
+			<td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn>  </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn>  </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn>6</mn> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn>  </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td><tr> <td class="math-left-column"> <mn>2</mn><mo></mo><mn>3</mn>  </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som 2, 3 ganger''</mtext> </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn><mo>+</mo><mn><mn><mn>2</mn></mn></mn>  </td> </tr><td class="math-left-column">  </td> 
+	 <td class="math"><td class="math-right-column"> <mn>6</mn> </td> </tr>
+		</div>
+		<div is="custom-example" data-number="4"">  
+			<td class="math-left-column"> <mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo></mo><mn>3</mn> </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som </mtext><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo> <mtext>, 3 ganger''</mtext>  </td><tr> <td class="math-left-column"> <mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo></mo><mn>3</mn> </td> 
+	 <td class="math"><td class="math-right-column"> <mtext>''Like langt og i <i>samme </i> retning som </mtext><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo> <mtext>, 3 ganger''</mtext>  </td> </tr>	 	 
+		</div>
+		<div is="custom-info" data-title="Multiplikasjon er kommutativ">
+			<i>Eksempel 2 </i> og <i>Eksempel 3 </i> på side \pageref{negeksempel</div> illustrerer at regel ?? også er gjeldende etter innføringen av negative tall:
+			<p><math display="block"> <mo>(</mo><mo>−</mo><mn><mn>2</mn></mn><mo>)</mo><mo></mo><mn><mn>3</mn></mn><mo>=</mo><mn><mn>3</mn></mn><mo></mo><mo>(</mo><mo>−</mo><mn><mn>2</mn></mn><mo>)</mo> </math></p>
+		}  
+		Det blir tungvint å regne ganging som gjentatt addisjon/subtraksjon hver gang vi har et negativt tall involvert, men som en direkte konsekvens av regel ?? kan vi lage oss følgende to regler:
+		
+		<div is="custom-rule" data-title="\gangmnegto">
+			Produktet av et negativt og et positivt tall er et negativt tall. 
+			
+			Tallverdien til faktorene ganget sammen gir tallverdien til\\ produktet.
+		</div>
+		<div is="custom-example" data-number="1"">
+			Regn ut <math>  <mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo></mo><mn>8</mn>  </math>
+			
+			
+			Siden <math>  <mn>7</mn><mo></mo><mn>8</mn><mo>=</mo><mn>56</mn>  </math>, er <math>  <mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo></mo><mn>8</mn><mo>=</mo><mo>−</mo><mn>56</mn>  </math>
+		</div>
+		<div is="custom-example" data-number="2"">
+			Regn ut <math>  <mn>3</mn><mo></mo><mo>(</mo><mo>−</mo><mn>9</mn><mo>)</mo>  </math>.
+			
+			
+			Siden <math>  <mn>3</mn><mo></mo><mn>9</mn><mo>=</mo><mn>27</mn>  </math>, er <math>  <mn>3</mn><mo></mo><mo>(</mo><mo>−</mo><mn>9</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>27</mn>  </math>
+		</div>
+		
+		
+		<div is="custom-rule" data-title="\gangmnegtre ">
+			Produktet av to negative tall er et positivt tall. 
+			
+			Tallverdien til faktorene ganget sammen gir verdien til produktet.
+		</div> 
+		<div is="custom-example" data-number="1""> 
+			<p><math display="block"> <mo>(</mo><mo>−</mo><mn><mn>5</mn></mn><mo>)</mo><mo></mo><mo>(</mo><mo>−</mo><mn><mn>10</mn></mn><mo>)</mo><mo>=</mo><mn><mn>5</mn></mn><mo></mo><mn><mn>10</mn></mn><mo>=</mo><mn><mn>5</mn></mn>0 </math></p>
+		</div>
+		<div is="custom-example" data-number="2"">
+			
+			<p><math display="block"> <mo>(</mo><mo>−</mo><mn><mn>2</mn></mn><mo>)</mo><mo></mo><mo>(</mo><mo>−</mo><mn><mn>8</mn></mn><mo>)</mo><mo>=</mo><mn><mn>2</mn></mn><mo></mo><mn><mn>8</mn></mn><mo>=</mo><mn>16</mn> </math></p>
+		</div>
+		<h2 is="custom-subsection">Divisjon</h2>
+		Definisjonen av divisjon (se seksjon ??), kombinert med det vi vet om multiplikasjon med negative tall, gir oss nå dette:
+		
+		<div is="custom-statement">
+				<p><math display="block"> <mo>−</mo><mn>18</mn><mo>:</mo><mn>6</mn><mo>=</mo><mtext>''Tallet jeg må gange 6 med for å få <math>  <mo>−</mo><mn>18</mn>  </math>''</mtext> </math></p>
+				<math>  <mn>6</mn><mo></mo><mo>(</mo><mo>−</mo><mn>3</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>18</mn>  </math>, altså er <math>  <mo>−</mo><mn>18</mn><mo>:</mo><mn>6</mn><mo>=</mo><mo>−</mo><mn>3</mn>  </math>
+		</div> 
+		<div is="custom-statement">
+			
+				<p><math display="block"> <mn>42</mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo>=</mo><mtext>''Tallet jeg må gange <math>  <mo>−</mo><mn>7</mn>  </math> med for å få 42''</mtext> </math></p>
+				<math>  <mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo></mo><mo>(</mo><mo>−</mo><mn>8</mn><mo>)</mo><mo>=</mo><mn>42</mn>  </math>, altså er <math>  <mn>42</mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>8</mn>  </math>
+			
+		</div>
+		<div is="custom-statement">
+			
+				<p><math display="block"> <mo>−</mo><mn>4<mn>5</mn></mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>5</mn><mo>)</mo><mo>=</mo><mtext>''Tallet jeg må gange <math>  <mo>−</mo><mn>5</mn>  </math> med for å få <math>  <mo>−</mo><mn>45</mn>  </math>''</mtext> </math></p>
+				<math>  <mo>(</mo><mo>−</mo><mn>5</mn><mo>)</mo><mo></mo><mn>9</mn><mo>=</mo><mo>−</mo>4<mn>5</mn>  </math>, altså er <math>  <mo>−</mo><mn>4<mn>5</mn></mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>5</mn><mo>)</mo><mo>=</mo><mn>9</mn>  </math>
+			
+		</div>
+		<div is="custom-rule" data-title="Divisjon med negative tall">
+			Divisjon mellom et positivt og et negativt tall gir et negativt tall.
+			
+			Divisjon mellom to negative tall gir et positivt tall. 
+			
+			Tallverdien til dividenden delt med tallverdien til divisoren gir tallverdien til kvotienten. 
+		</div>
+		<div is="custom-example" data-number="1""> 
+			<p><math display="block"> <mo>−</mo><mn>2<mn>4</mn></mn><mo>:</mo><mn>6</mn><mo>=</mo><mo>−</mo><mn>4</mn> </math></p>
+		</div>
+		<div is="custom-example" data-number="2""> 
+			<p><math display="block"> <mn><mn>2</mn>4</mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo>=</mo><mo>−</mo>1<mn>2</mn> </math></p>
+		</div>
+		<div is="custom-example" data-number="3""> 
+			<p><math display="block"> <mo>−</mo><mn>24</mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>8</mn> </math></p>
+		</div>
+		<div is="custom-example" data-number="4""> 
+			<p><math display="block"> <mfrac>2 −3</mfrac><mo>=</mo><mo>−</mo><mfrac>2 3</mfrac> </math></p>
+		</div>
+		<div is="custom-example" data-number="5""> 
+			<p><math display="block"> <mfrac>−10 7</mfrac><mo>=</mo><mo>−</mo><mfrac>10 7</mfrac> </math></p>
+		</div>
+		
+		
+		
+		<h2 is="custom-section">\negmeng </h2>
+		<i>Obs! Denne tolkningen av negative tall blir først brukt i seksjon ??, som er en seksjon noen lesere uten tap av forståelse kan hoppe over.</i>
+		
+		Så langt har vi sett på negative tall ved hjelp av tallinjer. Å se på negative tall ved hjelp av mengder er i første omgang vanskelig, fordi vi har likestilt mengder med antall, og negative antall gir ikke mening! For å skape en forståelse av negative tall ut ifra et mengdeperspektiv, bruker vi det vi skal kalle <span class="outline">vektprinsippet</span>. Dette innebærer at vi ser på tallene som krefter. De positive tallene er antall krefter som virker nedover og de negative tallene er antall krefter som virker oppover\footnote{Fra virkeligheten kan man se på de positive og negative tallene som ballonger fylt med henholdsvis luft og helium. Ballonger fylt med luft virker med en kraft nedover (de faller), mens heliumballonger virker med en kraft oppover (de stiger).}. Svarene på regnestykker med positive og negative tall kan man da se på som resultatet av en veiing av de forskjellige mengdene. Slik vil altså et positivt tall og et negativt tall med samme tallverdi <i>utligne </i> hverandre.
+		
+		
+		<div is="custom-definition" data-title="Negative tall som mengde">
+			Negative tall vil vi indikere som en lyseblå mengde:
+			<div class="figure">negm1 </div>
+		</div>
+		<div is="custom-example">
+			<p><math display="block"> <mn><mn>1</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>1</mn></mn><mo>)</mo><mo>=</mo><mn>0</mn> </math></p>
+			<div class="figure">negm2 </div>
+		</div>
+		
+	
+	
+
+
+          <script type="module"> 
+            import "../../global.js"
+          </script>
+          
+    </body>
+
+
+
+</html>
