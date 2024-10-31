@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+
+            localStorage.setItem("tests", "count_amounts_1_to_9")
+            import { Figure } from "../../figures/figure_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
+            
+            let fig = new Figure()
+            let oneSize = 10
+            fig.makeBoundingBox({xSize: 300, ySize: 300, strokeColor: "black"})
+            
+            let space = 10*oneSize + 10
+
+            
+            let task = new CalcTask("", makeTask)
+            task.prepare({figure: fig})
+            
+            function makeTask() {
+                let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                shuffleArray(ints)
+                let boxes = [1, 2, 3, 4]
+                shuffleArray(boxes)
+
+                let positions = [[0, 0], [0, space], [space, space], [space, 0]]
+                shuffleArray(positions)
+                
+                let sum = 0
+                for (let i=0; i<boxes.pop(); ++i) {
+                    
+                    let pos = positions.pop()
+                    let rectangles = []
+                    for (let i=0; i<10; ++i) {
+                        rectangles.push(fig.makeRectangle({x: i*oneSize, y: 0, width: oneSize, height: 10*oneSize}))
+                        fig.move(rectangles[i], 10 + pos[0], 10 + pos[1])
+                    }
+                    
+                    let a = ints.pop()
+                    sum += a
+                    shuffleArray(rectangles)
+                    
+                    for (let i=0; i<a; ++i) {
+                        rectangles[i].setAttribute("fill", "green")
+                    }
+                    
+                }
+
+                return sum/10
+                                            
+            }
+
+        </script>
+</html>
+

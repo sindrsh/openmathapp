@@ -4,9 +4,9 @@
         <style>
              /* Table styles*/
             .customTable {
+                width: auto;
                 font-family: Arial, Helvetica, sans-serif;
                 border-collapse: collapse;
-                width: 100%;
                 }
 
             .customTable td, .customTable th {
@@ -19,41 +19,102 @@
             .customTable td:hover {background-color: #ddd;}
 
             .customTable th {
-                width: 150px;
-                padding-top: 12px;
-                padding-bottom: 12px;
+                width: 180px;
                 text-align: left;
                 background-color: #04AA6D;
                 color: white;
-                }
+            }
+
+            .customTable td {
+                width: 20px;
+            }
+            
             body {
                 font-family: sans-serif;   
             }
+
             .test {
-                visibility: hidden;
+                /*visibility: hidden;*/
             }
+
             .interactive {
-                visibility: hidden;
+                /*visibility: hidden;*/
             }
+
+            #loginPage {
+                padding: 20px;
+                background-color:yellowgreen;
+                height: 220px;
+            }
+            
+            button {
+                background-color: #04AA6D;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                }
+
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+
+            .category {
+                width: 90px;
+            }
+
+            .medium {
+                width: 80px;
+            }
+            .subject {
+                width: 100px;
+            }
+
+
+            #mainPage {
+                width: 1000px;
+            }
+
         </style>
     </head>
 
     <body>
+        <div id="loginPage" hidden>
+            <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required id="username">
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required id="password">
+
+    <button id="loginButton">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" id="rememberLoginInfo"> Remember me
+    </label>
+        </div>
+        <div id="mainPage">
         <div> 
             <table class="customTable"> 
               <tbody id="titallsystemet">
                 <tr>
-                    <th rowspan="4"> Titallsystemet</th>
-                    <td rowspan="4">Mengde</td>
+                    <th rowspan="4" class="subject"> Titallsystemet</th>
+                    <td rowspan="4" class="category">Mengde</td>
                 </tr>
                 <tr class="interactives">
-                    <td >Video</td>
-                    <td class="interactive">0 -9 </td>
-                    <td class="interactive">10 -20 </td>
+                    <td class="medium">Video</td>
+                    <td class="interactive"> 0 - 9 </td>
+                    <td class="interactive">10 - 20 </td>
                 </tr>
                 <tr class="book">
                     <td>Bok</td>
                     <td> <a class="section" href="books/MB/cnt/cnt.html"> Mengder </a> </td>
+                    <td></td>
                 </tr>
                 <tr class="tests">
                     <td>Oppgaver</td> 
@@ -70,7 +131,7 @@
               <tbody id="titallsystemet">
                 <tr>
                     <th rowspan="4"> Negative tal </th>
-                    <td rowspan="4">Rekning</td>
+                    <td rowspan="4" class="category">Rekning</td>
                 </tr>
                 <tr class="interactives">
                     <td >Video</td>
@@ -89,7 +150,40 @@
               </tbody>
             </table>
         </div>
-    <script>
+        </div>
+    <script type="module">
+        import { signIn } from "./data_module.js"
+        //document.getElementById("mainPage").hidden = true
+        let loginButton = document.getElementById("loginButton")
+        loginButton.addEventListener("click", login)
+        console.log(localStorage.getItem("username"))
+        if (localStorage.getItem("username")) {
+            console.log("?")
+            document.getElementById("username").value = localStorage.getItem("username")
+        }
+        if (localStorage.getItem("password")) {
+            document.getElementById("password").value = localStorage.getItem("password")
+        }
+
+        function login() {
+            let username = document.getElementById("username").value
+            let password = document.getElementById("password").value
+            console.log("hei")
+            signIn(username, password).then( (value) => {
+                if (value) {
+                    if (document.getElementById("rememberLoginInfo").checked == true) {
+                        console.log("jamen")
+                        localStorage.setItem("username", username)
+                        localStorage.setItem("password", password)
+                    }
+                } else {
+                    console.log("no")
+                    alert("Brukernavn eller passord er FULLSTENDIG FEIL!")
+                }   
+            }
+            )
+        } 
+        """
         for (let row of document.getElementsByClassName("tests")) {
             let tests = Array.from(row.getElementsByClassName("test"))
             tests[0].style.visibility = "visible"
@@ -109,10 +203,11 @@
             let interactives = Array.from(row.parentNode.getElementsByClassName("interactive"))
             interactives[0].style.visibility = "visible"
             interactives = interactives.slice(0)
-            for (i of [...Array(interactives.length - cnt - 1)].keys()) {
+            for (let i of [...Array(interactives.length - cnt - 1)].keys()) {
                 interactives[i].style.visibility = "visible"
             }
         }
+        """
     </script>    
     </body
 </html>

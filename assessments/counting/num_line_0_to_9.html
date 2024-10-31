@@ -9,10 +9,11 @@
             let xStart = 10
 
             let fig = new Figure()
+            fig.oneSize = 50
             fig.makeBoundingBox({xSize: 550, ySize: 200})
-            let numberLine = fig.makeVector({ B: [oneLength*10, 0], arrow: "axisArrow", isTemp: false })
+            let numberLine = fig.makeVector({ B: [10, 0], arrow: "axisArrow", isTemp: false })
             fig.makeXTick({pos: [0, 0], fig: numberLine, label: "0", isTemp: false})
-            fig.makeXTick({pos: [oneLength, 0], fig: numberLine, label: "1", isTemp: false})
+            fig.makeXTick({pos: [1, 0], fig: numberLine, label: "1", isTemp: false})
             let task = new CalcTask("", makeTask)
             
             
@@ -22,11 +23,12 @@
                 let a = getRandomInt(2, 9)  
                 
                 for (let i of [2, 3, 4, 5, 6, 7, 8, 9]) {
-                    fig.makeXTick({pos: [oneLength*i, 0], fig: numberLine})
+                    fig.makeXTick({pos: [i, 0], fig: numberLine})
                 }
                 fig.move(numberLine, xStart, 100)
-                let taskVector = fig.makeVector({A:[oneLength*a, 0], B: [oneLength*a, 30], strokeColor: "blue" })
-                fig.move(taskVector, xStart, 20)          
+                let taskVector = fig.makeVector({A:[0, 0], B: [a, 0], strokeColor: "blue" })
+                fig.move(taskVector, xStart, 70)
+                return a          
             }
         </script>
 </html>

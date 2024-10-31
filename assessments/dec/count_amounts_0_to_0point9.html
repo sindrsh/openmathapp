@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+
+            localStorage.setItem("tests", "count_amounts_1_to_9")
+            import { Figure } from "../../figures/figure_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
+            
+            let fig = new Figure()
+            let oneSize = 30
+            fig.makeBoundingBox({xSize: 300, ySize: 300})
+            
+            let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            shuffleArray(ints)
+
+            let task = new CalcTask("", makeTask)
+            task.prepare({figure: fig})
+            
+            function makeTask() {
+                let a = ints.pop()
+                let rectangles = []
+                for (let i=0; i<10; ++i) {
+                    rectangles.push(fig.makeRectangle({x: i*oneSize, y: 0, width: oneSize, height: 10*oneSize}))
+                }
+                shuffleArray(rectangles)
+
+                for (let i=0; i<a; ++i) {
+                    rectangles[i].setAttribute("fill", "green")
+                }
+                return a
+                                            
+            }
+
+        </script>
+</html>
+

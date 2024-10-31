@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+
+            import { Figure } from "../../figures/figure_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
+            
+            let fig = new Figure()
+            let oneSize = 10
+            const space = 150
+            fig.makeBoundingBox({xSize: 300, ySize: 300})
+            
+            let task = new CalcTask("", makeTask)
+            task.prepare({figure: fig})
+            
+            function makeTask() {
+                let positions = [[0, 0], [0, space], [space, space], [space, 0]]
+                shuffleArray(positions)
+                let sum = 0
+                for (let k=0; k<getRandomInt(1, 4); ++k){
+                    let pos = positions.pop()
+                    let a = getRandomInt(1, 99)
+                    let squares = []
+                    for (let i=0; i<10; ++i) {
+                        for (let j=0; j<10; ++j){
+                            let square = fig.makeRectangle({x: i*oneSize, y: j*oneSize, width: oneSize, height: oneSize})
+                            squares.push(square)
+                            fig.move(square, pos[0], pos[1])
+                        }
+                    }
+
+                    for (let i=0; i<a; ++i) {
+                        squares[i].setAttribute("fill", "green")
+                    }
+                    sum += a
+                 }
+                return sum/100
+                                            
+            }
+
+        </script>
+</html>
+

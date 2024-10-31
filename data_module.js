@@ -1,10 +1,10 @@
 var user = {}
             
-async function signIn() {
+async function signIn(email, password) {
     try {
         const response = await fetch("https://ewfkoaogwqeyhkysxsar.supabase.co/auth/v1/token?grant_type=password", {
             method: "POST",
-            body: JSON.stringify({ "email": "user88@mail.com", "password": 'pswd5756' }),
+            body: JSON.stringify({ "email": email, "password": password}),
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -19,11 +19,13 @@ async function signIn() {
         const json = await response.json()
         user.access_token = json["access_token"]
         user.id = json["user"]["id"]
-        console.log(user)
-        
+        return true
+
     } catch (error) {
         console.error(error.message);
+        return false
     }
+    
 }
 
 async function getTestRecord() {
