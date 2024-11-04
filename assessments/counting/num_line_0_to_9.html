@@ -14,13 +14,14 @@
             let numberLine = fig.makeVector({ B: [10, 0], arrow: "axisArrow", isTemp: false })
             fig.makeXTick({pos: [0, 0], fig: numberLine, label: "0", isTemp: false})
             fig.makeXTick({pos: [1, 0], fig: numberLine, label: "1", isTemp: false})
-            let task = new CalcTask("num_line_0_to_9", makeTask)
-            
+            let task = new CalcTask("num_line_0_to_9", makeTask, 8)
+            let numbers = [2, 3, 4, 5, 6, 7, 8, 9]
+            shuffleArray(numbers)
             
             task.prepare({figure: fig})
             
             function makeTask() {
-                let a = getRandomInt(2, 9)  
+                let a = numbers.pop()
                 
                 for (let i of [2, 3, 4, 5, 6, 7, 8, 9]) {
                     fig.makeXTick({pos: [i, 0], fig: numberLine})

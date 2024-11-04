@@ -5,10 +5,11 @@
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
-            const task = new CalcTask("100frac_to_dec", makeTask, 1)
+            const task = new CalcTask("100frac_to_pro", makeTask, 1)
+            task.unit = "%"
             let mathElement = task.makeMathElement()
             
-            console.log("-" in ["-"])
+
             let numerators = [...Array(99).keys()]
             numerators.shift()
             shuffleArray(numerators)
@@ -16,12 +17,13 @@
             task.prepare({mathElement: mathElement})
             task.userInput.size = "4"
             task.userInput.maxLength = "4"
+            task.userInput.parentElement.appendChild(document.createTextNode("%"))
             
 
             function makeTask() {
                 let a = numerators.pop()
                 mathElement.innerHTML = `<mrow><mfrac><mn>${a}</mn> <mn>100</mn></mfrac></mrow>`
-                return a/100
+                return a
             }
             
         </script>

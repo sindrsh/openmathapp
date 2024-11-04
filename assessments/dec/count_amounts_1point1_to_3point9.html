@@ -2,22 +2,27 @@
 <html>
         <script type="module">
 
-            localStorage.setItem("tests", "count_amounts_1_to_9")
             import { Figure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
+            const infoFig = new Figure()
+            let oneSize = 15
+            infoFig.makeBoundingBox({xSize: 500, ySize: 180})
+            infoFig.makeRectangle({x: 0, y: 0, width: 10*oneSize, height: 10*oneSize, fill: "green"})
+            infoFig.makeEquals({number: 1, pos: [150, 70]})
+            infoFig.move(infoFig.svgContainer, 2, 10)
+
             let fig = new Figure()
-            let oneSize = 10
-            fig.makeBoundingBox({xSize: 300, ySize: 300})
+            fig.makeBoundingBox({xSize: 350, ySize: 350, strokeColor: "black"})
             
             let space = 10*oneSize + 10
 
             let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             shuffleArray(ints)
 
-            let task = new CalcTask("", makeTask)
-            task.prepare({figure: fig})
+            let task = new CalcTask("count_amounts_1point1_to_3point9", makeTask, 5)
+            task.prepare({figure: fig, info: infoFig.svgElement})
             
             function makeTask() {
                 
@@ -31,14 +36,14 @@
                 let pos = positions.pop()
                 let rectangles = []
                 for (let i=0; i<10; ++i) {
-                    rectangles.push(fig.makeRectangle({x: i*oneSize, y: 0, width: oneSize, height: 10*oneSize}))
+                    rectangles.push(fig.makeRectangle({x: 10+i*oneSize, y: 10, width: oneSize, height: 10*oneSize}))
                     fig.move(rectangles[i], pos[0], pos[1])
                 }
 
                 for (let i=0; i<b; ++i) { 
                     let one = fig.makeRectangle({width: 10*oneSize, height: 10*oneSize, fill: "green"})
                     let pos = positions.pop()
-                    fig.move(one, pos[0], pos[1])
+                    fig.move(one, 10+pos[0], 10+pos[1])
                 }
 
                 

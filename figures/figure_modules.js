@@ -7,14 +7,17 @@ class Figure {
     temporaryElements = []
     useViewBox
 
-    constructor({svgID = null, useViewBox=true} = {}) {
+    constructor({id = null, useViewBox=true} = {}) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
         this.svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
         this.svgElement.appendChild(this.svgContainer)
         this.useViewBox = useViewBox
+        if (id) {
+            this.svgElement.id = id
+        }
     }
 
-    addToSVGContainer({fig=null, isTemp=true, id=null}) {
+    addToSVGContainer({fig=null, isTemp=true}) {
         this.svgContainer.appendChild(fig)
         if (this.useViewBox) {
             
@@ -51,15 +54,17 @@ class Figure {
     }
 
     
-    makeCircle({r, pos = [0, 0], isTemp=true, fill="white", strokeColor = "black", strokeWidth= this.strokeWidth}) {
+    makeCircle({r, pos = [0, 0], isTemp=true, fill="white", strokeColor = "black", strokeWidth= this.strokeWidth, addToSvg= true}) {
         let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
         circle.setAttribute("stroke", "black")
         circle.setAttribute("stroke-width", strokeWidth)
         circle.setAttribute("fill", fill)
-        circle.setAttribute("cy", pos[0].toString())
-        circle.setAttribute("cx", pos[1].toString())
+        circle.setAttribute("cx", pos[0].toString())
+        circle.setAttribute("cy", pos[1].toString())
         circle.setAttribute("r", r.toString())
-        this.addToSVGContainer({fig: circle, isTemp: isTemp})
+        if (addToSvg) {
+            this.addToSVGContainer({fig: circle, isTemp: isTemp})
+        }
         return circle
     }
     

@@ -2,20 +2,25 @@
 <html>
         <script type="module">
 
-            localStorage.setItem("tests", "count_amounts_1_to_9")
             import { Figure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
             let fig = new Figure()
-            let oneSize = 10
-            fig.makeBoundingBox({xSize: 300, ySize: 300, strokeColor: "black"})
+            const infoFig = new Figure()
+            let oneSize = 15
+            infoFig.makeBoundingBox({xSize: 500, ySize: 180})
+            for (let i=0; i<10; ++i) {
+                infoFig.makeRectangle({x: 2+i*oneSize, y: 10, width: oneSize, height: 10*oneSize, fill: "green"})
+            }
+            infoFig.makeEquals({number: 1, pos: [150, 70]})
+            fig.makeBoundingBox({xSize: 365, ySize: 370, strokeColor: "black"})
             
-            let space = 10*oneSize + 10
+            let space = 10*oneSize + 40
 
             
-            let task = new CalcTask("", makeTask)
-            task.prepare({figure: fig})
+            let task = new CalcTask("count_unordered_amounts", makeTask, 4)
+            task.prepare({figure: fig, info: infoFig.svgElement})
             
             function makeTask() {
                 let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]

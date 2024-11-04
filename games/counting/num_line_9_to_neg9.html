@@ -19,10 +19,24 @@
             let numberLine = fig.makeVector({A:[-10, 0], B: [10, 0], arrow: "axisArrow", isTemp: false })
             let x0 = fig.makeXTick({pos: [0, 0], fig: numberLine, label: "0", isTemp: false})
             let x1 = fig.makeXTick({pos: [1, 0], fig: numberLine, label: "1", isTemp: false})
-            tickList.push(x0)
-            tickList.push(x1)
 
-            let button = fig.makeRectangle({y: 50, width: 100, height: 100})
+
+            let button = document.createElementNS("http://www.w3.org/2000/svg", "g")   
+            let circle = fig.makeCircle({r: 30, pos: [7, 0], addToSvg: false})
+            circle.id = "circle"
+            let s = 10
+            let h = 20
+            let triangle = fig.makePolygon({
+                points: [[0, -s], [0, s], [h, 0]],
+                fill: "white",
+                addToSvg: false
+            })
+            button.appendChild(circle)
+            button.appendChild(triangle)
+            fig.svgContainer.appendChild(button)
+            fig.move(button, 0, 80)
+            
+
             button.addEventListener("click", showTicks)
             
             for (let i of [2, 3, 4, 5, 6, 7, 8, 9]) {
@@ -40,10 +54,17 @@
             document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
 
             function showTicks() {
-                for (let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+                let c = document.getElementById("circle")
+                c.setAttribute("fill", "blue")
+                
+                setTimeout(() => {
+                    c.setAttribute("fill", "white")
+                }, 200);
+
+                for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
                     setTimeout(() => {
-                        tickList[i-1].setAttribute("visibility", "visible")
-                    }, (i-1)*1000 + 400);
+                        tickList[i].setAttribute("visibility", "visible")
+                    }, (i-1)*500 + 400);
                 }
             }
             

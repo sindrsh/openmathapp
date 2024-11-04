@@ -5,6 +5,7 @@ class Task {
     taskArguments = []
     fig
     info
+    unit = ""
 
     constructor(id, makeTask, tasksAmount) {
         this.id = id
@@ -14,6 +15,7 @@ class Task {
         this.answer
         this.body = document.getElementsByTagName("body")[0]
         this.body.style.maxWidth = "1080px"
+        this.body.style.margin = "auto"
         this.menuContainer = document.createElement("div")
         this.submitButton = document.createElement("input")
         this.restartButton = document.createElement("button")
@@ -46,9 +48,12 @@ class Task {
         if (info) {
             const infoDiv = document.createElement("div")
             infoDiv.appendChild(info)
+            const spaceDiv = document.createElement("div")
+            spaceDiv.style.height = "20px"
             infoDiv.style.borderTop = "2px solid black"
             infoDiv.style.borderBottom = "2px solid black"
             this.body.appendChild(infoDiv)
+            this.body.append(spaceDiv)
             infoDiv.style.margin = "auto"
         }
         
@@ -82,11 +87,9 @@ class Task {
         this.restartButton.hidden = true
         
         this.submitButton.addEventListener("click", () => { this.checkAnswer() })
-        this.restartButton.addEventListener("click", () => { location.reload() })
         
         this.prepareSpecifics(answerColumn)
         
-        this.submitButton.addEventListener("click", () => { this.inputIsValid })
         this.restartButton.addEventListener("click", () => { location.reload() })
         this.answer = this.makeTask(...this.taskArguments)
     }
@@ -109,15 +112,12 @@ class Task {
         userAnswer = userAnswer.replaceAll(",", ".")
         let characters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "-"]
         for (let char of userAnswer) {
-            if (!(char in characters)) {
-                if (char != "-") {
-                    return false;
-                }
-                
+            if (!characters.includes(char)) {
+                return false
             }
         }
 
-        return true;
+        return userAnswer;
     }
     
     makeMathElement() {
@@ -228,8 +228,9 @@ class CalcTask extends Task {
 
     evaluateAnswer() {
         this.userInput.disabled = "true"
-        if (this.inputIsValid(this.userInput)) {
-            if (this.answer == parseFloat(this.userInput.value)) {
+        let userAnswer = this.inputIsValid(this.userInput)
+        if (userAnswer) {
+            if (this.answer == parseFloat(userAnswer)) {
                 this.correctAnswer()
             } else {
                 this.wrongAnswer()
@@ -240,13 +241,12 @@ class CalcTask extends Task {
     }
 
     resetInputFields() {
-        console.log("hei")
         this.userInput.disabled = false
         this.userInput.value = ""
     }
 
     addAnswerContent() {
-        this.showAnswer.innerHTML = `Svar: ${this.answer}`
+        this.showAnswer.innerHTML = `Svar: ${this.answer}${this.unit}`
     }
 }
 
