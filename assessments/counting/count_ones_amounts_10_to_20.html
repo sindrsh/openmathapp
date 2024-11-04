@@ -14,7 +14,7 @@
             let yLim = 5
             shuffleArray(numbers)
 
-            const task = new CalcTask("count_amounts_to_9", makeTask, 1)
+            const task = new CalcTask("count_ones_amounts_10_to_20", makeTask, 5)
             let fig = new Figure()
             var positions = []
             fig.makePolygon({
@@ -26,20 +26,17 @@
                     positions.push([(i+0.5)*2*(r + spacing), (0.5+j)*2*(r + spacing)])
                 }
             }
-            task.taskArguments = [r, positions, fig]
-            task.prepare(fig.svgElement)
+            task.prepare({figure: fig})
             
             
-            function makeTask(r, positions, fig) {
-                fig.removeTemporaryElements()
+            function makeTask() {
                 shuffleArray(positions)
-                let answer = 20
+                let answer = numbers.pop()
                 let centers = positions.slice(0, answer)
                 for (let center of centers) {
                     fig.makeCircle({
                         r:r, 
                         pos:center, 
-                        isTemp: true, 
                         fill: "rgb(0, 240, 0, 1)"
                     })
                 }
