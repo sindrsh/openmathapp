@@ -86,7 +86,7 @@ class Task {
         
         this.prepareSpecifics(answerColumn)
         
-        this.submitButton.addEventListener("click", () => { this.validate() })
+        this.submitButton.addEventListener("click", () => { this.inputIsValid })
         this.restartButton.addEventListener("click", () => { location.reload() })
         this.answer = this.makeTask(...this.taskArguments)
     }
@@ -98,6 +98,9 @@ class Task {
 
     inputIsValid(inputElement) {
         let userAnswer = inputElement.value
+        if (userAnswer === undefined) {
+            return false
+        }
         userAnswer = userAnswer.replaceAll(" ", "")
         if (userAnswer === "") {
             return false;
@@ -117,6 +120,10 @@ class Task {
         return true;
     }
     
+    makeMathElement() {
+        return document.createElementNS("http://www.w3.org/1998/Math/MathML", "math") 
+    }
+
     correctAnswer() {
         if (this.circles.length > 0) {
             this.circles.pop().setAttribute("fill", "green")
@@ -133,16 +140,19 @@ class Task {
             }, 1000);
             }
         else {
-            return
-            let tests = localStorage.getItem("tests")
-            if (!tests) {
-                tests = {}
+            let testsFromLocalStorage = localStorage.getItem("tests")
+            console.log(testsFromLocalStorage)
+            let tests = {}
+            if (testsFromLocalStorage) {
+                tests = JSON.parse(testsFromLocalStorage)
             }
-              
+            
             tests[this.id] = { "score": 2 }
-            console.log(tests)
-            let testsString = JSON.stringify( { "tests": tests } )
-            this.updateRecord(testsString)
+            localStorage.setItem("tests", JSON.stringify(tests))
+            alert("Flott! Fortsett på neste nivå.")
+            setTimeout(() => {
+                window.location.href = "../../index.html"
+            }, 1000);
         }
         }
     }
@@ -159,7 +169,6 @@ class Task {
             setTimeout(() => {
                 supabase.updateTestRecord(testsString)    
             }, 500);
-            
         }
         )
     }

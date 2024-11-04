@@ -26,7 +26,7 @@
             }
 
             .customTable td {
-                width: 20px;
+                width: 60px;
             }
             
             body {
@@ -34,12 +34,13 @@
             }
 
             .test {
-                /*visibility: hidden;*/
+                visibility: hidden;
             }
 
             .interactive {
-                /*visibility: hidden;*/
+                visibility: hidden;
             }
+
 
             #loginPage {
                 padding: 20px;
@@ -103,48 +104,29 @@
             <table class="customTable"> 
               <tbody id="titallsystemet">
                 <tr>
-                    <th rowspan="4" class="subject"> Titallsystemet</th>
+                    <th rowspan="8" class="subject"> Titallsystemet</th>
                     <td rowspan="4" class="category">Mengde</td>
                 </tr>
                 <tr class="interactives">
                     <td class="medium">Video</td>
-                    <td class="interactive"> 0 - 9 </td>
-                    <td class="interactive">10 - 20 </td>
+                    <td class="interactive"> </td>
+                    <td class="interactive"> </td>
                 </tr>
                 <tr class="book">
                     <td>Bok</td>
-                    <td> <a class="section" href="books/MB/cnt/cnt.html"> Mengder </a> </td>
+                    <td> </td>
                     <td></td>
                 </tr>
                 <tr class="tests">
                     <td>Oppgaver</td> 
                     <td id="count_amounts_1_to_9.html">
-                        <a class="test" href="assessments/counting/count_amounts_1_to_9.html"> Test 1</a>
+                        <a class="test" id="count_amounts_1_to_9" href="assessments/counting/count_amounts_1_to_9.html"> Test 1</a>
                     </td>
                     <td>
-                        <a class="test" href="assessments/counting/count_amounts_10_to_99.html"> Test 2</a>
+                        <a class="test" id="count_amounts_10_to_99" href="assessments/counting/count_amounts_10_to_99.html"> Test 2</a>
                     </td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="customTable" id="negativeNumbers"> 
-              <tbody id="titallsystemet">
-                <tr>
-                    <th rowspan="4"> Negative tal </th>
-                    <td rowspan="4" class="category">Rekning</td>
-                </tr>
-                <tr class="interactives">
-                    <td >Video</td>
-                    <td class="interactive"> </td>
-                </tr>
-                <tr class="book">
-                    <td>Bok</td>
-                    <td> <a class="section" href="books/MB/neg/neg.html"> Negative tal </a> </td>
-                </tr>
-                <tr class="tests">
-                    <td>Oppgaver</td> 
-                    <td id="count_amounts_1_to_9.html">
-                        <a class="test" href="assessments/neg/num_line_0_to_min9.html"> Test 1</a>
+                    <td>
+                        <a class="test" id="count_amounts_100_to_999" href="assessments/counting/count_amounts_100_to_999.html"> Test 3</a>
                     </td>
                 </tr>
               </tbody>
@@ -156,19 +138,17 @@
         //document.getElementById("mainPage").hidden = true
         let loginButton = document.getElementById("loginButton")
         loginButton.addEventListener("click", login)
-        console.log(localStorage.getItem("username"))
+        /*
         if (localStorage.getItem("username")) {
-            console.log("?")
             document.getElementById("username").value = localStorage.getItem("username")
         }
         if (localStorage.getItem("password")) {
             document.getElementById("password").value = localStorage.getItem("password")
         }
-
+        */
         function login() {
             let username = document.getElementById("username").value
             let password = document.getElementById("password").value
-            console.log("hei")
             signIn(username, password).then( (value) => {
                 if (value) {
                     if (document.getElementById("rememberLoginInfo").checked == true) {
@@ -177,27 +157,34 @@
                         localStorage.setItem("password", password)
                     }
                 } else {
-                    console.log("no")
                     alert("Brukernavn eller passord er FULLSTENDIG FEIL!")
                 }   
             }
             )
         } 
-        """
+        
         for (let row of document.getElementsByClassName("tests")) {
             let tests = Array.from(row.getElementsByClassName("test"))
             tests[0].style.visibility = "visible"
             tests = tests.slice(0)
             let cnt = 0
-            for (let test of tests) {
-                if (localStorage.getItem(test.id)) {
-                    if (localStorage.getItem(test.id)["score"] == 2) {
+
+            let testsFromLocalStorage = {}
+        
+            if (localStorage.getItem("tests")) {
+                testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
+            }
+            for (let i=0; i<tests.length-1; ++i) {
+                if (tests[i].id in testsFromLocalStorage) {
+                    if (testsFromLocalStorage[tests[i].id]["score"] == 2) {
                         ++cnt
-                        test.style.visibility = "visible"    
+                        tests[i+1].style.visibility = "visible"    
                     }
                     else {
                         break
                     }
+                } else {
+                    break
                 }
             }
             let interactives = Array.from(row.parentNode.getElementsByClassName("interactive"))
@@ -207,7 +194,6 @@
                 interactives[i].style.visibility = "visible"
             }
         }
-        """
     </script>    
     </body
 </html>
