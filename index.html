@@ -77,7 +77,6 @@
                 width: 100px;
             }
 
-
             #mainPage {
                 width: 1000px;
             }
@@ -101,12 +100,14 @@
         <div id="mainPage">
             <div> 
                 <table class="subjectTable">
+                    <tbody>
                     <tr>
                         <th rowspan="3">Titallsystemet</th>
                     </tr>
                     <tr>
                         <td>
                             <table class="topicTable">
+                                <tbody>
                                 <tr> 
                                     <td rowspan="4">Mengde</td> 
                                 </tr>
@@ -122,25 +123,27 @@
                                 </tr>
                                 <tr class="tests">
                                     <td>Oppgaver</td> 
-                                    <td id="count_amounts_1_to_9.html">
-                                        <a class="test" id="count_amounts_1_to_9" href="assessments/counting/count_amounts_1_to_9.html"> Test 1</a>
+                                    <td  class="test" id="count_amounts_1_to_9.html">
+                                        <a id="count_amounts_1_to_9" href="assessments/counting/count_amounts_1_to_9.html"> Test 1</a>
                                     </td>
-                                    <td>
-                                        <a class="test" id="count_ones_amounts_10_to_20" href="assessments/counting/count_ones_amounts_10_to_20.html"> Test 2</a>
+                                    <td class="test">
+                                        <a id="count_ones_amounts_10_to_20" href="assessments/counting/count_ones_amounts_10_to_20.html"> Test 2</a>
                                     </td>
-                                    <td>
-                                        <a class="test" id="count_amounts_10_to_99" href="assessments/counting/count_amounts_10_to_99.html"> Test 3</a>
+                                    <td class="test">
+                                        <a id="count_amounts_10_to_99" href="assessments/counting/count_amounts_10_to_99.html"> Test 3</a>
                                     </td>
-                                    <td>
-                                        <a class="test" id="count_amounts_100_to_999" href="assessments/counting/count_amounts_100_to_999.html"> Test 4</a>
+                                    <td class="test">
+                                        <a id="count_amounts_100_to_999" href="assessments/counting/count_amounts_100_to_999.html"> Test 4</a>
                                     </td>
                                 </tr>
+                            </tbody>
                             </table>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <table class="topicTable">
+                                <tbody>
                                 <tr> 
                                     <td rowspan="4">Tallinje</td> 
                                 </tr>
@@ -150,22 +153,71 @@
                                 <tr class="book">
                                     <td> Bok</td>
                                     <td class="section">
-                                        <a href="books/num_line_0_to_9.pdf"></a>
+                                        <a href="books/num_line_0_to_9.pdf"> 0 - 9</a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="tests">
                                     <td>Oppgaver</td>
                                     <td class="test"> 
                                         <a id="num_line_0_to_9" href="assessments/counting/num_line_0_to_9.html"> Test 1</a>
                                     </tr>
-                                    
                                 </tr>
+                                </tbody>
                             </table>
                         </td>
                     </tr>
+                </tbody>
+                </table>
+
+                <table class="subjectTable">
+                    <tbody>
+                        <tr>
+                            <th rowspan="3">Desimaltall</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table class="topicTable">
+                                    <tbody>
+                                    <tr> 
+                                        <td rowspan="4">Mengde</td> 
+                                    </tr>
+                                    <tr class="interactives">
+                                        <td class="medium">Interaktivt</td>
+                                        <td class="interactive"> </td>
+                                        <td class="interactive"> </td>
+                                    </tr>
+                                    <tr class="book">
+                                        <td>Bok</td>
+                                        <td class="section"> <a href="books/decimals.pdf"> Desimalar</a>  </td>
+                                        <td></td>
+                                        <td class="section"> <a href="books/10_pos_system.pdf"> Titalsystemet</a></td>
+                                    </tr>
+                                    <tr class="tests">
+                                        <td>Oppgaver</td> 
+                                        <td class="test" id="count_amounts_1_to_9.html">
+                                            <a id="count_amounts_1_to_9" href="assessments/dec/count_amounts_0_to_0point9.html"> Test 1</a>
+                                        </td>
+                                        <td class="test">
+                                            <a id="count_amounts_1point1_to_3point9" href="assessments/dec/count_amounts_1point1_to_3point9.html"> Test 2</a>
+                                        </td>
+                                        <td class="test">
+                                            <a id="count_amounts_0_to_0point9_2dec" href="assessments/dec/count_amounts_0_to_0point9_2dec.html"> Test 3</a>
+                                        </td>
+                                        <td class="test">
+                                            <a id="count_unordered_amounts_1point1_to_3point9" href="assessments/dec/count_unordered_amounts_1point1_to_3point9.html"> Test 4</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
+        
+
+
     <script type="module">
         import { signIn } from "./data_module.js"
         //document.getElementById("mainPage").hidden = true
@@ -195,40 +247,41 @@
             }
             )
         } 
-        subjects = []
-        for (subject in subjects) {
-            for (let row of document.getElementsByClassName("tests")) {
-                let tests = Array.from(row.getElementsByClassName("test"))
-                tests[0].style.visibility = "visible"
-                tests = tests.slice(0)
-                let cnt = 0
+        let topics = document.getElementsByClassName("topicTable")
+        console.log(topics)
+        for (let topic of topics) {
+            let row = topic.getElementsByClassName("tests")[0]
+            let tests = Array.from(row.getElementsByClassName("test"))
+            tests[0].style.visibility = "visible"
+            tests = tests.slice(0)
+            let cnt = 0
 
-                let testsFromLocalStorage = {}
-            
-                if (localStorage.getItem("tests")) {
-                    testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
-                }
-                for (let i=0; i<tests.length-1; ++i) {
-                    if (tests[i].id in testsFromLocalStorage) {
-                        if (testsFromLocalStorage[tests[i].id]["score"] == 2) {
-                            ++cnt
-                            tests[i+1].style.visibility = "visible"    
-                        }
-                        else {
-                            break
-                        }
-                    } else {
+            let testsFromLocalStorage = {}
+            if (localStorage.getItem("tests")) {
+                testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
+            }
+            for (let i=0; i<tests.length-1; ++i) {
+                if (tests[i].id in testsFromLocalStorage) {
+                    if (testsFromLocalStorage[tests[i].id]["score"] == 2) {
+                        ++cnt
+                        tests[i+1].style.visibility = "visible"    
+                    }
+                    else {
                         break
                     }
-                }
-                let interactives = Array.from(row.parentNode.getElementsByClassName("interactive"))
-                interactives[0].style.visibility = "visible"
-                interactives = interactives.slice(0)
-                for (let i of [...Array(interactives.length - cnt - 1)].keys()) {
-                    interactives[i].style.visibility = "visible"
+                } else {
+                    break
                 }
             }
-        }
+            /*
+            let interactives = Array.from(row.parentNode.getElementsByClassName("interactive"))
+            interactives[0].style.visibility = "visible"
+            interactives = interactives.slice(0)
+            for (let i of [...Array(interactives.length - cnt - 1)].keys()) {
+                interactives[i].style.visibility = "visible"
+            }
+            */
+            }
     </script>    
     </body
 </html>
