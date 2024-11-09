@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+            import { Figure } from "../../figures/figure_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
+            
+            let xStart = 10
+
+            let fig = new Figure()
+            fig.oneSize = 20
+            fig.makeBoundingBox({xSize: 550, ySize: 200})
+            let numberLine = fig.makeVector({ B: [10, 0], arrow: "axisArrow", isTemp: false })
+            fig.makeXTick({pos: [0, 0], fig: numberLine, label: "0", isTemp: false})
+            fig.makeXTick({pos: [1, 0], fig: numberLine, label: "1", isTemp: false})
+            let task = new CalcTask("mul_on_num_line", makeTask, 8)
+            let as = [2, 3, 4, 5, 6]
+            let bs = [2, 3, 4, 5, 6]
+            shuffleArray(as)
+            shuffleArray(bs)
+            
+            for (let i of [2, 3, 4, 5, 6, 7, 8, 9]) {
+                    fig.makeXTick({pos: [i, 0], fig: numberLine})
+                }
+
+            fig.move(numberLine, xStart, 100)
+            task.prepare({figure: fig})
+            
+
+            function makeTask() {
+                let a = as.pop()
+                
+                for (let i=0; i<bs.pop(); ++i) {
+                    let vec = fig.makeVector({A:[0, 0], B: [a, 0], strokeColor: "blue" })
+                    fig.makeXTick({pos: [0, 0], fig: vec})
+                fig.move(vec, xStart + i*fig.oneSize*a, 70)
+                }
+                
+                return a          
+            }
+        </script>
+</html>
+

@@ -1,0 +1,72 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 550px;
+    margin: auto;
+    font-size: 12pt;
+}
+.sym {
+    background-color: rgb(179, 204, 255);
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.figure {
+    text-align: center;
+}
+.math-table {
+    margin: auto;
+}
+.math-left-column {
+    text-align: right;
+}
+.math-right-column {
+    text-align: left;
+}
+.math-center-column {
+    text-align: center;
+    max-width: 3%;
+    padding: 0%;
+}
+math {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.outline {
+    color: teal;
+    font-weight: bold;
+}
+
+.symbol {
+    background-color: teal;
+}
+
+.language-box, .rule, .info ,.example, .definition, .statement {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.language-box {
+    background-color: yellow;
+}
+
+.subsubsection {
+    margin-bottom: 5px;
+}
+
+.rule {
+    background-color: lightblue;
+}
+
+
+
+.info {
+    background-color: aqua;
+}
+
+.footnote {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    font-size: smaller;
+    border-bottom-style: solid;
+    border-top-style: solid;
+}

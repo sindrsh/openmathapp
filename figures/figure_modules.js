@@ -10,8 +10,10 @@ class Figure {
     constructor({id = null, useViewBox=true} = {}) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
         this.svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
+        
         this.svgElement.appendChild(this.svgContainer)
         this.useViewBox = useViewBox
+
         if (id) {
             this.svgElement.id = id
         }
@@ -22,11 +24,20 @@ class Figure {
         if (this.useViewBox) {
             
             let boundingBox = this.svgElement.getBBox({"stroke": true})
-            this.svgElement.setAttribute("viewBox", boundingBox.x.toString()+ " " + boundingBox.y.toString() + " " + boundingBox.width.toString() + " " + boundingBox.height.toString())
-            boundingBox.width -= boundingBox.x
-            boundingBox.height -= boundingBox.y
+            console.log(boundingBox)
+            boundingBox.width -= boundingBox.x - this.strokeWidth
+            boundingBox.height -= boundingBox.y - this.strokeWidth
+            let xPos = this.strokeWidth/2
+            let yPos = this.strokeWidth/2
+            if (boundingBox.x < 0) {
+                xPos -= boundingBox.x
+            }
+            if (boundingBox.y < 0) {
+                yPos -= boundingBox.y
+            }
             this.svgElement.setAttribute("height", boundingBox.height.toString())
             this.svgElement.setAttribute("width", boundingBox.width.toString())
+            this.svgContainer.setAttribute("transform", `translate(${xPos} ${yPos})`)
         }
         if (isTemp) {
             this.temporaryElements.push(fig)

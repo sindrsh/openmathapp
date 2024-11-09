@@ -33,7 +33,7 @@
             button.appendChild(circle)
             button.appendChild(triangle)
             fig.svgContainer.appendChild(button)
-            fig.move(button, 0, 80)
+            fig.move(button, 220, 80)
 
             button.addEventListener("click", showTicks)
             
@@ -48,7 +48,6 @@
             document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
 
             function showTicks() {
-                console.log("hei")
                 let c = document.getElementById("circle")
                 c.setAttribute("fill", "blue")
 

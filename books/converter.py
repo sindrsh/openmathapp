@@ -1,11 +1,11 @@
 import re
 
-f = open("neg_bm.tex", "r")
+f = open("../../../openmathbooks/MB/tel/tel_bm.tex", "r")
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 substitutes = [
     ['\\\\label{ ( [^}]* ) }', ''],
-    ['\\\\section{ ( [^}]* ) }', r'<h2 is="custom-section">\1</h2>'],
-    ['\\\\subsection[*]{ ( [^}]* ) }', r'<h2 is="custom-subsection">\1</h2>'],
+    ['\\\\section{ ( [^}]* ) }', r'<h2 class="section">\1</h2>'],
+    ['\\\\subsection[*]{ ( [^}]* ) }', r'<h3 class="subsection">\1</h2>'],
     ['\\\\index{ ( [^}]* ) }', ''],
     ['\\\\footnote{ ( [^}]* ) }', r''],
     ['\\\\cdot', r'<mo></mo>'],
@@ -18,25 +18,26 @@ substitutes = [
     ['\\\\textsl{ ( [^}]* ) }', r'<i>\1 </i>'],
     ['\\\\text{ ( [^}]* ) }', r'<mtext>\1</mtext>'],
     ['\\\\frac{ ( [^}]* ) }{ ( [^}]* ) }', r'<mfrac>\1 \2</mfrac>'],
-    ['\\\\alg{ ( [^}]* ) }', r'<table class="math-table">\1</table>'],
+    ['\\\\alg{ ( [^}]* ) }', r'<math class="aligned-math" display="block">\1</math>'],
     ['\\\\sym{ ( [^}]* ) }', r'<span class="symbol"> \1</span>'],
     ['\\\\item{ ( [^\\\\item]* )', r'<li> /1 </li>'],
     ['\\\\fig{ ( [^}]* ) }', r'<div class="figure">\1</div>'],
     ['\\\\begin{itemize} ( [^}]* ) \\\\end{itemize}', r'<ul>\1</ul>'],
     ['\\\\begin{tabular} ( [^}]* ) \\\\end{tabular}', r'<table>\1</table>'],
-    ['\\\\spr{ ( [^}]* ) }', r'<div is="custom-language-box">\1</div>'],
-    ['\\\\st{ ( [^}]* ) }', r'<div is="custom-statement">\1</div>'],
-    ['\\\\reg\\[([^\\[]*)\\]{( [^}]* ) }', r'<div is="custom-rule" data-title="\1">\2</div>'],
-    ['\\\\regdef\\[([^\\[]*)\\]{( [^}]* ) }', r'<div is="custom-definition" data-title="\1">\2</div>'],
-    ['\\\\info{([^}]*)}{( [^}]* ) }', r'<div is="custom-info" data-title="\1">\2</div>'],
-    ['\\\\eks\\[\\]{ ( [^}]* ) }', r'<div is="custom-example">\1</div>'],
-    ['\\\\eks\\[1\\]{ ( [^}]* ) }', r'<div is="custom-example" data-number="1"">\1</div>'],
-    ['\\\\eks\\[2\\]{ ( [^}]* ) }', r'<div is="custom-example" data-number="2"">\1</div>'],
-    ['\\\\eks\\[3\\]{ ( [^}]* ) }', r'<div is="custom-example" data-number="3"">\1</div>'],
-    ['\\\\eks\\[4\\]{ ( [^}]* ) }', r'<div is="custom-example" data-number="4"">\1</div>'],
-    ['\\\\eks\\[5\\]{ ( [^}]* ) }', r'<div is="custom-example" data-number="5"">\1</div>'],
-    ['\\\\eks\\[6\\]{ ( [^}]* ) }', r'<div is="custom-example" data-number="6"">\1</div>'],
-    ['\\\\eks\\[7\\]{ ( [^}]* ) }', r'<div is="custom-example" data-number="7"">\1</div>'],
+    ['\\\\spr{ ( [^}]* ) }', r'<div class="language-box">\1</div>'],
+    ['\\\\st{ ( [^}]* ) }', r'<div class="statement">\1</div>'],
+    ['\\\\reg\\[([^\\[]*)\\]{( [^}]* ) }', r'<div class="rule" data-title="\1">\2</div>'],
+    ['\\\\regdef\\[([^\\[]*)\\]{( [^}]* ) }', r'<div class="definition" data-title="\1">\2</div>'],
+    ['\\\\info{([^}]*)}{( [^}]* ) }', r'<div class="info" data-title="\1">\2</div>'],
+    ['\\\\eks\\[\\]{ ( [^}]* ) }', r'<div class="example">\1</div>'],
+    ['\\\\eks{ ( [^}]* ) }', r'<div class="example">\1</div>'],
+    ['\\\\eks\\[1\\]{ ( [^}]* ) }', r'<div class="example" data-number="1"">\1</div>'],
+    ['\\\\eks\\[2\\]{ ( [^}]* ) }', r'<div class="example" data-number="2"">\1</div>'],
+    ['\\\\eks\\[3\\]{ ( [^}]* ) }', r'<div class="example" data-number="3"">\1</div>'],
+    ['\\\\eks\\[4\\]{ ( [^}]* ) }', r'<div class="example" data-number="4"">\1</div>'],
+    ['\\\\eks\\[5\\]{ ( [^}]* ) }', r'<div class="example" data-number="5"">\1</div>'],
+    ['\\\\eks\\[6\\]{ ( [^}]* ) }', r'<div class="example" data-number="6"">\1</div>'],
+    ['\\\\eks\\[7\\]{ ( [^}]* ) }', r'<div class="example" data-number="7"">\1</div>'],
 ]
 
 content = f.read()
@@ -130,9 +131,9 @@ display_math = text_handler.findall(content)
 
 latex_lines_to_math(display_math)
 for math in display_math:
-    content = text_handler.sub('<p><math display="block">%s</math></p>' % math, content, 1)
+    content = text_handler.sub('<math class="display-math" display="block">%s</math>' % math, content, 1)
 
-aligned_math = re.findall(r'<table class="math-table">(.*?)</table>', content, re.DOTALL)
+aligned_math = re.findall(r'<math class="aligned-math" display="block">(.*?)</math>', content, re.DOTALL)
 
 table_math = []
 for aligned in aligned_math:
@@ -147,14 +148,14 @@ for aligned in aligned_math:
             side = line.split("&")[i]
             conv = Math_line_converter(side)
             if i == 0:
-                new_line += r'<td class="math-left-column"> %s </td> \n <td class="math">' % conv.get_line()
+                new_line += r'<mtd class="math-left-column"> %s </td> \n <td class="math-center-column"><mo>=</mo> </mtd>' % conv.get_line()
             else:
-                new_line += r'<td class="math-right-column"> %s </td>' % conv.get_line()
-        new_line += r'<tr> %s </tr>' % new_line    
+                new_line += r'<mtd class="math-right-column"> %s </mtd>' % conv.get_line()
+        new_line += r'<mtr> %s </mtr>' % new_line    
         table_math.append(new_line)
     
 for i in range(len(aligned_math)):
-    content = re.sub(r'<table class="math-table">(.*?)</table>', table_math[i], content, 1, re.DOTALL)
+    content = re.sub(r'<math class="aligned-math" display="block">(.*?)</math>', table_math[i], content, 1, re.DOTALL)
 
 inline_math = re.findall('\\$(.*?)\\$', content)
 latex_lines_to_math(inline_math)
