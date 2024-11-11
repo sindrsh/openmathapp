@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
+
     <script type="module">
         import { Figure } from "../../../figures/figure_modules.js"
+
+        const oneSize = 30
+        const oneColor = "#87CEFA"
+        const oneStrokeColor = "blue"
 
         const mod = {
             "one": () => {
                     const fig = new Figure({id: "one"})
                     document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
-                    fig.makeRectangle({width: 10, height: 10})
-                    
-                }
+                    fig.makeRectangle({width: oneSize, height: oneSize, fill: oneColor, strokeColor: oneStrokeColor})
+                    fig.makeBoundingBox({xSize: 200, ySize: oneSize + fig.strokeWidth})
+                    fig.makeEquals({number: "1", pos:[oneSize, 0.5*oneSize]})
+                },
+            "two": () => {
+                    const fig = new Figure({id: "two"})
+                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+                    fig.makeOnes({amount: 2, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                    fig.makeBoundingBox({xSize: 200, ySize: 2*oneSize + fig.strokeWidth})
+                    fig.makeEquals({number: "2", pos:[oneSize, oneSize]})
+                }    
         }
-        mod["one"]()
+        mod["two"]()
     </script>
 </html>

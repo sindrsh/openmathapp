@@ -6,6 +6,8 @@ class Figure {
     oneSize = 15
     temporaryElements = []
     useViewBox
+    x = 0
+    y = 0
 
     constructor({id = null, useViewBox=true} = {}) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
@@ -13,6 +15,9 @@ class Figure {
         
         this.svgElement.appendChild(this.svgContainer)
         this.useViewBox = useViewBox
+        if (this.useViewBox) {
+            this.adjust()
+        }
 
         if (id) {
             this.svgElement.id = id
@@ -24,20 +29,16 @@ class Figure {
         if (this.useViewBox) {
             
             let boundingBox = this.svgElement.getBBox({"stroke": true})
-            console.log(boundingBox)
             boundingBox.width -= boundingBox.x - this.strokeWidth
             boundingBox.height -= boundingBox.y - this.strokeWidth
-            let xPos = this.strokeWidth/2
-            let yPos = this.strokeWidth/2
             if (boundingBox.x < 0) {
-                xPos -= boundingBox.x
+                this.x -= boundingBox.x
             }
             if (boundingBox.y < 0) {
-                yPos -= boundingBox.y
+                this.y -= boundingBox.y
             }
-            this.svgElement.setAttribute("height", boundingBox.height.toString())
-            this.svgElement.setAttribute("width", boundingBox.width.toString())
-            this.svgContainer.setAttribute("transform", `translate(${xPos} ${yPos})`)
+            //this.svgElement.setAttribute("height", boundingBox.height.toString())
+            //this.svgElement.setAttribute("width", boundingBox.width.toString())
         }
         if (isTemp) {
             this.temporaryElements.push(fig)
@@ -45,6 +46,12 @@ class Figure {
         
     }
     
+    adjust() {
+        this.x += this.strokeWidth/2
+        this.y += this.strokeWidth/2
+        this.svgContainer.setAttribute("transform", `translate(${this.x} ${this.y})`)
+    }
+
     removeTemporaryElements() {
         for (let i of [...Array(this.temporaryElements.length).keys()]) {
             this.temporaryElements[i].remove()
@@ -132,14 +139,14 @@ class Figure {
         if (amount == 0 || amount == null) {
             return null;
         }
-        let one = this.makePolygon({points: [[0,0], [size, 0], [size, size], [0, size]], isTemp: isTemp, fill: fill, strokeColor: strokeColor, strokeWidth: strokeWidth, addToSvg: false})
+        let one = this.makeRectangle({width: size, height: size, isTemp: isTemp, fill: fill, strokeColor: strokeColor, strokeWidth: strokeWidth, addToSvg: false})
         let onesCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
         onesCollection.appendChild(one)
         let dy = 0
         for (let i of Array(amount - 1).keys()) {
             one = one.cloneNode()
             dy = (i+1)*(size + ySpace)
-            one.setAttribute("transform", `translate(0 ${dy})` )
+            one.setAttribute("y", dy.toString())
             onesCollection.appendChild(one)   
         }
         if (addToSvg) {
@@ -257,13 +264,28 @@ class Figure {
         return segment 
     }
 
-    makeEquals({number, pos= [0, 0], height="50", width="100"} = {}) {
+    makeEquals({number, pos= [0, 0], height="0", width="0"} = {}) {
         let equals = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject")
-        equals.innerHTML = `<math> <mo>=</mo> <mn> ${number} </mn> </math>`
-        this.svgElement.appendChild(equals)
-        this.move(equals, pos[0], pos[1])
-        equals.setAttribute("height", height)
+        let math = document.createElementNS("http://www.w3.org/1998/Math/MathML", "math")
+        math.innerHTML = `<mo>=</mo> <mn> ${number} </mn>`
+        math.style.objectPosition = "left top"
+        equals.appendChild(math)
+        
+        this.addToSVGContainer({fig: equals, isTemp: false})
+        
+        console.log(equals.getBBox())
+        let heightFloat = parseFloat(window.getComputedStyle(math).getPropertyValue("font-size")) + 2
+        if (width == "0") {
+            width = window.getComputedStyle(math).getPropertyValue("width")
+        }        
+        if (height == "0") {
+            height = heightFloat.toString()
+        }
+
+        equals.setAttribute("x", pos[0])
+        equals.setAttribute("y", pos[1] - heightFloat/2)
         equals.setAttribute("width", width)
+        equals.setAttribute("height", height)
     }
     
     makeVector({ A=[0, 0], B, arrow="triangle", arrowScale=1, pos=[0, 0], addToSvg=true, isTemp=true, strokeColor="black", oneLength=this.oneSize} = {} ) {
