@@ -2,7 +2,7 @@ class Figure {
 
     svgElement
     svgContainer
-    strokeWidth = "2"
+    strokeWidth = 2
     oneSize = 15
     temporaryElements = []
     useViewBox
@@ -273,7 +273,6 @@ class Figure {
         
         this.addToSVGContainer({fig: equals, isTemp: false})
         
-        console.log(equals.getBBox())
         let heightFloat = parseFloat(window.getComputedStyle(math).getPropertyValue("font-size")) + 2
         if (width == "0") {
             width = window.getComputedStyle(math).getPropertyValue("width")
@@ -286,6 +285,30 @@ class Figure {
         equals.setAttribute("y", pos[1] - heightFloat/2)
         equals.setAttribute("width", width)
         equals.setAttribute("height", height)
+    }
+
+    makeMathText({mathContent, pos= [0, 0], height="0", width="0", dir="ltr"} = {}) {
+        let container = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject")
+        let math = document.createElementNS("http://www.w3.org/1998/Math/MathML", "math")
+        math.innerHTML = `${mathContent}`
+        math.style.objectPosition = "left top"
+        math.setAttribute("dir", dir)
+        container.appendChild(math)
+        
+        this.addToSVGContainer({fig: container, isTemp: false})
+        
+        let heightFloat = parseFloat(window.getComputedStyle(math).getPropertyValue("font-size")) + 2
+        if (width == "0") {
+            width = window.getComputedStyle(math).getPropertyValue("width")
+        }        
+        if (height == "0") {
+            height = heightFloat.toString()
+        }
+
+        container.setAttribute("x", pos[0])
+        container.setAttribute("y", pos[1] - heightFloat/2)
+        container.setAttribute("width", width)
+        container.setAttribute("height", height)
     }
     
     makeVector({ A=[0, 0], B, arrow="triangle", arrowScale=1, pos=[0, 0], addToSvg=true, isTemp=true, strokeColor="black", oneLength=this.oneSize} = {} ) {
@@ -338,21 +361,22 @@ class Figure {
         return angle*180/Math.PI
     }
 
-    makeXTick({pos, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true}) {
+    makeXTick({x, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true}) {
         
-        pos = [pos[0]*oneLength, pos[1]*oneLength]
+        x = x*oneLength
         let tickContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
         let tick = document.createElementNS("http://www.w3.org/2000/svg", "path")
-        tick.setAttribute("d", `M ${pos[0]} ${pos[1] - height} L ${pos[0]} ${pos[1] + height}`)
+        tick.setAttribute("d", `M ${x} ${- height} L ${x} ${height}`)
         tick.setAttribute("stroke", strokeColor)
         tick.setAttribute("stroke-linecap", "round")
         tick.setAttribute("stroke-width", strokeWidth)
         tickContainer.appendChild(tick)
         if (label) {
             let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
-            text.setAttribute("x", pos[0].toString())
-            text.setAttribute("y", (pos[1] + height).toString())
-            text.setAttribute("dy", "30")
+            text.setAttribute("dominant-baseline", "hanging")
+            text.setAttribute("x", x.toString())
+            text.setAttribute("y", (height).toString())
+            text.setAttribute("dy", "10")
             text.style.textAnchor = "middle"
             text.style.fill = strokeColor
             text.innerHTML = `${label}`
