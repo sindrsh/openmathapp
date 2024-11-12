@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+            import { CalcTask } from "../task_modules.js"
+            import { getRandomInt, shuffleArray } from "../global_modules.js"
+            
+           
+            let task = new CalcTask("pos_times_neg", makeTask, 6)
+            let mathElement = task.makeMathElement()
+            
+            let pos = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            let neg = [-1, -2, -3, -4, -5, -6, -7, -8, -9]
+            shuffleArray(pos)
+            shuffleArray(neg)
+            task.prepare({mathElement: mathElement})
+            
+            function makeTask() {
+                let a = pos.pop()
+                let b = neg.pop()
+               
+                let aString = `<mn>${a}</mn>`
+                let bString = `<mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">−</mo><mn>${Math.abs(b)}</mn><mo form="postfix" stretchy="false">)</mo>`
+                mathElement.innerHTML = aString + "<mo>⋅</mo>" + bString
+                if (getRandomInt(0, 1) == 1){
+                    mathElement.innerHTML = aString + "<mo>⋅</mo>" + bString
+                }
+                return a*b
+            }
+        </script>
+</html>
+

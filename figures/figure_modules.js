@@ -61,8 +61,8 @@ class Figure {
 
     makeBoundingBox( {xSize, ySize, strokeColor="transparent", fill= "transparent"} ) {
         this.useViewBox = false
-        this.svgElement.setAttribute("width", xSize)
-        this.svgElement.setAttribute("height", ySize)
+        this.svgElement.setAttribute("width", xSize + this.strokeWidth)
+        this.svgElement.setAttribute("height", ySize + this.strokeWidth)
         this.makePolygon({
             points: [[0, 0], [xSize, 0], [xSize, ySize], [0, ySize]],
             fill: fill,
@@ -169,12 +169,16 @@ class Figure {
                 size: xSize, 
                 ySpace: 0, 
                 fill: fill, 
+                strokeColor: strokeColor,
+                strokeWidth: strokeWidth,
                 addToSvg: false})
         }
         
         if (unit == 10) {
             ten = this.makePolygon({
                 points: [[0, 0], [xSize, 0], [xSize, 10*xSize], [0, 10*xSize]], 
+                strokeColor: strokeColor,
+                strokeWidth: strokeWidth,
                 fill:fill, 
                 addToSvg: false
             })    
@@ -291,7 +295,6 @@ class Figure {
         let container = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject")
         let math = document.createElementNS("http://www.w3.org/1998/Math/MathML", "math")
         math.innerHTML = `${mathContent}`
-        math.style.objectPosition = "left top"
         math.setAttribute("dir", dir)
         container.appendChild(math)
         
@@ -359,6 +362,20 @@ class Figure {
             angle += Math.PI*2
         }
         return angle*180/Math.PI
+    }
+
+    makeText({label= "", pos=[0, 0], textColor="black", isTemp=true, addToSvg=true} = {}) {
+        let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
+        text.setAttribute("x", pos[0].toString())
+        text.setAttribute("y", pos[1].toString())
+        text.style.textAnchor = "middle"
+        text.style.fill = textColor
+        text.innerHTML = `${label}`
+
+        if (addToSvg) {
+            this.addToSVGContainer({fig: text, isTemp: isTemp})
+        }
+        return text
     }
 
     makeXTick({x, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true}) {
