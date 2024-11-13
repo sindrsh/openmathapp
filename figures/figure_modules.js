@@ -322,7 +322,7 @@ class Figure {
 
         let arrowHead = null
         if (arrow === "triangle") {
-            let triangleLength = arrowScale*6
+            let triangleLength = arrowScale*4
             let triangleHeight = arrowScale*10
             arrowHead = this.makePolygon({points: [[0, -triangleLength], [triangleHeight, 0], [0, triangleLength]], fill: strokeColor, strokeColor: strokeColor, addToSvg: false})
             let direction = [B[0]-A[0], B[1]-A[1]]
@@ -364,11 +364,12 @@ class Figure {
         return angle*180/Math.PI
     }
 
-    makeText({label= "", pos=[0, 0], textColor="black", isTemp=true, addToSvg=true} = {}) {
+    makeText({label= "", pos=[0, 0], textColor="black", verticalAnchor="middle", horizontalAnchor="middle", isTemp=true, addToSvg=true} = {}) {
         let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
         text.setAttribute("x", pos[0].toString())
         text.setAttribute("y", pos[1].toString())
-        text.style.textAnchor = "middle"
+        text.style.dominantBaseline = verticalAnchor
+        text.style.textAnchor = horizontalAnchor
         text.style.fill = textColor
         text.innerHTML = `${label}`
 
@@ -378,7 +379,7 @@ class Figure {
         return text
     }
 
-    makeXTick({x, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true}) {
+    makeXTick({x, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true, textColor=strokeColor}) {
         
         x = x*oneLength
         let tickContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
@@ -395,7 +396,7 @@ class Figure {
             text.setAttribute("y", (height).toString())
             text.setAttribute("dy", "10")
             text.style.textAnchor = "middle"
-            text.style.fill = strokeColor
+            text.style.fill = textColor
             text.innerHTML = `${label}`
             tickContainer.appendChild(text)
         }

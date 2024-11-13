@@ -1,6 +1,6 @@
 import re
 
-f = open("../../../openmathbooks/MB/tel/tel_bm.tex", "r")
+f = open("../../../openmathbooks/MB/neg/neg_bm.tex", "r")
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 substitutes = [
     ['\\\\label{ ( [^}]* ) }', ''],
@@ -148,7 +148,7 @@ for aligned in aligned_math:
             side = line.split("&")[i]
             conv = Math_line_converter(side)
             if i == 0:
-                new_line += r'<mtd class="math-left-column"> %s </td> \n <td class="math-center-column"><mo>=</mo> </mtd>' % conv.get_line()
+                new_line += r'<mtd class="math-left-column"> %s </mtd> \n <mtd class="math-center-column"><mo>=</mo> </mtd>' % conv.get_line()
             else:
                 new_line += r'<mtd class="math-right-column"> %s </mtd>' % conv.get_line()
         new_line += r'<mtr> %s </mtr>' % new_line    

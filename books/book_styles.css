@@ -38,14 +38,34 @@ math {
     background-color: teal;
 }
 
-.language-box, .rule, .info ,.example, .definition, .statement {
+.language-box, .statement {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
+.rule, .info ,.example, .definition {
+    padding: 10px;
+    padding-top: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.rule h4, .info h4, .example h4 {
+    padding-top: 5px;
+}
+
 .language-box {
     background-color: yellow;
+}
+
+.statement{
+    background-color: yellowgreen;
+}
+
+.display-math {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .subsubsection {
@@ -56,7 +76,9 @@ math {
     background-color: lightblue;
 }
 
-
+.example {
+    background-color: blanchedalmond;
+}
 
 .info {
     background-color: aqua;

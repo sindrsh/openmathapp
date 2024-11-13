@@ -1,467 +1,299 @@
 <!DOCTYPE html>
+
 <html>
-    <head>
-        <title> Negative tall </title>
-        <meta charset="UTF-8">
-        
-        <style> 
-            body {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                width: 550px;
-                margin: auto;
-                font-size: 12pt;
-            }
-            .sym {
-                background-color: rgb(179, 204, 255);
-                padding-left: 2px;
-                padding-right: 2px;
-            }
-            .figure {
-                text-align: center;
-            }
-            .math-table {
-                margin: auto;
-            }
-            .math-left-column {
-                text-align: right;
-            }
-            .math-right-column {
-                text-align: left;
-            }
-            .math-center-column {
-                text-align: center;
-                max-width: 3%;
-                padding: 0%;
-            }
-            math {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-            }
-            .outline {
-                color: teal;
-                font-weight: bold;
-            }
-        </style>
-    </head>
+	<link rel="stylesheet" href="../../book_styles.css">
+	<body>
+		<h2 class="section">\negintro</h2>
+		Vi har tidligere sett at (for eksempel) tallet 5 på ei tallinje ligger 5 enerlengder til høyre for 0. 
+		<div class="figure">neg1</div>
+		Men hva om vi går andre veien, altså mot venstre? Dette spørsmålet svarer vi på ved å innføre <i>negative tall</i>. .
 
-    <body>
-        <h2> Introduksjon</h2>
-        <p> Vi har tidligere sett at (for eksempel) tallet 5 på ei tallinje ligger 5 enerlengder til høyre for 0.  </p>
-        <div class="figure"> 
-            <svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='126.367258pt' height='29.252554pt' viewBox='60.532612 68.406496 126.367258 29.252554'>
-                <defs>
-                <path id='g0-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
-                <path id='g0-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
-                <path id='g0-50' d='M1.385454-.84L2.541817-1.963636C4.243635-3.46909 4.89818-4.058181 4.89818-5.149089C4.89818-6.392725 3.916363-7.265453 2.585454-7.265453C1.352727-7.265453 .545454-6.261816 .545454-5.290908C.545454-4.679999 1.090909-4.679999 1.123636-4.679999C1.309091-4.679999 1.690909-4.810908 1.690909-5.25818C1.690909-5.541817 1.494545-5.825453 1.112727-5.825453C1.025454-5.825453 1.003636-5.825453 .970909-5.814544C1.221818-6.523635 1.810909-6.927271 2.443636-6.927271C3.436363-6.927271 3.905453-6.043635 3.905453-5.149089C3.905453-4.276362 3.359999-3.414545 2.759999-2.738181L.665454-.403636C.545454-.283636 .545454-.261818 .545454 0H4.592726L4.89818-1.898181H4.625453C4.570908-1.570909 4.494544-1.090909 4.385453-.927272C4.30909-.84 3.58909-.84 3.34909-.84H1.385454Z'/>
-                <path id='g0-51' d='M3.163635-3.839999C4.058181-4.134544 4.690908-4.89818 4.690908-5.759998C4.690908-6.654544 3.730908-7.265453 2.683636-7.265453C1.581818-7.265453 .752727-6.610907 .752727-5.781817C.752727-5.421817 .992727-5.214544 1.309091-5.214544C1.647272-5.214544 1.865454-5.454544 1.865454-5.770907C1.865454-6.316362 1.352727-6.316362 1.189091-6.316362C1.527272-6.850907 2.247272-6.992725 2.639999-6.992725C3.087272-6.992725 3.687272-6.752725 3.687272-5.770907C3.687272-5.639998 3.665454-5.007271 3.381817-4.527271C3.054545-4.003635 2.683636-3.970908 2.410908-3.959999C2.323636-3.94909 2.061818-3.927272 1.985454-3.927272C1.898181-3.916363 1.821818-3.905453 1.821818-3.796363C1.821818-3.676363 1.898181-3.676363 2.083636-3.676363H2.563636C3.458181-3.676363 3.861817-2.934545 3.861817-1.865454C3.861817-.381818 3.10909-.065455 2.62909-.065455C2.159999-.065455 1.341818-.250909 .96-.894545C1.341818-.84 1.68-1.08 1.68-1.494545C1.68-1.887272 1.385454-2.105454 1.069091-2.105454C.807273-2.105454 .458182-1.952727 .458182-1.472727C.458182-.48 1.472727 .24 2.661817 .24C3.992726 .24 4.985453-.752727 4.985453-1.865454C4.985453-2.759999 4.298181-3.610908 3.163635-3.839999Z'/>
-                <path id='g0-52' d='M3.207272-1.799999V-.850909C3.207272-.458182 3.185454-.338182 2.378181-.338182H2.14909V0C2.596363-.032727 3.163635-.032727 3.621817-.032727S4.658181-.032727 5.105453 0V-.338182H4.876362C4.06909-.338182 4.047272-.458182 4.047272-.850909V-1.799999H5.13818V-2.138181H4.047272V-7.101816C4.047272-7.319998 4.047272-7.385452 3.872726-7.385452C3.774544-7.385452 3.741817-7.385452 3.654544-7.254543L.305454-2.138181V-1.799999H3.207272ZM3.272726-2.138181H.610909L3.272726-6.207271V-2.138181Z'/>
-                <path id='g0-53' d='M4.89818-2.192727C4.89818-3.490908 4.003635-4.581817 2.825454-4.581817C2.301818-4.581817 1.832727-4.407271 1.44-4.025453V-6.152726C1.658181-6.087271 2.018181-6.010907 2.367272-6.010907C3.70909-6.010907 4.472726-7.003634 4.472726-7.145453C4.472726-7.210907 4.439999-7.265453 4.363635-7.265453C4.352726-7.265453 4.330908-7.265453 4.276362-7.232725C4.058181-7.134543 3.523635-6.916362 2.792726-6.916362C2.356363-6.916362 1.854545-6.992725 1.341818-7.221816C1.254545-7.254543 1.232727-7.254543 1.210909-7.254543C1.101818-7.254543 1.101818-7.167271 1.101818-6.992725V-3.763635C1.101818-3.567272 1.101818-3.479999 1.254545-3.479999C1.330909-3.479999 1.352727-3.512726 1.396363-3.578181C1.516363-3.752726 1.919999-4.341817 2.803636-4.341817C3.370908-4.341817 3.643635-3.839999 3.730908-3.643635C3.905453-3.239999 3.927272-2.814545 3.927272-2.26909C3.927272-1.887272 3.927272-1.232727 3.665454-.774545C3.403635-.349091 2.999999-.065455 2.498181-.065455C1.701818-.065455 1.08-.643636 .894545-1.287272C.927272-1.276363 .96-1.265454 1.08-1.265454C1.44-1.265454 1.625454-1.538181 1.625454-1.799999S1.44-2.334545 1.08-2.334545C.927272-2.334545 .545454-2.258181 .545454-1.756363C.545454-.818182 1.298181 .24 2.519999 .24C3.785453 .24 4.89818-.807273 4.89818-2.192727Z'/>
-                </defs>
-                <g id='page1'>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M125.787 14.6028H4.13863' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M125.787 14.3518C124.846 13.6618 124.432 12.6204 124.432 12.52C124.432 12.4071 124.533 12.3694 124.62 12.3694C124.758 12.3694 124.783 12.4322 124.821 12.4949C125.009 12.9215 125.411 13.8374 126.665 14.4271C126.816 14.5024 126.841 14.515 126.841 14.6028S126.816 14.7032 126.665 14.7784C125.411 15.3681 125.009 16.2841 124.821 16.7107C124.783 16.7734 124.758 16.8361 124.62 16.8361C124.533 16.8361 124.432 16.7985 124.432 16.6856C124.432 16.5852 124.846 15.5438 125.787 14.8537V14.3518Z' fill='#000000'/>
-                </g>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M25.4782 11.7575V17.4481' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='83.192165' y='96.203142' xlink:href='#g0-49'/>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M46.8178 11.7575V17.4481' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='104.452009' y='96.203142' xlink:href='#g0-50'/>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M68.1573 11.7575V17.4481' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='125.711839' y='96.203142' xlink:href='#g0-51'/>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M89.4969 11.7575V17.4481' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='146.971683' y='96.203142' xlink:href='#g0-52'/>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M4.13863 .376406V6.06696' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M103.308 3.22168H4.13863' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M110.836 3.22168L103.308 1.20453V5.23884L110.836 3.22168Z' fill='#0000ff'/>
-                </g>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M110.836 3.22168L103.308 1.20453V5.23884L110.836 3.22168Z' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M110.836 11.7575V17.4481' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <g fill='#00f'>
-                <use x='168.231528' y='96.203142' xlink:href='#g0-53'/>
-                </g>
-                <g transform='translate(60.5326 68.4065)scale(.996264)'>
-                <path d='M4.13863 11.7575V17.4481' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='61.93232' y='96.203142' xlink:href='#g0-48'/>
-                </g>
-                </svg>    
-        </div>
-        <p>
-            Men hva om vi går andre veien, altså mot venstre? Dette spørsmålet svarer vi på ved å innføre <i>negative tall</i>. <!-- \index{tall!negativt}\index{tall!positivt}. -->
-        </p>
+		<div class="rule">
+		<h4 class="title">Positive og negative tal</h4>
+		På en tallinje gjelder følgende:
+		<ul>
+			<li>Tall plassert <i>til høyre </i> for 0 er <span class="outline">positive tall</span>.</li>
+			<li>Tall plassert <i>til venstre </i> for 0 er <span class="outline">negative tal</span>.</li>
+		</ul>
+		<div class="figure">neg2</div>
+		</div> 
+		Vi kan ikke hele tiden bruke en tallinje for å avgjøre om et tall er\\ negativt eller positivt, og derfor bruker vi et tegn for å vise at tall er negative. Dette tegnet er rett og slett <span class="symbol"> <math>  <mo>−</mo>  </math></span>, altså det samme tegnet som vi bruker ved subtraksjon. <math>  <mn>5</mn>  </math> er med dét et positivt tall, mens <math>  <mo>−</mo><mn>5</mn>  </math> er et negativt tall. På tallinja er det slik at
+		<ul>
+			\item 5 ligger 5 enerlengder <i>til høyre </i> for 0.
+			\item <math>  <mo>−</mo><mn>5</mn>  </math> ligger 5 enerlengder <i>til venstre </i> for 0.
+		</ul>
+		<div class="figure">neg3</div>
+		Den store forskjellen på <math>  <mn>5</mn>  </math> og <math>  <mo>−</mo><mn>5</mn>  </math> er altså på hvilken side av 0 tallene ligger. Da <math>  <mn>5</mn>  </math> og <math>  <mo>−</mo><mn>5</mn>  </math> har samme avstand til 0, sier vi at <math>  <mn>5</mn>  </math> og <math>  <mo>−</mo><mn>5</mn>  </math> har samme <span class="outline">lengde</span>. 
 
-          <div is="custom-rule" data-heading="Positive og negative tall">
-            <p> På en tallinje gjelder følgende: </p>
-            <ul>
-                <li>  Tall plassert <em>til høyre</em> for 0 er <span class="outline"> positive tall</span>. </li>
-                <li>  Tall plassert <em>til venstre</em> for 0 er <span class="outline">negative tal</span>.</li> 
-            </ul>    
-          </div>
-          <p>
-            Vi kan ikke hele tiden bruke en tallinje for å avgjøre om et tall er
-            negativt eller positivt, og derfor bruker vi et tegn for å vise at tall er negative. 
-            Dette tegnet er rett og slett <span class="sym">−</span>, 
-            altså det samme tegnet som vi bruker ved subtraksjon. 5 er med dét et 
-            positivt tall, mens −5 er et negativt tall. På tallinja er det slik at
-            <ul>
-                <li>  5 ligger 5 enerlengder <em>til høyre</em> for 0.. </li>
-                <li>  −5 ligger 5 enerlengder <em>til venstre</em> for 0.</li> 
-            </ul>  
-          </p>
-          <div class="figure">
-            <svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='244.488189pt' height='40.082905pt' viewBox='178.653543 78.327756 244.488189 40.082905'>
-                <defs>
-                <path id='g1-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
-                <path id='g1-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
-                <path id='g1-50' d='M1.385454-.84L2.541817-1.963636C4.243635-3.46909 4.89818-4.058181 4.89818-5.149089C4.89818-6.392725 3.916363-7.265453 2.585454-7.265453C1.352727-7.265453 .545454-6.261816 .545454-5.290908C.545454-4.679999 1.090909-4.679999 1.123636-4.679999C1.309091-4.679999 1.690909-4.810908 1.690909-5.25818C1.690909-5.541817 1.494545-5.825453 1.112727-5.825453C1.025454-5.825453 1.003636-5.825453 .970909-5.814544C1.221818-6.523635 1.810909-6.927271 2.443636-6.927271C3.436363-6.927271 3.905453-6.043635 3.905453-5.149089C3.905453-4.276362 3.359999-3.414545 2.759999-2.738181L.665454-.403636C.545454-.283636 .545454-.261818 .545454 0H4.592726L4.89818-1.898181H4.625453C4.570908-1.570909 4.494544-1.090909 4.385453-.927272C4.30909-.84 3.58909-.84 3.34909-.84H1.385454Z'/>
-                <path id='g1-51' d='M3.163635-3.839999C4.058181-4.134544 4.690908-4.89818 4.690908-5.759998C4.690908-6.654544 3.730908-7.265453 2.683636-7.265453C1.581818-7.265453 .752727-6.610907 .752727-5.781817C.752727-5.421817 .992727-5.214544 1.309091-5.214544C1.647272-5.214544 1.865454-5.454544 1.865454-5.770907C1.865454-6.316362 1.352727-6.316362 1.189091-6.316362C1.527272-6.850907 2.247272-6.992725 2.639999-6.992725C3.087272-6.992725 3.687272-6.752725 3.687272-5.770907C3.687272-5.639998 3.665454-5.007271 3.381817-4.527271C3.054545-4.003635 2.683636-3.970908 2.410908-3.959999C2.323636-3.94909 2.061818-3.927272 1.985454-3.927272C1.898181-3.916363 1.821818-3.905453 1.821818-3.796363C1.821818-3.676363 1.898181-3.676363 2.083636-3.676363H2.563636C3.458181-3.676363 3.861817-2.934545 3.861817-1.865454C3.861817-.381818 3.10909-.065455 2.62909-.065455C2.159999-.065455 1.341818-.250909 .96-.894545C1.341818-.84 1.68-1.08 1.68-1.494545C1.68-1.887272 1.385454-2.105454 1.069091-2.105454C.807273-2.105454 .458182-1.952727 .458182-1.472727C.458182-.48 1.472727 .24 2.661817 .24C3.992726 .24 4.985453-.752727 4.985453-1.865454C4.985453-2.759999 4.298181-3.610908 3.163635-3.839999Z'/>
-                <path id='g1-52' d='M3.207272-1.799999V-.850909C3.207272-.458182 3.185454-.338182 2.378181-.338182H2.14909V0C2.596363-.032727 3.163635-.032727 3.621817-.032727S4.658181-.032727 5.105453 0V-.338182H4.876362C4.06909-.338182 4.047272-.458182 4.047272-.850909V-1.799999H5.13818V-2.138181H4.047272V-7.101816C4.047272-7.319998 4.047272-7.385452 3.872726-7.385452C3.774544-7.385452 3.741817-7.385452 3.654544-7.254543L.305454-2.138181V-1.799999H3.207272ZM3.272726-2.138181H.610909L3.272726-6.207271V-2.138181Z'/>
-                <path id='g1-53' d='M4.89818-2.192727C4.89818-3.490908 4.003635-4.581817 2.825454-4.581817C2.301818-4.581817 1.832727-4.407271 1.44-4.025453V-6.152726C1.658181-6.087271 2.018181-6.010907 2.367272-6.010907C3.70909-6.010907 4.472726-7.003634 4.472726-7.145453C4.472726-7.210907 4.439999-7.265453 4.363635-7.265453C4.352726-7.265453 4.330908-7.265453 4.276362-7.232725C4.058181-7.134543 3.523635-6.916362 2.792726-6.916362C2.356363-6.916362 1.854545-6.992725 1.341818-7.221816C1.254545-7.254543 1.232727-7.254543 1.210909-7.254543C1.101818-7.254543 1.101818-7.167271 1.101818-6.992725V-3.763635C1.101818-3.567272 1.101818-3.479999 1.254545-3.479999C1.330909-3.479999 1.352727-3.512726 1.396363-3.578181C1.516363-3.752726 1.919999-4.341817 2.803636-4.341817C3.370908-4.341817 3.643635-3.839999 3.730908-3.643635C3.905453-3.239999 3.927272-2.814545 3.927272-2.26909C3.927272-1.887272 3.927272-1.232727 3.665454-.774545C3.403635-.349091 2.999999-.065455 2.498181-.065455C1.701818-.065455 1.08-.643636 .894545-1.287272C.927272-1.276363 .96-1.265454 1.08-1.265454C1.44-1.265454 1.625454-1.538181 1.625454-1.799999S1.44-2.334545 1.08-2.334545C.927272-2.334545 .545454-2.258181 .545454-1.756363C.545454-.818182 1.298181 .24 2.519999 .24C3.785453 .24 4.89818-.807273 4.89818-2.192727Z'/>
-                <path id='g0-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
-                </defs>
-                <g id='page1'>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M244.351 24.5612H1.05394' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M244.351 24.3103C243.41 23.6202 242.996 22.5788 242.996 22.4785C242.996 22.3655 243.096 22.3279 243.184 22.3279C243.322 22.3279 243.347 22.3906 243.385 22.4534C243.573 22.88 243.975 23.7959 245.229 24.3856C245.38 24.4609 245.405 24.4734 245.405 24.5612C245.405 24.6491 245.38 24.6616 245.229 24.7369C243.975 25.3266 243.573 26.2425 243.385 26.6691C243.347 26.7319 243.322 26.7946 243.184 26.7946C243.096 26.7946 242.996 26.757 242.996 26.644C242.996 26.5437 243.41 25.5023 244.351 24.8122V24.3103Z' fill='#000000'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M1.05394 24.8122C1.99495 25.5023 2.409 26.5437 2.409 26.644C2.409 26.757 2.30862 26.7946 2.2208 26.7946C2.08278 26.7946 2.05769 26.7319 2.02005 26.6691C1.83184 26.2425 1.43034 25.3266 .175656 24.7369C.025094 24.6616 0 24.6491 0 24.5612C0 24.4734 .025094 24.4609 .175656 24.3856C1.43034 23.7959 1.83184 22.88 2.02005 22.4534C2.05769 22.3906 2.08278 22.3279 2.2208 22.3279C2.30862 22.3279 2.409 22.3655 2.409 22.4785C2.409 22.5788 1.99495 23.6202 1.05394 24.3103V24.8122Z' fill='#000000'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M37.3442 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='208.892374' y='116.045679' xlink:href='#g0-0'/>
-                <use x='217.37725' y='116.045679' xlink:href='#g1-52'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M58.6838 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='230.152218' y='116.045679' xlink:href='#g0-0'/>
-                <use x='238.637095' y='116.045679' xlink:href='#g1-51'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M80.0234 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='251.412063' y='116.045679' xlink:href='#g0-0'/>
-                <use x='259.896939' y='116.045679' xlink:href='#g1-50'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M101.363 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='272.671908' y='116.045679' xlink:href='#g0-0'/>
-                <use x='281.156784' y='116.045679' xlink:href='#g1-49'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M122.703 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='298.174175' y='116.045664' xlink:href='#g1-48'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M144.042 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='319.434019' y='116.045664' xlink:href='#g1-49'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M165.382 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='340.693864' y='116.045664' xlink:href='#g1-50'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M186.721 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='361.953709' y='116.045664' xlink:href='#g1-51'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M208.061 21.716V27.4065' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <use x='383.213553' y='116.045664' xlink:href='#g1-52'/>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M122.703 .376406V6.06696' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M221.872 3.22168H122.703' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M229.4 3.22168L221.872 1.20453V5.23884L229.4 3.22168Z' fill='#0000ff'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M229.4 3.22168L221.872 1.20453V5.23884L229.4 3.22168Z' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M122.703 10.3349V16.0254' fill='none' stroke='#00ffff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M23.5328 13.1801H122.703' fill='none' stroke='#00ffff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M16.0047 13.1801L23.5328 15.1973V11.163L16.0047 13.1801Z' fill='#00ffff'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M16.0047 13.1801L23.5328 15.1973V11.163L16.0047 13.1801Z' fill='none' stroke='#00ffff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M229.4 21.716V27.4065' fill='none' stroke='#0000ff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <g fill='#00f'>
-                <use x='404.473398' y='116.045664' xlink:href='#g1-53'/>
-                </g>
-                <g transform='translate(178.654 78.3278)scale(.996264)'>
-                <path d='M16.0047 21.716V27.4065' fill='none' stroke='#00ffff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.752812'/>
-                </g>
-                <g fill='#0ff'>
-                <use x='187.632529' y='116.045679' xlink:href='#g0-0'/>
-                <use x='196.117405' y='116.045679' xlink:href='#g1-53'/>
-                </g>
-                </g>
-                </svg>
-          </div>
-          Den store forskjellen på 5 og −5 er altså på hvilken side av 0 tallene ligger. Da 5 og −5 har samme avstand til 0, 
-          sier vi at 5 og −5 har samme <span class="outline"> lengde</span>. 
-          
-          <div is="custom-rule" data-heading="Lengde"> 
-            <p> Lengden til et tall skrives ved symbolet <span class="sym">| |</span>.</p> 
-            <p> Lengden til et positivt tall er verdien til tallet. </p>
-            <p> Lengden til et negativt tall er verdien til det positive tallet med samme siffer. </p>
-          </div>
-          
-          <div is="custom-example" data-number="1"> 
-            <math> <mi>|</mi><mn>27</mn><mi>|</mi><mo>=</mo><mn>27</mn></math>
-          </div>
-          <div is="custom-example" data-number="2"> 
-            <math> <mi>|</mi><mi>−</mi><mn>27</mn><mi>|</mi><mo>=</mo><mn>27</mn></math>
-          </div>
+		<div class="rule">
+		<h4 class="title"> Lengde</h4>
+		
+		Lengden til et tall skrives ved symbolet <span class="symbol"> | |</span>.	
+			
+		Lengden til et positivt tall er verdien til tallet.
+			
+		Lengden til et negativt tall er verdien til det positive tallet med samme siffer.
+		</div> 
+		<div class="example"> 
+		<h4 class="title"> Eksempel 1</h4> 
+		<math class="display-math" display="block"> <mo>|</mo><mn><mn>27</mn></mn><mo>|</mo><mo>=</mo><mn><mn>27</mn></mn> </math>
+		</div>
+		<div class="example">
+		<h4> Eksempel 2</h4>  
+		<math class="display-math" display="block"><mo>|</mo><mrow><mo>−</mo><mn><mn>27</mn></mn></mrow><mo>|</mo><mo>=</mo><mn><mn>27</mn></mn> </math>
+		</div>
+		<div class="language-box">
+		Andre ord for lengde er <span class="outline">tallverdi</span> og <span class="outline">absoluttverdi</span>.
+		</div>
+		<div class="info" data-title="Fortegn">
+		<span class="outline">Fortegn</span> er en samlebetegnelse for <span class="symbol"> <math>  <mo>+</mo>  </math></span> og <span class="symbol"> <math>  <mo>−</mo>  </math></span>. <math>  <mn>5</mn>  </math> har <span class="symbol"> <math>  <mo>+</mo>  </math></span> som fortegn og <math>  <mo>−</mo><mn>5</mn>  </math> har <span class="symbol"> <math>  <mo>−</mo>  </math></span> som fortegn.
+		</div>
 
-          <div is="custom-language-box">
-            <p>Andre ord for lengde er <span class="outline">tallverdi</span> og <span class="outline">absoluttverdi</span>.</p>
-            
-            <p> <span class="outline">Fortegn</span> er en samlebetegnelse for <span class="sym">+</span> og <span class="sym">−</span> 
-                . 5 har <span class="sym">+</span> som fortegn og −5 har <span class="sym">−</span> som fortegn. </p>
-          </div>
+		<h2 class="section">Regnerartene med negative tall</h2>
+		Ved innføringen av negative tall får de fire regneartene nye sider som vi må se på trinnvis. Når vi adderer, subtraherer, multipliserer eller dividerer med negative tall vil vi ofte, for tydeligheten sin skyld, skrive negative tall med parentes rundt. Da skriver vi for eksempel <math>  <mo>−</mo><mn>4</mn>  </math> som <math>  <mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo>  </math>. 
 
-          <h2 is="custom-section"> De fire regneartene med negative tall</h2>
-            Ved innføringen av negative tall får de fire regneartene nye sider som vi må se på trinnvis. Når vi adderer, subtraherer, multipliserer eller dividerer 
-            med negative tall vil vi ofte, for tydeligheten sin skyld, skrive negative tall med parentes rundt. Da skriver vi for eksempel −4 som (−4). 
-          
-          <h3 is="custom-subsection"> Addisjon</h3>
-            Når vi adderte i seksjon?? så vi på <span class="sym">+</span> som vandring <span class="outline">mot høyre</span>. Negative tall gjør at vi må utvide begrepet for <span class="sym">+</span>:
-            <div is="custom-language-box">
-                <div style="text-align: center;">+  ''Like langt og i <span class="outline"> samme</span> retning som''</div>
-            </div>
-        
-            La oss se på regnestykket
-            <math display="block"><mrow><mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo></mrow></math>
-            Vår utvidede definisjon av <span class="sym">+</span> sier oss nå at
-            <p style="text-align: center;">
-                <math></mat><mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo><mo>=</mo></math>''7 og like langt og i <i>samme</i> retning som <math><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo></math>''
-            </p>
-            $ (-4) $ har lengde 4 og retning \textsl{mot venstre}. Vårt regnestykke sier altså at vi skal starte på 7, og deretter gå lengden 4 \textsl{mot venstre}.
-            \[ 7+(-4)=3 \]
-            \fig{neg6}
+		<h3 class="subsection">Addisjon</h2>
+		Når vi adderte i seksjon ?? så vi på <span class="symbol"> <math>  <mo>+</mo>  </math></span> som vandring <i>mot høyre </i>. Negative tall gjør at vi må utvide begrepet for <span class="symbol"> <math>  <mo>+</mo>  </math></span>\,: 
+		<div class="statement" style="text-align: center;">
+			+ ''Like langt og i <i>samme </i> retning som''
+		</div>
+		La oss se på regnestykket
+		<math class="display-math" display="block"> <mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo> </math>
+		Vår utvidede definisjon av <span class="symbol"> <math>  <mo>+</mo>  </math></span> sier oss nå at
+		<div class="display-math" style="text-align: center;">
+			7 + (−4) = 7 og like langt og i <i>samme</i> retning som (−4)
+		</div>
+		<math>  <mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo>  </math> har lengde 4 og retning <i>mot venstre </i>. Vårt regnestykke sier altså at vi skal starte på 7, og deretter gå lengden 4 <i>mot venstre </i>.
+		<math class="display-math" display="block"> <mn>7</mn><mo>+</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo><mo>=</mo><mn>3</mn> </math>
+		<div class="figure">neg6</div>
 
-            \reg[Addisjon med negative tall]{
-            Å addere et negativt tall er det samme som å subtrahere tallet med samme tallverdi.
-            }
-            \eks[1]{ \vs
-                \[ 4+(-3)=4-3=1 \]
-            }
-            \eks[2]{ \vs
-                \[ -8+(-3)=-8-3=-11 \]
-            }
-            \info{Addisjon er kommutativ}{
-            \hrs{adkom}{Regel} er gjeldende også etter innføringen av negative tall, for eksempel er	
-            \[ 7+(-3)=4=-3+7 \]	
-            }
+		<div class="rule" data-title="Addisjon med negative tall">
+		Å addere et negativt tall er det samme som å subtrahere tallet med samme tallverdi.
+		</div>
+		<div class="example"> 
+			<math class="display-math" display="block"> <mn><mn>4</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>3</mn></mn><mo>)</mo><mo>=</mo><mn><mn>4</mn></mn><mo>−</mo><mn><mn>3</mn></mn><mo>=</mo><mn>1</mn> </math>
+		</div>
+		<div class="example" data-number="2""> 
+			<math class="display-math" display="block"> <mo>−</mo><mn><mn>8</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>3</mn></mn><mo>)</mo><mo>=</mo><mo>−</mo><mn><mn>8</mn></mn><mo>−</mo><mn><mn>3</mn></mn><mo>=</mo><mo>−</mo><mn>11</mn> </math>
+		</div>
+		<div class="info" data-title="Addisjon er kommutativ">
+		Regel 3 er gjeldende også etter innføringen av negative tall, for eksempel er	
+		<math class="display-math" display="block"> <mn><mn>7</mn></mn><mo>+</mo><mo>(</mo><mo>−</mo><mn><mn>3</mn></mn><mo>)</mo><mo>=</mo><mn>4</mn><mo>=</mo><mo>−</mo><mn><mn>3</mn></mn><mo>+</mo><mn><mn>7</mn></mn> </math>	
+		
+		</div>
+		
 
-            \subsection*{Subtraksjon}
-            I \hrs{Subtraksjon}{seksjon} så vi på \sym{$ - $} som vandring \textsl{mot venstre}. Også betydningen av \sym{$ - $} må utvides når vi jobber med negative tall:\regv
+		<h3 class="subsection">Subtraksjon</h2>
+		I seksjon ?? så vi på <span class="symbol"> <math>  <mo>−</mo>  </math></span> som vandring <i>mot venstre </i>. Også betydningen av <span class="symbol"> <math>  <mo>−</mo>  </math></span> må utvides når vi jobber med negative tall:
 
-            \st{\begin{center}
-                \begin{tabular}{cl}
-                    $ - $&''Like langt og i \textsl{motsatt} retning som''	
-                \end{tabular}
-            \end{center}}
-            La oss se på regnestykket
-            \[ 2-(-6) \]
-            Med vår utvidede betydning av \sym{$-$}, kan vi skrive
-            \[ 2-(-6)=\text{''}2 \text{ og like langt og i \textsl{motsatt} retning som } (-6)\text{''} \]
-            $ -6 $ har lengde 6 og retning \textsl{mot venstre}. Når vi skal gå samme lengde, men i \textsl{motsatt} retning, må vi altså gå lengden 6 \textsl{mot høyre}\footnote{Vi minner enda en gang om at rødfargen på pila indikerer at man skal vandre fra pilspissen til andre enden.}. Dette er det samme som å addere 6:
-            \[ 2-(-6)=2+6=8 \] \vs
-            \fig{neg7}
-            \reg[Subtraksjon med negative tall]{
-            Å subtrahere et negativt tall er det samme som å addere det positive tallet med samme tallverdi.
-            }
-            \eks[1]{ \vs
-            \[ 11-(-9)=11+9=20 \]
-            }
-            \eks[2]{ \vs
-                \[ -3-(-7)=-3+7=4 \]
-            }
-            \begin{comment}
-                \info{Merk}{
-                Med innføringen av negative tall kan subtraksjon bli sett på som addisjon med negative tal. For eksempel er $ {7-3=7+(-3)} $ og $ {2-7=2+(-7)} $.
-                }
-            \end{comment}
-
-            \subsection*{Multiplikasjon}
-            I \hrs{Gonging}{seksjon} introduserte vi ganging med positive heltall som gjentatt addisjon. Med våre utvidede begrep av addisjon og subtraksjon, kan vi nå også utvide begrepet multiplikasjon: \regv
-
-            \reg[Multiplikasjon med positive og negative tall\label{gongneg}]{
-            Ganging med et positivt heltall er det samme som gjentatt addisjon.\vsk
-
-            Ganging med et negativt heltal er det samme som gjentatt subtraksjon.
-            }
-            \eks[1]{ \vs \vs \label{negeksempel}
-            \alg{
-                2\cdot3 &=\text{''Like langt og i \textsl{samme} retning som 2, 3 ganger''}\\
-                &=2+2+2 \\
-                &=6
-            }
-            }
-            \eks[2]{ \vs \vs
-            \alg{
-                (-2)\cdot3&=\text{''Like langt og i \textsl{samme} retning som }(-2) \text{, 3 ganger''} \\
-                &=-2-2-2\\
-                &=-6
-            }
-            }
-            \eks[3]{ \vs \vs
-            \alg{
-                2\cdot(-3)&=\text{''Like langt og i \textsl{motsatt} retning som 2, 3 ganger''} \\
-                &=-2-2-2 \\
-                &=-6
-            }
-            }
-            \eks[4]{ \vs \vs
-                \alg{
-                    (-3)\cdot(-4)&=\text{''Like langt og i \textsl{motsatt} retning som $ -3 $, 4 ganger''}\\
-                    &=3+3+3+3\\
-                    &=12
-                }	 	 
-            }
-            \info{Multiplikasjon er kommutativ}{
-            \textsl{Eksempel 2} og \textsl{Eksempel 3} på side \pageref{negeksempel} illustrerer at \rref{gangkom} også er gjeldende etter innføringen av negative tall:
-            \[ (-2)\cdot3=3\cdot(-2) \]
-            }  \vsk
-            Det blir tungvint å regne ganging som gjentatt addisjon/subtraksjon hver gang vi har et negativt tall involvert, men som en direkte konsekvens av \rref{gongneg} kan vi lage oss følgende to regler:\regv
-
-            \reg[\gangmnegto \label{gangmnegto}]{
-            Produktet av et negativt og et positivt tall er et negativt tall. \vsk
-
-            Tallverdien til faktorene ganget sammen gir tallverdien til\\ produktet.
-            }
-            \eks[1]{
-            Regn ut $ (-7)\cdot8 $
-
-            \sv
-            Siden $ 7\cdot8=56 $, er $ (-7)\cdot8=-56 $
-            }
-            \eks[2]{
-                Regn ut $ 3\cdot(-9) $.
-                
-                \sv
-                Siden $ 3\cdot9=27 $, er $ 3\cdot(-9)=-27 $
-            }
-            \vsk
-
-            \reg[\gangmnegtre \label{gangmnegtre}]{
-            Produktet av to negative tall er et positivt tall. \vsk
-
-            Tallverdien til faktorene ganget sammen gir verdien til produktet.
-            } 
-            \eks[1]{ \vsb
-            \[ (-5)\cdot(-10)=5\cdot10=50 \]
-            }
-            \eks[2]{
-            \vsb
-            \[ (-2)\cdot(-8)=2\cdot8=16 \]
-            }
-            \subsection*{Divisjon}
-            Definisjonen av divisjon (se \hrs{Divisjon}{seksjon}), kombinert med det vi vet om multiplikasjon med negative tall, gir oss nå dette:\regv
-
-            \st{\begin{center}
-                    \algv{
-                        -18:6=\text{''Tallet jeg må gange 6 med for å få $ -18 $''}
-                    }
-                    $ 6\cdot(-3)=-18 $, altså er $ -18:6=-3 $
-            \end{center}} \vsk
-            \st{
-            \begin{center}
-                \algv{
-                    42:(-7)=\text{''Tallet jeg må gange $ -7 $ med for å få 42''}
-                }
-                $ (-7)\cdot(-8)=42 $, altså er $ 42:(-7)=-8 $
-            \end{center}
-            }\vsk
-            \st{
-            \begin{center}
-                \algv{
-                    -45:(-5)=\text{''Tallet jeg må gange $ -5 $ med for å få $ -45 $''}
-                }
-                $ (-5)\cdot9=-45 $, altså er $ -45:(-5)=9 $
-            \end{center}
-            }\vsk
-            \reg[Divisjon med negative tall]{
-            Divisjon mellom et positivt og et negativt tall gir et negativt tall.\vsk
-
-            Divisjon mellom to negative tall gir et positivt tall. \vsk
-
-            Tallverdien til dividenden delt med tallverdien til divisoren gir tallverdien til kvotienten. 
-            }
-            \eks[1]{ \vsb
-                \[ -24:6=-4 \]
-            }
-            \eks[2]{ \vsb
-                \[ 24:(-2)=-12 \]
-            }
-            \eks[3]{ \vsb
-                \[ -24:(-3)=8 \]
-            }
-            \eks[4]{ \vsb
-            \[ \frac{2}{-3}=-\frac{2}{3} \]
-            }
-            \eks[5]{ \vsb
-                \[ \frac{-10}{7}=-\frac{10}{7} \]
-            }
-            \newpage
-
-            \newpage
-            \section{\negmeng \label{negmeng}}
-            \textit{Obs! Denne tolkningen av negative tall blir først brukt i \hrs{likloysfire}{seksjon}, som er en seksjon noen lesere uten tap av forståelse kan hoppe over.}\vsk
-
-            Så langt har vi sett på negative tall ved hjelp av tallinjer. Å se på negative tall ved hjelp av mengder er i første omgang vanskelig, fordi vi har likestilt mengder med antall, og negative antall gir ikke mening! For å skape en forståelse av negative tall ut ifra et mengdeperspektiv, bruker vi det vi skal kalle \outl{vektprinsippet}. Dette innebærer at vi ser på tallene som krefter. De positive tallene er antall krefter som virker nedover og de negative tallene er antall krefter som virker oppover\footnote{Fra virkeligheten kan man se på de positive og negative tallene som ballonger fylt med henholdsvis luft og helium. Ballonger fylt med luft virker med en kraft nedover (de faller), mens heliumballonger virker med en kraft oppover (de stiger).}. Svarene på regnestykker med positive og negative tall kan man da se på som resultatet av en veiing av de forskjellige mengdene. Slik vil altså et positivt tall og et negativt tall med samme tallverdi \textsl{utligne} hverandre.
-            \vsk
-
-            \regdef[Negative tall som mengde]{
-            Negative tall vil vi indikere som en lyseblå mengde:
-            \fig{negm1}
-            }
-            \eks[]{
-            \[ 1+(-1)=0 \]
-            \fig{negm2}
-            }
+		<div class="statement" style="text-align: center;">
+			− ''Like langt og i <i>samme </i> retning som''
+		</div>
+		La oss se på regnestykket
+		<math class="display-math" display="block"> <mn>2</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>6</mn><mo>)</mo> </math>
+		Med vår utvidede betydning av <span class="symbol"> <math> <mo>−</mo> </math></span>, kan vi skrive
+		<div style="text-align: center;">
+			2 − (−6) = 2 og like langt og i <i>motsatt</i> retning av (−6)
+		</div>
+		<math>  <mo>−</mo><mn>6</mn>  </math> har lengde 6 og retning <i>mot venstre </i>. Når vi skal gå samme lengde, men i <i>motsatt </i> retning, må vi altså gå lengden 6 <i>mot høyre </i>. Dette er det samme som å addere 6:
+		<math class="display-math" display="block"> <mn><mn>2</mn></mn><mo>−</mo><mo>(</mo><mo>−</mo><mn><mn>6</mn></mn><mo>)</mo><mo>=</mo><mn><mn>2</mn></mn><mo>+</mo><mn><mn>6</mn></mn><mo>=</mo><mn>8</mn> </math> 
+		<div class="figure">neg7</div>
+		<div class="rule" data-title="Subtraksjon med negative tall">
+		Å subtrahere et negativt tall er det samme som å addere det positive tallet med samme tallverdi.
+		</div>
+		<div class="example">
+		<h4>Eksempel 1</h4> 
+		<math class="display-math" display="block"> <mn><mn>11</mn></mn><mo>−</mo><mo>(</mo><mo>−</mo><mn><mn>9</mn></mn><mo>)</mo><mo>=</mo><mn><mn>11</mn></mn><mo>+</mo><mn><mn>9</mn></mn><mo>=</mo><mn>20</mn> </math>
+		</div>
+		<div class="example">
+			<h4> Eksempel 2</h4> 
+			<math class="display-math" display="block"> <mo>−</mo><mn><mn>3</mn></mn><mo>−</mo><mo>(</mo><mo>−</mo><mn><mn>7</mn></mn><mo>)</mo><mo>=</mo><mo>−</mo><mn><mn>3</mn></mn><mo>+</mo><mn><mn>7</mn></mn><mo>=</mo><mn>4</mn> </math>
+		</div>
 
 
+		<h3 class="subsection">Multiplikasjon</h2>
+		I seksjon ?? introduserte vi ganging med positive heltall som gjentatt addisjon. Med våre utvidede begrep av addisjon og subtraksjon, kan vi nå også utvide begrepet multiplikasjon: 
+
+		<div class="rule">
+		<h4>Multiplikasjon med positive og negative tall</h4>
+		<p>Ganging med et positivt heltall er det samme som gjentatt addisjon.</p>
+
+		<p>Ganging med et negativt heltal er det samme som gjentatt subtraksjon.</p>
+		</div>
+		<div class="example"> 
+		<h4> Eksempel 1</h4> 
+			<table>
+				<tr>
+					<td class="math-left-column"> <math><mn>2</mn><mo>⋅</mo><mn>3</mn></math></td> 
+					<td class="math-center-column"><mo>=</mo> </mtd>
+					<td class="math-right-column"> ''Like langt og i <i>samme </i> retning som 2, 3 ganger''</td>
+				</tr>
+				<tr>
+					<td class="math-left-column"></td>
+					<td class="math-center-column">=</td> 
+					<td class="math-right-column"><math><mn>2</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>2</mn></math> </td>
+				</tr>
+				<tr>
+					<td class="math-left-column"></td>
+					<td class="math-center-column">=</td> 
+					<td class="math-right-column">6</td> 
+				</tr>
+			 </table>
+		</div>
+		<div class="example">
+		<h4> Eksempel 2</h4> 
+			<table>
+				<tr>
+					<td class="math-left-column"> <math><mn>(−2)</mn><mo>⋅</mo><mn>3</mn></math></td> 
+					<td class="math-center-column"><mo>=</mo> </mtd>
+					<td class="math-right-column"> ''Like langt og i <i>samme </i> retning som (−2), 3 ganger''</td>
+				</tr>
+				<tr>
+					<td class="math-left-column"></td>
+					<td class="math-center-column">=</td> 
+					<td class="math-right-column"><math><mo>−</mo><mn>2</mn><mo>−</mo><mn>2</mn><mo>−</mo><mn>2</mn></math> </td>
+				</tr>
+				<tr>
+					<td class="math-left-column"></td>
+					<td class="math-center-column">=</td> 
+					<td class="math-right-column">−6</td> 
+				</tr>
+			 </table>
+		</div>
+		<div class="example">
+		<h4> Eksempel 3</h4> 
+			<table>
+				<tr>
+					<td class="math-left-column"> <math><mn>2</mn><mo>⋅</mo><mn>(−3)</mn></math></td> 
+					<td class="math-center-column"><mo>=</mo> </mtd>
+					<td class="math-right-column"> ''Like langt og i <i>motsatt</i> retning som 2, 3 ganger''</td>
+				</tr>
+				<tr>
+					<td class="math-left-column"></td>
+					<td class="math-center-column">=</td> 
+					<td class="math-right-column"><math><mo>−</mo><mn>2</mn><mo>−</mo><mn>2</mn><mo>−</mo><mn>2</mn></math> </td>
+				</tr>
+				<tr>
+					<td class="math-left-column"></td>
+					<td class="math-center-column">=</td> 
+					<td class="math-right-column">−6</td> 
+				</tr>
+			 </table>
+		</div>
+		<h4> Eksempel 4</h4> 
+		<table>
+			<tr>
+				<td class="math-left-column"> <math><mn>(−2)</mn><mo>⋅</mo><mn>(−3)</mn></math></td> 
+				<td class="math-center-column"><mo>=</mo> </mtd>
+				<td class="math-right-column"> ''Like langt og i <i>motsatt</i> retning som (−2), 3 ganger''</td>
+			</tr>
+			<tr>
+				<td class="math-left-column"></td>
+				<td class="math-center-column">=</td> 
+				<td class="math-right-column"><math><mn>2</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>2</mn></math> </td>
+			</tr>
+			<tr>
+				<td class="math-left-column"></td>
+				<td class="math-center-column">=</td> 
+				<td class="math-right-column">6</td> 
+			</tr>
+		 </table>
+	</div>
+		
+		<div class="info">
+		<h4>Multiplikasjon er kommutativ</h4>
+		<i>Eksempel 2 </i> og <i>Eksempel 3 </i> på side illustrerer at regel ?? også er gjeldende etter innføringen av negative tall:
+		<math class="display-math" display="block"> <mo>(</mo><mo>−</mo><mn><mn>2</mn></mn><mo>)</mo><mo>⋅</mo><mn><mn>3</mn></mn><mo>=</mo><mn><mn>3</mn></mn><mo>⋅</mo><mo>(</mo><mo>−</mo><mn><mn>2</mn></mn><mo>)</mo> </math>
+		</div>
+		Det blir tungvint å regne ganging som gjentatt addisjon/subtraksjon hver gang vi har et negativt tall involvert, men som en direkte konsekvens av regel ?? kan vi lage oss følgende to regler:
+
+		<div class="rule">
+		<h4>Multiplikasjon med positive og negative tall II</h4>
+		<p>Produktet av et negativt og et positivt tall er et negativt tall.</p> 
+
+		<p>Tallverdien til faktorene ganget sammen gir tallverdien til produktet.</p>
+		</div>
+		<div class="example">
+		<h4>Eksempel 1</h4>
+		Regn ut <math>  <mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo>⋅</mo><mn>8</mn>  </math>
+		<h5 class="answer">Svar:</h5>
+		Siden <math> <mn>7</mn><mo>⋅</mo><mn>8</mn><mo>=</mo><mn>56</mn>  </math>, er <math>  <mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo>⋅</mo><mn>8</mn><mo>=</mo><mo>−</mo><mn>56</mn>  </math>
+		</div>
+		<div class="example" data-number="2"">
+		<h5>Eksempel 2</h5>
+			Regn ut <math>  <mn>3</mn><mo>⋅</mo><mo>(</mo><mo>−</mo><mn>9</mn><mo>)</mo>  </math>.
+			
+			<h5 class="answer">Svar</h5>
+			
+			Siden <math>  <mn>3</mn><mo>⋅</mo><mn>9</mn><mo>=</mo><mn>27</mn>  </math>, er <math>  <mn>3</mn><mo>⋅</mo><mo>(</mo><mo>−</mo><mn>9</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>27</mn>  </math>
+		</div>
 
 
+		<div class="rule">
+		<h4>Multiplikason med positive og negative tall</h4>
+		<p>Produktet av to negative tall er et positivt tall.</p> 
 
-          <script type="module"> 
-            import "../../global.js"
-          </script>
-          
-    </body>
+		<p>Tallverdien til faktorene ganget sammen gir verdien til produktet.</p>
+		</div> 
+		<div class="example">
+		<h4>Eksempel 1</h4> 
+		<math class="display-math" display="block"> <mo>(</mo><mo>−</mo><mn><mn>5</mn></mn><mo>)</mo><mo>⋅</mo><mo>(</mo><mo>−</mo><mn><mn>10</mn></mn><mo>)</mo><mo>=</mo><mn><mn>5</mn></mn><mo>⋅</mo><mn><mn>10</mn></mn><mo>=</mo><mn><mn>5</mn></mn>0 </math>
+		</div>
 
+		<div class="example" data-number="2"">
+		<h4>Eksempel 2</h4>
+		<math class="display-math" display="block"> <mo>(</mo><mo>−</mo><mn><mn>2</mn></mn><mo>)</mo><mo>⋅</mo><mo>(</mo><mo>−</mo><mn><mn>8</mn></mn><mo>)</mo><mo>=</mo><mn><mn>2</mn></mn><mo>⋅</mo><mn><mn>8</mn></mn><mo>=</mo><mn>16</mn> </math>
+		</div>
+		<h3 class="subsection">Divisjon</h2>
+		Definisjonen av divisjon (se seksjon ??), kombinert med det vi vet om multiplikasjon med negative tall, gir oss nå dette:
 
+		<div class="statement" style="text-align: center;">
+			<p> −18 : 6 = ''Tallet jeg må gange 6 med for å få −18'' </p>
+					
+				
+				<math> <mn>6</mn><mo>⋅</mo><mo>(</mo><mo>−</mo><mn>3</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>18</mn>  </math>, altså er <math>  <mo>−</mo><mn>18</mn><mo> :</mo><mn>6</mn><mo>=</mo><mo>−</mo><mn>3</mn>  </math>
+		</div> 
+		<div class="statement" style="text-align: center;">
+			<p>	42:(−7)=<mtext>''Tallet jeg må gange −7 med for å få 42''</mtext></p>
+			
+			<math>  <mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo>⋅</mo><mo>(</mo><mo>−</mo><mn>8</mn><mo>)</mo><mo>=</mo><mn>42</mn>  </math>, altså er <math>  <mn>42</mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>7</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>8</mn>  </math>
 
+		</div>
+		<div class="statement" style="text-align: center;">
+
+			<p>-45:(-5)=<mtext>''Tallet jeg må gange 5 med for å få 45''</p>
+			
+			<math>  <mo>(</mo><mo>−</mo><mn>5</mn><mo>)</mo><mo>⋅</mo><mn>9</mn><mo>=</mo><mo>−</mo><mn>5</mn>  </math>, altså er <math> <mo>−</mo><mn>45</mn></mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>5</mn><mo>)</mo><mo>=</mo><mn>9</mn>  </math>
+
+		</div>
+		<div class="rule">
+		<h4>Divisjon med negative tall</h4>
+		<p>Divisjon mellom et positivt og et negativt tall gir et negativt tall.</p>
+
+		<p>Divisjon mellom to negative tall gir et positivt tall. </p> 
+
+		<p>Tallverdien til dividenden delt med tallverdien til divisoren gir tallverdien til kvotienten.</p> 
+		</div>
+		<div class="example">
+			<h4>Eksempel 1</h4> 
+			<math class="display-math" display="block"> <mo>−</mo><mn>24</mn><mo>:</mo><mn>6</mn><mo>=</mo><mo>−</mo><mn>4</mn> </math>
+		</div>
+		<div class="example" data-number="2""> 
+			<h4>Eksempel 2</h4> 
+			<math class="display-math" display="block"> <mn>24</mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo>=</mo><mo>−</mo>1<mn>2</mn> </math>
+		</div>
+		<div class="example" data-number="3""> 
+			<h4>Eksempel 3</h4> 
+			<math class="display-math" display="block"> <mo>−</mo><mn>24</mn><mo>:</mo><mo>(</mo><mo>−</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>8</mn> </math>
+		</div>
+		
+	</body>
 </html>
+
+
+
+
+
+
+
+

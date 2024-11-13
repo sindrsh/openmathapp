@@ -6,6 +6,9 @@
         import { Figure } from "../../../figures/figure_modules.js"
 
         const oneSize = 30
+        const posColor = "blue"
+        const negColor = "cyan"
+        const subColor = "red"
         const oneColor = "#87CEFA"
         const oneStrokeColor = "blue"
         const tenColor = "#98FB98"
@@ -17,7 +20,6 @@
             mod[key]()
         }
         }
-
 
         const mod = {
             "one": () => {
@@ -74,14 +76,98 @@
                     fig.makeText({label: "=", pos: [100, 4.5*oneSize]})
                     fig.makeRectangle({x: 170, y: oneSize*4, width: 20, height: oneSize, fill: tenColor})
                     fig.makeText({label: 1, pos: [180, oneSize*4.5]})
-                    
+                    fig.makeRectangle({x: 200, y: oneSize*4, width: 20, height: oneSize, fill: oneColor})
+                    fig.makeText({label: 4, pos: [210, oneSize*4.5]})
                     fig.move(fig.svgContainer, 70, 5*oneSize + fig.strokeWidth)
-            }       
+            },
+            "pos5": () => {
+                    const fig = new Figure({id: "pos5"})
+                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+                    fig.oneSize = 30
+                    const vec5 = fig.makeVector({A:[0, 0], B: [5, 0], strokeColor: posColor})
+                    fig.makeXTick({x:0 , fig: vec5, strokeColor: posColor})
+                    fig.move(vec5, 0, -15)
+                    const numberLine = fig.makeVector({A:[0, 0], B: [6, 0], arrow: "axisArrow", arrowScale:0.5})
+                    fig.makeBoundingBox({xSize: oneSize*7, ySize: 50})
+                    for (let i of [0, 1, 2, 3, 4]) {
+                        fig.makeXTick({x:i , fig: numberLine, label: i.toString()})
+                    }
+                    fig.makeXTick({x: 5, fig: numberLine, label: 5, strokeColor: posColor})
+                    fig.move(fig.svgContainer, 5, 25)
+            },
+            "pos_neg_def": () => {
+                    const fig = new Figure({id: "pos_neg_def"})
+                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+                    fig.oneSize = 150
+                    const numberLine = fig.makeVector({A:[0, 0], B: [1, 0], arrow: "axisArrow", arrowScale:0.5})
+                    const negNumberLine = fig.makeVector({A:[0, 0], B: [-1, 0], arrow: "axisArrow", arrowScale:0.5})
+                    fig.makeBoundingBox({xSize: fig.oneSize*2+10, ySize: 50})
+                    fig.makeText({label: "positive tall", pos:[fig.oneSize*0.5, 15]})
+                    fig.makeText({label: "negative tall", pos:[-fig.oneSize*0.5, 15]})
+                    fig.makeXTick({x:0, fig: numberLine, label: "0"})
+                    fig.move(fig.svgContainer, fig.oneSize+5, 25)
+            },
+            "pos5_neg5": () => {
+                    const fig = new Figure({id: "pos5_neg5"})
+                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+                    fig.oneSize = 30
+                    const vec5 = fig.makeVector({A:[0, 0], B: [5, 0], strokeColor: posColor})
+                    fig.makeXTick({x:0 , fig: vec5, strokeColor: posColor})
+                    const vecNeg5 = fig.makeVector({A:[0, 0], B: [-5, 0], strokeColor: negColor})
+                    fig.move(vec5, 0, -15)
+                    fig.move(vecNeg5, 0, -30)
+                    fig.makeXTick({x:0 , fig: vecNeg5, strokeColor: negColor})
+                    const numberLine = fig.makeVector({A:[0, 0], B: [6, 0], arrow: "axisArrow", arrowScale:0.5})
+                    const negNumberLine = fig.makeVector({A:[0, 0], B: [-6, 0], arrow: "axisArrow", arrowScale:0.5})
+                    for (let i=0; i < 5; ++i) {
+                        fig.makeXTick({x: i, fig: numberLine, label: i.toString()})
+                        fig.makeXTick({x: -i, fig: negNumberLine, label: (-i).toString()})
+                    }
+                    fig.makeXTick({x: 5, fig: numberLine, label: 5, strokeColor: posColor})
+                    fig.makeXTick({x: -5, fig: negNumberLine, label: "-5", strokeColor: negColor})
+                    fig.makeBoundingBox({xSize: fig.oneSize*12+10, ySize: 60})
+                    fig.makeXTick({x:0, fig: numberLine, label: "0"})
+                    fig.move(fig.svgContainer, 6*fig.oneSize+5, 35)
+            },          
+            "7plus_neg4": () => {
+                    const fig = new Figure({id: "7plus_neg4"})
+                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+                    fig.oneSize = 30
+                    const vecNeg4 = fig.makeVector({A:[7, 0], B: [3, 0], strokeColor: negColor})
+                    fig.move(vecNeg4, 0, -15)
+                    fig.makeXTick({x:7 , fig: vecNeg4, strokeColor: negColor})
+                    fig.makeText({pos:[5*fig.oneSize, -30], label: "4", textColor: negColor})
+                    const numberLine = fig.makeVector({A:[3, 0], B: [8, 0], arrow: "axisArrow", arrowScale:0.5})
+                    const negNumberLine = fig.makeVector({A:[3, 0], B: [2, 0], arrow: "axisArrow", arrowScale:0.5})
+                    for (let i=3; i < 8; ++i) {
+                        fig.makeXTick({x: i, fig: numberLine, label: i.toString()})
+                    }
+                    fig.makeBoundingBox({xSize: fig.oneSize*6+10, ySize: 65})
+                    fig.move(fig.svgContainer, -fig.oneSize, 40)
+            },  
+            "2sub_neg6": () => {
+                    const fig = new Figure({id: "2sub_neg6"})
+                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+                    fig.oneSize = 30
+                    const vecNeg4 = fig.makeVector({A:[8, 0], B: [2, 0], strokeColor: subColor})
+                    fig.move(vecNeg4, 0, -15)
+                    fig.makeXTick({x:8 , fig: vecNeg4, strokeColor: subColor})
+                    fig.makeText({pos:[5*fig.oneSize, -30], label: "6", textColor: subColor})
+                    const numberLine = fig.makeVector({A:[2, 0], B: [9, 0], arrow: "axisArrow", arrowScale:0.5})
+                    const negNumberLine = fig.makeVector({A:[2, 0], B: [1, 0], arrow: "axisArrow", arrowScale:0.5})
+                    for (let i=2; i < 9; ++i) {
+                        fig.makeXTick({x: i, fig: numberLine, label: i.toString()})
+                    }
+                    fig.makeBoundingBox({xSize: fig.oneSize*10+10, ySize: 65})
+                    fig.move(fig.svgContainer, -fig.oneSize, 40)
+            },  
         }
+
+        mod["2sub_neg6"]()
         
 
 
-        mod["fourteen_value"]()
+        
 
 
         
