@@ -17,6 +17,7 @@
             const task = new CalcTask("count_ones_amounts_10_to_20", makeTask, 5)
             let fig = new Figure()
             var positions = []
+            fig.makeBoundingBox({xSize: x, ySize:y})
             fig.makePolygon({
                 points: [[0, 0], [x, 0], [x, y], [0, y]], 
                 isTemp: false
