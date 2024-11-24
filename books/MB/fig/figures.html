@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="../../book_styles.css">
-
     <script type="module">
         import { Figure } from "../../../figures/figure_modules.js"
+        import { BookFigure } from "../../../figures/figure_modules.js"
 
         const oneSize = 30
         const posColor = "blue"
@@ -160,16 +160,22 @@
                     }
                     fig.makeBoundingBox({xSize: fig.oneSize*10+10, ySize: 65})
                     fig.move(fig.svgContainer, -fig.oneSize, 40)
-            },  
-        }
+            }, 
+            "test": () => {
+                const fig = new BookFigure()
+                
+                
+                fig.makeVector([0, 0], [10, 0])
 
-        //mod["2sub_neg6"]()
-        function opt(x, y, {a = "3", b="b"} = {}, {c=2} = {} ) {
-            console.log(a, " ", b)
-        }
+                let da = Math.PI/3
+                for (let i=0; i<6; ++i) {
+                    fig.makeCircleSegment(100, 200, 200, da*i, da*(i+1))
+                }
+                
+            }
+        }  
 
-        opt(3, 4, {a: 7})
-
+        mod["test"]()
         
 
 

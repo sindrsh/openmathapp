@@ -417,20 +417,25 @@ class Figure {
     }
 }
 
-class BookFigure extends Figure {
+class BookFigure {
     svgElement
     svgContainer
+    body
     strokeWidth = 2
     oneSize = 15
     useViewBox
-    x = 0
-    y = 0
+    xMin = 0
+    yMin = 0
+    width = 0
+    height = 0
 
-    constructor({id = null, useViewBox=true} = {}) {
+    constructor(id = null, useViewBox=true) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
         this.svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
-        
+        this.body = document.getElementsByTagName("body")[0]
+        this.body.appendChild(this.svgElement)
         this.svgElement.appendChild(this.svgContainer)
+
         this.useViewBox = useViewBox
         if (this.useViewBox) {
             this.adjust()
@@ -445,41 +450,49 @@ class BookFigure extends Figure {
         this.svgContainer.appendChild(fig)
         if (this.useViewBox) {
             
-            let boundingBox = this.svgElement.getBBox({"stroke": true})
-            boundingBox.width -= boundingBox.x - this.strokeWidth
-            boundingBox.height -= boundingBox.y - this.strokeWidth
-            if (boundingBox.x < 0) {
-                this.x -= boundingBox.x
-            }
-            if (boundingBox.y < 0) {
-                this.y -= boundingBox.y
-            }
-            //this.svgElement.setAttribute("height", boundingBox.height.toString())
-            //this.svgElement.setAttribute("width", boundingBox.width.toString())
+            let boundingBox = this.svgContainer.getBBox()
+            this.updateBoundingBox(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height)
         }
-
-        
     }
     
     adjust() {
-        this.x += this.strokeWidth/2
-        this.y += this.strokeWidth/2
-        this.svgContainer.setAttribute("transform", `translate(${this.x} ${this.y})`)
+        this.svgContainer.setAttribute("transform", `translate(${-this.xMin + this.strokeWidth} ${-this.yMin + this.strokeWidth})`)
+    }
+
+    updateBoundingBox(x, y, width, height) {
+        
+        
+        if (-x + width > this.width) {
+            this.width = -x + width
+        }
+        if (x < this.xMin) {
+            this.width += this.xMin - x
+            this.xMin = x
+        }
+        if (-y + height > this.height) {
+            this.height = -y + height
+        }
+        if (y < this.yMin) {
+            this.height += this.yMin - y
+            this.yMin = y
+        }
+        this.svgElement.setAttribute("height", (this.height + 5).toString())
+        this.svgElement.setAttribute("width", (this.width + 5).toString())
+        this.adjust()
     }
 
     makeBoundingBox(xSize, ySize, strokeColor="transparent", fill= "transparent") {
         this.useViewBox = false
         this.svgElement.setAttribute("width", xSize + this.strokeWidth)
         this.svgElement.setAttribute("height", ySize + this.strokeWidth)
-        this.makePolygon({
-            points: [[0, 0], [xSize, 0], [xSize, ySize], [0, ySize]],
+        this.makePolygon([[0, 0], [xSize, 0], [xSize, ySize], [0, ySize]], {
             fill: fill,
             strokeColor: strokeColor,
         })
     }
 
     
-    makeCircle(r, x=0, y=0, {fill="white", strokeColor = "black", strokeWidth= this.strokeWidth, addToSvg= true} = {}) {
+    makeCircle(r, x=0, y=0, {fill="transparent", strokeColor = "black", strokeWidth= this.strokeWidth, addToSvg= true} = {}) {
         let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
         circle.setAttribute("stroke", strokeColor)
         circle.setAttribute("stroke-width", strokeWidth)
@@ -488,7 +501,7 @@ class BookFigure extends Figure {
         circle.setAttribute("cy", y.toString())
         circle.setAttribute("r", r.toString())
         if (addToSvg) {
-            this.addToSVGContainer({fig: circle, isTemp: isTemp})
+            this.addToSVGContainer(circle)
         }
         return circle
     }
@@ -636,42 +649,30 @@ class BookFigure extends Figure {
         return hundredsCollection
     }
 
-    getCirclePoint({ r=1, angle=0 } ) {
+    getCirclePoint(r=1, angle=0) {
         return [r*Math.cos(angle), -r*Math.sin(angle)]
     }
 
-    makeCircleArc({r=50, angle0=0, angle1, pos=[0, 0], fill="white", density=100, strokeColor="black", strokeWidth=this.strokeWidth} = {}) {
+    makeCircleArc(r, x, y, angle0, angle1, {addToSvg=true, fill="transparent", density=100, strokeColor="black", strokeWidth=this.strokeWidth, flag=1} = {}) {
         let arc = document.createElementNS("http://www.w3.org/2000/svg", "path")
-        let p = this.getCirclePoint({r: r, angle: angle0})
-        let pathD = `M ${p[0]} ${p[1]}`
-
-        let da = angle1-angle0
-        let n = [...Array(Math.floor(density*da/(2*Math.PI))).keys()]
-        n.shift()
-        da = da/n.length
-        
-        for (let i of n) {
-            angle0 += da 
-            p = this.getCirclePoint({r: r, angle: angle0})
-            pathD += ` L ${p[0]} ${p[1]}` 
-        }
-        
+        let p0 = this.getCirclePoint(r, angle0)
+        let p1 = this.getCirclePoint(r, angle1)
+        let pathD = `M ${x + p0[0]} ${y + p0[1]} A ${r} ${r}, 0, 0, 0, ${x + p1[0]} ${y + p1[1]}`
         arc.setAttribute("d", pathD)
         arc.setAttribute("fill", fill)
         arc.setAttribute("stroke", strokeColor)
         arc.setAttribute("stroke-width", strokeWidth)
        
-        this.addToSVGContainer({fig:arc})
-        arc.setAttribute("transform", `translate(${pos[0]} ${pos[1]})`)
+        if (addToSvg) {
+            this.addToSVGContainer(arc)
+        }
         return arc
     }
 
-    makeCircleSegment({r=50, angle0=0, angle1, pos=[0, 0], density=100, fill= "white", strokeColor="black", strokeWidth= this.strokeWidth} = {}) {
-        let segment = this.makeCircleArc({r:50, angle0: angle0, angle1: angle1, density:density, fill: fill, strokeColor: strokeColor, strokeWidth: this.strokeWidth})
-        let pathD = segment.getAttribute("d") + " L 0 0 Z"
-        // making the arc a segment
+    makeCircleSegment(r, x, y, angle0, angle1, {fill= "white", strokeColor="black", strokeWidth= this.strokeWidth} = {}) {
+        let segment = this.makeCircleArc(r, x, y, angle0, angle1, {fill: fill, strokeColor: strokeColor, strokeWidth: this.strokeWidth})
+        let pathD = segment.getAttribute("d") + ` L ${x} ${y} Z`
         segment.setAttribute("d", pathD)
-        segment.setAttribute("transform", `translate(${pos[0]} ${pos[1]})`)
         return segment 
     }
 
@@ -721,7 +722,7 @@ class BookFigure extends Figure {
         container.setAttribute("height", height)
     }
     
-    makeVector({ A=[0, 0], B, arrow="triangle", arrowScale=1, pos=[0, 0], addToSvg=true, isTemp=true, strokeColor="black", oneLength=this.oneSize} = {} ) {
+    makeVector(A, B, {arrow="triangle", arrowScale=1, pos=[0, 0], addToSvg=true, isTemp=true, strokeColor="black", oneLength=this.oneSize} = {} ) {
         
         A = [A[0]*oneLength, A[1]*oneLength]
         B = [B[0]*oneLength, B[1]*oneLength]
@@ -731,7 +732,7 @@ class BookFigure extends Figure {
         if (arrow === "triangle") {
             let triangleLength = arrowScale*4
             let triangleHeight = arrowScale*10
-            arrowHead = this.makePolygon({points: [[0, -triangleLength], [triangleHeight, 0], [0, triangleLength]], fill: strokeColor, strokeColor: strokeColor, addToSvg: false})
+            arrowHead = this.makePolygon([[0, -triangleLength], [triangleHeight, 0], [0, triangleLength]], {fill: strokeColor, strokeColor: strokeColor, addToSvg: false, xScale: 1, yScale: 1})
             let direction = [B[0]-A[0], B[1]-A[1]]
             let directionLength = Math.sqrt(direction[0]**2 + direction[1]**2)
             direction = [triangleHeight*direction[0]/directionLength, triangleHeight*direction[1]/directionLength]  
@@ -756,9 +757,8 @@ class BookFigure extends Figure {
         let line = this.makeLine({A: A, B: B, addToSvg: false, isTemp: false})
         line.setAttribute("stroke", strokeColor)
         lineContainer.appendChild(line)
-
         if (addToSvg) {
-            this.addToSVGContainer({fig:lineContainer, isTemp:isTemp})
+            this.addToSVGContainer(lineContainer)
         }
         return lineContainer    
     }
@@ -771,17 +771,35 @@ class BookFigure extends Figure {
         return angle*180/Math.PI
     }
 
-    makeText({label= "", pos=[0, 0], textColor="black", verticalAnchor="middle", horizontalAnchor="middle", isTemp=true, addToSvg=true} = {}) {
+    makeText(label= "", x, y, {textColor="black", verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true} = {}) {
         let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
-        text.setAttribute("x", pos[0].toString())
-        text.setAttribute("y", pos[1].toString())
+        text.setAttribute("x", x.toString())
+        text.setAttribute("y", y.toString())
         text.style.dominantBaseline = verticalAnchor
         text.style.textAnchor = horizontalAnchor
         text.style.fill = textColor
         text.innerHTML = `${label}`
+        let textRect = document.createElement("span")
+        textRect.innerHTML = `${label}`
+        textRect.style.visibility = "hidden"
+        this.body.appendChild(textRect)
+        let boundingRect = textRect.getBoundingClientRect()
 
+        let textX = 0
+        if (horizontalAnchor === "middle") {
+            textX = x - boundingRect.width/2
+        }
+
+        let textY = 0
+        if (horizontalAnchor ==="middle") {
+            textY = y - boundingRect.height/2
+        }
+        if (this.useViewBox) {
+            this.updateBoundingBox(textX, textY, boundingRect.width, boundingRect.height)
+        }
+        
         if (addToSvg) {
-            this.addToSVGContainer({fig: text, isTemp: isTemp})
+            this.svgContainer.appendChild(text)
         }
         return text
     }
