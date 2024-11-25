@@ -28,6 +28,10 @@
                 width: 80px;
             }
             
+            .subjectTable {
+                margin-top: 20px;
+            }
+
             body {
                 font-family: sans-serif;   
             }
@@ -213,6 +217,80 @@
                         </tr>
                     </tbody>
                 </table>
+                <table class="subjectTable">
+                    <tbody>
+                    <tr>
+                        <th rowspan="3">Negative tal</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="topicTable">
+                                <tbody>
+                                <tr> 
+                                    <td rowspan="4">Mengde</td> 
+                                </tr>
+                                <tr class="interactives">
+                                    <td class="medium">Interaktivt</td>
+                                    <td class="interactive"> </td>
+                                    <td class="interactive"> </td>
+                                </tr>
+                                <tr class="book">
+                                    <td>Bok</td>
+                                    <td class="section">   </td>
+                                    <td class="section"> </td>
+                                </tr>
+                                <tr class="tests">
+                                    <td>Oppgaver</td> 
+                                    <td id="plus_on_interval_min9_to_9" class="test">
+                                        <a href="assessments/neg/plus_on_interval_min9_to_9.html"> Test 1</a>
+                                    </td>
+                                    <td id="sub_on_interval_min9_to_9" class="test">
+                                        <a href="assessments/neg/sub_on_interval_min9_to_9.html"> Test 2</a>
+                                    </td>
+                                    <td id="pos_times_neg" class="test">
+                                        <a href="assessments/neg/pos_times_neg.html"> Test 3</a>
+                                    </td>
+                                    <td id="neg_times_neg" class="test">
+                                        <a href="assessments/neg/neg_times_neg.html"> Test 4</a>
+                                    </td>
+                                    <td id="pos_div_neg" class="test">
+                                        <a href="assessments/neg/pos_div_neg.html"> Test 5</a>
+                                    </td>
+                                    <td id="neg_div_neg" class="test">
+                                        <a href="assessments/neg/neg_div_neg.html"> Test 6</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="topicTable">
+                                <tbody>
+                                <tr> 
+                                    <td rowspan="4">Tallinje</td> 
+                                </tr>
+                                <tr> 
+                                    <td class="interactives"> Interaktivt</td>
+                                </tr>
+                                <tr class="book">
+                                    <td> Bok</td>
+                                    <td class="section">
+                                    </td>
+                                </tr>
+                                <tr class="tests">
+                                    <td>Oppgaver</td>
+                                    <td id="num_line_0_to_min9" class="test"> 
+                                        <a href="assessments/neg/num_line_0_to_min9.html"> Test 1</a> </td>
+                                    </tr>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
             </div>
         </div>
         
@@ -237,7 +315,6 @@
             signIn(username, password).then( (value) => {
                 if (value) {
                     if (document.getElementById("rememberLoginInfo").checked == true) {
-                        console.log("jamen")
                         localStorage.setItem("username", username)
                         localStorage.setItem("password", password)
                     }
@@ -248,7 +325,6 @@
             )
         } 
         let topics = document.getElementsByClassName("topicTable")
-        console.log(topics)
         for (let topic of topics) {
             let row = topic.getElementsByClassName("tests")[0]
             let tests = Array.from(row.getElementsByClassName("test"))
@@ -260,7 +336,9 @@
             if (localStorage.getItem("tests")) {
                 testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
             }
+            console.log(testsFromLocalStorage)
             for (let i=0; i<tests.length-1; ++i) {
+                console.log(tests[i].id, tests[i].id in testsFromLocalStorage)
                 if (tests[i].id in testsFromLocalStorage) {
                     if (testsFromLocalStorage[tests[i].id]["score"] == 2) {
                         ++cnt
