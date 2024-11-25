@@ -13,8 +13,8 @@
             shuffleArray(numbers)
             fig.makeBoundingBox({xSize: 550, ySize: 90})
             let numberLine = fig.makeVector({A: [10, 0],  B: [0, 0], arrow: "axisArrow", isTemp:false })
-            fig.makeXTick({pos: [10, 0], fig: numberLine, label: "0", isTemp: false})
-            fig.makeXTick({pos: [9, 0], fig: numberLine, label: "-1", isTemp: false})
+            fig.makeXTick({x: 10, fig: numberLine, label: "0", isTemp: false})
+            fig.makeXTick({x: 9, fig: numberLine, label: "-1", isTemp: false})
             let task = new CalcTask("", makeTask, numbers.length)
             
             
@@ -24,7 +24,7 @@
                 let a = numbers.pop()
                 
                 for (let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
-                    fig.makeXTick({pos: [i, 0], fig: numberLine})
+                    fig.makeXTick({x:i, fig: numberLine})
                 }
                 fig.move(numberLine, xStart, 50)
                 let taskVector = fig.makeVector({A:[10, 0], B: [a, 0], strokeColor: "blue" })
