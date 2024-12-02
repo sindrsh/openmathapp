@@ -37,11 +37,11 @@
             }
 
             .test {
-                visibility: hidden;
+                /*visibility: hidden;*/
             }
 
             .interactive {
-                visibility: hidden;
+                /*visibility: hidden;*/
             }
 
 
@@ -173,128 +173,6 @@
                 </tbody>
                 </table>
 
-                <table class="subjectTable">
-                    <tbody>
-                        <tr>
-                            <th rowspan="3">Desimaltall</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <table class="topicTable">
-                                    <tbody>
-                                    <tr> 
-                                        <td rowspan="4">Mengde</td> 
-                                    </tr>
-                                    <tr class="interactives">
-                                        <td class="medium">Interaktivt</td>
-                                        <td class="interactive"> </td>
-                                        <td class="interactive"> </td>
-                                    </tr>
-                                    <tr class="book">
-                                        <td>Bok</td>
-                                        <td class="section"> <a href="books/decimals.pdf"> Desimalar</a>  </td>
-                                        <td></td>
-                                        <td class="section"> <a href="books/10_pos_system.pdf"> Titalsystemet</a></td>
-                                    </tr>
-                                    <tr class="tests">
-                                        <td>Oppgaver</td> 
-                                        <td class="test" id="count_amounts_0_to_0point9">
-                                            <a href="assessments/dec/count_amounts_0_to_0point9.html"> Test 1</a>
-                                        </td>
-                                        <td class="test" id="count_amounts_1point1_to_3point9" >
-                                            <a href="assessments/dec/count_amounts_1point1_to_3point9.html"> Test 2</a>
-                                        </td>
-                                        <td class="test"  id="count_amounts_0_to_0point9_2dec">
-                                            <a href="assessments/dec/count_amounts_0_to_0point9_2dec.html"> Test 3</a>
-                                        </td>
-                                        <td class="test" id="count_unordered_amounts_1point1_to_3point9">
-                                            <a href="assessments/dec/count_unordered_amounts_1point1_to_3point9.html"> Test 4</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="subjectTable">
-                    <tbody>
-                    <tr>
-                        <th rowspan="3">Negative tal</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table class="topicTable">
-                                <tbody>
-                                <tr> 
-                                    <td rowspan="4">Mengde</td> 
-                                </tr>
-                                <tr class="interactives">
-                                    <td class="medium">Interaktivt</td>
-                                    <td class="interactive"> </td>
-                                    <td class="interactive"> </td>
-                                </tr>
-                                <tr class="book">
-                                    <td>Bok</td>
-                                    <td class="section">   </td>
-                                    <td class="section"> </td>
-                                </tr>
-                                <tr class="tests">
-                                    <td>Oppgaver</td> 
-                                    <td id="plus_on_interval_min9_to_9" class="test">
-                                        <a href="assessments/neg/plus_on_interval_min9_to_9.html"> Test 1</a>
-                                    </td>
-                                    <td id="sub_on_interval_min9_to_9" class="test">
-                                        <a href="assessments/neg/sub_on_interval_min9_to_9.html"> Test 2</a>
-                                    </td>
-                                    <td id="pos_times_neg" class="test">
-                                        <a href="assessments/neg/pos_times_neg.html"> Test 3</a>
-                                    </td>
-                                    <td id="neg_times_neg" class="test">
-                                        <a href="assessments/neg/neg_times_neg.html"> Test 4</a>
-                                    </td>
-                                    <td id="pos_div_neg" class="test">
-                                        <a href="assessments/neg/pos_div_neg.html"> Test 5</a>
-                                    </td>
-                                    <td id="neg_div_neg" class="test">
-                                        <a href="assessments/neg/neg_div_neg.html"> Test 6</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table class="topicTable">
-                                <tbody>
-                                <tr> 
-                                    <td rowspan="4">Tallinje</td> 
-                                </tr>
-                                <tr> 
-                                    <td class="interactives"> Interaktivt</td>
-                                </tr>
-                                <tr class="book">
-                                    <td> Bok</td>
-                                    <td class="section">
-                                    </td>
-                                </tr>
-                                <tr class="tests">
-                                    <td>Oppgaver</td>
-                                    <td id="num_line_0_to_min9" class="test"> 
-                                        <a href="assessments/neg/num_line_0_to_min9.html"> Test 1</a> </td>
-                                    </tr>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
-            </div>
-        </div>
-        
-
 
     <script type="module">
         import { signIn } from "./data_module.js"
@@ -324,8 +202,110 @@
             }
             )
         } 
+
+
+
+        async function getSubjects() {
+            try {
+                const response = await fetch("./task_index.json");
+                if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+                }
+
+                const subjects = await response.json();
+                return subjects
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        const bodyElement = document.getElementsByTagName("body")[0]
+
+        getSubjects().then( (subjects) => {
+            for (let subject of Object.keys(subjects)) {
+                let subjectTable = document.createElement("table")
+                let subjectTableBody = document.createElement("tbody")
+                let subjectRow = document.createElement("tr")
+                
+                subjectTable.setAttribute("class", "subjectTable")
+
+                const directory = subjects[subject]["directory"]
+                let topics = subjects[subject]["topics"]
+                const topicsArray = Object.keys(topics)
+
+                subjectRow.innerHTML = `<td rowspan=${topicsArray.length + 1}> ${subject} </td>`
+                subjectTable.appendChild(subjectTableBody)
+                subjectTableBody.appendChild(subjectRow)
+                
+                
+
+                for (let topic of topicsArray) {
+                    subjectRow = document.createElement("tr")
+                    let subjectRowTd = document.createElement("td")
+                    let topicTable = document.createElement("table")
+                    let topicTableBody = document.createElement("tbody")
+                    let topicTableTitleRow = document.createElement("tr")
+                    let topicTableRow = document.createElement("tr")
+                    let topicTableInteractiveRow = document.createElement("tr")
+                    let topicTableBookRow = document.createElement("tr")
+                    let topicTableTaskRow = document.createElement("tr")
+
+                    topicTableBookRow.setAttribute("class", "book")
+                    topicTableInteractiveRow.setAttribute("class", "interactive")
+                    topicTableTaskRow.setAttribute("class", "tasks")
+
+                    topicTableBookRow.innerHTML = `<td> Bok </td>`
+                    topicTableInteractiveRow.innerHTML = `<td> Interaktivt </td>`
+                    topicTableTaskRow.innerHTML = `<td> Oppgaver </td>`
+
+                    let tasks = topics[topic]
+                    let tasksArray = Object.keys(tasks)
+                    topicTableTitleRow.innerHTML = `<td rowspan="4">${topic}</td>`
+                    
+                    topicTableBody.appendChild(topicTableTitleRow)
+                    topicTableBody.appendChild(topicTableBookRow)
+                    topicTableBody.appendChild(topicTableInteractiveRow)
+                    topicTableBody.appendChild(topicTableTaskRow)
+
+                    let cnt = 0
+                    for (let task of tasksArray) {
+                        let sectionTd = document.createElement("td")
+                        sectionTd.innerHTML = `hei`
+                        sectionTd.setAttribute("class", "section")
+                        topicTableBookRow.appendChild(sectionTd)
+                        
+                        let interactiveTd = document.createElement("td")
+                        interactiveTd.innerHTML = `ok`
+                        interactiveTd.setAttribute("class", "interactive")
+                        topicTableInteractiveRow.appendChild(interactiveTd)
+
+                        
+                        ++cnt
+                        let taskTd = document.createElement("td")
+                        taskTd.innerHTML = `<a href="">Test ${cnt}</a>`
+                        taskTd.setAttribute("class", "task")
+                        taskTd.setAttribute("id", task)
+                        topicTableTaskRow.appendChild(taskTd)
+
+                    }
+                    topicTable.appendChild(topicTableBody)
+                    subjectRowTd.appendChild(topicTable)
+                    subjectRow.appendChild(subjectRowTd)
+                    subjectTableBody.appendChild(subjectRow)
+                }
+                
+                
+                bodyElement.appendChild(subjectTable)
+            }
+                
+        }
+        )
+        
+
+        
         let topics = document.getElementsByClassName("topicTable")
         for (let topic of topics) {
+            break
             let row = topic.getElementsByClassName("tests")[0]
             let tests = Array.from(row.getElementsByClassName("test"))
             tests[0].style.visibility = "visible"
@@ -338,7 +318,6 @@
             }
             console.log(testsFromLocalStorage)
             for (let i=0; i<tests.length-1; ++i) {
-                console.log(tests[i].id, tests[i].id in testsFromLocalStorage)
                 if (tests[i].id in testsFromLocalStorage) {
                     if (testsFromLocalStorage[tests[i].id]["score"] == 2) {
                         ++cnt

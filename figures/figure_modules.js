@@ -422,14 +422,29 @@ class BookFigure {
     svgContainer
     body
     strokeWidth = 2
-    oneSize = 15
+    oneSize
+    xScale
+    yScale
     useViewBox
     xMin = 0
     yMin = 0
+    xMax = 0
+    yMax = 0
     width = 0
     height = 0
 
-    constructor(id = null, useViewBox=true) {
+
+    posColor = "blue"
+    negColor = "cyan"
+    subColor = "red"
+    tenthColor = "cyan"
+    tenthStrokeColor = "Cyan"
+    oneColor = "#87CEFA"
+    oneStrokeColor = "blue"
+    tenColor = "#98FB98"
+    tenStrokeColor = "#006400"
+
+    constructor(id, oneSize, useViewBox=true) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
         this.svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
         this.body = document.getElementsByTagName("body")[0]
@@ -444,6 +459,9 @@ class BookFigure {
         if (id) {
             this.svgElement.id = id
         }
+        this.oneSize = oneSize
+        this.xScale = this.oneSize
+        this.yScale = this.oneSize
     }
 
     addToSVGContainer(fig) {
@@ -451,7 +469,7 @@ class BookFigure {
         if (this.useViewBox) {
             
             let boundingBox = this.svgContainer.getBBox()
-            this.updateBoundingBox(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height)
+            this.updateBoundingBox(boundingBox.x, boundingBox.y, boundingBox.x + boundingBox.width, boundingBox.y + boundingBox.height)
         }
     }
     
@@ -459,25 +477,23 @@ class BookFigure {
         this.svgContainer.setAttribute("transform", `translate(${-this.xMin + this.strokeWidth} ${-this.yMin + this.strokeWidth})`)
     }
 
-    updateBoundingBox(x, y, width, height) {
+    updateBoundingBox(shapeXmin, shapeYmin, shapeXmax, shapeYmax) {
         
+        if (shapeXmin < this.xMin) {
+            this.xMin = shapeXmin
+        }
+        if (shapeYmin < this.yMin) {
+            this.yMin = shapeYmin
+        }
+        if (shapeXmax > this.xMax) {
+            this.xMax = shapeXmax
+        }
+        if (shapeYmax > this.yMax) {
+            this.yMax = shapeYmax
+        }
         
-        if (-x + width > this.width) {
-            this.width = -x + width
-        }
-        if (x < this.xMin) {
-            this.width += this.xMin - x
-            this.xMin = x
-        }
-        if (-y + height > this.height) {
-            this.height = -y + height
-        }
-        if (y < this.yMin) {
-            this.height += this.yMin - y
-            this.yMin = y
-        }
-        this.svgElement.setAttribute("height", (this.height + 5).toString())
-        this.svgElement.setAttribute("width", (this.width + 5).toString())
+        this.svgElement.setAttribute("height", (this.yMax - this.yMin + 5).toString())
+        this.svgElement.setAttribute("width", (this.xMax - this.xMin + 5).toString())
         this.adjust()
     }
 
@@ -520,18 +536,18 @@ class BookFigure {
         return line
     }
 
-    makeRectangle(width, height, x=0, y=0, {xScale=this.oneSize, yScale=this.oneSize, fill="white", strokeColor="black", addToSvg=true, strokeWidth=this.strokeWidth}) {
+    makeRectangle(width, height, x=0, y=0, {fill="white", strokeColor="black", addToSvg=true, strokeWidth=this.strokeWidth, xScale= this.xScale, yScale=this.yScale} = {}) {
         let rectangle = document.createElementNS("http://www.w3.org/2000/svg", "rect")  
-        rectangle.setAttribute("x", (xScale*x).toString())
-        rectangle.setAttribute("y", (yScale*y).toString())
-        rectangle.setAttribute("width", width.toString())
-        rectangle.setAttribute("height", height.toString())
+        rectangle.setAttribute("x", x*xScale)
+        rectangle.setAttribute("y", y*yScale)
+        rectangle.setAttribute("width", (xScale*width).toString())
+        rectangle.setAttribute("height", (yScale*height).toString())
         rectangle.setAttribute("stroke", strokeColor)
         rectangle.setAttribute("stroke-width", strokeWidth)
         rectangle.setAttribute("fill", fill)
         
         if (addToSvg) {
-            this.addToSVGContainer({fig: rectangle, isTemp: isTemp})
+            this.addToSVGContainer(rectangle)
         }
         return rectangle
     }
@@ -553,39 +569,50 @@ class BookFigure {
         return polygon      
     }
     
+    makeTenths(amount, {x=0, y=0, ySpace=5, fill=this.tenthColor, strokeColor = this.tenthStrokeColor, addToSvg=true, strokeWidth=this.strokeWidth} = {}) {
+        let tenthsCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
+        for (let i of Array(amount).keys()) {
+            let m = i % 5
+            let n = Math.floor(i/5)
+            let tenth = this.makeRectangle(1/5, 1/2, x + 1/5*m, y - n*0.5, {fill:this.oneColor, strokeColor:this.oneStrokeColor, addToSvg:false, strokeWidth:this.strokeWidth})
+            tenthsCollection.appendChild(tenth)
+        }
+
+        if (addToSvg) {
+            this.addToSVGContainer(tenthsCollection)
+        }
+        return tenthsCollection
+    }
 
 
-    makeOnes({amount, isTemp=true, size=this.oneSize, ySpace=5, fill="blue", strokeColor = "black", addToSvg=true, strokeWidth=this.strokeWidth}) {
+    makeOnes(amount, {x=0, y=0, ySpace=5, fill=this.oneColor, strokeColor = this.oneStrokeColor, addToSvg=true, strokeWidth=this.strokeWidth}) {
         if (amount == 0 || amount == null) {
             return null;
         }
-        let one = this.makeRectangle({width: size, height: size, isTemp: isTemp, fill: fill, strokeColor: strokeColor, strokeWidth: strokeWidth, addToSvg: false})
         let onesCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
-        onesCollection.appendChild(one)
-        let dy = 0
-        for (let i of Array(amount - 1).keys()) {
-            one = one.cloneNode()
-            dy = (i+1)*(size + ySpace)
-            one.setAttribute("y", dy.toString())
+        for (let i of Array(amount).keys()) {
+            let one = this.makeRectangle(1, 1, x, y - i - ySpace*i, {fill: fill, strokeColor: strokeColor, strokeWidth: strokeWidth, addToSvg: false})
             onesCollection.appendChild(one)   
         }
         if (addToSvg) {
-            this.addToSVGContainer({fig: onesCollection, isTemp: isTemp})
+            this.addToSVGContainer(onesCollection)
         }
         
         return onesCollection
         
     }
 
-    makeTens({amount, isTemp=true, xSize=this.oneSize, xSpace=5, fill="red", strokeColor="black", addToSvg=true, id=null, direction=-1, strokeWidth=this.strokeWidth, unit=1}) {
+    makeTens(amount, {x=0, y=0, xSize=this.oneSize, xSpace=5, fill=this.tenColor, strokeColor="black", addToSvg=true, direction=-1, strokeWidth=this.strokeWidth, unit=1}) {
         if (amount == 0 || amount == null) {
             return null;
         }
 
         let ten
         if (unit == 1) { 
-                ten = this.makeOnes({
-                amount: 10, 
+                ten = this.makeOnes(
+                10, {
+                x: x,
+                y: y,
                 size: xSize, 
                 ySpace: 0, 
                 fill: fill, 
@@ -595,8 +622,8 @@ class BookFigure {
         }
         
         if (unit == 10) {
-            ten = this.makePolygon({
-                points: [[0, 0], [xSize, 0], [xSize, 10*xSize], [0, 10*xSize]], 
+            ten = this.makeRectangle(
+                xSize, 10*xSize, x, y, {
                 strokeColor: strokeColor,
                 strokeWidth: strokeWidth,
                 fill:fill, 
@@ -613,7 +640,7 @@ class BookFigure {
             tensCollection.appendChild(ten)   
         }
         if (addToSvg) {
-            this.addToSVGContainer({fig: tensCollection, isTemp: isTemp})
+            this.addToSVGContainer(tensCollection)
         }
 
         return tensCollection
@@ -722,10 +749,10 @@ class BookFigure {
         container.setAttribute("height", height)
     }
     
-    makeVector(A, B, {arrow="triangle", arrowScale=1, pos=[0, 0], addToSvg=true, isTemp=true, strokeColor="black", oneLength=this.oneSize} = {} ) {
+    makeVector(A, B, {arrow="triangle", xScale=this.xScale, yScale=this.yScale, arrowScale=1, x=0, y=0, strokeWidth=this.strokeWidth, addToSvg=true, isTemp=true, strokeColor="black", oneLength=this.oneSize} = {} ) {
         
-        A = [A[0]*oneLength, A[1]*oneLength]
-        B = [B[0]*oneLength, B[1]*oneLength]
+        A = [(x + A[0])*xScale, (y + A[1])*yScale]
+        B = [(x + B[0])*xScale, (y + B[1])*yScale]
         let lineContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
 
         let arrowHead = null
@@ -741,8 +768,8 @@ class BookFigure {
 
         if (arrow === "axisArrow") {
             arrowHead = document.createElementNS("http://www.w3.org/2000/svg", "path")
-            let endPoint = [-arrowScale*10, arrowScale*10]
-            let curvePoint = [-arrowScale*7, arrowScale*3]
+            let endPoint = [-arrowScale*7, arrowScale*7]
+            let curvePoint = [-arrowScale*3.5, arrowScale*2]
             arrowHead.setAttribute("d", `M ${endPoint[0]} ${endPoint[1]} Q ${curvePoint[0]} ${curvePoint[1]} 0 0 Q ${curvePoint[0]} ${-curvePoint[1]} ${endPoint[0]} ${-endPoint[1]}`)
             arrowHead.setAttribute("stroke", strokeColor)
             arrowHead.setAttribute("fill", "transparent")
@@ -754,8 +781,13 @@ class BookFigure {
             lineContainer.appendChild(arrowHead)
         }
 
-        let line = this.makeLine({A: A, B: B, addToSvg: false, isTemp: false})
+        let line = document.createElementNS("http://www.w3.org/2000/svg", "line")
         line.setAttribute("stroke", strokeColor)
+        line.setAttribute("stroke-width", strokeWidth)
+        line.setAttribute("x1", A[0].toString())
+        line.setAttribute("y1", (A[1]).toString())
+        line.setAttribute("x2", B[0].toString())
+        line.setAttribute("y2", (B[1]).toString())
         lineContainer.appendChild(line)
         if (addToSvg) {
             this.addToSVGContainer(lineContainer)
@@ -771,8 +803,10 @@ class BookFigure {
         return angle*180/Math.PI
     }
 
-    makeText(label= "", x, y, {textColor="black", verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true} = {}) {
+    makeText(label= "", x, y, {textColor="black", verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale} = {}) {
         let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
+        x*= xScale
+        y*= yScale
         text.setAttribute("x", x.toString())
         text.setAttribute("y", y.toString())
         text.style.dominantBaseline = verticalAnchor
@@ -784,18 +818,24 @@ class BookFigure {
         textRect.style.visibility = "hidden"
         this.body.appendChild(textRect)
         let boundingRect = textRect.getBoundingClientRect()
+        this.body.removeChild(textRect)
 
-        let textX = 0
+        let textX = x
         if (horizontalAnchor === "middle") {
             textX = x - boundingRect.width/2
         }
-
-        let textY = 0
-        if (horizontalAnchor ==="middle") {
+        if (horizontalAnchor === "end") {
+            textX = x - boundingRect.width
+        }
+ 
+        let textY = y
+        if (verticalAnchor === "middle") {
             textY = y - boundingRect.height/2
         }
+
+        
         if (this.useViewBox) {
-            this.updateBoundingBox(textX, textY, boundingRect.width, boundingRect.height)
+            this.updateBoundingBox(textX, textY, textX + boundingRect.width, textY + boundingRect.height)
         }
         
         if (addToSvg) {
@@ -804,7 +844,7 @@ class BookFigure {
         return text
     }
 
-    makeXTick({x, fig=null, height= 5, label=null, isTemp=false, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true, textColor=strokeColor}) {
+    makeXTick(x, {fig=null, height= 5, label=null, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true, textColor=strokeColor}) {
         
         x = x*oneLength
         let tickContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
@@ -815,21 +855,14 @@ class BookFigure {
         tick.setAttribute("stroke-width", strokeWidth)
         tickContainer.appendChild(tick)
         if (label) {
-            let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
-            text.setAttribute("dominant-baseline", "hanging")
-            text.setAttribute("x", x.toString())
-            text.setAttribute("y", (height).toString())
-            text.setAttribute("dy", "10")
-            text.style.textAnchor = "middle"
-            text.style.fill = textColor
-            text.innerHTML = `${label}`
+            let text = this.makeText(label, x, height + 10, {yScale:1, xScale:1, textColor: textColor, verticalAnchor: "hanging"})
             tickContainer.appendChild(text)
         }
         if (!visible) {
             tickContainer.setAttribute("visibility", "hidden")
         }
         if (addToSvg) {
-            this.addToSVGContainer( {fig: tickContainer, isTemp: isTemp} )
+            this.addToSVGContainer(tickContainer)
         }
         if (fig) {
             fig.appendChild(tickContainer)

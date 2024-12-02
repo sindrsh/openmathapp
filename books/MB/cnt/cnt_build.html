@@ -26,12 +26,20 @@
         Når vi snakkar om en mengde, vil tallet 0 være{kapittel} skal vi se at det også er andre tolkninger av 0.} knyttet til ''ingenting''. En figur der det ikke er noe til stede vil slik være det samme som 0:
         <math display="block"> <mo>=</mo><mn>0</mn> </math>
         1 vil vi tegne som en rute:
-        <div class="figure">
-          <svg id="one" width="70" height="34"><g transform="translate(1 1)"><rect x="0" y="0" width="30" height="30" stroke="blue" stroke-width="2" fill="#87CEFA"></rect><polygon points="0 0 200 0 200 32 0 32" fill="transparent" stroke-width="2" stroke="transparent"></polygon><foreignObject x="30" y="6" width="27.125px" height="18"><math style="object-position: left top;"><mo>=</mo> <mn> 1 </mn></math></foreignObject></g></svg>
+        <div class="figure" id="one">
         </div>
 
       Andre tall vil da være definert ut ifra hvor mange ''enerruter'' (''enere'') vi har:
-        <div class="figure">rut2</div>
+      <div style="gap: 20px 0px;align-items: center; display: grid; grid-template-columns: auto auto auto auto;">
+        <div class="figure" id="two"></div>
+        <div class="figure" id="three"></div>
+        <div class="figure" id="four"></div>
+        <div class="figure" id="five"></div>
+        <div class="figure" id="six"></div>
+        <div class="figure" id="seven"></div>
+        <div class="figure" id="eight"></div>
+        <div class="figure" id="nine"></div>
+      </div>
         
       <h4 class="subsubsection">Tall som plassering på ei linje</h4>
         Når vi plasserer tall på ei linje, vil 0 være utgangspunket vårt:
@@ -153,6 +161,32 @@
       </div>
     </body>
 
+    <script>
+      async function getFigures() {
+            const url = "../fig/figures_rendered.html"
+            const figure_elements = document.getElementsByClassName("figure")
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                  throw new Error(`Response status: ${response.status}`);
+                }
+
+                const text = await response.text();
+                const parser = new DOMParser();
+                const figures = parser.parseFromString(text, "text/html")
+                console.log(figures)
+                for (figure_element of figure_elements) {
+                  if (figures.getElementById(figure_element.id)) {
+                    figure_element.appendChild(figures.getElementById(figure_element.id))
+                  }
+                }
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        getFigures()
+    </script>
 
 
 </html>

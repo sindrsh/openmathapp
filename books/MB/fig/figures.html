@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
     <link rel="stylesheet" href="../../book_styles.css">
     <script type="module">
         import { Figure } from "../../../figures/figure_modules.js"
@@ -23,62 +23,105 @@
 
         const mod = {
             "one": () => {
-                    const fig = new Figure({id: "one"})
-                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
-                    fig.makeRectangle({width: oneSize, height: oneSize, fill: oneColor, strokeColor: oneStrokeColor})
-                    fig.makeBoundingBox({xSize: 200, ySize: oneSize + fig.strokeWidth})
-                    fig.makeEquals({number: "1", pos:[oneSize, 0.5*oneSize]})
-                },
+                const fig = new BookFigure("one", oneSize)
+                fig.makeRectangle(1, 1, 0, 0, {fill: oneColor, strokeColor: oneStrokeColor})
+                fig.makeText("= 1", 1.2, 0.5,{horizontalAnchor:"start"})
+            },
             "two": () => {
-                    const fig = new Figure({id: "two"})
-                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
-                    fig.makeOnes({amount: 2, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    fig.makeBoundingBox({xSize: 200, ySize: 2*oneSize + fig.strokeWidth})
-                    fig.makeEquals({number: "2", pos:[oneSize, 1.5*oneSize]})
+                const fig = new BookFigure("two", oneSize)
+                fig.makeOnes(2, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 2", 1.2, 0, {horizontalAnchor: "start"})
                 },
+            "three": () => {
+                const fig = new BookFigure("three", oneSize)
+                fig.makeOnes(3, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 3", 1.2, -0.5, {horizontalAnchor: "start"})
+                },
+            "four": () => {
+                const fig = new BookFigure("four", oneSize)
+                fig.makeOnes(4, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 4", 1.2, -1, {horizontalAnchor: "start"})
+                },       
+            "five": () => {
+                const fig = new BookFigure("five", oneSize)
+                fig.makeOnes(5, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 5", 1.2, -1.5, {horizontalAnchor: "start"})
+                },
+            "six": () => {
+                const fig = new BookFigure("six", oneSize)
+                fig.makeOnes(6, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 6", 1.2, -2, {horizontalAnchor: "start"})
+                },
+            "seven": () => {
+                const fig = new BookFigure("seven", oneSize)
+                fig.makeOnes(7, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 7", 1.2, -2.5, {horizontalAnchor: "start"})
+                },
+                "eight": () => {
+                const fig = new BookFigure("eight", oneSize)
+                fig.makeOnes(8, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 8", 1.2, -3, {horizontalAnchor: "start"})
+                },
+            "nine": () => {
+                const fig = new BookFigure("nine", oneSize)
+                fig.makeOnes(9, {fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
+                fig.makeText("= 9", 1.2, -3.5, {horizontalAnchor: "start"})
+                },
+            "num_line_0": () => {
+                    const fig = new BookFigure("num_line_0", oneSize)
+                    const numberLine = fig.makeVector([0, 0], [10, 0], {arrow: "axisArrow"})
+                    fig.makeXTick(0, {fig: numberLine, label: "0"})
+            },    
+            "num_line_0_to_1": () => {
+                    const fig = new BookFigure("num_line_0_to_1", oneSize)
+                    const numberLine = fig.makeVector([0, 0], [10, 0], {arrow: "axisArrow"})
+                    fig.makeXTick(0, {fig: numberLine, label: "0"})
+                    fig.makeXTick(1, {fig: numberLine, label: "1"})
+                    
+            },    
             "num_line_0_to_9": () => {
-                    const fig = new Figure({id: "num_line_0_to_9"})
-                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
-                    fig.oneSize = 30
-                    const numberLine = fig.makeVector({A:[0, 0], B: [10, 0], arrow: "axisArrow"})
-                    fig.makeBoundingBox({xSize: fig.oneSize*10+20, ySize:40})
+                    const fig = new BookFigure("num_line_0_to_9", oneSize)
+                    const numberLine = fig.makeVector([0, 0], [10, 0], {arrow: "axisArrow"})
                     for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
-                        fig.makeXTick({x:i , fig: numberLine, label: i.toString()})
+                        fig.makeXTick(i, {fig: numberLine, label: i.toString()})
                     }
-                    fig.move(numberLine, 5, 10)
             },
             "fourteen": () => {
-                    const fig = new Figure({id: "fourteen"})
-                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
-                    const row0 = fig.makeOnes({amount: 5, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    const row1 = fig.makeOnes({amount: 5, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    const row2 = fig.makeOnes({amount: 4, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    fig.move(row1, oneSize, 0)
-                    fig.move(row2, 2*oneSize, oneSize)
-                    fig.makeBoundingBox({xSize: fig.oneSize*10+20, ySize:oneSize*5+2*fig.strokeWidth})
-                    fig.makeMathText({mathContent: "<mtext>fjorten</mtext><mo>=</mo>", pos:[-65, 4.5*oneSize]})
-                    fig.move(fig.svgContainer, 70, 2)
+                    const fig = new BookFigure("fourteen", oneSize)
+                    fig.makeOnes(5, {ySpace: 0})
+                    fig.makeOnes(5, {x:1, ySpace: 0})
+                    fig.makeOnes(4, {x:2, ySpace: 0})
+                    fig.makeText("fjorten = ", -5, -1.5 , {xScale: 1, horizontalAnchor:"end"})
             },
             "fourteen_value": () => {
-                    const fig = new Figure({id: "fourteen"})
+                    const fig = new BookFigure("fourteen", oneSize)
                     fig.oneSize = oneSize
-                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
-                    const row0 = fig.makeOnes({amount: 5, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    const row1 = fig.makeOnes({amount: 5, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    const row2 = fig.makeOnes({amount: 4, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    fig.move(row1, oneSize, 0)
-                    fig.move(row2, 2*oneSize, oneSize)
-                    fig.makeBoundingBox({xSize: fig.oneSize*10+20, ySize:oneSize*10+2*fig.strokeWidth})
-                    fig.makeMathText({mathContent: "<mtext>fjorten</mtext><mo>=</mo>", pos:[-65, 4.5*oneSize]})
-                    fig.makeOnes({amount: 2, size: oneSize, fill: oneColor, strokeColor: oneStrokeColor, ySpace: 0})
-                    let tens = fig.makeTens({amount: 1, xSize: oneSize, fill: tenColor, strokeColor: tenStrokeColor})
-                    fig.move(tens, 110, -5*oneSize)
-                    fig.makeText({label: "=", pos: [100, 4.5*oneSize]})
-                    fig.makeRectangle({x: 170, y: oneSize*4, width: 20, height: oneSize, fill: tenColor})
-                    fig.makeText({label: 1, pos: [180, oneSize*4.5]})
-                    fig.makeRectangle({x: 200, y: oneSize*4, width: 20, height: oneSize, fill: oneColor})
-                    fig.makeText({label: 4, pos: [210, oneSize*4.5]})
-                    fig.move(fig.svgContainer, 70, 5*oneSize + fig.strokeWidth)
+                    fig.makeOnes(5, {ySpace: 0})
+                    fig.makeOnes(5, {x:1, ySpace: 0})
+                    fig.makeOnes(4, {x:2, ySpace: 0})
+                    fig.makeText("fjorten = ", -0.3, 0.5 , {horizontalAnchor:"end"})
+                    fig.makeText("= ", 3.5, 0.5)
+
+                    fig.makeOnes(4, {x:5.5, ySpace: 0})
+                    fig.makeTens(1, {x:4, ySpace: 0})
+                    fig.makeText("= ", 7, 0.5)
+                    
+                    let digitWidth = 0.6
+                    let tenDigPos = 7.5
+                    let oneDigPos = tenDigPos + digitWidth
+                    
+
+                    fig.makeRectangle(digitWidth, 1, 7.5, 0, {fill: tenColor})
+                    fig.makeRectangle(digitWidth, 1, 7.5 + digitWidth, 0, {fill: oneColor})
+                    fig.makeText("1", tenDigPos + digitWidth/2, 0.5)
+                    fig.makeText("4", oneDigPos + digitWidth/2, 0.5)
+            },
+            "num_line_0_to_14": () => {
+                    const fig = new BookFigure("num_line_0_to_9", oneSize)
+                    const numberLine = fig.makeVector([0, 0], [15, 0], {arrow: "axisArrow"})
+                    for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]) {
+                        fig.makeXTick(i, {fig: numberLine, label: i.toString()})
+                    }
             },
             "pos5": () => {
                     const fig = new Figure({id: "pos5"})
@@ -161,22 +204,18 @@
                     fig.makeBoundingBox({xSize: fig.oneSize*10+10, ySize: 65})
                     fig.move(fig.svgContainer, -fig.oneSize, 40)
             }, 
-            "test": () => {
-                const fig = new BookFigure()
-                
-                
-                fig.makeVector([0, 0], [10, 0])
-
-                let da = Math.PI/3
-                for (let i=0; i<6; ++i) {
-                    fig.makeCircleSegment(100, 200, 200, da*i, da*(i+1))
-                }
-                
-            }
+            "tenth": () => {
+                    const fig = new BookFigure("tenths", oneSize) 
+                    fig.makeTenths(10)
+                    let numberLine = fig.makeVector([0, 0], [11, 0], {arrow: "axisArrow", xScale:30})
+                    for(let i=0; i<11; ++i) {
+                        fig.makeXTick(i, {fig: numberLine, label: (0+i/10).toString().replace(".", ",")})
+                    }
+                    }
         }  
 
-        mod["test"]()
-        
+        mod["tenth"]()
+        //showAllFigures()
 
 
         
