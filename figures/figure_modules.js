@@ -508,14 +508,14 @@ class BookFigure {
     }
 
     
-    makeCircle(r, x=0, y=0, {fill="transparent", strokeColor = "black", strokeWidth= this.strokeWidth, addToSvg= true} = {}) {
+    makeCircle(r, x=0, y=0, {oneLength=this.oneSize, fill="transparent", strokeColor = "black", strokeWidth= this.strokeWidth, addToSvg= true} = {}) {
         let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
         circle.setAttribute("stroke", strokeColor)
         circle.setAttribute("stroke-width", strokeWidth)
         circle.setAttribute("fill", fill)
-        circle.setAttribute("cx", x.toString())
-        circle.setAttribute("cy", y.toString())
-        circle.setAttribute("r", r.toString())
+        circle.setAttribute("cx", (x*oneLength).toString())
+        circle.setAttribute("cy", (y*oneLength).toString())
+        circle.setAttribute("r", (r*oneLength).toString())
         if (addToSvg) {
             this.addToSVGContainer(circle)
         }
@@ -574,7 +574,7 @@ class BookFigure {
         for (let i of Array(amount).keys()) {
             let m = i % 5
             let n = Math.floor(i/5)
-            let tenth = this.makeRectangle(1/5, 1/2, x + 1/5*m, y - n*0.5, {fill:this.oneColor, strokeColor:this.oneStrokeColor, addToSvg:false, strokeWidth:this.strokeWidth})
+            let tenth = this.makeRectangle(1/5, 1/2, x + 1/5*m, y - (n-1)*0.5, {fill:this.oneColor, strokeColor:this.oneStrokeColor, addToSvg:false, strokeWidth:this.strokeWidth})
             tenthsCollection.appendChild(tenth)
         }
 
@@ -585,7 +585,7 @@ class BookFigure {
     }
 
 
-    makeOnes(amount, {x=0, y=0, ySpace=5, fill=this.oneColor, strokeColor = this.oneStrokeColor, addToSvg=true, strokeWidth=this.strokeWidth}) {
+    makeOnes(amount, {x=0, y=0, ySpace=5, fill=this.oneColor, strokeColor = this.oneStrokeColor, addToSvg=true, strokeWidth=this.strokeWidth} ={}) {
         if (amount == 0 || amount == null) {
             return null;
         }
@@ -844,18 +844,44 @@ class BookFigure {
         return text
     }
 
-    makeXTick(x, {fig=null, height= 5, label=null, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true, textColor=strokeColor}) {
-        
-        x = x*oneLength
+    makeXTick(x, {fig=null, height= 5, label=null, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, xScale=this.xScale, yScale=this.yScale, visible=true, textColor=strokeColor, y=0}) {
+        x = x*xScale
+        y = y*yScale
         let tickContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
         let tick = document.createElementNS("http://www.w3.org/2000/svg", "path")
-        tick.setAttribute("d", `M ${x} ${- height} L ${x} ${height}`)
+        tick.setAttribute("d", `M ${x} ${y + - height} L ${x} ${y + height}`)
         tick.setAttribute("stroke", strokeColor)
         tick.setAttribute("stroke-linecap", "round")
         tick.setAttribute("stroke-width", strokeWidth)
         tickContainer.appendChild(tick)
         if (label) {
-            let text = this.makeText(label, x, height + 10, {yScale:1, xScale:1, textColor: textColor, verticalAnchor: "hanging"})
+            let text = this.makeText(label, x, height + 10 + y, {yScale:1, xScale:1, textColor: textColor, verticalAnchor: "hanging"})
+            tickContainer.appendChild(text)
+        }
+        if (!visible) {
+            tickContainer.setAttribute("visibility", "hidden")
+        }
+        if (addToSvg) {
+            this.addToSVGContainer(tickContainer)
+        }
+        if (fig) {
+            fig.appendChild(tickContainer)
+        }
+        return tickContainer
+    }
+
+    makeYTick(y, {fig=null, height= 5, label=null, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, oneLength=this.oneSize, visible=true, textColor=strokeColor}) {
+        
+        y = y*oneLength
+        let tickContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
+        let tick = document.createElementNS("http://www.w3.org/2000/svg", "path")
+        tick.setAttribute("d", `M ${- height} ${y} L ${height} ${y}`)
+        tick.setAttribute("stroke", strokeColor)
+        tick.setAttribute("stroke-linecap", "round")
+        tick.setAttribute("stroke-width", strokeWidth)
+        tickContainer.appendChild(tick)
+        if (label) {
+            let text = this.makeText(label, -height - 10  ,y, {yScale:1, xScale:1, textColor: textColor, horizontalAnchor: "end"})
             tickContainer.appendChild(text)
         }
         if (!visible) {
@@ -872,6 +898,30 @@ class BookFigure {
 
     move(shape, x=0, y=0) {
         shape.setAttribute("transform", `translate(${x}, ${y})`)
+    }
+
+    makePoint(x, y, label="", offset=[0, -1], offsetScale=15) {
+        let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+        circle.setAttribute("r", 3)
+        circle.setAttribute("cx", (x*this.xScale).toString())
+        circle.setAttribute("cy", (y*this.yScale).toString())
+        this.addToSVGContainer(circle)
+        if (label != "") {
+            this.makeText(label, x + offset[0]*offsetScale/this.xScale, y + offset[1]*offsetScale/this.yScale)
+        }
+    }
+
+    makeGrid(x0, y0, x1, y1, {dx=1, dy=1, strokeColor="rgb(0, 0, 0, 0.05)"} = {}) {
+        let xInterval = x1-x0
+        let yInterval = y1-y0
+        let xN = Math.floor(xInterval/dx)
+        let yN = Math.floor(yInterval/dy)
+        for(let i=0; i< xN; ++i) {
+            for(let j=0; j< yN; ++j) {
+                this.makeRectangle(dx, dy, i*dx, -(j+1)*dy, {fill: "transparent", strokeColor: strokeColor})
+            }
+        }
+        
     }
 }
 

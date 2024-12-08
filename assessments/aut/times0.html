@@ -9,7 +9,7 @@
         
         let bList = [1, 2, 3, 4, 5, 6 , 7, 8 , 9, 10]
         shuffleArray(bList)
-        let task = new CalcTask("times1", makeTask, 10)
+        let task = new CalcTask("times0", makeTask, 10)
         let mathElement = task.makeMathElement()
         
         task.prepare({mathElement: mathElement})
@@ -19,12 +19,12 @@
             this.makeTimer(3500)
             let b = bList.pop()
             if (getRandomInt(0, 1) == 1) {
-                mathElement.innerHTML = `<mn>${1}</mn><mo> ⋅ </mo><mn>${b}</mn>`
+                mathElement.innerHTML = `<mn>${0}</mn><mo> ⋅ </mo><mn>${b}</mn>`
             } else {
-                mathElement.innerHTML = `<mn>${b}</mn><mo> ⋅ </mo><mn>${1}</mn>`
+                mathElement.innerHTML = `<mn>${b}</mn><mo> ⋅ </mo><mn>${0}</mn>`
             }
             
-            return b               
+            return 0               
         }
 
 

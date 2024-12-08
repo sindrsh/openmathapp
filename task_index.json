@@ -12,5 +12,22 @@
                 "num_line_0_to_9": {}
             }
         }
+    },
+    "automatization": {
+        "directory": "aut",
+            "topics": {
+                "times_table": {
+                    "times1": {},
+                    "times2": {},
+                    "times3": {},
+                    "times4": {},
+                    "times5": {},
+                    "times6": {},
+                    "times7": {},
+                    "times8": {},
+                    "times9": {},
+                    "times10": {}
+                }
+        }
     }
 }

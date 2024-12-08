@@ -9,14 +9,14 @@
         
         let bList = [1, 2, 3, 4, 5, 6 , 7, 8 , 9, 10]
         shuffleArray(bList)
-        let task = new CalcTask("times1", makeTask, 10)
+        let task = new CalcTask("times7", makeTask, 10)
         let mathElement = task.makeMathElement()
-        
+        let a = 7
         task.prepare({mathElement: mathElement})
         
         document.getElementsByTagName("input")[0].focus()
         function makeTask() {
-            this.makeTimer(3500)
+            this.makeTimer(3000)
             let b = bList.pop()
             if (getRandomInt(0, 1) == 1) {
                 mathElement.innerHTML = `<mn>${1}</mn><mo> ⋅ </mo><mn>${b}</mn>`
@@ -24,7 +24,7 @@
                 mathElement.innerHTML = `<mn>${b}</mn><mo> ⋅ </mo><mn>${1}</mn>`
             }
             
-            return b               
+            return a*b               
         }
 
 

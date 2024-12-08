@@ -43,11 +43,11 @@
         
       <h4 class="subsubsection">Tall som plassering på ei linje</h4>
         Når vi plasserer tall på ei linje, vil 0 være utgangspunket vårt:
-        <div class="figure">lin0a</div>
+        <div class="figure" id="num_line_0"></div>
         Så plasserer vi 1 en viss lengde til høyre for 0:
-        <div class="figure">lin0b</div>
+        <div class="figure" id="num_line_0_to_1"></div>
         Andre tall vil da være definert ut ifra hvor mange enerlengder (enere) vi er unna 0:
-        <div class="figure">lin1</div>
+        <div class="figure" id="num_line_0_to_9"></div>
       <h3 class="subsection">Positive heltall</h2>
       Vi skal straks se at tall ikke nødvendigvis trenger å være <i>hele </i> antall enere, men tallene som <i>er </i> det har et eget navn:
 
@@ -70,34 +70,29 @@
       Tallene våre er bygd opp av <span class="outline">sifrene</span> <math>  <mn>0</mn><mo>,</mo> <mn>1</mn><mo>,</mo> <mn>2</mn> <mo>,</mo> <mn>3</mn><mo>,</mo> <mn>4</mn><mo>,</mo> <mn>5</mn><mo>,</mo> <mn>6</mn><mo>,</mo> <mn>7</mn><mo>,</mo> <mn>8</mn>  </math> og <math>  <mn>9</mn>  </math>, og <i>plasseringen </i> av dem. Sifrene og deres plassering er med på å definere <span class="outline">verdien</span>  til tallet.
       <h3 class="subsection">Heltall større enn 9</h2>
       La oss som et eksempel skrive tallet 'fjorten' ved hjelp av sifrene våre.
-      <div class="figure">tel</div>
+      <div class="figure" id="fourteen"></div>
       En gruppe med ti enere kaller vi en ''tier''. Av fjorten kan vi lage 1 tier, og i tillegg har vi da 4 enere. 
       Da skriver vi 'fjorten' slik:
-      <math class="display-math" display="block"> <mtext>fjorten</mtext><mo>=</mo><mn>14</mn> </math><
-      <div class="figure">tel2_bm</div>
+      <math class="display-math" display="block"> <mtext>fjorten</mtext><mo>=</mo><mn>14</mn> </math>
+      <div class="figure" id="fourteen_value"></div>
 
-      <div class="figure">tel2t</div>
+      <div class="figure" id="num_line_0_to_14"></div>
 
       <h3 class="subsection">Desimaltall</h2>
       I mange tilfeller har vi ikke et helt antall enere, og da vil det være behov for å dele 1 inn i mindre biter. La oss starte med å tegne en ener:
-      <div class="figure">maal</div>
-      <div class="figure">des1</div>
+      <div class="figure" id="tenth_one"></div>
       Så deler vi eneren vår inn i 10 mindre biter:
-      <div class="figure">maal1</div>
-      <div class="figure">des1a</div>
+      <div class="figure" id="one_div_10"></div>
       Siden vi har delt 1 inn i 10 biter, kaller vi en slik bit for ''en tidel'':
-      <div class="figure">maal1a_bm</div>
-      <div class="figure">des1b_bm</div>
-
+      <div class="figure" id="one_tenth_no"></div>
       Tideler skriver vi ved hjelp av  <span class="outline">desimaltegnet</span> <span class="symbol">&nbsp,&nbsp</span>  :
-      <div class="figure">maal1b</div>
-      <div class="figure">des1c</div>
+      <div class="figure" id="one_tenth_value_comma"></div>
       <div class="example"> 
-        <div class="figure">maal2a</div>
-        <div class="figure">des3</div>
+        <h4>Eksempel</h4>
+        <div class="figure" id="tenth_example_comma"></div>
       </div>
       <div class="language-box">
-      <h4 class="language-box-title"> Språkboksen</h4>
+      <h4> Språkboksen</h4>
       På engelsk bruker man punktum <span class="symbol"> &nbsp.&nbsp</span> som desimaltegn:
       <math class="aligned-math" display="block"> 
         <mtable>
@@ -122,19 +117,22 @@
         <li> siffer til høyre (i rekkefølge) indikere antall tideler, hundredeler, tusendeler og så videre.</li>
       </ul>
       </div>
-      <div class="example" data-number="1""> 
-        <div class="figure">maal3_bm</div>
+      <div class="example"> 
+        <h4>Eksempel</h4>
+        <div class="figure" id="ten_pos_sys_example_comma"></div>
       </div>
-      <div class="example" data-number="2"">  
-      <div class="figure">titalsys_bm</div>
+      <div class="example">  
+      <div class="figure" id="ten_pos_sys_names_no"></div>
       </div>
 
-      <div class="rule" data-title="Partall og oddetall ">
+      <div class="rule">
+      <h4> Partall og oddetall</h4>
       Heltall som har 0, 2, 4, 6 eller 8 på enerplassen kalles <span class="outline">partall</span>.
 
       Heltall som har 1, 3, 5, 7 eller 9 på enerplassen kalles <span class="outline">oddetall</span>.
       </div>
       <div class="example">
+        <h4>Eksempel</h4>
         De ti første (positive) partallene er
         <math class="display-math" display="block"> <mtext>0, 2, 4, 6, 8, 10, 12, 14, 16, og 18</mtext> </math>
         De ti første (positive) oddetallene er
@@ -152,11 +150,12 @@
       </ul>
     </div>
     <div class="example">
+      <h4> Eksempel </h4>
       I figuren ser vi punktene <math>  <mo>(</mo><mn>2</mn><mo>,</mo> <mn>3</mn><mo>)</mo>  </math>, <math>  <mo>(</mo><mn>5</mn><mo>,</mo> <mn>1</mn><mo>)</mo>  </math> og <math>  <mo>(</mo><mn><mn>0</mn></mn><mo>,</mo> <mn><mn>0</mn></mn><mo>)</mo>  </math>. Punktet der aksene møtes, altså <math>  <mo>(</mo><mn><mn>0</mn></mn><mo>,</mo> <mn><mn>0</mn></mn><mo>)</mo>  </math>, kalles <span class="outline">origo</span>.
-      <div class="figure">kord</div>
+      <div class="figure" id="coordinate_system"></div>
     </div>
       <div class="info">
-        <h4></h4>
+        <h4>Info</h4>
         Strengt tatt finnes det mange typer koordinatsystem, men i denne boka bruker vi ordet om bare én sort, nemlig det <span class="outline">kartesiske koordinatsystem</span>. Det er oppkalt etter den franske filosofen og matematikeren René Descartes.
       </div>
     </body>
@@ -174,7 +173,6 @@
                 const text = await response.text();
                 const parser = new DOMParser();
                 const figures = parser.parseFromString(text, "text/html")
-                console.log(figures)
                 for (figure_element of figure_elements) {
                   if (figures.getElementById(figure_element.id)) {
                     figure_element.appendChild(figures.getElementById(figure_element.id))

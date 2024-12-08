@@ -21,6 +21,8 @@ class Task {
         this.restartButton = document.createElement("button")
         this.showAnswer = document.createElement("p")
         this.showAnswer.hidden = true
+        this.interval
+        this.timer
     }
 
     prepare({figure=null, mathElement=null, info=null} = {}) {
@@ -96,6 +98,9 @@ class Task {
 
     checkAnswer() {
         this.submitButton.disabled = "true"
+        if (this.timer) {
+            clearTimeout(this.timer)
+        }
         this.evaluateAnswer()
     }
 
@@ -122,6 +127,13 @@ class Task {
     
     makeMathElement() {
         return document.createElementNS("http://www.w3.org/1998/Math/MathML", "math") 
+    }
+
+    makeTimer(interval) {
+        this.interval = interval
+        this.timer = setTimeout(() => {
+           this.submitButton.click() 
+        }, interval);
     }
 
     correctAnswer() {
@@ -243,6 +255,7 @@ class CalcTask extends Task {
     resetInputFields() {
         this.userInput.disabled = false
         this.userInput.value = ""
+        this.userInput.focus()
     }
 
     addAnswerContent() {

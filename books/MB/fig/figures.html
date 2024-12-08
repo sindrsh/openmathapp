@@ -7,12 +7,13 @@
 
         const oneSize = 30
         const posColor = "blue"
-        const negColor = "cyan"
+        const negColor = "rgb(0, 204, 204)"
         const subColor = "red"
         const oneColor = "#87CEFA"
         const oneStrokeColor = "blue"
         const tenColor = "#98FB98"
         const tenStrokeColor = "#006400"
+        const decNumLineScale = 40
 
 
         function showAllFigures() {
@@ -94,7 +95,7 @@
                     fig.makeText("fjorten = ", -5, -1.5 , {xScale: 1, horizontalAnchor:"end"})
             },
             "fourteen_value": () => {
-                    const fig = new BookFigure("fourteen", oneSize)
+                    const fig = new BookFigure("fourteen_value", oneSize)
                     fig.oneSize = oneSize
                     fig.makeOnes(5, {ySpace: 0})
                     fig.makeOnes(5, {x:1, ySpace: 0})
@@ -111,13 +112,13 @@
                     let oneDigPos = tenDigPos + digitWidth
                     
 
-                    fig.makeRectangle(digitWidth, 1, 7.5, 0, {fill: tenColor})
-                    fig.makeRectangle(digitWidth, 1, 7.5 + digitWidth, 0, {fill: oneColor})
+                    fig.makeRectangle(digitWidth, 1, 7.5, 0, {strokeColor: "transparent",fill: tenColor})
+                    fig.makeRectangle(digitWidth, 1, 7.5 + digitWidth + 0.1, 0, {strokeColor:"transparent",fill: oneColor})
                     fig.makeText("1", tenDigPos + digitWidth/2, 0.5)
-                    fig.makeText("4", oneDigPos + digitWidth/2, 0.5)
+                    fig.makeText("4", oneDigPos + digitWidth/2 + 0.1, 0.5)
             },
             "num_line_0_to_14": () => {
-                    const fig = new BookFigure("num_line_0_to_9", oneSize)
+                    const fig = new BookFigure("num_line_0_to_14", oneSize)
                     const numberLine = fig.makeVector([0, 0], [15, 0], {arrow: "axisArrow"})
                     for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]) {
                         fig.makeXTick(i, {fig: numberLine, label: i.toString()})
@@ -204,18 +205,156 @@
                     fig.makeBoundingBox({xSize: fig.oneSize*10+10, ySize: 65})
                     fig.move(fig.svgContainer, -fig.oneSize, 40)
             }, 
-            "tenth": () => {
-                    const fig = new BookFigure("tenths", oneSize) 
-                    fig.makeTenths(10)
-                    let numberLine = fig.makeVector([0, 0], [11, 0], {arrow: "axisArrow", xScale:30})
+            "tenth_one": () => {
+                    const fig = new BookFigure("tenth_one", oneSize) 
+                    let one = fig.makeOnes(1)
+                    let oneText = fig.makeText("= 1", 1.2, 0.5, {horizontalAnchor: "start"})
+                    fig.move(one, 4.5*decNumLineScale)
+                    fig.move(oneText, 4.5*decNumLineScale)
+                    let y = 2
+                    let numberLine = fig.makeVector([0, y], [11, y], {arrow: "axisArrow", xScale:decNumLineScale})
+                    fig.makeXTick(0, {fig: numberLine, label: "0", y:y})
+                    fig.makeXTick(10, {fig: numberLine, label: "1", y:y, xScale:decNumLineScale})
+                    },
+            "one_div_10": () => {
+                    const fig = new BookFigure("one_div_10", oneSize) 
+                    let tenth = fig.makeTenths(10)
+                    let y = 2
+                    let tenthText = fig.makeText("= 1", 1.2, 0.5, {horizontalAnchor: "start"})
+                    fig.move(tenth, 4.5*decNumLineScale)
+                    fig.move(tenthText, 4.5*decNumLineScale)
+                    let numberLine = fig.makeVector([0, y], [11, y], {arrow: "axisArrow", xScale:decNumLineScale})
                     for(let i=0; i<11; ++i) {
-                        fig.makeXTick(i, {fig: numberLine, label: (0+i/10).toString().replace(".", ",")})
+                        fig.makeXTick(i, {fig: numberLine, y: 2, xScale:decNumLineScale})
                     }
+                    fig.makeXTick(0, {fig: numberLine, label: "0", y:y})
+                    fig.makeXTick(10, {fig: numberLine, label: "1", y:y, xScale:decNumLineScale})
+                    },     
+            "one_tenth_no": () => {
+                    const fig = new BookFigure("one_tenth_no", oneSize) 
+                    let tenth = fig.makeTenths(1)
+                    let y = 2
+                    let tenthText =fig.makeText("= en tidel", 0.4, 0.75, {horizontalAnchor: "start"})
+                    fig.move(tenth, 4.5*decNumLineScale)
+                    fig.move(tenthText, 4.5*decNumLineScale)
+                    let numberLine = fig.makeVector([0, y], [11, y], {arrow: "axisArrow", xScale:decNumLineScale})
+                    for(let i=0; i<11; ++i) {
+                        if (i!= 1) {
+                            fig.makeXTick(i, {fig: numberLine, y: 2, xScale:decNumLineScale})
+                        }
+                        
                     }
+                    fig.makeXTick(0, {fig: numberLine, label: "0", y:y})
+                    fig.makeXTick(10, {fig: numberLine, label: "1", y:y, xScale:decNumLineScale})
+                    fig.makeXTick(1, {fig:numberLine, label: "en", y:y, strokeColor: "red", textColor:"red"})
+                    fig.makeText("tidel", 1, 3.35, {textColor: "red"})
+                    },      
+            "one_tenth_value_comma": () => {
+                    const fig = new BookFigure("one_tenth_value_comma", oneSize) 
+                    let tenth = fig.makeTenths(1)
+                    let y = 2
+                    let tenthText = fig.makeText("= 0,1", 0.4, 0.75, {horizontalAnchor: "start"})
+                    fig.move(tenth, 4.5*decNumLineScale)
+                    fig.move(tenthText, 4.5*decNumLineScale)
+                    let numberLine = fig.makeVector([0, y], [11, y], {arrow: "axisArrow", xScale:decNumLineScale})
+                    for(let i=0; i<11; ++i) {
+                        fig.makeXTick(i, {fig: numberLine, label: (0+i/10).toString().replace(".", ","), y: 2, xScale:decNumLineScale})
+                    }
+                    },    
+            "tenth_example_commma": () => {
+                    let lineScale = 20
+                    const fig = new BookFigure("tenth_example_comma", oneSize) 
+                    let ones = fig.makeOnes(2, {ySpace: 0})
+                    let tenths = fig.makeTenths(7, {x:1.5})
+                    let y = 2
+                    let tenthsText = fig.makeText("= 2,7", 2.7, 0.5, {horizontalAnchor: "start"})
+                    fig.move(ones, 10*lineScale)
+                    fig.move(tenths, 10*lineScale)
+                    fig.move(tenthsText, 10*lineScale)
+                    let numberLine = fig.makeVector([0, y], [29, y], {arrow: "axisArrow", xScale:lineScale})
+                    for(let i=0; i<27; ++i) {
+                        fig.makeXTick(i, {fig: numberLine, y: 2, xScale:lineScale})
+                    }
+                    fig.makeXTick(0, {fig: numberLine, label: "0", y: 2, xScale:lineScale})
+                    fig.makeXTick(10, {fig: numberLine, label: "1", y: 2, xScale:lineScale})
+                    fig.makeXTick(20, {fig: numberLine, label: "2", y: 2, xScale:lineScale})
+                    fig.makeXTick(27, {fig: numberLine, label: "2,7", y: 2, xScale:lineScale, strokeColor: "red"})
+                    },           
+            "ten_pos_sys_example_comma": () => {
+                    const fig = new BookFigure("ten_pos_sys_example_comma", oneSize)
+                    let tens = fig.makeTens(4, {xSpace: 0})
+                    let ones = fig.makeOnes(7, {ySpace: 0, x: 1.5})
+                    let tenths = fig.makeTenths(8, {x: 3})
+                    let text = fig.makeText("= 2,7", 4.2, 0.5, {horizontalAnchor: "start"})
+            },
+            "ten_pos_sys_names_no": () => {
+                    const fig = new BookFigure("ten_pos_sys_names_no", 1)
+                    fig.makeBoundingBox(100, 70)
+                    fig.makeText("7349,812", 32, 60)
+                    let t1 = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                    let textY = 50
+                    let textFontSize = "9px"
+                    t1.setAttribute("transform", `translate(34 ${textY}) rotate(-90)`)
+                    t1.innerHTML ="enere"
+                    t1.style.fontSize = textFontSize
+                    fig.svgElement.appendChild(t1)
+                    let t2 = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                    t2.setAttribute("transform", `translate(27, ${textY}) rotate(-90)`)
+                    t2.innerHTML ="tiere"
+                    t2.style.fontSize = textFontSize
+                    fig.svgElement.appendChild(t2)
+                    let t3 = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                    t3.setAttribute("transform", `translate(17, ${textY}) rotate(-90)`)
+                    t3.innerHTML ="hundrere"
+                    t3.style.fontSize = textFontSize
+                    fig.svgElement.appendChild(t3)
+                    let t4 = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                    t4.setAttribute("transform", `translate(7, ${textY}) rotate(-90)`)
+                    t4.innerHTML ="tusener"
+                    t4.style.fontSize = textFontSize
+                    fig.svgElement.appendChild(t4)
+                    let t6 = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                    t6.setAttribute("transform", `translate(57, ${textY}) rotate(-90)`)
+                    t6.innerHTML ="hundredeler"
+                    t6.style.fontSize = textFontSize
+                    fig.svgElement.appendChild(t6)
+                    let t5 = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                    t5.setAttribute("transform", `translate(47, ${textY}) rotate(-90)`)
+                    t5.innerHTML ="tideler"
+                    t5.style.fontSize = textFontSize
+                    fig.svgElement.appendChild(t5)
+                    let t7 = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                    t7.setAttribute("transform", `translate(67, ${textY}) rotate(-90)`)
+                    t7.innerHTML ="tusendeler"
+                    t7.style.fontSize = textFontSize
+                    fig.svgElement.appendChild(t7)
+            }, 
+            "coordinate_system": () => {
+                const fig = new BookFigure("coordinate_system", oneSize) 
+                fig.makeGrid(0, 0, 6, 6)
+                let xAxis = fig.makeVector([0,0], [7, 0], {arrow: "axisArrow"})
+                let yAxis = fig.makeVector([0,0], [0, -7], {arrow: "axisArrow"})
+                for(let i=1; i<7; ++i) {
+                    fig.makeYTick(-i, {fig: yAxis,label: i.toString()})
+                    fig.makeXTick(i, {fig: xAxis,label: i.toString()})
+                }
+                fig.makePoint(2, -3, "(2, 3)")
+                fig.makePoint(5, -1, "(5, 1)")
+                fig.makePoint(0, 0, "(5, 1)", [-1.6, 0.7])
+                let tx = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                tx.innerHTML = "horisontalalakse"
+                tx.setAttribute("transform", `translate(90 260)`)
+                let ty = document.createElementNS("http://www.w3.org/2000/svg", "text")
+                ty.innerHTML = "vertikalakse"
+                ty.setAttribute("transform", `translate(15 160) rotate(-90)`)
+                fig.svgElement.appendChild(ty)
+                fig.svgElement.appendChild(tx)
+                fig.updateBoundingBox(fig.xMin - 5, fig.yMin, fig.xMax, fig.yMax+ 20)
+            }
         }  
 
-        mod["tenth"]()
-        //showAllFigures()
+        //mod["ten_pos_sys_names_no"]()
+        showAllFigures()
 
 
         

@@ -1,90 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="menu_styles.css">
         <style>
-             /* Table styles*/
-            table {
-                width: auto;
-                font-family: Arial, Helvetica, sans-serif;
-                border-collapse: collapse;
-                }
-
-            .topicTable td, .subjectTable th {
-                border: 1px solid #ddd;
-                padding: 8px;
-                }
-
-
-            table td:hover {background-color: #ddd;}
-
-            .subjectTable th {
-                width: 180px;
-                text-align: left;
-                background-color: #04AA6D;
-                color: white;
+            .subject-menu {
+                font-size: larger;
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                gap: 10px;
             }
-
-            .topicTable td {
-                width: 80px;
-            }
-            
-            .subjectTable {
-                margin-top: 20px;
-            }
-
-            body {
-                font-family: sans-serif;   
-            }
-
-            .test {
-                /*visibility: hidden;*/
-            }
-
-            .interactive {
-                /*visibility: hidden;*/
-            }
-
-
-            #loginPage {
+            .subject-menu a {
+                width: 200px;
                 padding: 20px;
-                background-color:yellowgreen;
-                height: 220px;
             }
-            
-            button {
-                background-color: #04AA6D;
-                color: white;
-                padding: 14px 20px;
-                margin: 8px 0;
-                border: none;
-                cursor: pointer;
-                width: 100%;
-                }
-
-            input[type=text], input[type=password] {
-                width: 100%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                display: inline-block;
-                border: 1px solid #ccc;
-                box-sizing: border-box;
-            }
-
-            .category {
-                width: 90px;
-            }
-
-            .medium {
-                width: 80px;
-            }
-            .subject {
-                width: 100px;
-            }
-
-            #mainPage {
-                width: 1000px;
-            }
-
         </style>
     </head>
 
@@ -101,77 +29,14 @@
       <input type="checkbox" checked="checked" name="remember" id="rememberLoginInfo"> Remember me
     </label>
         </div>
-        <div id="mainPage">
-            <div> 
-                <table class="subjectTable">
-                    <tbody>
-                    <tr>
-                        <th rowspan="3">Titallsystemet</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table class="topicTable">
-                                <tbody>
-                                <tr> 
-                                    <td rowspan="4">Mengde</td> 
-                                </tr>
-                                <tr class="interactives">
-                                    <td class="medium">Interaktivt</td>
-                                    <td class="interactive"> </td>
-                                    <td class="interactive"> </td>
-                                </tr>
-                                <tr class="book">
-                                    <td>Bok</td>
-                                    <td class="section"> <a href="books/amounts_0_to_9.pdf"> Siffer</a>  </td>
-                                    <td class="section"> <a href="books/amounts_over_10.pdf"> Tal over 10</a></td>
-                                </tr>
-                                <tr class="tests">
-                                    <td>Oppgaver</td> 
-                                    <td id="count_amounts_1_to_9" class="test" id="count_amounts_1_to_9.html">
-                                        <a href="assessments/counting/count_amounts_1_to_9.html"> Test 1</a>
-                                    </td>
-                                    <td id="count_ones_amounts_10_to_20" class="test">
-                                        <a href="assessments/counting/count_ones_amounts_10_to_20.html"> Test 2</a>
-                                    </td>
-                                    <td id="count_amounts_10_to_99" class="test">
-                                        <a href="assessments/counting/count_amounts_10_to_99.html"> Test 3</a>
-                                    </td>
-                                    <td id="count_amounts_100_to_999" class="test">
-                                        <a href="assessments/counting/count_amounts_100_to_999.html"> Test 4</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table class="topicTable">
-                                <tbody>
-                                <tr> 
-                                    <td rowspan="4">Tallinje</td> 
-                                </tr>
-                                <tr> 
-                                    <td class="interactives"> Interaktivt</td>
-                                </tr>
-                                <tr class="book">
-                                    <td> Bok</td>
-                                    <td class="section">
-                                        <a href="books/num_line_0_to_9.pdf"> 0 - 9</a>
-                                    </td>
-                                </tr>
-                                <tr class="tests">
-                                    <td>Oppgaver</td>
-                                    <td id="num_line_0_to_9" class="test"> 
-                                        <a href="assessments/counting/num_line_0_to_9.html"> Test 1</a>
-                                    </tr>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
+
+        <div class="subject-menu">
+            <a href="./assessments/aut/aut.html">Gangetabellen</a>
+            <a href="./assessments/counting/counting.html">Telling</a>
+            <a>Negative tall</a>
+            <a>Hei</a>
+        <div> 
+    </body>
 
 
     <script type="module">
@@ -205,140 +70,8 @@
 
 
 
-        async function getSubjects() {
-            try {
-                const response = await fetch("./task_index.json");
-                if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`);
-                }
 
-                const subjects = await response.json();
-                return subjects
-            } catch (error) {
-                console.error(error.message);
-            }
-        }
 
-        const bodyElement = document.getElementsByTagName("body")[0]
-
-        getSubjects().then( (subjects) => {
-            for (let subject of Object.keys(subjects)) {
-                let subjectTable = document.createElement("table")
-                let subjectTableBody = document.createElement("tbody")
-                let subjectRow = document.createElement("tr")
-                
-                subjectTable.setAttribute("class", "subjectTable")
-
-                const directory = subjects[subject]["directory"]
-                let topics = subjects[subject]["topics"]
-                const topicsArray = Object.keys(topics)
-
-                subjectRow.innerHTML = `<td rowspan=${topicsArray.length + 1}> ${subject} </td>`
-                subjectTable.appendChild(subjectTableBody)
-                subjectTableBody.appendChild(subjectRow)
-                
-                
-
-                for (let topic of topicsArray) {
-                    subjectRow = document.createElement("tr")
-                    let subjectRowTd = document.createElement("td")
-                    let topicTable = document.createElement("table")
-                    let topicTableBody = document.createElement("tbody")
-                    let topicTableTitleRow = document.createElement("tr")
-                    let topicTableRow = document.createElement("tr")
-                    let topicTableInteractiveRow = document.createElement("tr")
-                    let topicTableBookRow = document.createElement("tr")
-                    let topicTableTaskRow = document.createElement("tr")
-
-                    topicTableBookRow.setAttribute("class", "book")
-                    topicTableInteractiveRow.setAttribute("class", "interactive")
-                    topicTableTaskRow.setAttribute("class", "tasks")
-
-                    topicTableBookRow.innerHTML = `<td> Bok </td>`
-                    topicTableInteractiveRow.innerHTML = `<td> Interaktivt </td>`
-                    topicTableTaskRow.innerHTML = `<td> Oppgaver </td>`
-
-                    let tasks = topics[topic]
-                    let tasksArray = Object.keys(tasks)
-                    topicTableTitleRow.innerHTML = `<td rowspan="4">${topic}</td>`
-                    
-                    topicTableBody.appendChild(topicTableTitleRow)
-                    topicTableBody.appendChild(topicTableBookRow)
-                    topicTableBody.appendChild(topicTableInteractiveRow)
-                    topicTableBody.appendChild(topicTableTaskRow)
-
-                    let cnt = 0
-                    for (let task of tasksArray) {
-                        let sectionTd = document.createElement("td")
-                        sectionTd.innerHTML = `hei`
-                        sectionTd.setAttribute("class", "section")
-                        topicTableBookRow.appendChild(sectionTd)
-                        
-                        let interactiveTd = document.createElement("td")
-                        interactiveTd.innerHTML = `ok`
-                        interactiveTd.setAttribute("class", "interactive")
-                        topicTableInteractiveRow.appendChild(interactiveTd)
-
-                        
-                        ++cnt
-                        let taskTd = document.createElement("td")
-                        taskTd.innerHTML = `<a href="">Test ${cnt}</a>`
-                        taskTd.setAttribute("class", "task")
-                        taskTd.setAttribute("id", task)
-                        topicTableTaskRow.appendChild(taskTd)
-
-                    }
-                    topicTable.appendChild(topicTableBody)
-                    subjectRowTd.appendChild(topicTable)
-                    subjectRow.appendChild(subjectRowTd)
-                    subjectTableBody.appendChild(subjectRow)
-                }
-                
-                
-                bodyElement.appendChild(subjectTable)
-            }
-                
-        }
-        )
-        
-
-        
-        let topics = document.getElementsByClassName("topicTable")
-        for (let topic of topics) {
-            break
-            let row = topic.getElementsByClassName("tests")[0]
-            let tests = Array.from(row.getElementsByClassName("test"))
-            tests[0].style.visibility = "visible"
-            tests = tests.slice(0)
-            let cnt = 0
-
-            let testsFromLocalStorage = {}
-            if (localStorage.getItem("tests")) {
-                testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
-            }
-            console.log(testsFromLocalStorage)
-            for (let i=0; i<tests.length-1; ++i) {
-                if (tests[i].id in testsFromLocalStorage) {
-                    if (testsFromLocalStorage[tests[i].id]["score"] == 2) {
-                        ++cnt
-                        tests[i+1].style.visibility = "visible"    
-                    }
-                    else {
-                        break
-                    }
-                } else {
-                    break
-                }
-            }
-            /*
-            let interactives = Array.from(row.parentNode.getElementsByClassName("interactive"))
-            interactives[0].style.visibility = "visible"
-            interactives = interactives.slice(0)
-            for (let i of [...Array(interactives.length - cnt - 1)].keys()) {
-                interactives[i].style.visibility = "visible"
-            }
-            */
-            }
     </script>    
     </body
 </html>
