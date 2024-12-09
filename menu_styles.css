@@ -8,20 +8,17 @@
 
 
 table {
-    width: auto;
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     }
 
-.topicTable td, .subjectTable th {
+.topic-table td, .subject-table th {
     border: 1px solid #ddd;
     padding: 8px;
     }
 
 
-table td:hover {background-color: #ddd;}
-
-.subjectTable th {
+.subject-table th {
     width: 180px;
     text-align: left;
     background-color: #04AA6D;
@@ -38,7 +35,7 @@ table td:hover {background-color: #ddd;}
 }
 
 .topic-table td {
-    width: 90px;
+    width: 100px;
 }
 
 .topic-table th {
@@ -49,9 +46,6 @@ table td:hover {background-color: #ddd;}
     border: 1px solid black;
 }
 
-.topic-table {
-    width: 100%;
-}
 .subject-table {
     margin-top: 20px;
 }
@@ -72,16 +66,18 @@ body {
 }
 
 
-#loginPage {
+#login-page {
     padding: 20px;
     background-color:yellowgreen;
     height: 220px;
 }
 
-.timesTable {
+.times-table {
+    width: auto;
+    height: auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    gap: 10px;
+    gap: 20px;
 }
 
 

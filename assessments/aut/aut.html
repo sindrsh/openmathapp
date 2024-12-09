@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="../../menu_styles.css">
 </head>
 <body>
-    <table class="topicTable">
+    <table class="topic-table">
         <tbody>
         <tr> 
-            <td rowspan="2"">Gangetabellen</td> 
+            <th rowspan="2"">Gangetabellen</th> 
             <td> 
-                <div class="timesTable static-task">
+                <div id="times-table" class="times-table static-task">
                     <a id="times0" href="./times0.html"> 0-gangen</a>
                     <a id="times1" href="./times1.html"> 1-gangen</a>
                     <a id="times2" href=".times2.html"> 2-gangen</a>
@@ -27,6 +27,25 @@
         </tbody>
     </table>
 </body>
+
+<script>
+    let testsFromLocalStorage = {}
+    console.log(localStorage)
+    if (localStorage.getItem("tests")) {
+        testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
+        
+    for (a of document.getElementById("times-table").getElementsByTagName("a")) {
+        if (a.id in testsFromLocalStorage) {
+            console.log(testsFromLocalStorage[a.id].score)
+            if (testsFromLocalStorage[a.id].score == 2) {
+                a.style.backgroundColor = "green"
+            }
+        }
+    }
+    } 
+    
+    
+</script>
 
 </html>
 

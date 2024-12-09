@@ -80,7 +80,7 @@ function makeTables(subject) {
                 ++cnt
                 let taskTd = document.createElement("td")
                 taskTd.innerHTML = `<a href="">Test ${cnt}</a>`
-                taskTd.setAttribute("class", "task")
+                taskTd.setAttribute("class", "dynamic-task")
                 taskTd.setAttribute("id", task)
                 topicTableTaskRow.appendChild(taskTd)
     
@@ -101,10 +101,11 @@ function makeTables(subject) {
 
 
     
-    let topicElements = document.getElementsByClassName("topicTable")
+    let topicElements = document.getElementsByClassName("topic-table")
     for (let topicElement of topicElements) {
         let row = topicElement.getElementsByClassName("tasks")[0]
-        let tests = Array.from(row.getElementsByClassName("task"))
+        let tests = Array.from(row.getElementsByClassName("dynamic-task"))
+        console.log(tests)
         tests[0].style.visibility = "visible"
         tests = tests.slice(0)
         let cnt = 0
