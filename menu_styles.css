@@ -12,9 +12,10 @@ table {
     border-collapse: collapse;
     }
 
-.topic-table td, .subject-table th {
-    border: 1px solid #ddd;
+.topic-table td {
+    width: 120px;
     padding: 8px;
+    border: 1px solid black;
     }
 
 
@@ -34,7 +35,9 @@ table {
     border: solid 2px black;
 }
 
+
 .topic-table td {
+    table-layout: fixed;
     width: 100px;
 }
 
@@ -43,12 +46,13 @@ table {
 }
 
 .topic-table tr {
-    border: 1px solid black;
+    width: 1000px;
+    border: 2px solid black;
 }
 
-.subject-table {
-    margin-top: 20px;
+.topic-table {
 }
+
 
 body {
     width: 1000px;
@@ -57,7 +61,7 @@ body {
     margin-top: 20px;
 }
 
-.task {
+.dynamic-task {
     visibility: hidden;
 }
 

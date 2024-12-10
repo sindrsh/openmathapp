@@ -22,31 +22,22 @@ function makeTables(subject) {
     const bodyElement = document.getElementsByTagName("body")[0]
 
     getSubjects().then( (subjects) => {
-        let subjectTable = document.createElement("table")
-        let subjectTableBody = document.createElement("tbody")
-        let subjectRow = document.createElement("tr")
-        
-        subjectTable.setAttribute("class", "subject-table")
-    
+
+        const subjectDiv = document.createElement("div")
+        subjectDiv.setAttribute("class", "subject-div")
         let topics = subjects[subject]["topics"]
         const topicsArray = Object.keys(topics)
-    
-        subjectTable.appendChild(subjectTableBody)
-        subjectTableBody.appendChild(subjectRow)
         
         
         for (let topic of topicsArray) {
-            subjectRow = document.createElement("tr")
-            let subjectRowTd = document.createElement("td")
             let topicTable = document.createElement("table")
             topicTable.setAttribute("class", "topic-table")
             let topicTableBody = document.createElement("tbody")
             let topicTableTitleRow = document.createElement("tr")
-            let topicTableRow = document.createElement("tr")
             let topicTableInteractiveRow = document.createElement("tr")
             let topicTableBookRow = document.createElement("tr")
             let topicTableTaskRow = document.createElement("tr")
-    
+
             topicTableBookRow.setAttribute("class", "book")
             topicTableInteractiveRow.setAttribute("class", "interactive")
             topicTableTaskRow.setAttribute("class", "tasks")
@@ -79,19 +70,16 @@ function makeTables(subject) {
                 
                 ++cnt
                 let taskTd = document.createElement("td")
-                taskTd.innerHTML = `<a href="">Test ${cnt}</a>`
+                taskTd.innerHTML = `<a href="./${task}.html">Test ${cnt}</a>`
                 taskTd.setAttribute("class", "dynamic-task")
                 taskTd.setAttribute("id", task)
                 topicTableTaskRow.appendChild(taskTd)
-    
             }
             topicTable.appendChild(topicTableBody)
-            subjectRowTd.appendChild(topicTable)
-            subjectRow.appendChild(subjectRowTd)
-            subjectTableBody.appendChild(subjectRow)
+            subjectDiv.appendChild(topicTable)
         }
         
-        bodyElement.appendChild(subjectTable)
+        bodyElement.appendChild(subjectDiv)
     
         let testsFromLocalStorage = {}
         if (localStorage.getItem("tests")) {
@@ -105,7 +93,6 @@ function makeTables(subject) {
     for (let topicElement of topicElements) {
         let row = topicElement.getElementsByClassName("tasks")[0]
         let tests = Array.from(row.getElementsByClassName("dynamic-task"))
-        console.log(tests)
         tests[0].style.visibility = "visible"
         tests = tests.slice(0)
         let cnt = 0
