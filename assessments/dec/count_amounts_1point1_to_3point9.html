@@ -21,7 +21,7 @@
             let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             shuffleArray(ints)
 
-            let task = new CalcTask("count_amounts_1point1_to_3point9", makeTask, 5)
+            let task = new CalcTask(makeTask, 5)
             task.prepare({figure: fig, info: infoFig.svgElement})
             
             function makeTask() {

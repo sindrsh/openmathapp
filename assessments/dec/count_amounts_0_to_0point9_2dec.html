@@ -21,7 +21,7 @@
             const space = 200
             fig.makeBoundingBox({xSize: 400, ySize: 400, strokeColor: "black"})
             
-            let task = new CalcTask("", makeTask)
+            let task = new CalcTask(makeTask, 5)
             task.prepare({figure: fig, info: infoFig.svgElement})
             
             function makeTask() {

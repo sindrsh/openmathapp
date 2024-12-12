@@ -32,6 +32,7 @@
 
         <div class="subject-menu">
             <a href="./assessments/aut/aut.html">Gangetabellen</a>
+            <a href="./assessments/plus/plus.html">Addisjon</a>
             <a href="./assessments/counting/counting.html">Telling</a>
         <div> 
     </body>
@@ -39,6 +40,7 @@
 
     <script type="module">
         import { signIn } from "./data_module.js"
+        console.log(localStorage.getItem("tests"))
         //document.getElementById("mainPage").hidden = true
         let loginButton = document.getElementById("loginButton")
         loginButton.addEventListener("click", login)

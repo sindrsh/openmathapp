@@ -98,11 +98,15 @@ function makeTables(subject) {
         let cnt = 0
 
         let testsFromLocalStorage = {}
+        if (localStorage.getItem("tests")) {
+            testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
+        }
         
         for (let i=0; i<tests.length-1; ++i) {
             if (tests[i].id in testsFromLocalStorage) {
                 if (testsFromLocalStorage[tests[i].id]["score"] == 2) {
                     ++cnt
+                    tests[i].getElementsByTagName("a")[0].style.backgroundColor = "green"
                     tests[i+1].style.visibility = "visible"    
                 }
                 else {

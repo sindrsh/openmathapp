@@ -7,8 +7,8 @@ class Task {
     info
     unit = ""
 
-    constructor(id, makeTask, tasksAmount) {
-        this.id = id
+    constructor(makeTask, tasksAmount) {
+        this.id = window.location.href.split("/")[window.location.href.split("/").length-1].replace(".html", "")
         this.makeTask = makeTask
         this.tasksAmount = tasksAmount
         this.circles = []
@@ -153,7 +153,6 @@ class Task {
             }
         else {
             let testsFromLocalStorage = localStorage.getItem("tests")
-            console.log(testsFromLocalStorage)
             let tests = {}
             if (testsFromLocalStorage) {
                 tests = JSON.parse(testsFromLocalStorage)
@@ -207,7 +206,7 @@ class Task {
         circle.setAttribute("fill", "white")
         circle.setAttribute("cy", (r + strk_width).toString())
         circle.setAttribute("r", r.toString())
-        
+
         for (let k of Array(this.tasksAmount).keys()) {
             let newCircle = circle.cloneNode(false)
             let cx = r*(k+1) + k*space + strk_width
@@ -221,8 +220,8 @@ class Task {
 
 
 class CalcTask extends Task {
-    constructor(id, makeTask, tasksAmount) {
-        super(id, makeTask, tasksAmount)
+    constructor(makeTask, tasksAmount) {
+        super(makeTask, tasksAmount)
         this.userInput = document.createElement("input")
         this.userInput.size = "9"
         this.userInput.maxLength = "9"
@@ -265,8 +264,8 @@ class CalcTask extends Task {
 
 
 class FracCalcTask extends Task {
-    constructor(id, makeTask, tasksAmount) {
-        super(id, makeTask, tasksAmount)
+    constructor(makeTask, tasksAmount) {
+        super(makeTask, tasksAmount)
         this.fracInput = document.createElement("div")
         this.numeratorInput = document.createElement("input")
         this.denominatorInput = document.createElement("input")

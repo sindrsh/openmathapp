@@ -6,14 +6,14 @@
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
-            let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
             let spacing = 5
             let x = 300
             let r = Math.floor(x/6 - spacing)
             let xLim = Math.floor(x/(2*r))
             shuffleArray(numbers)
             var positions = []
-            const task = new CalcTask("count_amounts_1_to_9", makeTask, 9)
+            const task = new CalcTask(makeTask, 9)
             let fig = new Figure()
             
             fig.makeBoundingBox({xSize: x, ySize: x, strokeColor: "black"})

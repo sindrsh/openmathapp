@@ -14,7 +14,7 @@
             let numberLine = fig.makeVector({ B: [10, 0], arrow: "axisArrow", isTemp: false })
             fig.makeXTick({x:0, fig: numberLine, label: "0", isTemp: false})
             fig.makeXTick({x:1, fig: numberLine, label: "1", isTemp: false})
-            let task = new CalcTask("num_line_0_to_9", makeTask, 8)
+            let task = new CalcTask(makeTask, 8)
             let numbers = [2, 3, 4, 5, 6, 7, 8, 9]
             shuffleArray(numbers)
             

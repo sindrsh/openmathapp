@@ -15,7 +15,7 @@
             let numberLine = fig.makeVector({A: [10, 0],  B: [0, 0], arrow: "axisArrow", isTemp:false })
             fig.makeXTick({x: 10, fig: numberLine, label: "0", isTemp: false})
             fig.makeXTick({x: 9, fig: numberLine, label: "-1", isTemp: false})
-            let task = new CalcTask("", makeTask, numbers.length)
+            let task = new CalcTask(makeTask, numbers.length)
             
             
             task.prepare({figure: fig})

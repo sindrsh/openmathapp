@@ -19,7 +19,7 @@
             let space = 10*oneSize + 40
 
             
-            let task = new CalcTask("count_unordered_amounts", makeTask, 4)
+            let task = new CalcTask(makeTask, 4)
             task.prepare({figure: fig, info: infoFig.svgElement})
             
             function makeTask() {

@@ -1,6 +1,5 @@
 {
     "counting": {
-        "directory": "counting",
         "topics": {
             "amounts": {
                 "count_amounts_0_to_9": {},
@@ -13,21 +12,49 @@
             }
         }
     },
+    "neg": {
+    	"topics": {
+    		"calculation": {
+    			"plus_on_interval_min9_to_9": {},
+    			"sub_on_interval_min9_to_9": {},
+    			"pos_times_neg": {},
+				"neg_div_neg": {},
+				"neg_times_neg": {},
+				"pos_div_neg": {}
+    		},
+    		"number_line": {
+    			"num_line_0_to_min9": {}
+    		}
+    	}
+    },
+    "plus": {
+    	"topics": {
+    		"calculation": {
+    			"integer_sums_2_to_9": {},
+    			"integer_sums_10_to_18_w10t": {},
+                "integer_sums_11_to_99_e10t": {},
+    			"integer_sums_11_to_99_w10t": {},
+    			"integer_sums_100_to_999_e10t": {},
+				"integer_sums_4digits": {},
+				"sums_w1dig_dec": {},
+				"sums_w2dig_mix": {}
+    		}
+    	}
+    },
     "automatization": {
-        "directory": "aut",
-            "topics": {
-                "times_table": {
-                    "times1": {},
-                    "times2": {},
-                    "times3": {},
-                    "times4": {},
-                    "times5": {},
-                    "times6": {},
-                    "times7": {},
-                    "times8": {},
-                    "times9": {},
-                    "times10": {}
-                }
+        "topics": {
+            "times_table": {
+                "times1": {},
+                "times2": {},
+                "times3": {},
+                "times4": {},
+                "times5": {},
+                "times6": {},
+                "times7": {},
+                "times8": {},
+                "times9": {},
+                "times10": {}
+            }
         }
     }
 }

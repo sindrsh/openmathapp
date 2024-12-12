@@ -3,12 +3,11 @@
 
     <script type="module">
 
-        localStorage.setItem("tests", "count_amounts_1_to_9")
         import { Figure } from "../../figures/figure_modules.js"
         import { CalcTask } from "../task_modules.js"
         import { getRandomInt } from "../global_modules.js"
-        
-        let task = new CalcTask("", makeTask)
+        console.log()
+        let task = new CalcTask(makeTask, 5)
         let mathElement = document.createElement("math")
         task.prepare({mathElement: mathElement})
         
