@@ -6,7 +6,7 @@
             .subject-menu {
                 font-size: larger;
                 display: grid;
-                grid-template-columns: auto auto auto auto;
+                grid-template-columns: auto auto;
                 gap: 10px;
             }
             .subject-menu a {
@@ -34,13 +34,21 @@
             <a href="./assessments/aut/aut.html">Gangetabellen</a>
             <a href="./assessments/plus/plus.html">Addisjon</a>
             <a href="./assessments/counting/counting.html">Telling</a>
+            <a href="./assessments/neg/neg.html">Negative tal</a>
         <div> 
     </body>
 
 
     <script type="module">
+        
+        try {
+            let task_index = JSON.parse(localStorage.getItem("tests"))
+        }
+        catch(e) {
+            console.log(e)
+            localStorage.setItem("tests", "{}")
+        }
         import { signIn } from "./data_module.js"
-        console.log(localStorage.getItem("tests"))
         //document.getElementById("mainPage").hidden = true
         let loginButton = document.getElementById("loginButton")
         loginButton.addEventListener("click", login)
