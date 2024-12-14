@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
         <script type="module">
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
             let numbers = [10, 11, 12, 14, 15, 16, 17, 18, 19, 20]
             let ySpace = 10
-            let x = 400
-            let y = 245
+            let x = 22
+            let y = 15
             let marginTopBottom = 10
-            let size = (y-2*marginTopBottom-8*ySpace)/9
 
             shuffleArray(numbers)
 
             const task = new CalcTask(makeTask, 5)
-            let fig = new Figure()
-            var positions = []
-            fig.makeBoundingBox({xSize: 400, ySize: 300, strokeColor: "black"})
 
-            task.prepare({figure: fig})
+            const infoFig = new TaskFigure(15)
+            infoFig.makeOnes(1)
+            infoFig.makeBoundingBox(70,20)
+            infoFig.makeText("= 1", 3, 0.8)
+
+            let fig = new TaskFigure(15)
+            fig.makeRectangle(x, y)
+            var positions = []
+
+            task.prepare({figure: fig, info: infoFig.svgElement})
 
            
            
             function makeTask(){
                 let onesAmount = getRandomInt(0, 9)
-                let ones = fig.makeOnes({amount: onesAmount, size: size, addToSvg: true, ySpace: ySpace})
-                if (ones) {
-                    fig.move(ones, x - 40, marginTopBottom)
-                }
+                let ones = fig.makeOnes(onesAmount, {x: x - 2, y: y-2, ySpace: 0.5})
+            
                 let tensAmount = getRandomInt(0, 9)
                 if (onesAmount == 0) {
                     tensAmount = getRandomInt(1, 9)
                 }
-                let tens = fig.makeTens({amount: tensAmount, addToSvg: true, xSpace: 15})
-                if (tens) {
-                    fig.move(tens, 300, 10)  
-                }
+                let tens = fig.makeTens(tensAmount, {x: x-5, y:y-2, xSpace: 15})
                 return onesAmount + 10*tensAmount
             }
         </script>

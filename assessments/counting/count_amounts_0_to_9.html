@@ -2,7 +2,7 @@
 <html>
         <script type="module">
 
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
@@ -13,17 +13,27 @@
             let xLim = Math.floor(x/(2*r))
             shuffleArray(numbers)
             var positions = []
-            const task = new CalcTask(makeTask, 9)
-            let fig = new Figure()
-            
-            fig.makeBoundingBox({xSize: x, ySize: x, strokeColor: "black"})
-            
             for (let i of Array(xLim).keys()) {
                 for (let j of Array(xLim).keys()) {
                     positions.push([(i+0.5)*2*(r + spacing), (0.5+j)*2*(r + spacing)])
                 }
             }
-            task.prepare({figure: fig})
+
+            const task = new CalcTask(makeTask, 9)
+
+            const infoFig = new TaskFigure(10)
+            infoFig.makeBoundingBox(x+50, x, "transparent")
+            infoFig.makeRectangle(x, x)
+            infoFig.makeCircle(r, positions[4][0], positions[4][1], {fill: "rgb(0, 240, 0, 1)"})
+            infoFig.makeText("= 1", 1.1*x, 0.5*x)
+
+
+            let fig = new TaskFigure()
+            fig.makeBoundingBox(x, x, "black")
+            
+            
+
+            task.prepare({figure: fig, info: infoFig.svgElement})
             
             
             function makeTask() {
@@ -31,7 +41,7 @@
                 let answer = numbers.pop()
                 let centers = positions.slice(0, answer)
                 for (let center of centers) {
-                    fig.makeCircle({r:r, pos: center, fill: "rgb(0, 240, 0, 1)"})
+                    fig.temporaryElements.push(fig.makeCircle(r, center[0], center[1], {fill: "rgb(0, 240, 0, 1)"}))
                 }
                 return answer               
             }

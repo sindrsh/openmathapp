@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title> Tall og telling </title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../book_styles.css">
+    </head>
+    <script type="module">
+    
+    const book = document.getElementsByTagName("body")[0]
+    let chapter_count = 0
+    let section_count = 1
+
+
+    async function getChapter(s) {
+        chapter_count += 1
+        const url = "./" + s + "_build.html"
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+
+            const text = await response.text();
+            const parser = new DOMParser();
+            const chapter = parser.parseFromString(text, "text/html").getElementsByTagName("body")[0]
+            book.appendChild(chapter)
+
+            let rule_count = 1
+            let example_count = 1
+            for (let section of book.getElementsByTagName("section")) {
+                let sectionTitle = section.getElementsByClassName("section-title")[0]
+                sectionTitle.innerHTML = `${chapter_count}.${section_count} ` + sectionTitle.innerHTML
+
+                let rules = section.getElementsByClassName("rule")
+                for (let rule of rules) {
+                    let ruleTitle = rule.getElementsByTagName("h4")[0]
+                    ruleTitle.innerHTML = `${chapter_count}.${rule_count} ` + ruleTitle.innerHTML
+                    rule_count += 1
+                }
+                let examples = section.getElementsByClassName("example")
+                for (let example of examples) {
+                    let exampleTitle = example.getElementsByTagName("h4")[0]
+                    exampleTitle.innerHTML = `Eksempel ${chapter_count}.${example_count} `
+                    example_count += 1
+                }
+
+                
+                section_count += 1
+            }
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    getChapter("cnt/cnt_no")
+
+
+    async function getFigures() {
+            const url = "./fig/figures_rendered.html"
+            const figure_elements = book.getElementsByClassName("figure")
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                  throw new Error(`Response status: ${response.status}`);
+                }
+
+                const text = await response.text();
+                const parser = new DOMParser();
+                const figures = parser.parseFromString(text, "text/html")
+                for (let figure_element of figure_elements) {
+                  if (figures.getElementById(figure_element.id)) {
+                    figure_element.appendChild(figures.getElementById(figure_element.id))
+                  }
+                }
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+    getFigures()
+    </script>
+</html>
