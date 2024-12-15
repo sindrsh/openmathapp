@@ -36,16 +36,16 @@ math {
 }
 
 .symbol {
-    background-color: teal;
+    background-color: rgb(0, 128, 128, 0.2);
 }
 
-.language-box, .statement {
+.statement {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.rule, .info ,.example, .definition {
+.rule, .info ,.example, .definition, .language-box {
     padding: 10px;
     padding-top: 0px;
     margin-top: 10px;
@@ -71,7 +71,7 @@ math {
     margin-bottom: 5px;
 }
 
-.rule {
+.rule, .definition {
     background-color: rgb(102, 204, 255, 0.1);
 }
 
@@ -82,6 +82,7 @@ math {
 .info {
     background-color: rgb(0, 153, 153, 0.1);
 }
+
 
 .footnote {
     margin-top: 10px;

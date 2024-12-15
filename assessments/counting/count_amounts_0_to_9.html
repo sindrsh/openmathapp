@@ -21,19 +21,16 @@
 
             const task = new CalcTask(makeTask, 9)
 
-            const infoFig = new TaskFigure(10)
-            infoFig.makeBoundingBox(x+50, x, "transparent")
+            let fig = new TaskFigure()
+            const infoFig = new TaskFigure()
+            infoFig.makeBoundingBox(x+50, x+10, "transparent")
             infoFig.makeRectangle(x, x)
             infoFig.makeCircle(r, positions[4][0], positions[4][1], {fill: "rgb(0, 240, 0, 1)"})
             infoFig.makeText("= 1", 1.1*x, 0.5*x)
-
-
-            let fig = new TaskFigure()
+            task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
+            
             fig.makeBoundingBox(x, x, "black")
-            
-            
-
-            task.prepare({figure: fig, info: infoFig.svgElement})
             
             
             function makeTask() {

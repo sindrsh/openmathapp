@@ -2,7 +2,6 @@
 <html><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
     <link rel="stylesheet" href="../../book_styles.css">
     <script type="module">
-        import { Figure } from "../../../figures/figure_modules.js"
         import { BookFigure } from "../../../figures/figure_modules.js"
 
         const oneSize = 30
@@ -124,9 +123,9 @@
                         fig.makeXTick(i, {fig: numberLine, label: i.toString()})
                     }
             },
+            /*
             "pos5": () => {
-                    const fig = new Figure({id: "pos5"})
-                    document.getElementsByTagName("body")[0].appendChild(fig.svgElement)
+                    const fig = new BookFigure({id: "pos5"})
                     fig.oneSize = 30
                     const vec5 = fig.makeVector({A:[0, 0], B: [5, 0], strokeColor: posColor})
                     fig.makeXTick({x:0 , fig: vec5, strokeColor: posColor})
@@ -134,10 +133,9 @@
                     const numberLine = fig.makeVector({A:[0, 0], B: [6, 0], arrow: "axisArrow", arrowScale:0.5})
                     fig.makeBoundingBox({xSize: oneSize*7, ySize: 50})
                     for (let i of [0, 1, 2, 3, 4]) {
-                        fig.makeXTick({x:i , fig: numberLine, label: i.toString()})
+                        fig.makeXTick(i, {fig: numberLine, label: i.toString()})
                     }
-                    fig.makeXTick({x: 5, fig: numberLine, label: 5, strokeColor: posColor})
-                    fig.move(fig.svgContainer, 5, 25)
+                    fig.makeXTick(5, {fig: numberLine, label: 5, strokeColor: posColor})
             },
             "pos_neg_def": () => {
                     const fig = new Figure({id: "pos_neg_def"})
@@ -205,6 +203,7 @@
                     fig.makeBoundingBox({xSize: fig.oneSize*10+10, ySize: 65})
                     fig.move(fig.svgContainer, -fig.oneSize, 40)
             }, 
+            */
             "tenth_one": () => {
                     const fig = new BookFigure("tenth_one", oneSize) 
                     let one = fig.makeOnes(1)
@@ -262,7 +261,7 @@
                     }
                     },    
             "tenth_example_commma": () => {
-                    let lineScale = 20
+                    let lineScale = 17
                     const fig = new BookFigure("tenth_example_comma", oneSize) 
                     let ones = fig.makeOnes(2, {ySpace: 0})
                     let tenths = fig.makeTenths(7, {x:1.5})

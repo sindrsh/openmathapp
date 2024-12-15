@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+            import { TaskFigure } from "../../figures/figure_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
+            
+            let oneLength = 50
+            let xStart = 10
+
+            let fig = new TaskFigure(30)
+            fig.oneSize = 50
+            let numberLine = fig.makeVector([0, 0], [31, 0],{arrow: "axisArrow"})
+            
+            for (let i of Array(30).keys()) {
+                    fig.makeXTick(i, {fig: numberLine})
+                }
+            let task = new CalcTask(makeTask, 5)
+            let interval0 = []
+            for (let i=20; i<50; ++i) {
+                interval0.push(i)
+            }
+            shuffleArray(interval0)
+            let interval1 = []
+            for (let i=50; i<80; ++i) {
+                interval1.push(i)
+            }
+            shuffleArray(interval1)
+
+            let interval2 = []
+            for (let i=70; i<100; ++i) {
+                interval2.push(i)
+            }
+            shuffleArray(interval2)
+
+            task.prepare({figure: fig, stack: true})
+            
+            function makeTask() {
+                let i = getRandomInt(0, 2)
+                let a
+                let answer
+                if (i == 0) {
+                    answer = interval0.pop()
+                    a = answer - 20
+                    fig.temporaryElements.push(fig.makeXTick(0, {fig: numberLine, label: "20"}))
+                    fig.temporaryElements.push(fig.makeXTick(30, {fig: numberLine, label: "50"}))
+                }
+                if (i == 1) {
+                    answer = interval1.pop()
+                    a = answer - 50
+                    fig.temporaryElements.push(fig.makeXTick(0, {fig: numberLine, label: "50"}))
+                    fig.temporaryElements.push(fig.makeXTick(30, {fig: numberLine, label: "80"}))
+                }
+                if (i == 2) {
+                    answer = interval2.pop()
+                    a = answer - 70
+                    fig.temporaryElements.push(fig.makeXTick(0, {fig: numberLine, label: "70"}))
+                    fig.temporaryElements.push(fig.makeXTick(30, {fig: numberLine, label: "100"}))
+                }
+                console.log(answer)
+                fig.temporaryElements.push(fig.makeVector([a, -2], [a, -0.5], {strokeColor: "blue" }))
+                return answer      
+            }
+        </script>
+</html>
+

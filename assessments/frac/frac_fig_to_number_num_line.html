@@ -8,8 +8,7 @@
             const task = new FracCalcTask(makeTask, 8)
             var r = 50
             var fill = "skyblue"
-            const fig = new TaskFigure()
-            let infoFig = new TaskFigure()
+            const fig = new TaskFigure(40)
             
             var denominators = [2, 3, 4, 5, 6, 7, 8, 9]
             let numerators = {
@@ -24,11 +23,9 @@
                 }
             shuffleArray(denominators)
             
-            task.prepare({figure: fig})
-            task.makeInfo(infoFig.svgElement)
-            infoFig.makeCircle(r, 0, 0, {fill: fill})
-            infoFig.makeText("= 1", 1.5*r, 0)
-            
+            task.prepare({figure: fig, stack: true})
+            const numberline = fig.makeVector([0, 0], [11, 0], {arrow: "axisArrow"})
+            fig.makeXTick(10, {label: "1", addToSvg: true})
             function makeTask() {
                 let denominator = denominators.pop()
                 
@@ -42,12 +39,10 @@
                 for (let i=0; i< numerator; ++i) {
                     randomIndexes.push(indexes[i])
                 }
+
+                fig.temporaryElements.push(fig.makeVector([0,-0.5], [numerator*10/denominator, -0.5], {strokeColor: "blue"}))
                 for (let i of Array(denominator).keys()) {
-                    let segmentFill = "white"
-                    if (randomIndexes.includes(i)) {
-                        segmentFill = fill
-                    }
-                    fig.temporaryElements.push(fig.makeCircleSegment(r, 0, 0, i*da, (i+1)*da, {fill: segmentFill}))
+                    fig.makeXTick(i*10/denominator, {addToSvg: true})
                 }
                 return [numerator, denominator]                
             }

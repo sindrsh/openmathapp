@@ -8,7 +8,6 @@ class Task {
     unit = ""
     interval
     timer
-    infoDiv
     hideInfoHeight
     showInfoHeight
 
@@ -21,19 +20,25 @@ class Task {
 
         this.infoIsClicked = false
         this.body = document.getElementsByTagName("body")[0]
-        this.body.style.maxWidth = "1080px"
-        this.body.style.margin = "auto"
+        this.body.style.fontSize = "32px"
         this.taskContainer = document.createElement("div")
         this.menuContainer = document.createElement("div")
         this.submitButton = document.createElement("input")
         this.restartButton = document.createElement("button")
         this.showAnswer = document.createElement("p")
         this.showAnswer.hidden = true
-
-        this.body.appendChild(this.menuContainer)
+        this.containerDiv = document.createElement("div")
+        this.containerDiv.style.maxWidth = "1080px"
+        this.containerDiv.style.margin = "auto"
+        this.containerDiv.style.padding = "20px"
+        this.containerDiv.appendChild(this.menuContainer)
+        this.infoDiv = document.createElement("div")
+        this.containerDiv.appendChild(this.infoDiv)
     }
 
-    prepare({figure=null, mathElement=null, info=null, stack=false} = {}) {
+    prepare({figure=null, mathElement=null, stack=false} = {}) {
+        
+        
         const containerTable = document.createElement("table")
         const tableRow = document.createElement("tr")
         const taskColumn = document.createElement("td")
@@ -54,46 +59,7 @@ class Task {
             figDiv.id = "fig"
             taskColumn.appendChild(figDiv)
         }
-        if (info) {
-            
-            const infoDiv = document.createElement("div")
-            const infoContainer = document.createElement("div")
-            const infoButton = document.createElement("button")
-            this.body.appendChild(infoDiv)
-            this.infoDiv= infoDiv
-            infoButton.style.display = "block"
-            infoButton.style.width = "100%"
-            infoButton.style.height = "30px"
-            infoButton.innerHTML = "INFO"
-            infoDiv.appendChild(infoButton)
-            this.hideInfoHeight = infoDiv.offsetHeight.toString() + "px"
-            
-            infoDiv.style.borderTop = "2px solid black"
-            infoDiv.style.borderBottom = "2px solid black"
-            infoDiv.style.marginTop = "0px"
-            infoContainer.style.paddingTop = "10px"
-            infoContainer.appendChild(info)
-            infoDiv.appendChild(infoContainer)
-            infoDiv.style.overflow = "hidden"
-            this.showInfoHeight = infoDiv.offsetHeight.toString()+"px"
-            infoDiv.style.margin = "auto"
-            infoDiv.style.height = this.hideInfoHeight
-            
-            infoButton.addEventListener("click", (e) => 
-                {
-                    if (this.infoIsShown) {
-                        this.infoDiv.style.height = this.hideInfoHeight
-                        this.infoIsShown = false
-                    } else {
-                        this.infoDiv.style.height = this.showInfoHeight
-                        this.infoIsShown = true
-                    }
-                    
-                }
-            )
-        }
         
-        this.body.style.fontSize = "32px"
         this.submitButton.style.fontSize = this.body.style.fontSize
         this.submitButton.value = "Enter"
         this.restartButton.style.fontSize = this.body.style.fontSize
@@ -119,19 +85,22 @@ class Task {
         } else {
             const tableRow2 = document.createElement("tr")
             const tableRow3 = document.createElement("tr")
-            const tablerow4 = document.createElement("tr")
+            const tableRow4 = document.createElement("tr")
             containerTable.style.textAlign = "center"
             containerTable.appendChild(tableRow)
             containerTable.appendChild(tableRow2)
             containerTable.appendChild(tableRow3)
+            containerTable.appendChild(tableRow4)
             tableRow2.appendChild(equalsColumn)
-            tableRow3.appendChild(submitColumn)
+            tableRow3.appendChild(answerColumn)
+            tableRow4.appendChild(submitColumn)
         }
         
         this.taskContainer.appendChild(containerTable)
         
-        this.body.appendChild(this.taskContainer)
-        this.body.appendChild(this.showAnswer)
+        this.containerDiv.appendChild(this.taskContainer)
+        this.containerDiv.appendChild(this.showAnswer)
+        this.body.appendChild(this.containerDiv)
         
         this.restartButton.hidden = true
         
@@ -141,6 +110,41 @@ class Task {
         
         this.restartButton.addEventListener("click", () => { location.reload() })
         this.answer = this.makeTask(...this.taskArguments)
+    }
+
+    makeInfo(info) {
+        const infoContainer = document.createElement("div")
+        const infoButton = document.createElement("button")
+        infoButton.style.display = "block"
+        infoButton.style.width = "100%"
+        infoButton.style.height = "30px"
+        infoButton.innerHTML = "INFO"
+        this.infoDiv.appendChild(infoButton)
+        this.hideInfoHeight = this.infoDiv.offsetHeight.toString() + "px"
+        
+        this.infoDiv.style.borderTop = "2px solid black"
+        this.infoDiv.style.borderBottom = "2px solid black"
+        this.infoDiv.style.marginTop = "0px"
+        infoContainer.style.paddingTop = "10px"
+        infoContainer.appendChild(info)
+        this.infoDiv.appendChild(infoContainer)
+        this.infoDiv.style.overflow = "hidden"
+        this.showInfoHeight = (this.infoDiv.offsetHeight).toString()+"px"
+        this.infoDiv.style.margin = "auto"
+        this.infoDiv.style.height = this.hideInfoHeight
+        
+        infoButton.addEventListener("click", (e) => 
+            {
+                if (this.infoIsShown) {
+                    this.infoDiv.style.height = this.hideInfoHeight
+                    this.infoIsShown = false
+                } else {
+                    this.infoDiv.style.height = this.showInfoHeight
+                    this.infoIsShown = true
+                }
+                
+            }
+        )
     }
 
     checkAnswer() {
@@ -183,7 +187,7 @@ class Task {
         }, interval);
     }
 
-    correctAnswer() {
+    async correctAnswer() {
         if (this.circles.length > 0) {
             this.circles.pop().setAttribute("fill", "green")
         
@@ -202,9 +206,14 @@ class Task {
             let testsFromLocalStorage = localStorage.getItem("tests")
             let tests = {}
             if (testsFromLocalStorage) {
-                tests = JSON.parse(testsFromLocalStorage)
+                try {
+                    JSON.parse(testsFromLocalStorage)
+                    tests = JSON.parse(testsFromLocalStorage)
+                } catch(error) {
+                    localStorage.setItem("tests", "{}")
+                }
             }
-            
+            console.log(localStorage.getItem("tests"))
             tests[this.id] = { "score": 2 }
             localStorage.setItem("tests", JSON.stringify(tests))
             alert("Flott! Fortsett på neste nivå.")
@@ -212,6 +221,20 @@ class Task {
                 window.location.href = "../../index.html"
             }, 1000);
         }
+        }
+    }
+
+    async getTaskMain() {
+        try {
+            const response = await fetch("../../task_index.json");
+            if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+            }
+    
+            const subjects = await response.json();
+            return subjects
+        } catch (error) {
+            console.error(error.message);
         }
     }
     
@@ -267,49 +290,6 @@ class Task {
 
 
 class CalcTask extends Task {
-    constructor(makeTask, tasksAmount) {
-        super(makeTask, tasksAmount)
-        this.userInput = document.createElement("input")
-        this.userInput.size = "9"
-        this.userInput.maxLength = "9"
-    }
-    
-    prepareSpecifics(answerColumn) {
-        this.userInput.style.fontSize = this.body.style.fontSize
-        answerColumn.appendChild(this.userInput)
-        this.userInput.addEventListener("keydown", (e) => {
-            if (e.key === 'Enter') {
-                this.checkAnswer()
-            }
-        })
-    }
-
-    evaluateAnswer() {
-        this.userInput.disabled = "true"
-        let userAnswer = this.inputIsValid(this.userInput)
-        if (userAnswer) {
-            if (this.answer == parseFloat(userAnswer)) {
-                this.correctAnswer()
-            } else {
-                this.wrongAnswer()
-            }    
-        } else {
-            this.wrongAnswer()
-        }    
-    }
-
-    resetInputFields() {
-        this.userInput.disabled = false
-        this.userInput.value = ""
-        this.userInput.focus()
-    }
-
-    addAnswerContent() {
-        this.showAnswer.innerHTML = `Svar: ${this.answer}${this.unit}`
-    }
-}
-
-class StackedCalcTask extends Task {
     constructor(makeTask, tasksAmount) {
         super(makeTask, tasksAmount)
         this.userInput = document.createElement("input")

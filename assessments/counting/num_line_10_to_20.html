@@ -5,27 +5,22 @@
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
-            let oneLength = 50
-            let xStart = 10
-
-            let fig = new TaskFigure(30)
-            fig.oneSize = 50
-            let numberLine = fig.makeVector([0, 0], [10, 0],{arrow: "axisArrow"})
+            let fig = new TaskFigure(50)
+            let numberLine = fig.makeVector([0, 0], [21, 0],{arrow: "axisArrow"})
             fig.makeXTick(0, {fig: numberLine, label: "0"})
-            fig.makeXTick(1, {fig: numberLine, label: "1"})
-            let task = new CalcTask(makeTask, 8)
-            let numbers = [2, 3, 4, 5, 6, 7, 8, 9]
+            fig.makeXTick(10, {fig: numberLine, label: "10"})
+            for (let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) {
+                    fig.makeXTick(i, {fig: numberLine})
+            }
+            let task = new CalcTask(makeTask, 10)
+            let numbers = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
             shuffleArray(numbers)
             
             task.prepare({figure: fig, stack: true})
             
             function makeTask() {
                 let a = numbers.pop()
-                
-                for (let i of [2, 3, 4, 5, 6, 7, 8, 9]) {
-                    fig.makeXTick(i, {fig: numberLine})
-                }
-                let taskVector = fig.makeVector([0, -0.5], [a, -0.5], {strokeColor: "blue" })
+                fig.temporaryElements.push(fig.makeVector([0, -0.5], [a, -0.5], {strokeColor: "blue" }))
                 return a          
             }
         </script>

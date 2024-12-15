@@ -40,15 +40,8 @@
 
 
     <script type="module">
-        
-        try {
-            let task_index = JSON.parse(localStorage.getItem("tests"))
-        }
-        catch(e) {
-            console.log(e)
-            localStorage.setItem("tests", "{}")
-        }
-        import { signIn } from "./data_module.js"
+
+        //import { signIn } from "./data_module.js"
         //document.getElementById("mainPage").hidden = true
         let loginButton = document.getElementById("loginButton")
         loginButton.addEventListener("click", login)

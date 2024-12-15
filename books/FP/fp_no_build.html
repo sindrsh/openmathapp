@@ -47,9 +47,14 @@
                     example_count += 1
                 }
 
-                
                 section_count += 1
             }
+
+            for (let lang of document.getElementsByClassName("language-box")) {
+                    let title = document.createElement("h4")
+                    title.innerHTML = "Språkboksen"
+                    lang.insertAdjacentElement('afterbegin', title)
+                }
 
         } catch (error) {
             console.error(error.message);
