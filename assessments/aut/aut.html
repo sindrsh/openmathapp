@@ -28,16 +28,24 @@
     </table>
 </body>
 
-<script>
-    let testsFromLocalStorage = {}
-    console.log(localStorage)
-    if (localStorage.getItem("tests")) {
-        testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
+<script type="module">
+    import { getSession, getLocalTasks, syncTasks } from "../../data_modules.js"
+        
+    let tasks = getLocalTasks()
+    getSession().then((data) => 
+        {   
+            if (data) {
+                syncTasks(tasks, data)
+        }
+    }
+    )
+    
+    if (localStorage.getItem("tasks")) {
+        tasks = JSON.parse(localStorage.getItem("tasks"))
         
     for (a of document.getElementById("times-table").getElementsByTagName("a")) {
-        if (a.id in testsFromLocalStorage) {
-            console.log(testsFromLocalStorage[a.id].score)
-            if (testsFromLocalStorage[a.id].score == 2) {
+        if (a.id in tasks) {
+            if (tasks[a.id].score == 2) {
                 a.style.backgroundColor = "green"
             }
         }

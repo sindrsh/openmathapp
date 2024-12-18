@@ -1,3 +1,6 @@
+
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
 async function getSubjects() {
     try {
         const response = await fetch("../../task_index.json");
@@ -91,7 +94,9 @@ function makeTables(subject) {
     
     let topicElements = document.getElementsByClassName("topic-table")
     for (let topicElement of topicElements) {
+        console.log(topicElement)
         let row = topicElement.getElementsByClassName("tasks")[0]
+        console.log(row)
         let tests = Array.from(row.getElementsByClassName("dynamic-task"))
         tests[0].style.visibility = "visible"
         tests = tests.slice(0)
@@ -99,9 +104,12 @@ function makeTables(subject) {
 
         let testsFromLocalStorage = {}
         if (localStorage.getItem("tests")) {
+            try {
             testsFromLocalStorage = JSON.parse(localStorage.getItem("tests"))
+            } catch {
+                testsFromLocalStorage = {}
+            }
         }
-        
         for (let i=0; i<tests.length-1; ++i) {
             if (tests[i].id in testsFromLocalStorage) {
                 if (testsFromLocalStorage[tests[i].id]["score"] == 2) {

@@ -1,3 +1,11 @@
+:root {
+  --calc-ones-background-color: rgb(0, 128, 128, 0.2); 
+  --calc-tens-background-color: rgb(0, 128, 128, 0.2);
+  --calc-hundreds-background-color: rgb(0, 128, 128, 0.2);
+  --calc-tenths-background-color: rgb(0, 128, 128, 0.2);
+}
+
+
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 550px;
@@ -91,4 +99,18 @@ math {
     font-size: smaller;
     border-bottom-style: solid;
     border-top-style: solid;
+}
+
+
+.abc-list li::before {
+    content: counter(abc-counter, lower-alpha) ") ";
+}
+
+.abc-list li {
+    counter-increment: abc-counter; 
+}
+
+.abc-list {
+    list-style: none;
+    counter-reset: abc-counter;
 }

@@ -1,5 +1,74 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3ZmtvYW9nd3FleWhreXN4c2FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjczOTM4ODIsImV4cCI6MTk4Mjk2OTg4Mn0.xIjkHy_RbQnNbYCob74L7kf4VAfyEgJwLvKT8wItaS4')
+
+async function getSession() {
+    const { data, error } = await client.auth.getSession()
+    return data
+}
+
+async function syncTasks(tasks, data) {
+    const tasksFromDatabase = await client
+        .from('helland_skule_students')
+        .select("tasks")
+        .eq('user_id', data.session.user.id)
+
+    if (!tasksFromDatabase){
+        return
+    }
+
+    if (tasksFromDatabase.data[0]) {
+        const storedTasks = JSON.parse(tasksFromDatabase.data[0]["tasks"])    
+
+    for (let key of Object.keys(tasks)) {
+        if (key in storedTasks) {
+            if (storedTasks[key]["score"] > tasks[key]["score"]) {
+                tasks[key]["score"] = storedTasks[key]["score"]
+            }
+        }
+    }
+        for (let key of Object.keys(storedTasks)) {
+            if (!(key in tasks)) {
+                tasks[key] = storedTasks[key]
+            }
+        }
+    }
+
+    const { updateError } = await client
+        .from('helland_skule_students')
+        .update({ tasks: `${JSON.stringify(tasks)}`  })
+        .eq('user_id', data.session.user.id)
+}
+
+function getLocalTasks() {
+    let testsFromLocalStorage = localStorage.getItem("tests") // previous name
+    let tests = {}
+    try {
+        JSON.parse(testsFromLocalStorage)
+        tests = JSON.parse(testsFromLocalStorage)
+    } catch(error) {
+        localStorage.setItem("tasks", "{}")
+    }
+
+    let tasksFromLocalStorage = localStorage.getItem("tasks")
+    let tasks = {}
+    try {
+        JSON.parse(tasksFromLocalStorage)
+        tasks = JSON.parse(testsFromLocalStorage)
+    } catch(error) {
+        localStorage.setItem("tasks", "{}")
+    }
+
+    for (let key of Object.keys(tests)) {
+        if (!(key in tasks)) {
+            tasks[key] = tests[key]
+        }
+    }
+    return tasks
+}
 
 
+export { getSession, getLocalTasks, syncTasks }
 /*
 
 var user = {}
@@ -154,6 +223,3 @@ async function updateTestRecord(testsString) {
                 }    
             }
         */
-
-
-export { signIn, updateTestRecord }

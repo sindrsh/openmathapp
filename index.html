@@ -25,12 +25,9 @@
     <input type="password" placeholder="Enter Password" name="psw" required id="password">
 
     <button id="loginButton">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember" id="rememberLoginInfo"> Remember me
-    </label>
         </div>
-
-        <div class="subject-menu">
+        
+        <div id="mainPage" class="subject-menu">
             <a href="./assessments/aut/aut.html">Gangetabellen</a>
             <a href="./assessments/plus/plus.html">Addisjon</a>
             <a href="./assessments/counting/counting.html">Telling</a>
@@ -40,11 +37,24 @@
 
 
     <script type="module">
+        
+        import { getSession, getLocalTasks, syncTasks } from "./data_modules.js"
+        
+        
+        let tasks = getLocalTasks()
+        getSession().then((data) => 
+            {
+                if (data) {
+                    syncTasks(tasks, data)
+            }
+        }
+        )
+        //console.log(data)
+      
 
-        //import { signIn } from "./data_module.js"
-        //document.getElementById("mainPage").hidden = true
+        document.getElementById("mainPage").hidden = "true"
         let loginButton = document.getElementById("loginButton")
-        loginButton.addEventListener("click", login)
+        //loginButton.addEventListener("click", login)
         /*
         if (localStorage.getItem("username")) {
             document.getElementById("username").value = localStorage.getItem("username")
@@ -53,22 +63,18 @@
             document.getElementById("password").value = localStorage.getItem("password")
         }
         */
-        function login() {
+
+        //await updateTasks()
+
+        async function login() {
             let username = document.getElementById("username").value
             let password = document.getElementById("password").value
-            signIn(username, password).then( (value) => {
-                if (value) {
-                    if (document.getElementById("rememberLoginInfo").checked == true) {
-                        localStorage.setItem("username", username)
-                        localStorage.setItem("password", password)
-                    }
-                } else {
-                    alert("Brukernavn eller passord er FULLSTENDIG FEIL!")
-                }   
-            }
-            )
+            
+            const { signInData, signInError } = await client.auth.signInWithPassword({
+                email: email,
+                password: password,
+            })
         } 
-
 
 
 

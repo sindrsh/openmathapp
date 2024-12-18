@@ -1,0 +1,1024 @@
+
+
+
+
+<h2 class="section-title">Addisjon</h2>
+
+\subsubsection{Oppstilling}
+Denne metoden baserer seg på plassverdisystemet, der man trinnvis regner ut summen av enerne, tierne, hundrene, og så videre
+
+	\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/plus1}
+	\end{figure}
+}
+}\qquad
+\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/plus2}
+	\end{figure}
+}
+}\\[12pt]
+\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/plus3}
+	\end{figure}
+}}\qquad
+\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/plus4}
+	\end{figure}
+}}
+
+\fork{Eksempel 1}{
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics{rekfig/plus1a}}\qquad
+	\subfloat[]{\includegraphics{rekfig/plus1b}}\qquad
+	\subfloat[]{\includegraphics{rekfig/plus1c}}
+\end{figure}
+
+\begin{enumerate}[label=\alph*)]
+	\item Vi legger sammen enerne: <math>  <mn>4</mn><mo>+</mo><mn>2</mn><mo>=</mo><mn>6</mn>  </math>
+	\item Vi legger sammen tierne: <math>  <mn>3</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>4</mn>  </math>
+	\item Vi legger sammen hundrene: <math>  <mn>2</mn><mo>+</mo><mn>6</mn><mo>=</mo><mn>8</mn>  </math>
+\end{enumerate}
+} 
+\fork{Eksempel 2}{
+	\begin{figure}
+		\centering
+		\subfloat[]{\includegraphics{rekfig/plus2a}}\qquad
+		\subfloat[]{\includegraphics{rekfig/plus2b}}\qquad
+		\subfloat[]{\includegraphics{rekfig/plus2c}}
+	\end{figure}
+	
+	\begin{enumerate}[label=\alph*)]
+		\item Vi legger sammen enerne: <math>  <mn>3</mn><mo>+</mo><mn>6</mn><mo>=</mo><mn>9</mn>  </math>
+		\item Vi legger sammen tierne: <math>  <mrow><mn>7</mn><mo>+</mo><mn>8</mn><mo>=</mo><mn>15</mn></mrow>  </math>. Siden 10 tiere er det samme som 100, legger vi til 1 på hundreplassen, og skriver opp de resterende 5 tierne på tierplassen.
+		\item Vi legger sammen hundrene: <math>  <mn>1</mn><mo>+</mo><mn>2</mn><mo>=</mo><mn>3</mn>  </math>.
+	\end{enumerate}
+} 
+
+<div class="language-box">
+Det å skrive 1 på neste sifferplass kalles ''å skrive 1 i mente''.
+</div>
+\begin{comment}
+	\subsubsection{Tabellmetoden}
+	Denne metoden tar utgangspunkt i det éne leddet, og summerer fram til det andre leddet er nådd. Det som i starten kan være litt rart med denne metoden, er at du selv velger fritt hvilke tall du skal legge til, så lenge du når det andre leddet til slutt.
+	
+		\parbox{0.3\linewidth}{
+			<div class="example">
+				<math>  <mi>colb</mi><mrow><mn>273</mn><mo>+</mo><mi>colc</mi><mrow><mn>86</mn></mrow> <mo>=</mo> <mi>colo</mi><mrow><mn>359</mn></mrow>  </math> 
+				
+				\begin{tabular}{r|r|r}
+					&&\colb{273} \\ \hline
+					6 & 6 & 279 \\
+					30& 36 & 309 \\
+					50& \colc{86} & \colo{359}
+				\end{tabular}
+			}
+		} \qquad
+		\parbox{0.3\linewidth}{
+			<div class="example">
+				<math>  <mi>colb</mi><mrow><mn>85</mn><mo>+</mo><mi>colc</mi><mrow><mn>79</mn></mrow><mo>=</mo><mi>colo</mi><mrow><mn>164</mn></mrow>  </math>  
+				
+				\begin{tabular}{r|r|r}
+					& & \colb{85} \\ \hline 
+					5 & 5 & 90 \\
+					10 & 15 &100 \\
+					64 & \colc{79} & \colo{164} \\
+				\end{tabular} 
+			}
+		}
+	
+	
+	\fork{Eksempel 1}{
+		\begin{figure}
+			\centering
+			\subfloat[]{
+				\begin{tabular}{r|r|r}
+					&&\colb{273} \\ \hline
+					&  &  \\
+					\phantom{30}& \phantom{36} &  \\
+					&  & 
+				\end{tabular}
+			} \qquad
+			\subfloat[]{
+				\begin{tabular}{r|r|r}
+					&&\colb{273} \\ \hline
+					6& 6 & 279 \\
+					\phantom{30}& \phantom{36} &  \\
+					&  & 
+				\end{tabular}
+			} 
+			
+			\subfloat[]{
+				\begin{tabular}{r|r|r}
+					&&\colb{273} \\ \hline
+					6& 6 & 279 \\
+					30& 36 & 309  \\
+					&  & 
+				\end{tabular}
+			}
+			\qquad
+			\subfloat[]{
+				\begin{tabular}{r|r|r}
+					&&\colb{273} \\ \hline
+					6& 6 & 279 \\
+					30& 36 & 309  \\
+					50& \colc{86} & \colo{359}
+				\end{tabular}
+			}
+		\end{figure}
+		\begin{enumerate}[label=(\alph*)]
+			\item Vi starter med det leddet vi selv ønsker, ofte er det lurt å starte med det største leddet.
+			\item Vi legger til <math>  <mn>6</mn>  </math>. Da har vi totalt lagt til <math>  <mn>6</mn>  </math>, og videre er <math>  <mrow><mn>273</mn><mo>+</mo><mn>6</mn><mo>=</mo><mn>279</mn></mrow>  </math>.
+			\item Vi legger til 30. Da har vi totalt lagt til 36, og videre er <math>  <mn>279</mn><mo>+</mo><mn>30</mn><mo>=</mo><mn>30</mn>9  </math>.
+			\item Vi legger til 50. Da har vi totalt lagt til 86, altså har vi nådd det andre leddet, og videre er <math>  <mn>309</mn><mo>+</mo><mn>50</mn><mo>=</mo><mn>359</mn>  </math>.
+		\end{enumerate}
+	} 
+	
+	<div class="info" data-title="Oppstilling versus tabellmetoden">
+		Ved første øyekast kan kanskje tabellmetoden bare se ut som en innviklet måte å regne addisjon på samenlignet med oppstilling, men med øving vil mange oppdage at tabellmetoden bedrer evnen til hoderegning. Styrkene til tabellmetoden kommer aller best til sin rett når det er snakk om å utføre subtraksjon eller divisjon.
+	</div>
+\end{comment}
+
+<h2 class="section-title">Subtraksjon</h2>
+\subsubsection{Oppstilling}
+Subtraksjon med oppstilling baserer seg på plassverdisystemet, der man trinnvis regner differansen mellom enerne, tierne, hundrene, o.l. Metoden tar også utgangspunkt i et mengdeperspektiv, og tillater derfor ikke differanser med negativ verdi (se forklaringen til <i>Eksempel 2 </i>).
+
+	\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/min1}
+	\end{figure}
+}} \qquad
+\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/min2}
+	\end{figure}
+}} \\[12pt]
+\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/min3}
+	\end{figure}
+}}\qquad
+\parbox{0.3\linewidth}{
+<div class="example">
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/min4}
+	\end{figure}
+}}
+
+
+\fork{Eksempel 1}{ 
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics{rekfig/min1a}}\qquad
+	\subfloat[]{\includegraphics{rekfig/min1b}}\qquad
+	\subfloat[]{\includegraphics{rekfig/min1c}}
+\end{figure}
+
+\begin{enumerate}[label=(\alph*)]
+	\item Vi finner differansen mellom enerne: <math>  <mrow><mn>9</mn><mo>−</mo><mn>4</mn><mo>=</mo><mn>5</mn></mrow>  </math>
+	\item Vi finner differansen mellom tierne: <math>  <mrow><mn>8</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>6</mn></mrow>  </math>. 
+	\item Vi finner differansen mellom hundrene: <math>  <mrow><mn>7</mn><mo>−</mo><mn>3</mn><mo>=</mo><mn>4</mn></mrow>  </math>.
+\end{enumerate}
+}
+
+\fork{Eksempel 2}{ 
+	\begin{figure}
+		\centering
+		\subfloat[]{\includegraphics{rekfig/min2a}}\qquad
+		\subfloat[]{\includegraphics{rekfig/min2b}}
+	\end{figure}
+	
+	\begin{enumerate}[label=(\alph*)]
+		\item Vi merker oss at 7 er større enn 3, derfor tar vi 1 tier fra de 9 på tierplassen. Dette markerer vi ved å sette en strek over 9. Så finner vi differansen mellom enerne: <math>  <mrow><mn>13</mn><mo>−</mo><mn>7</mn><mo>=</mo><mn>6</mn></mrow>  </math>
+		\item Siden vi tok 1 fra de 9 tierne, er der nå bare 8 tiere. Vi finner differansen mellom tierne: <math>  <mrow><mn>8</mn><mo>−</mo><mn>5</mn><mo>=</mo><mn>3</mn></mrow>  </math>.
+	\end{enumerate}
+}
+
+\subsubsection{Tabellmetoden}
+Tabellmetoden for subtraksjon tar utgangspunkt i at subtraksjon er en omvendt operasjon av addisjon. For eksempel, svaret på spørsmålet ''Hva er <math>  <mn>789</mn><mo>−</mo><mn>324</mn>  </math>?'' er det samme som svaret på spørsmålet ''Hvor mye må jeg legge til på 324 for å få 789?''. Med tabellmetoden følger du ingen spesiell regel underveis, men velger selv tallene du mener passer best for å nå målet.\\
+
+\parbox{0.35\linewidth}{
+<div class="example">
+<math>  <mi>colb</mi><mrow><mn>789</mn><mo>−</mo><mi>colr</mi><mrow><mn>324</mn></mrow><mo>=</mo><mi>colc</mi><mrow><mn>465</mn></mrow>  </math>	 
+
+\begin{tabular}{r|r}
+	& \colr{324} \\ \hline
+	6&330 \\
+	70&400 \\
+	389&\colb{789} \\ \hline
+	\colc{465}
+\end{tabular}
+}} \qquad
+\parbox{0.35\linewidth}{
+	<div class="example">
+		<math>  <mi>colb</mi><mrow><mn>83</mn><mo>−</mo><mi>colr</mi><mrow><mn>67</mn></mrow><mo>=</mo><mi>colc</mi><mrow><mn>16</mn></mrow>  </math>	 
+		
+		\begin{tabular}{r|r}
+			& \colr{67} \\ \hline
+			3&70 \\
+			13&\colb{83} \\ \hline
+			\colc{16}
+		\end{tabular} pace{14pt}
+}} \\[12pt]
+\parbox{0.35\linewidth}{
+	<div class="example">
+		<math>  <mn>564</mn><mo>−</mo><mn>478</mn><mo>=</mo><mn>86</mn>  </math>
+		
+		\begin{tabular</div>{r|r}
+			& 478 \\ \hline
+			2&480 \\
+			20&500 \\ 
+			64&564\\ \hline
+			86
+		\end{tabular}
+}} \qquad 
+\parbox{0.4\linewidth}{
+	<div class="example">
+		<math>  <mrow><mn>206</mn><mo>,</mo><mn>1</mn><mo>−</mo>3<mn>1</mn><mo>,</mo><mn>7</mn><mo>=</mo><mn>1</mn><mn>7</mn><mn>4</mn><mo>,</mo><mn>4</mn>  </math>
+		
+		\begin{tabular}{r|r}
+			& 31,7 \\ \hline
+			0,3& 32\phantom{,0} \\
+			70\phantom{,0}&102\phantom{,0} \\ 
+			104,1&206,1\\ \hline
+			174,4
+		\end{tabular}
+}}
+
+
+\fork{Eksempel 1}{
+	<math class="display-math" display="block"> <mi>colb</mi><mrow><mn>789</mn></mrow><mo>−</mo><mi>colr</mi><mrow><mn>324</mn></mrow><mo>=</mo><mi>colo</mi><mrow><mn>465</mn></mrow> </math>
+\begin{figure}
+	\centering
+	\subfloat[]{
+	\begin{tabular}{r|r}
+		& \colr{324} \\ \hline
+		& \\
+		& \\
+		& \\ \hline
+		&
+	\end{tabular}	
+} \qquad
+	\subfloat[]{
+	\begin{tabular}{r|r}
+		& \colb{324} \\ \hline
+	   \colb{6}& \colc{330}\\
+		& \\
+		& \\ \hline
+		&
+	\end{tabular}
+}\qquad
+	\subfloat[]{
+	\begin{tabular}{r|r}
+		& 324 \\ \hline
+		6& \colb{330}\\
+		\colb{70}& \colc{400} \\
+		& \\ \hline
+		&
+	\end{tabular}	
+}  \\[12pt]
+\subfloat[]{
+	\begin{tabular}{r|r}
+		& 324 \\ \hline
+		6& 330\\
+		70& \colb{400} \\
+		\colb{389}& \colc{789}\\ \hline
+		&
+	\end{tabular}	
+}\qquad
+\subfloat[]{
+	\begin{tabular}{r|r}
+		& 324 \\ \hline
+		\colb{6}& 330\\
+		\colb{70}& 400 \\
+		\colb{389}& 789\\ \hline
+		\colo{465}&
+	\end{tabular}	
+}
+\end{figure}
+\begin{enumerate}[label=(\alph*)]
+	\item Vi starter med 324.
+	\item Vi legger til 6, og får <math>  <mrow><mn>324</mn><mo>+</mo><mn>6</mn><mo>=</mo><mn>330</mn></mrow>  </math>
+	\item Vi legger til 70, og får <math>  <mrow><mn>70</mn><mo>+</mo><mn>330</mn><mo>=</mo><mn>400</mn></mrow>  </math>
+	\item Vi legger til 389, og får <math>  <mrow><mn>389</mn><mo>+</mo><mn>400</mn><mo>=</mo><mn>789</mn></mrow>  </math>. Da er vi framme på 789.
+	\item Vi summerer tallene vi har lagt til:  <math>  <mrow><mn>6</mn><mo>+</mo><mn>70</mn><mo>+</mo><mn>389</mn><mo>=</mo>4<mn>6</mn>5</mrow>  </math>
+\end{enumerate}
+}
+<h2 class="section-title">Ganging</h2> 
+\subsubsection{Ganging med 10, 100, 1\,000 osv.}
+<div class="rule"><h4>Å gange heltall med 10, 100 osv. </h4> 
+	
+	<ul>
+		\item Når man ganger et heltall med 10, får man svaret ved å legge til sifferet 0 bak heltallet.
+		\item Når man ganger et heltall med 100, får man svaret ved å legge til sifrene 00 bak heltallet.
+		\item Det samme mønsteret gjelder for tallene 1\,000, 10\,000 osv.
+	</ul>
+</div>
+<div class="example"> 
+	<mtr> <mtd class="math-left-column"> <mn>6</mn><mo>⋅</mo> <mi>colb</mi><mrow><mn>10</mn> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr> &= 6\colb{0</div>\vn
+		79<mo>⋅</mo> \colb{10} &= 79\colb{0} \vn
+		802<mo>⋅</mo>\colb{10}&=802\colb{0}
+	}
+}
+<div class="example">  
+<mtr> <mtd class="math-left-column">  <mn>6</mn><mi><mo>⋅</mo>colb</mi><mrow><mn>100</mn> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr> &= 6\colb{00</div> \vn
+79<mo>⋅</mo>\colb{100} &= 7\,9\colb{00} \vn
+802<mo>⋅</mo>\colb{100} &=80\,2\colb{00}
+}
+}
+<div class="example">  
+<mtr> <mtd class="math-left-column">  <mn>6</mn><mi><mo>⋅</mo>colb</mi><mrow><mn>1</mn><mo>,</mo><mn>000</mn> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr> &= 6\,\colb{000</div> \vn
+	79<mo>⋅</mo>\colb{10\,000} &= 79\colb{0\,000} \vn
+	802<mo>⋅</mo>\colb{100\,000} &=80\,2\colb{00\,000}
+}
+}
+
+<div class="rule"><h4>Å gange desimaltall med 10, 100 osv. </h4> 
+	
+	<ul>
+		\item Når man ganger et desimaltall med 10, får man svaret ved å flytte komma en plass til høgre.
+		\item Når man ganger et heltall med 100, får man svaret ved å flytte komma to plasser til høgre.
+		\item Det samme mønsteret gjelder for tallene 1\,000, 10\,000 osv.
+	</ul>
+</div>
+<div class="example"> 
+	<mtr> <mtd class="math-left-column"> <mn>7</mn><mi>colr</mi><mrow><mo>,</mo> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr>9<mo>⋅</mo> 10 &= 79\colr{,</div>=79 \vn
+		38\colr{,}02<mo>⋅</mo>10&=380\colr{,}2 \vn
+		0\colr{,}57<mo>⋅</mo> 10 &=05\colr{,}7=5\colr{,}7 \vn
+		0\colr{,}194<mo>⋅</mo> 10&= 01\colr{,}94=1\colr{,}94
+	}
+}
+<div class="example">  
+	<mtr> <mtd class="math-left-column"> <mn>7</mn><mi>colr</mi><mrow><mo>,</mo> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr>9<mo>⋅</mo> 100 &= 790\colr{,</div>=790 \vn
+		38\colr{,}02<mo>⋅</mo>100&=3802\colr{,}=3\,802 \vn
+		0\colr{,}57<mo>⋅</mo> 100 &=057\colr{,}=57 \vn
+		0\colr{,}194<mo>⋅</mo> 100&= 019\colr{,}4=19\colr{,}4
+	}
+}
+<div class="example">  
+	<mtr> <mtd class="math-left-column"> <mn>7</mn><mi>colr</mi><mrow><mo>,</mo> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr>9<mo>⋅</mo> 1\,000 &= 7900\colr{,</div>=7\,900 \vn
+	38\colr{,}02<mo>⋅</mo>10\,000&=380020\colr{,}=380\,200 \vn
+	0\colr{,}57<mo>⋅</mo> 100\,000 &=57000\colr{,}=57\,000
+}
+}
+<div class="info" data-title="Merk">
+\hrs{gangheltallmed10100</div>{Regel} er bare et spesialtilfelle av regel ??. For eksempel, å bruke regel ?? på regnestykket <math>  <mrow><mn>7</mn><mo>⋅</mo> <mn>10</mn></mrow>  </math> gir samme resultat som å bruke regel ?? på regnestykket <math>  <mrow><mn>7</mn><mo>,</mo><mn>0</mn><mo>⋅</mo> 1<mn>0</mn></mrow>  </math>. 
+}
+
+\fork{Å gange tall med 10, 100 osv.}{
+Titallsystemet baserer seg på grupper av ti, hundre, tusen osv., og tideler, hundredeler og tusendeler osv (se regel ??). Når man ganger et tall med 10, vil alle enere i tallet bli til tiere, alle tiere bli til hundrere osv. Hvert siffer forskyves altså én plass mot venstre. Tilsvarende forskyves hvert siffer to plasser mot venstre når man ganger med 100, tre plasser når man ganger med 1\,000 osv.
+}
+\subsubsection{Utvidet form}
+Ganging på utvidet form bruker vi for å regne multiplikasjon mellom flersifrede tall. Metoden baserer seg på distributiv lov (regel ??). 
+<div class="example"> 
+\begin{figure</div>
+	\centering
+	\includegraphics[]{rekfig/gang1}
+\end{figure}
+}
+<div class="example"> 
+\begin{figure</div>
+	\centering
+	\includegraphics[]{rekfig/gfleirsif}
+\end{figure}
+}
+\fork{Eksempel 1}{
+24 kan skrives som <math>  <mn>20</mn><mo>+</mo><mn>4</mn>  </math>, altså er
+<math class="display-math" display="block"> <mn>2<mn>4</mn></mn><mo>⋅</mo><mn><mn>3</mn></mn> <mo>=</mo><mo>(</mo><mn>20</mn><mo>+</mo><mn>4</mn><mo>)</mo><mo>⋅</mo><mn><mn>3</mn></mn> </math>
+Av regel ?? har vi at 
+\algv{
+(20+4)<mo>⋅</mo> 3 &=20<mo>⋅</mo> 3 + 4<mo>⋅</mo> 3 \\
+&= 60+12 \\
+&= 72
+}
+}
+
+\fork{Eksempel 2}{
+Vi har at
+\algv{
+279&=200+70+9 \\
+34 &=30+4 	
+}
+Altså er
+<mtr> <mtd class="math-left-column"> <mn>279</mn><mo>⋅</mo><mn>34</mn> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column">  <mo>(</mo><mn>200</mn><mo>+</mo><mn>70</mn><mo>+</mo><mn>9</mn><mo>)</mo><mo>⋅</mo> <mo>(</mo><mn>30</mn><mo>+</mo><mn>4</mn><mo>)</mo>  </mtd> </mtr>
+Videre er 
+{
+\footnotesize
+<mtr> <mtd class="math-left-column"> <mo>(</mo><mn>200</mn><mo>+</mo><mn>70</mn><mo>+</mo><mn>9</mn><mo>)</mo><mo>⋅</mo> <mo>(</mo><mn>30</mn><mo>+</mo><mn>4</mn><mo>)</mo>  </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column"> <mn><mn>200</mn></mn><mo>⋅</mo> <mn><mn><mn>30</mn></mn></mn><mo>+</mo><mn><mn>70</mn></mn><mo>⋅</mo><mn><mn><mn>30</mn></mn></mn><mo>+</mo><mn><mn>9</mn></mn><mo>⋅</mo><mn><mn><mn>30</mn></mn></mn><mo>+</mo><mn><mn>200</mn></mn><mo>⋅</mo><mn><mn><mn>4</mn></mn></mn><mo>+</mo><mn><mn>70</mn></mn><mo>⋅</mo><mn><mn><mn>4</mn></mn></mn><mo>+</mo><mn><mn>9</mn></mn><mo>⋅</mo><mn><mn><mn>4</mn></mn></mn> </mtd> </mtr><mtr> <mtd class="math-left-column">  </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column"> <mn>9486</mn> </mtd> </mtr>
+} 
+}
+\subsubsection{Kompaktmetoden}
+Kompaktmetoden bygger på de samme prinsippene som ganging på utvidet form, men har en skrivemåte som gjør utregningen korterere. 
+
+<div class="example"> 
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{rekfig/gfleirsifa}
+	\end{figure}
+}
+\fork{Eksempel 1}{
+Vi starter med å gange sifrene i 279 enkeltvis med 4:
+<ul>
+	\item <math>  <mn>9</mn><mo>⋅</mo> <mn>6</mn><mo>=</mo>3<mn>6</mn>  </math>, da skriver vi 6 på enerplassen og 3 i mente.
+	\item <math>  <mn>7</mn><mo>⋅</mo><mn>4</mn> <mo>=</mo><mn>28</mn> </math>, da skriver vi 8 på tierplassen og 2 i mente.
+	\item <math>  <mn>2</mn><mo>⋅</mo> <mn>4</mn><mo>=</mo><mn>8</mn>  </math>, da skriver vi 8 på hundrerplassen.
+</ul>
+Så ganger vi sifrene i 279 enkeltvis med 30. Dette kan forenkles til å gange med 3, så lenge vi plasserer sifrene én plass forskjøvet til venstre i forhold til da vi ganget med 4:
+<ul>
+	\item <math>  <mn>9</mn><mo>⋅</mo> <mn>3</mn><mo>=</mo><mn>27</mn>  </math>, da skriver vi 7 på tierplassen og 2 i mente. 
+	\item <math>  <mn>7</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>21</mn>  </math>, da skriver vi 1 på hundrerplassen og 2 i mente.
+	\item <math>  <mn>2</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>6</mn>  </math>, da skriver vi 6 på tusenplassen.
+</ul> 
+}
+
+
+\subsubsection{Ganging med desimaltall}
+<div class="statement">
+	\begin{enumerate</div>
+		\item Flytt komma til høgre slik at begge tallene blir heltall.
+		\item Regn ut gangestykket mellom heltallene.
+		\item Flytt komma til venstre like mange plasser som du totalt flyttet komma til høgre.
+	\end{enumerate}
+}
+<div class="example">
+	Regn ut <math>  <mn>3</mn><mo>,</mo><mn>4</mn><mo>⋅</mo><mn>2</mn>  </math>
+	
+	
+	Vi flytter komma i 1 plass til <i>høgre </i> i 3,4. Da får vi 34. Videre er
+	<math class="display-math" display="block"> <mn>34</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>68</mn> </math>
+	Flytter vi komma 1 plass til <i>venstre </i> i 68, får vi 6,8. Altså er
+	<math class="display-math" display="block"> <mn>3</mn><mo>,</mo><mn>4</mn><mo>⋅</mo> <mn>2</mn><mo>=</mo><mn>6</mn><mo>,</mo><mn>8</mn> </math>
+</div>
+<div class="example">
+	Regn ut <math>  <mn>0</mn><mo>,</mo><mn>0</mn><mn>0</mn>5<mo>⋅</mo> <mn>7</mn>  </math>.
+	
+	
+	Vi flytter komma 3 plasser til <i>høgre </i> i 0,005. Da får  vi 5. Videre er
+	<math class="display-math" display="block"> <mn>5</mn><mo>⋅</mo><mn>7</mn><mo>=</mo>3<mn>5</mn> </math>
+	Flytter vi komma 3 plasser til <i>venstre </i> i 35, får vi 0,035. Altså er
+	<math class="display-math" display="block"> <mn><mn>0</mn></mn><mo>,</mo><mn><mn>0</mn></mn><mn><mn>0</mn></mn>5<mo>⋅</mo><mn>7</mn><mo>=</mo><mn><mn>0</mn></mn><mo>,</mo><mn><mn>0</mn></mn>35 </math>
+</div>
+<h2 class="section-title">Divisjon</h2> 
+\subsubsection{\delmedtihundre}
+<div class="rule"><h4>Deling med 10, 100, 1\,000 osv. </h4> 
+Når man deler et desimaltall med 10, får man svaret ved å flytte komma én plass til venstre.
+
+Når man deler et desimaltall med 100, får man svaret ved å flytte komma to plasser til venstre.
+
+Det samme mønsteret gjelder for tallene 1\,000, 10\,000 osv.
+</div>
+<div class="example">  
+	<mtr> <mtd class="math-left-column"> <mn>200</mn><mo>:</mo><mn>10</mn> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column"> <mn>200</mn><mi>colr</mi><mrow><mo>,</mo> </mtd> </mtr>0:10 \\&=20\colr{,</div>00\\&=20	\vn
+45:10&=45\colr{,}0:10 \\&= 4\colr{,}50 \\&=4\colr{,}5
+}
+}
+<div class="example">  
+	<mtr> <mtd class="math-left-column"> <mn>200</mn><mo>:</mo><mn>100</mn> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column"> <mn>200</mn><mi>colr</mi><mrow><mo>,</mo> </mtd> </mtr>0:100 \\&=2\colr{,</div>000\\&=2	\vn
+		45:100&=45\colr{,}0:100 \\&= 0\colr{,}450 \\&=0\colr{,}45
+	}
+}
+
+<div class="example">  
+<mtr> <mtd class="math-left-column"> <mn>143</mn><mi>colr</mi><mrow><mo>,</mo> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr>7 :10 &= 14\colr{,</div>37 \vn
+143\colr{,}7 :100 &= 1\colr{,}437 \vn
+143\colr{,}7 :1\,000 &= 0\colr{,}1437 
+}
+}
+<div class="example">  
+<mtr> <mtd class="math-left-column"> <mn>93</mn><mi>colr</mi><mrow><mo>,</mo> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd> </mtr>6:10 &= 9\colr{,</div>36 \vn
+93\colr{,}6:100 &= 0\colr{,}936 \vn
+93\colr{,}6:1\,000 &= 0\colr{,}0936
+}
+}
+\fork{Deling med 10, 100, 1\,000 osv.}{
+Titallsystemet baserer seg på grupper av ti, hundre, tusen osv., og tideler, hundredeler og tusendeler osv (se regel ??). Når man deler et tall med 10, vil alle enere i tallet bli til tideler, alle tiere bli til enere osv. Hvert siffer forskyves altså én plass mot høgre. Tilsvarende forskyves hvert siffer to plasser mot høgre når man deler med 100, tre plasser når man deler med 1\,000 osv.
+}
+
+\subsubsection{Oppstilling}
+Divisjon med oppstilling baserer seg på divisjon tolket som inndeling av mengder (se side \pageref{Divisjon})
+
+
+	\parbox{0.3\linewidth}{
+	<div class="example"> 
+		\begin{figure</div>
+			\centering
+			\includegraphics[]{rekfig/del1}
+		\end{figure} pace{18pt}
+	}
+}\qquad
+\parbox{0.45\linewidth}{
+	<div class="example"> pace{-5pt</div>
+		\begin{figure}
+			\centering
+			\includegraphics[]{rekfig/del2}
+		\end{figure}
+	}
+}
+
+
+\fork{Eksempel 1}{  
+	\begin{figure}
+		\centering
+		\subfloat{\includegraphics{\figp{delalg}}}
+		\qquad \subfloat{\includegraphics[angle=90]{\figp{delalg0}}}
+	\end{figure}
+	Figuren over illustrerer mengden 92, som vi skal dele inn i 4 like store grupper. 
+	\begin{itemize}
+		\item Vi starter med å fordele så mange av tierne som mulig. Av de 9 tierne, kan hver gruppe få 2. Da har vi totalt fordelt <math>  <mn>2</mn><mo>⋅</mo> <mn>4</mn><mo>=</mo><mn>8</mn>  </math> tiere.
+		\begin{figure}
+			\centering
+			\subfloat{\includegraphics{\figp{delalgaa}}}
+			\qquad \subfloat{\includegraphics[angle=90]{\figp{delalga}}}
+		\end{figure}
+		\item Vi står nå igjen med 1 tier og 2 enere, altså 12 enere. Av de 12 enerne, kan hver gruppe få 3. Da har vi totalt fordelt <math>  <mn>3</mn><mo>⋅</mo> <mn>4</mn><mo>=</mo> <mn>12</mn>  </math> enere.
+		\begin{figure}
+			\centering
+			\includegraphics[angle=90]{\figp{delalgb}}
+		\end{figure}
+		\item Nå er hele mengden 92 fordelt, og da er vi ferdige med utregningen. I hver gruppe endte vi opp med mengden 23.
+	\end{itemize}
+}
+
+\subsubsection{Tabellmetoden}
+Tabellmetoden baserer seg på divisjon som omvendt operasjon av ganging. For eksempel er svaret på spørsmålet ''Hva er <math>  <mrow><mn>76</mn><mo>:</mo><mn>4</mn></mrow>  </math>?'' det samme som svaret på spørsmålet ''Hvilket tall må jeg gange 4 med for å få 76?''. På samme vis som for tabellmetoden ved subtraksjon er det opp til en selv å velge passende tall for å nå målet.
+
+	
+	\parbox{0.35\linewidth}{
+		<div class="example">
+			<math>  <mi>colg</mi><mrow><mn>92</mn><mo>:</mo><mi>colb</mi><mrow><mn>4</mn></mrow><mo>=</mo><mi>colo</mi><mrow><mn>23</mn></mrow>  </math>	 
+			
+			\begin{tabular}{r|r|r}
+				<math>  <mo>⋅</mo><mo>,</mo> <mi>colb</mi><mrow><mn>4</mn></mrow>  </math>&\\ \hline
+				10&40&40 \\
+				10&40&80 \\
+				3& 12 &\colg{92} \\ \hline
+				\colo{23}&
+			\end{tabular}
+			pace{28pt}
+	}} \qquad
+\parbox{0.35\linewidth}{
+	<div class="example">
+		<math>  <mi>colg</mi><mrow><mn>894</mn><mo>:</mo><mi>colb</mi><mrow><mn>3</mn></mrow><mo>=</mo><mi>colo</mi><mrow><mn>298</mn></mrow>  </math>	 
+		
+		\begin{tabular}{r|r|r}
+			<math>  <mo>⋅</mo><mo>,</mo> <mi>colb</mi><mrow><mn>3</mn></mrow>  </math>&\\ \hline
+			200& 600 &600 \\
+			30&90 &690 \\
+			30&90 &780 \\
+			30& 90&870 \\
+			8&24 &\colg{894} \\ \hline
+			\colo{298} &
+		\end{tabular}
+}} 
+
+\parbox{0.415\linewidth}{
+	<div class="example">		
+		<math>  <mn>894</mn><mo>:</mo><mn>3</mn><mo>=</mo><mn>298</mn>  </math>	 
+		
+		\begin{tabular</div>{r|r|r}
+			<math>  <mo>⋅</mo><mo>,</mo> <mn>3</mn>  </math>&\\ \hline
+			300& 900&900 \\
+			<math>  <mo>−</mo><mn>2</mn>  </math>& <math>  <mo>−</mo><mn>6</mn>  </math> &894 \\ \hline
+			298&
+		\end{tabular} 
+	
+\footnotesize	
+\mer Samme regnestykke som i <i>Eksempel 2 </i>, men en annen utregning.
+}
+}
+
+
+\fork{Eksempel 1}{
+	Siden vi skal dele \colg{92} med \colb{4}, ganger vi med \colb{4} fram til vi når \colg{92}.
+	\begin{figure}
+		\centering
+		\subfloat[]{
+			\begin{tabular}{r|r|r}
+				<math>  <mo>⋅</mo><mo>,</mo> <mi>colb</mi><mrow><mn>4</mn></mrow>  </math>&\\ \hline
+				10&40&40 \\
+				&& \\
+				& &\\ \hline
+				&
+			\end{tabular}	
+		} \qquad
+		\subfloat[]{
+			\begin{tabular}{r|r|r}
+				<math>  <mo>⋅</mo><mo>,</mo> <mi>colb</mi><mrow><mn>4</mn></mrow>  </math>&\\ \hline
+				10&40&40 \\
+				10&40&80 \\
+				&  & \\ \hline
+				&
+			\end{tabular}	
+		} \\
+		\subfloat[]{
+			\begin{tabular}{r|r|r}
+				<math>  <mo>⋅</mo><mo>,</mo> <mi>colb</mi><mrow><mn>4</mn></mrow>  </math>&\\ \hline
+				10&40&40 \\
+				10&40&80 \\
+				3& 12 &\colg{92} \\ \hline
+				&
+			\end{tabular}	
+		} \qquad
+		\subfloat[]{
+			\begin{tabular}{r|r|r}
+				<math>  <mo>⋅</mo><mo>,</mo> <mi>colb</mi><mrow><mn>4</mn></mrow>  </math>&\\ \hline
+				10&40&40 \\
+				10&40&80 \\
+				3& 12 &\colg{92} \\ \hline
+				\colo{23}&
+			\end{tabular}	
+		}
+	\end{figure}
+	\begin{enumerate}[label=(\alph*)]
+		\item Vi ganger 10 med 4, som er lik 40. Da har vi så langt kommet til 40.
+		\item Vi ganger 10 med 4, som er lik 40. Da har vi så langt kommet til <math>  <mrow><mn><mn>40</mn></mn><mo>+</mo><mn><mn>40</mn></mn><mo>=</mo><mn>80</mn></mrow>  </math>.
+		\item Vi ganger 3 med 4, som er lik 12. Da har vi kommet til <math>  <mrow><mn>80</mn><mo>+</mo><mn>12</mn><mo>=</mo><mn>92</mn></mrow>  </math>, som var målet.
+		\item Vi legger sammen tallene vi ganget med, og får <math>  <mrow><mn><mn>10</mn></mn><mo>+</mo><mn><mn>10</mn></mn><mo>+</mo><mn>3</mn><mo>=</mo>2<mn>3</mn></mrow>  </math>.
+	\end{enumerate}
+}
+<div class="info" data-title="Tips">
+	Det kan være lurt å se tilbake på utregninger gjort med tabellmetoden for å tenke over om man kunne valgt tall på en annen måte. I <i>Eksempel 1 </i> på side \pageref{ekstbldiv</div> kunne vi startet med å gange med 20. Dette er omtrent like enkelt som å gange med 10, og det ville ha brakt oss nærmere målet.
+}
+
+\subsubsection{Divisjon med rest}
+Det er langt ifra alltid at svaret ved divisjon blir et heltall. En måte å uttrykke slike svar på, er å ved å bruke begrepet <span class="outline">rest</span>. Begrepet er best forklart ved eksempel: 
+<div class="example">
+	Regn ut <math>  <mn>11</mn><mo>:</mo><mn>4</mn>  </math> med rest.
+	
+	
+	Det største heltallet vi kan gange med 4 uten at produktet blir større enn
+	11, er 2. <math>  <mrow><mn>2</mn><mo>⋅</mo> <mn>4</mn> <mo>=</mo> <mn>8</mn>  </math>, så da har vi <math>  <mn>11</mn><mo>−</mo><mn>8</mn><mo>=</mo><mn>3</mn>  </math> i rest.
+	<math class="display-math" display="block"> <mn>11</mn><mo>=</mo> <mi>colb</mi><mrow><mn>2</mn></mrow><mo>⋅</mo> <mn>4</mn> <mo>+</mo><mi>colc</mi><mrow><mn>3</mn></mrow> </math>	
+	<div class="figure">mod1</div>
+	Dette betyr at
+	<math class="display-math" display="block"> <mn>11</mn><mo>:</mo><mn>4</mn> <mo>=</mo><mtext>colb{2</mtext> <m<mi>i</mi>>og</m<mi>i</mi>> <m<mi>i</mi>>colc</m<mi>i</mi>><mrow><mn>3</mn></mrow> <mi>i</mi> <mi>rest</mi></mrow></math>
+}
+<div class="example">
+	Regn ut <math>  <mn>19</mn><mo>:</mo><mn>3</mn>  </math> med rest.
+	
+	
+	Det største heltallet vi kan gange med 3 uten at produktet blir større enn
+	19, er 6. <math>  <mrow><mn>6</mn><mo>⋅</mo> <mn>3</mn> <mo>=</mo> <mn>18</mn>  </math>, så da har vi <math>  <mn><mn>1</mn>9</mn><mo>−</mo><mn>8</mn><mo>=</mo><mn>1</mn>  </math> i rest.
+	<math class="display-math" display="block"> <mn><mn>1</mn>9</mn><mo>=</mo> <mi>colb</mi><mrow><mn>6</mn></mrow><mo>⋅</mo> <mn>3</mn> <mo>+</mo><mi>colc</mi><mrow><mn>1</mn></mrow> </math>	
+	<div class="figure">mod2</div>
+	Dette betyr at
+	<math class="display-math" display="block"> <mn><mn>1</mn>9</mn><mo>:</mo><mn>3</mn> <mo>=</mo><mtext>colb{6</mtext> <m<mi>i</mi>>og</m<mi>i</mi>> <m<mi>i</mi>>colc</m<mi>i</mi>><mrow><mn>1</mn></mrow> <mi>i</mi> <mi>rest</mi></mrow></math>
+}
+
+<div class="example">
+	Regn ut <math>  <mn>9<mn>4</mn></mn><mo>:</mo><mn>4</mn>  </math> med rest.
+	
+	
+	\metode{Med oppstilling</div>{3.75cm}
+	<math class="display-math" display="block"> <mn>9<mn>4</mn></mn><mo>:</mo><mn>4</mn> <mo>=</mo> <mtext>23 og 2 i rest</mtext> </math>
+	\begin{figure}
+		\centering
+		\includegraphics[]{rekfig/mod3}
+	\end{figure}
+	\mers{Da det blir feil å bruke <span class="symbol"> <math>  <mo>=</mo>  </math></span> i figuren over, har vi valgt å bruke <span class="symbol"> <math>   <mi>rightarrow</mi> </math></span>. 
+	} 
+	
+	\metode{Med tabellmetoden}{3.75cm}
+	<math class="display-math" display="block"> <mn>9<mn>4</mn></mn><mo>:</mo><mn>4</mn> <mo>=</mo> <mtext>23 og 2 i rest</mtext> </math>
+	
+		\begin{tabular}{r|r|r}
+			<math>  <mo>⋅</mo><mo>,</mo> <mn>4</mn> </math>&\\ \hline
+			20&80&80 \\
+			3& 12 &92 \\ \hline
+			23&
+		\end{tabular} \qquad <math>  <mn>94</mn><mo>−</mo><mn>9<mn>2</mn></mn><mo>=</mo><mn>2</mn>  </math>
+	
+}
+<div class="language-box">
+	Hvis vi utfører en <span class="outline">modulo-operasjon</span>, finner vi resten i et delestykke. Dette blir ofte vist ved forkortingen <span class="symbol"> mod</span>. For eksempel er
+	<math class="display-math" display="block"> <mn><mn>1</mn><mn>1</mn></mn><mtext> mod </mtext> <mn>4</mn><mo>=</mo> <mn>3</mn><mi><mi>qquad</mi></mi> <mo>,</mo> <mi><mi>qquad</mi></mi> <mn><mn>1</mn>9</mn><mtext> mod 3</mtext> <mo>=</mo><mn>1</mn> </math>
+	I tillegg til <span class="symbol"> \texttt{mod</span></div>, blir også <span class="symbol"> \texttt{\%</span>} og <span class="symbol"> {\texttt{//</span>}} brukt som symbol for denne operasjonen i programmeringsspråk.
+}
+
+\subsubsection{Divisjon med blanda tall som svar}
+<div class="example">
+	Regn ut <math>  <mn>11</mn><mo>:</mo><mn>4</mn>  </math>. Skriv svaret som et blandet tall.
+	
+	 
+	<math class="display-math" display="block"> <mn>11</mn><mo>:</mo><mn>4</mn> <mo>=</mo> <mtext>2 og 3 i rest</mtext><mo>=</mo><mn>2</mn><mo>+</mo><mtext>2 og 3 i rest</mtext> </math>
+</div>
+<div class="example">
+	Regn ut <math>  <mn>19</mn><mo>:</mo><mn>3</mn>  </math>. Skriv svaret som et blandet tall.
+	
+	 
+	<math class="display-math" display="block"> <mn>19</mn><mo>:</mo><mn>3</mn><mo>=</mo><mtext>6 og 1 i rest</mtext><mo>=</mo><mn>6</mn><mo>+</mo><mtext>6 og 1 i rest</mtext> </math>
+</div>
+\fork{Eksempel 1}{
+	Vi starter med å legge merke til at <math>  <mn>4</mn><mo>=</mo><mfrac>4 1</mfrac>  </math>. Dette betyr at
+	<math class="display-math" display="block"> <mn><mn>11</mn></mn><mo>:</mo><mn>4</mn> <mo>=</mo> <mn><mn>11</mn></mn><mo>:</mo><mfrac>4 1</mfrac> </math>
+	Av regel ?? har vi at
+	<math class="display-math" display="block"> <mn><mn>11</mn></mn><mo>:</mo><mfrac>4 1</mfrac> <mo>=</mo> <mn><mn>11</mn></mn><mfrac>4 1</mfrac> <mfrac>1 4</mfrac> </math>
+	Videre er <math>  <mn>11</mn><mo>=</mo><mn>2</mn><mo>⋅</mo> <mn>4</mn><mo>+</mo> <mn>3</mn>  </math>, og da er
+	<math class="display-math" display="block"> <mn>11</mn><mfrac>1 4</mfrac> <mfrac>1 4</mfrac><mo>=</mo><mo>(</mo><mn>2</mn><mfrac>1 4</mfrac> <mn>4</mn><mo>+</mo><mn>3</mn><mo>)</mo><mi><mfrac>1 4</mfrac><mfrac>1 4</mfrac></mi> </math>
+	Av regel ?? har vi at
+	<mtr> <mtd class="math-left-column"> <mo>(</mo><mn>2</mn><mfrac>1 4</mfrac> <mn>4</mn><mo>+</mo><mn>3</mn><mo>)</mo><mi><mfrac>1 4</mfrac><mfrac>1 4</mfrac></mi> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column"> <mn>2</mn><mfrac>1 4</mfrac><mn>4</mn><mi><mfrac>1 4</mfrac><mfrac>1 4</mfrac></mi><mo>+</mo><mn>3</mn><mfrac>1 4</mfrac> <mfrac>1 4</mfrac>  </mtd> </mtr><mtr> <mtd class="math-left-column">  </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column">  <mn>2</mn><mo>+</mo><mfrac>3 4</mfrac> </mtd> </mtr>
+}
+
+\subsubsection{Divisjon med desimaltall som svar}
+<div class="example">
+	Regn ut <math>  <mn>11</mn><mo>:</mo><mn>4</mn>  </math>. Oppgi svaret som desimaltal.
+	
+	
+	
+	\metode{Med oppstilling</div>{3.75cm} 
+	<math class="display-math" display="block"> <mn>11</mn><mo>:</mo><mn>4</mn><mo>=</mo><mn>2</mn><mo>,</mo><mn>75</mn> </math>
+	\begin{figure}
+		\centering
+		\includegraphics{rekfig/deldes1}
+	\end{figure}
+	\metode{Med tabellmetoden}{3.75cm} 
+	<math class="display-math" display="block"> <mn>11</mn><mo>:</mo><mn>4</mn> <mo>=</mo> <mn>2</mn><mo>,</mo><mn>75</mn></math>
+	
+		\begin{tabular}{r|r|r}
+			<math>  <mo>⋅</mo><mo>,</mo> <mn>4</mn> </math>&\\ \hline
+			2&8&8 \\
+			0,5& 2 &10 \\
+			0,25& 1 &11\\ \hline
+			2,75&
+		\end{tabular}
+	
+}
+\fork{Eksempel 1; oppstilling}{
+	Siden vi deler med 4, er det snakk om å fordele 11 likt i 4 grupper.
+	<ul>
+		\item 8 av de 11 enerne kan vi fordele likt i 4 grupper. Da har vi igjen 3 enere. Dette er det samme som 30 tideler.
+		\item 28 av de 30 tidelene kan vi fordele likt i 4 grupper. Da har vi igjen 2 tideler. Dette er det samme som 20 hundredeler.
+		\item 20 av de 20 hundredelene kan vi fordele likt i 4 grupper.
+		\item Hele mengden 11 er nå fordelt, og da er vi ferdige med utegningen.
+	</ul>
+}
+
+\subsubsection{Divisjon med desimaltall}
+<div class="statement">
+\begin{enumerate</div>
+\item Flytt komma til høgre slik at begge tallene blir heltall. Flytt gjerne komma til høgre i dividenden slik at den blir større enn divisoren.
+\item Regn ut delestykket mellom heltallene.
+\item Regn ut (det er snakk om antall plasser komma flyttet)
+<math class="display-math" display="block"><mi>small</mi> <mtext>plasser flyttet i dividend</mtext><mo>−</mo><mtext>plasser flyttet i divisor</mtext> </math>
+Hvis svaret er positivt, flytt komma så mange plasser til <i>høyre </i>. Hvis svaret er negativt, flytt komma så mange plasser til <i>venstre </i>.
+\end{enumerate}
+}
+<div class="example">
+Regn ut <math>  <mn>9</mn><mo>,</mo><mn>2</mn><mo>:</mo><mn>4</mn>  </math>.
+
+
+Vi flytter komma 1 plass til <i>høgre </i> i 9,2. Da får vi 92. Videre er
+<math class="display-math" display="block"> <mn>92</mn><mo>:</mo><mn>4</mn><mo>=</mo><mn>23</mn> </math>
+Vi flytter komma 1 plass til <i>venstre </i> i 23. Da får vi 2,3. Altså er
+<math class="display-math" display="block"> <mn>9</mn><mo>,</mo><mn><mn>2</mn></mn><mo>:</mo><mn>4</mn><mo>=</mo><mn><mn>2</mn></mn><mo>,</mo><mn>3</mn> </math>
+</div>
+
+
+<h2 class="section-title">Regning med tid </h2>
+Sekunder, minutter og timer er organisert i grupper på 60:
+<mtr> <mtd class="math-left-column"> <mn>1</mn><mtext> minutt</mtext>  </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column">  <mn>60</mn><mtext> sekund</mtext>  </mtd> </mtr><mtr> <mtd class="math-left-column"> <mn>1</mn><mtext> time</mtext>  </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column">  <mn>60</mn><mtext> minutt</mtext>  </mtd> </mtr>
+Dette betyr at <i>overganger </i> oppstår i utregninger når vi når 60.
+
+<div class="example">
+	<math>  <mtext>2enh{t</mtext> <mn>25</mn><mi><mi><mi>enh</mi></mi></mi><mrow><mi><mi><mi>min</mi></mi></mi> </mrow> <mo>+</mo> <mtext>10enh{t</mtext> <mn>45</mn><mi><mi><mi>enh</mi></mi></mi><mrow><mi><mi><mi>min</mi></mi></mi></mrow></mrow><mo>=</mo> <mtext>13enh{t</mtext> <mn>10</mn><mi><mi><mi>enh</mi></mi></mi><mrow><mi><mi><mi>min</mi></mi></mi></mrow> </mrow>  </math>
+	
+	\metode{Utrekningsmetode 1}{0.35\linewidth}
+	\os
+	\begin{tabular}{r|r|r}
+		& &10\enh{t} 45\enh{min}  \\ \hline
+		15\enh{min}  &15\enh{min} & 11\enh{t} 00\enh{min}  \\
+		10\enh{min} &25\enh{min} & 11\enh{t} 10\enh{min} \\
+		2\enh{t} & 2\enh{t} 25\enh{min}  & 13\enh{t} 10\enh{min}
+	\end{tabular}  
+	
+	\metode{Utrekningsmetode 2}{0.35\linewidth}\os
+	\begin{tabular}{r|r|r}
+		& & 10:45 \\ \hline 
+		00:15 & 00:15 & 11:00 \\
+		00:10 & 00:25 & 11:10 \\
+		02:00 & 02:25 & 13:10
+	\end{tabular}
+} 
+
+<div class="example">
+	<math>  <mtext>14enh{t</mtext> <mn>18</mn><mi><mi><mi>enh</mi></mi></mi><mrow><mi><mi><mi>min</mi></mi></mi> </mrow> <mo>−</mo> <mtext>9enh{t</mtext> <mn>34</mn><mi><mi><mi>enh</mi></mi></mi><mrow><mi><mi><mi>min</mi></mi></mi></mrow></mrow><mo>=</mo> <mtext>4enh{t</mtext> <mn>44</mn><mi><mi><mi>enh</mi></mi></mi><mrow><mi><mi><mi>min</mi></mi></mi></mrow> </mrow>  </math>
+	
+	
+		\parbox{0.4\linewidth}{
+			\metode{Utrekningsmetode 1}{0.9\linewidth} \os
+			\begin{tabular}{r|r}
+				&  9\enh{t} 34\enh{min} \\ \hline 
+				26\enh{min} & 10\enh{t} 00\enh{min} \\
+				18\enh{min} & 10\enh{t} 18\enh{min} \\
+				4\enh{t} & 14\enh{t} 00\enh{min} \\ \hline
+				4\enh{t} 44\enh{min}
+			\end{tabular}
+		} \qquad \qquad
+		\parbox{0.4\linewidth}{
+			\metode{Utrekningsmetode 2}{0.9\linewidth} \os
+			\begin{tabular}{r|r}
+				& 09:34 \\ \hline 
+				00:26 & 10:00 \\
+				00:18& 10:18 \\
+				04:00 & 14:18 \\ \hline
+				04:44 
+			\end{tabular}
+		}
+	
+}
+
+
+<h2 class="section-title">Avrunding og overslagsregning</h2>
+
+\subsubsection{Avrunding}
+Ved <span class="outline">avrunding</span> av et tall minker vi antall siffer forskjellige fra 0 i tallet. Videre kan man runde av til <i>nærmeste ener </i>, <i>nærmeste tier </i> og lignende.
+<div class="example">
+	Ved avrunding til <i>nærmeste tier </i> avrundes
+	<ul>
+		\item 1, 2, 3 og 4 <i>ned </i> til 0 fordi de er nærmere 0 enn 10.
+		\item 6, 7, 8 og 9 <i>opp </i> til 10 fordi de er nærmere 10 \\enn 0.
+	</ul>	
+	5 avrundes også opp til 10.
+	<div class="figure">avrnd0</div>
+</div>
+
+<div class="example"> 
+	\begin{itemize</div>
+		\item <math> <mi>boldmath</mi> <mi>textbf</mi><mrow><mn>63</mn> <mi>avru<mi>n</mi>det</mi> <mi>til</mi> <mi>n</mi><mo>æ</mo><mi>rmeste</mi> <mi>tier</mi></mrow> <mo>=</mo> <mn>60</mn>  </math> \\
+		Dette fordi 63 er nærmere 60 enn 70.
+		<div class="figure">avrnda</div>
+		\item <math> <mi>boldmath</mi> <mi>textbf</mi><mrow><mn>78</mn> <mi>avru<mi>n</mi>det</mi> <mi>til</mi> <mi>n</mi><mo>æ</mo><mi>rmeste</mi> <mi>tier</mi></mrow> <mo>=</mo> <mn>80</mn>  </math> \\
+		Dette fordi 78 er nærmere 80 enn 70.
+		<div class="figure">avrndb</div>
+		\item <math> <mi>boldmath</mi> <mi>textbf</mi><mrow><mn>359</mn> <mi>avru<mi>n</mi>det</mi> <mi>til</mi> <mi>n</mi><mo>æ</mo><mi>rmeste</mi> hu<mi>n</mi>drer</mrow> <mo>=</mo> <mn>400</mn>  </math>\\
+		Dette fordi 359 er nærmere 400 enn 300.
+		<div class="figure">avrndc</div>
+		\item <math>  <mi>boldmath</mi> <mi>textbf</mi><mrow><mn>11</mn><mo>,</mo><mn>8</mn> <mi>avru<mi>n</mi>det</mi> <mi>til</mi> <mi>n</mi><mo>æ</mo><mi>rmeste</mi> e<mi>n</mi>er</mrow> <mo>=</mo> <mn>12</mn> </math> \\
+		Dette fordi 11,8 er nærmere 12 enn 11.
+		<div class="figure">avrndd</div>
+	\end{itemize}
+}
+
+\subsubsection{Overslagsregning}
+Det er ikke alltid vi trenger å vite svaret på regnestykker helt nøyaktig, ofte er det viktigere at vi fort kan avgjøre hva svaret <i>omtrent </i> er det samme som, aller helst ved hoderegning. Når vi finner svar som omtrent er riktige, sier vi at vi gjør et <span class="outline">overslag</span>. Et overslag innebærer at vi avrunder Avrunding ved overslag trenger ikke å innebære avrunding til nærmeste tier og lignende.} tallene som inngår i et regnestykke slik at utregningen blir enklere. 
+
+
+<div class="language-box">
+	At noe er ''omtrent det samme som'' skriver vi ofte som ''cirka'' (''ca.''). Tegnet for ''cirka'' er <span class="symbol"> <math>  <mi>approx</mi>  </math></span>.
+</div> 
+
+\subsubsection{Overslag ved addisjon og ganging}
+La oss gjøre et overslag på regnestykket
+<math class="display-math" display="block"> <mn>98</mn><mo>,</mo><mn>2</mn><mo>+</mo><mn>2</mn>4<mo>,</mo><mn>6</mn> </math>
+Vi ser at <math>  <mn>98</mn><mo>,</mo><mn>2</mn> <mi>approx</mi> <mn>100</mn>  </math>. Skriver vi 100 istedenfor 98,2 i regnestykket vårt, får vi noe som er litt mer enn det nøyaktige svaret. Skal vi endre på 24,6 bør vi derfor gjøre det til et tall som er litt mindre. 24,6 er ganske nærme 20, så vi kan skrive
+<math class="display-math" display="block"> <mn>98</mn><mo>,</mo><mn>2</mn><mo>+</mo><mn>2</mn>4<mo>,</mo><mn>6</mn> <mi>approx</mi> <mn>100</mn> <mo>+</mo> <mn>2</mn>0 <mo>=</mo> 1<mn>2</mn>0 </math>
+Når vi gjør overslag på tall som legges sammen, bør vi altså prøve å gjøre det ene tallet større (runde opp) og et tall mindre (runde ned).\\
+
+\linje
+Det samme gjelder også hvis vi har ganging, for eksempel
+<math class="display-math" display="block"> <mn>1</mn><mo>,</mo><mn>689</mn><mo>⋅</mo><mn>1</mn>2 </math>
+Her avrunder vi 12 til 10. For å ''veie opp'' for at svaret da blir litt mindre enn det egentlige, avrunder vi 1\,689 opp til 1\,700. Da får vi
+<math class="display-math" display="block"> <mn><mn>1</mn></mn><mo>,</mo><mn>689</mn><mo>⋅</mo><mn><mn>1</mn></mn>2<mi>approx</mi> <mn><mn>1</mn></mn><mo>,</mo><mn>700</mn><mo>⋅</mo> <mn><mn>1</mn></mn>0 <mo>=</mo><mn><mn>1</mn></mn>7<mo>,</mo><mn>000</mn> </math>
+\subsubsection{Overslag ved subtraskjon og deling}
+Skal et tall trekkes fra et annet, blir det litt annerledes. La oss gjøre et overslag på
+<math class="display-math" display="block"> <mn>186</mn><mo>,</mo><mn>4</mn><mo>−</mo><mn>28</mn><mo>,</mo><mn>9</mn> </math>
+Hvis vi runder 186,4 opp til 190 får vi et svar som er større enn det egentlige, derfor bør vi også trekke ifra noe. Det kan vi gjøre ved også å runde 28,9 oppover (til 30):
+<mtr> <mtd class="math-left-column"> <mn>186</mn><mo>,</mo><mn>4</mn><mo>−</mo><mn>28</mn><mo>,</mo><mn>9</mn> </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column"> <mi>approx</mi> <mn>190</mn><mo>−</mo><mn>30</mn>  </mtd> </mtr><mtr> <mtd class="math-left-column">  </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd><mtd class="math-right-column"> <mn>160</mn> </mtd> </mtr>
+Samme prinsippet gjelder for deling: 
+<math class="display-math" display="block"> <mn>145</mn><mo>:</mo><mn>17</mn> </math>
+Vi avrunder 17 opp til 20. Deler vi noe med 20 istedenfor 17, blir svaret mindre. Derfor bør vi også runde 145 oppover (til 150):
+<math class="display-math" display="block"> <mn>145</mn><mo>:</mo><mn>17</mn> <mi>approx</mi> <mn>150</mn><mo>:</mo><mn>20</mn> <mo>=</mo> <mn>75</mn> </math>
+
+\subsubsection{Overslagsregning oppsummert}
+<div class="rule"><h4>Overslagsregning </h4>  
+	<ul>
+		\item Ved addisjon eller multiplikasjon mellom to tall, avrund gjerne et tall opp og et tall ned.
+		\item Ved subtraksjon eller deling mellom to tall, avrund gjerne begge tall ned eller begge tall opp.
+	</ul>	
+</div>
+<div class="example">
+	Rund av og finn omtrentlig svar for regnestykkene.\os
+	
+	\abch{
+		\item <math>  <mrow><mn>23</mn><mo>,</mo><mn>1</mn><mo>+</mo><mn>1</mn><mn>7</mn>4<mo>,</mo><mn>7</mn>  </math> 
+		\item <math>  <mrow><mn>11</mn><mo>,</mo><mn>8</mn><mo>⋅</mo><mn>107</mn><mo>,</mo><mn>2</mn></mrow>  </math> 		
+	} \os
+	\abchs{3}{
+		\item <math>  <mrow><mn>37</mn><mo>,</mo><mn>4</mn><mo>−</mo><mn>18</mn><mo>,</mo><mn>9</mn></mrow>  </math>  \ \ 
+		\item <math>  <mrow><mn>1054</mn><mo>:</mo><mn>209</mn></mrow>  </math>
+	}
+	pace{-2pt}
+	
+	  pace{-7pt}
+	\abc{
+		\item <math>  <mn>32</mn><mo>,</mo><mn>1</mn> <mo>+</mo> <mn>1</mn><mn>7</mn>4<mo>,</mo><mn>7</mn> <mi>approx</mi> <mn>30</mn><mo>+</mo><mn>1</mn><mn>7</mn>0 <mo>=</mo> <mn>200</mn>  </math>
+		\item <math>  <mn><mn>1</mn><mn>1</mn></mn><mo>,</mo><mn>8</mn> <mo>⋅</mo> <mn><mn><mn>1</mn>0</mn>7</mn><mo>,</mo><mn>2</mn> <mi>approx</mi> <mn><mn>1</mn>0</mn><mo>⋅</mo><mn><mn>1</mn><mn>1</mn></mn>0 <mo>=</mo> <mn>1</mn><mo>,</mo><mn><mn>1</mn>0</mn>0  </math>
+		\item <math>  <mn>37</mn><mo>,</mo><mn>4</mn> <mo>−</mo> <mn>18</mn><mo>,</mo><mn>9</mn> <mi>approx</mi> <mn>4</mn>0<mo>−</mo><mn><mn>20</mn></mn> <mo>=</mo> <mn><mn>20</mn></mn>  </math>
+		\item <math>  <mn><mn>1</mn></mn><mo>,</mo><mn>0<mn>5</mn>4</mn><mo>:</mo><mn>209</mn> <mi>approx</mi> <mn><mn>1</mn></mn><mo>,</mo><mn>000</mn><mo>:</mo><mn>200</mn> <mo>=</mo> <mn>5</mn>  </math>
+	}
+} 
+
+<div class="info" data-title="Kommentar
+">
+	Det finnes ingen konkrete regler for hva man <i>kan </i> eller ikke <i>kan </i> tillate seg av forenklinger når man gjør et overslag, det som er kalt regel ?? er strengt tatt ikke en regel, men et nyttig tips.
+	
+	Man kan også spørre seg hvor langt unna det faktiske svaret man kan tillate seg å være ved overslagsregning. Heller ikke dette er det noe fasitsvar på, men en grei føring er at overslaget og det faktiske svaret skal være av samme <span class="outline">størrelsesorden</span>. Litt enkelt sagt betyr dette at hvis det faktiske svaret har med tusener å gjøre, bør også overslaget ha med tusener å gjøre. Mer nøyaktig sagt betyr det av det faktiske svaret og ditt overslag bør ha samme tierpotens når de er skrevet på standardform</div>.
+}
+
+<h2 class="section-title">Standardform</h2> 
+<i>Obs! Denne seksjonen tar utgangspunkt i at leseren er kjent med potenser, som vi ser på i \refsec{Potensar</i>.}
+
+Vi kan utnytte regel ?? og regel ??, og det vi kan om potenser, til å skrive tall på <span class="outline">standardform</span>. 
+
+La oss se på tallet 6\,700. Av regel ?? vet vi at
+<math class="display-math" display="block"> <mn><mn>6</mn></mn><mo>,</mo><mn><mn>7</mn>00</mn><mo>=</mo><mn><mn>6</mn></mn><mo>,</mo><mn>7</mn><mo>⋅</mo><mn>1</mn><mo>,</mo><mn>000</mn> </math>
+Og siden <math>  <mn><mn>10</mn>00</mn><mo>=</mo><mn>10</mn><mo>^</mo><mn>3</mn>  </math>, er
+<math class="display-math" display="block"> <mn><mn><mn>6</mn></mn></mn><mo>,</mo><mn><mn><mn>7</mn></mn>00</mn><mo>=</mo><mn><mn><mn>6</mn></mn></mn><mo>,</mo><mn><mn>7</mn></mn><mo>⋅</mo><mn>1</mn><mo>,</mo><mn>000</mn><mo>=</mo><mn><mn><mn>6</mn></mn></mn><mo>,</mo><mn><mn>7</mn></mn><mo>⋅</mo> <mn>1</mn>0<mo>^</mo><mn>3</mn> </math>
+<div class="statement">
+	<math>  <mn>6</mn><mo>,</mo><mn>7</mn><mo>⋅</mo><mn>10</mn><mo>^</mo><mn>3</mn>  </math> er 6\,700 skrevet på standardform fordi
+	<ul>
+		\item 6,7 er større eller lik 1 og mindre enn 10.
+		\item <math>  <mn>10</mn><mo>^</mo><mn>3</mn>  </math> er en potens med grunntall 10 og eksponent 3, som er et heltall.
+		\item 6,7 og <math>  <mn>10</mn><mo>^</mo><mn>3</mn>  </math> er ganget sammen.
+	</ul>
+</div>
+\linje \\[12pt]
+
+La oss også se på tallet  0,093. Av regel ?? har vi at
+<math class="display-math" display="block"> <mn>0</mn><mo>,</mo><mn>0</mn><mn>9</mn><mn>3</mn><mo>=</mo><mn>9</mn><mo>,</mo><mn>3</mn><mo>:</mo> 1<mn>0</mn><mn>0</mn> </math>
+Men å dele med 100 er det samme som å gange med <math>  <mn>10</mn><mo>^</mo><mrow><mo>−</mo><mn>2</mn></mrow>  </math>, altså er
+<math class="display-math" display="block"> <mn>0</mn><mo>,</mo><mn>0</mn><mn><mn>9</mn></mn><mn><mn>3</mn></mn><mo>=</mo><mn><mn>9</mn></mn><mo>,</mo><mn><mn>3</mn></mn><mo>:</mo> 1<mn>0</mn><mn>0</mn><mo>=</mo><mn><mn>9</mn></mn><mo>,</mo><mn><mn>3</mn></mn><mo>⋅</mo>1<mn>0</mn><mo>^</mo><mrow><mo>−</mo><mn>2</mn></mrow> </math>
+<div class="statement">
+	<math>  <mn>9</mn><mo>,</mo><mn>3</mn><mo>⋅</mo><mn>10</mn><mo>^</mo><mrow><mo>−</mo><mn>2</mn>  </math> er 0,093 skrevet på standardform fordi	
+	\begin{itemize}
+		\item 9,3 er større eller lik 1 og mindre enn 10.
+		\item <math>  <mn>10</mn><mo>^</mo><mrow><mo>−</mo><mn>2</mn></mrow>  </math> er en potens med grunntall 10 og eksponent <math>  <mo>−</mo><mn>2</mn>  </math>, som er et heltall.
+		\item <math>  <mn>9</mn><mo>,</mo><mn>3</mn>  </math> og <math>  <mn>10</mn><mo>^</mo><mrow><mo>−</mo><mn>2</mn></mrow>  </math> er ganget sammen.
+	\end{itemize} 
+}
+<div class="rule"><h4>Standardform</h4> 
+	Et tall skrevet som
+	<math class="display-math" display="block"> <mi>a<mo>⋅</mo></mi> <mn>10</mn><mo>^</mo><mi>n</mi> </math>
+	hvor <math>  <mrow><mo><</mo>mn>1<mo><</mo>/mn><mo><</mo>mi>leq<mo><</mo>/mi><mo><</mo>mo>|<mo><</mo>/mo><mo><</mo>mi>a<mo><</mo>/mi><mo><</mo>mo>|<mo><</mo>/mo><mo><</mo><mo><</mo>mn>1<mo><</mo>/mn>0  </math> og <math>  <mi>n</mi>  </math> er et heltall, er et tall skrevet på standardform.
+}
+<div class="example">
+	Skriv 980 på standardform.
+	
+	 
+	<math class="display-math" display="block"> <mn><mn>9</mn><mn>8</mn>0</mn> <mo>=</mo> <mn>9</mn><mo>,</mo><mn>8</mn><mo>⋅</mo> <mn>10</mn><mo>^</mo><mn>2</mn> </math>
+</div>
+<div class="example">
+	Skriv 0,00671 på standardform.
+	
+	 
+	<math class="display-math" display="block"> <mn>0</mn><mo>,</mo><mn>0</mn><mn>0</mn><mn>6</mn><mn>71</mn> <mo>=</mo> <mn>6</mn><mo>,</mo><mn>71</mn><mo>⋅</mo> 1<mn>0</mn><mo>^</mo><mrow><mo>−</mo><mn>3</mn> </math>
+}
+<div class="info" data-title="Tips">
+	For å skrive om tall på standardform kan du gjøre følgende:
+	\begin{enumerate</div>
+		\item Flytt komma slik at du får et tall som ligger mellom 0 og 10.
+		\item Gang dette tallet med en tierpotens som har eksponent med tallverdi lik antallet plasser du flyttet komma. \qquad  Flyttet du komma mot venstre/høgre, er eksponenten positiv/negativ. 
+	\end{enumerate}
+}
+<div class="example">
+	Skriv 9\,761\,432 på standardform.
+	
+	 
+	\begin{enumerate</div>
+		\item 	Vi flytter komma 6 plasser til venstre, og får <math>  <mn>9</mn><mi>colr</mi><mrow><mo>,</mo></mrow><mn>761432</mn>  </math>
+		\item Vi ganger dette tallet med <math>  <mn>10</mn><mo>^</mo><mn>6</mn>  </math>, og får at 
+		<math class="display-math" display="block"> <mn><mn>9</mn></mn><mo>,</mo><mn>7<mn>6</mn>1</mn><mo>,</mo><mn>432</mn><mo>=</mo><mn><mn>9</mn></mn><mo>,</mo><mn>7<mn>6</mn>1</mn><mn>432</mn><mo>⋅</mo> <mn>10</mn><mo>^</mo><mn>6</mn> </math> 
+	\end{enumerate}
+}
+
+<div class="example">
+	Skriv 0,00039 på standardform.
+	
+	 
+	\begin{enumerate</div>
+		\item Vi flytter komma 4 plasser til høgre, og får <math>  <mn>3</mn><mo>,</mo><mn>9</mn>  </math>.
+		\item Vi ganger dette tallet med <math>  <mn>10</mn><mo>^</mo><mrow><mo>−</mo><mn>4</mn></mrow>  </math>, og får at
+		<math class="display-math" display="block"> <mn>0</mn><mo>,</mo><mn>0</mn><mn>0</mn><mn>0</mn><mn>3</mn><mn>9</mn><mo>=</mo><mn>3</mn><mo>,</mo><mn>9</mn><mo>⋅</mo>1<mn>0</mn><mo>^</mo><mrow><mo>−</mo><mn>4</mn></mrow> </math>
+	\end{enumerate}
+}
+
+

@@ -1,4 +1,4 @@
-
+import { getSession } from "../data_modules"
 
 class Task {
 
@@ -190,7 +190,7 @@ class Task {
     async correctAnswer() {
         if (this.circles.length > 0) {
             this.circles.pop().setAttribute("fill", "green")
-        
+        }
         if (this.circles.length != 0) {
             setTimeout(() => {
                 if (this.fig) {
@@ -205,22 +205,18 @@ class Task {
         else {
             let testsFromLocalStorage = localStorage.getItem("tests")
             let tests = {}
-            if (testsFromLocalStorage) {
-                try {
-                    JSON.parse(testsFromLocalStorage)
-                    tests = JSON.parse(testsFromLocalStorage)
-                } catch(error) {
-                    localStorage.setItem("tests", "{}")
-                }
+            try {
+                JSON.parse(testsFromLocalStorage)
+                tests = JSON.parse(testsFromLocalStorage)
+            } catch(error) {
+                localStorage.setItem("tests", "{}")
             }
-            console.log(localStorage.getItem("tests"))
             tests[this.id] = { "score": 2 }
-            localStorage.setItem("tests", JSON.stringify(tests))
+            
             alert("Flott! Fortsett på neste nivå.")
             setTimeout(() => {
                 window.location.href = "../../index.html"
             }, 1000);
-        }
         }
     }
 
@@ -244,16 +240,6 @@ class Task {
 
     resetInputFields(){}
 
-    async updateRecord(testsString) {
-        import("../assessment_modules.js").then ( (supabase) => {
-            supabase.signIn()
-            setTimeout(() => {
-                supabase.updateTestRecord(testsString)    
-            }, 500);
-        }
-        )
-    }
-    
     wrongAnswer() {
         this.addAnswerContent()
         this.showAnswer.hidden = false
@@ -406,5 +392,9 @@ class FracCalcTask extends Task {
         this.showAnswer.innerHTML = `Svar: <math><mfrac><mn>${this.answer[0]}</mn><mn>${this.answer[1]}</mn></mfrac></math>`
     }
 }
+
+
+
+
 
 export { CalcTask, FracCalcTask }
