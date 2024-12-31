@@ -170,7 +170,7 @@ class BookFigure {
     }
 
 
-    makeOnes(amount, {x=0, y=0, ySpace=5, fill=this.oneColor, strokeColor = this.oneStrokeColor, addToSvg=true, strokeWidth=this.strokeWidth} ={}) {
+    makeOnes(amount, {x=0, y=0, ySpace=0.5, fill=this.oneColor, strokeColor = this.oneStrokeColor, addToSvg=true, strokeWidth=this.strokeWidth} ={}) {
         if (amount == 0 || amount == null) {
             return null;
         }
@@ -187,41 +187,37 @@ class BookFigure {
         
     }
 
-    makeTens(amount, {x=0, y=0, xSize=this.oneSize, xSpace=5, fill=this.tenColor, strokeColor="black", addToSvg=true, direction=-1, strokeWidth=this.strokeWidth, unit=1}) {
+    makeTens(amount, {x=0, y=0, xSize=this.oneSize, xSpace=0.5, fill=this.tenColor, strokeColor="black", addToSvg=true, direction=-1, strokeWidth=this.strokeWidth, unit=1} = {}) {
         if (amount == 0 || amount == null) {
             return null;
         }
 
-        let ten
-        if (unit == 1) { 
-                ten = this.makeOnes(
-                10, {
-                x: x,
-                y: y,
-                size: xSize, 
-                ySpace: 0, 
-                fill: fill, 
-                strokeColor: strokeColor,
-                strokeWidth: strokeWidth,
-                addToSvg: false})
-        }
-        
-        if (unit == 10) {
-            ten = this.makeRectangle(
-                xSize, 10*xSize, x, y, {
-                strokeColor: strokeColor,
-                strokeWidth: strokeWidth,
-                fill:fill, 
-                addToSvg: false
-            })    
-        }
         let tensCollection = document.createElementNS("http://www.w3.org/2000/svg", "g")
-        tensCollection.appendChild(ten)
-        let dx = 0
-        for (let i of Array(amount - 1).keys()) {
-            ten = ten.cloneNode(true)
-            dx = (i+1)*(xSize + xSpace)*direction
-            ten.setAttribute("transform", `translate(${dx} 0)`)
+        
+        for (let i of Array(amount).keys()) {
+            let ten
+            if (unit == 1) { 
+                    ten = this.makeOnes(
+                    10, {
+                    x: x + i*(1 + xSpace)*direction,
+                    y: y,
+                    size: xSize, 
+                    ySpace: 0, 
+                    fill: fill, 
+                    strokeColor: strokeColor,
+                    strokeWidth: strokeWidth,
+                    addToSvg: false})
+            }
+            
+            if (unit == 10) {
+                ten = this.makeRectangle(
+                    xSize, 10*xSize, x + i*xSpace*direction, y, {
+                    strokeColor: strokeColor,
+                    strokeWidth: strokeWidth,
+                    fill:fill, 
+                    addToSvg: false
+                })    
+            }
             tensCollection.appendChild(ten)   
         }
         if (addToSvg) {
@@ -482,8 +478,8 @@ class BookFigure {
         return tickContainer
     }
 
-    move(shape, x=0, y=0) {
-        shape.setAttribute("transform", `translate(${x}, ${y})`)
+    move(shape, x=0, y=0, rotateDegrees=0, rotatePoint=[0, 0]) {
+        shape.setAttribute("transform", `translate(${x}, ${y}) rotate(${rotateDegrees} ${rotatePoint[0]} ${rotatePoint[1]})`)
     }
 
     makePoint(x, y, label="", offset=[0, -1], offsetScale=15) {

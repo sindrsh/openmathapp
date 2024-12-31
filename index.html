@@ -17,7 +17,7 @@
     </head>
 
     <body>
-        <div id="loginPage" hidden>
+        <div id="loginPage">
             <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required id="username">
 
@@ -37,7 +37,11 @@
 
 
     <script type="module">
-        
+        import { makeTopNav } from "./top_nav_module.js"
+
+        makeTopNav()
+
+        /*
         import { getSession, getLocalTasks, syncTasks } from "./data_modules.js"
         
         
@@ -45,6 +49,7 @@
         getSession().then((data) => 
             {
                 if (data) {
+                    document.getElementById("loginPage").hidden = true
                     syncTasks(tasks, data)
             }
         }
@@ -52,8 +57,9 @@
         //console.log(data)
       
 
-        document.getElementById("mainPage").hidden = "true"
+        
         let loginButton = document.getElementById("loginButton")
+
         //loginButton.addEventListener("click", login)
         /*
         if (localStorage.getItem("username")) {
@@ -65,7 +71,7 @@
         */
 
         //await updateTasks()
-
+        /*
         async function login() {
             let username = document.getElementById("username").value
             let password = document.getElementById("password").value
@@ -76,7 +82,7 @@
             })
         } 
 
-
+        */
 
 
     </script>    

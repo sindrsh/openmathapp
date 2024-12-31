@@ -149,13 +149,14 @@ for aligned in aligned_math:
             side = line.split("&")[i]
             conv = Math_line_converter(side)
             if i == 0:
-                new_line = r'<mtd class="math-left-column"> %s </mtd> <mtd class="math-center-column"><mo>=</mo> </mtd>' % conv.get_line()
+                new_line = r'<mtd> %s </mtd> <mtd><mo>=</mo> </mtd>' % conv.get_line()
             else:
-                new_line += r'<mtd class="math-right-column"> %s </mtd>' % conv.get_line()
+                new_line += r'<mtd> %s </mtd>' % conv.get_line()
         new_line = r'<mtr> %s </mtr>' % new_line
         table_content += new_line
     table_math.append(table_content)
 print(table_math)
+
 for i in range(len(aligned_math)):
     content = re.sub(r'<math class="aligned-math" display="block">(.*?)</math>', table_math[i], content, 1, re.DOTALL)
 
