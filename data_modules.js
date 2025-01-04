@@ -1,13 +1,17 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-const client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3ZmtvYW9nd3FleWhreXN4c2FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjczOTM4ODIsImV4cCI6MTk4Mjk2OTg4Mn0.xIjkHy_RbQnNbYCob74L7kf4VAfyEgJwLvKT8wItaS4')
+async function getClient() {
+    return client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3ZmtvYW9nd3FleWhreXN4c2FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjczOTM4ODIsImV4cCI6MTk4Mjk2OTg4Mn0.xIjkHy_RbQnNbYCob74L7kf4VAfyEgJwLvKT8wItaS4')
+}
 
 async function getSession() {
+    let client = await getClient()
     const { data, error } = await client.auth.getSession()
     return data
 }
 
 async function syncTasks(tasks, data) {
+    let client = getClient()
     const tasksFromDatabase = await client
         .from('helland_skule_students')
         .select("tasks")
@@ -67,8 +71,20 @@ function getLocalTasks() {
     return tasks
 }
 
+async function updateTasks(id) {
+    if (await getSession().session) {
+        
+    }
+    else {
+        console.log("hei")
+        let tasks = getLocalTasks()
+        tasks[id] = { "score": 2 }
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+    }
+}
 
-export { getSession, getLocalTasks, syncTasks }
+
+export { getSession, getLocalTasks, syncTasks, updateTasks }
 /*
 
 var user = {}

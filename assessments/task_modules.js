@@ -1,4 +1,4 @@
-import { getSession } from "../data_modules"
+import { updateTasks } from "../data_modules.js"
 
 class Task {
 
@@ -34,9 +34,11 @@ class Task {
         this.containerDiv.appendChild(this.menuContainer)
         this.infoDiv = document.createElement("div")
         this.containerDiv.appendChild(this.infoDiv)
+
     }
 
     prepare({figure=null, mathElement=null, stack=false} = {}) {
+        
         
         
         const containerTable = document.createElement("table")
@@ -67,7 +69,7 @@ class Task {
         this.submitButton.setAttribute("type", "submit")
         this.restartButton.innerHTML= "Omstart"
         this.makeStatusBar()
-        
+        this.addCheatButton()
         equalsColumn.style.fontSize = this.body.style.fontSize
         equalsColumn.innerHTML = "="
         
@@ -203,15 +205,7 @@ class Task {
             }, 1000);
             }
         else {
-            let testsFromLocalStorage = localStorage.getItem("tests")
-            let tests = {}
-            try {
-                JSON.parse(testsFromLocalStorage)
-                tests = JSON.parse(testsFromLocalStorage)
-            } catch(error) {
-                localStorage.setItem("tests", "{}")
-            }
-            tests[this.id] = { "score": 2 }
+            updateTasks(this.id)
             
             alert("Flott! Fortsett på neste nivå.")
             setTimeout(() => {
@@ -271,7 +265,23 @@ class Task {
             this.circles.unshift(newCircle)
         }
     
-    }        
+    }
+    
+    addCheatButton() {
+        const cheatButton = document.createElement("button")
+        cheatButton.innerHTML = "CHEAT"
+        this.body.appendChild(cheatButton)
+        console.log(this.circles.length)
+        cheatButton.addEventListener("click", 
+            () => {
+                while (this.circles.length > 1) {
+                    this.circles.pop()
+                }
+                console.log(this.circles.length)
+                this.correctAnswer()
+            }
+        )
+    }
 }
 
 

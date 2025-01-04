@@ -5,7 +5,7 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"
 substitutes = [
     ['\\\\label{ ( [^}]* ) }', ''],
     ['\\\\section{ ( [^}]* ) }', r'<h2 class="section-title">\1</h2>'],
-    ['\\\\subsection[*]{ ( [^}]* ) }', r'<h3 class="subsection-title">\1</h2>'],
+    ['\\\\subsection[*]{ ( [^}]* ) }', r'<h3 class="subsection-title">\1</h3>'],
     ['\\\\index{ ( [^}]* ) }', ''],
     ['\\\\footnote{ ( [^}]* ) }', r''],
     ['\\\\cdot', r'<mo>⋅</mo>'],
@@ -155,10 +155,9 @@ for aligned in aligned_math:
         new_line = r'<mtr> %s </mtr>' % new_line
         table_content += new_line
     table_math.append(table_content)
-print(table_math)
 
 for i in range(len(aligned_math)):
-    content = re.sub(r'<math class="aligned-math" display="block">(.*?)</math>', table_math[i], content, 1, re.DOTALL)
+    content = re.sub(r'<math class="display-math"><mtable>(.*?)</mtable></math>', table_math[i], content, 1, re.DOTALL)
 
 
 inline_math = re.findall('\\$(.*?)\\$', content)

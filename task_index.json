@@ -2,7 +2,9 @@
     "counting": {
         "topics": {
             "amounts": {
-                "count_amounts_0_to_9": {},
+                "count_amounts_0_to_9": {
+                	"book-section": "numbers_as_amounts"
+                },
                 "count_amounts_10_to_99": {}, 
                 "count_ones_amounts_10_to_20": {},
                 "count_amounts_100_to_999": {}

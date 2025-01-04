@@ -13,7 +13,7 @@ table {
     }
 
 .topic-table td {
-    width: 120px;
+    width: 90px;
     padding: 8px;
     border: 1px solid black;
     }
@@ -47,7 +47,6 @@ table {
 
 .topic-table tr {
     width: 1000px;
-    border: 2px solid black;
 }
 
 .topic-table {
@@ -86,7 +85,7 @@ body {
 
 
 
-button {
+.main button {
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
@@ -95,6 +94,10 @@ button {
     cursor: pointer;
     width: 100%;
     }
+
+.section button {
+  padding:0px;
+}
 
 input[type=text], input[type=password] {
     width: 100%;

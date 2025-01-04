@@ -178,6 +178,10 @@ math {
   background: url('./slopedline1digit.svg');
 }
 
+math mtd{
+  padding-left: 2px;
+  padding-right: 2px;
+}
 
 math mtd:nth-child(1) {
   text-align: -webkit-right;
@@ -212,3 +216,5 @@ math mtd:nth-child(3) {
 .bottom-lined-row td {
   border-bottom: 1pt solid black;
 }
+
+

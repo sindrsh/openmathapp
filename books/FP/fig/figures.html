@@ -415,11 +415,188 @@
                 fig.move(ones3, 7*fig.oneSize, -8.5*fig.oneSize, 90)
                 let ones4 = fig.makeOnes(3)
                 fig.move(ones4, 19*fig.oneSize, -8.5*fig.oneSize, 90)
+            },
+        "2_plus_3": () => {
+            const fig = new BookFigure("2_plus_3", oneSize)
+            fig.makeOnes(2, {ySpace: 0})
+            fig.makeText("+", 1.5, 0.5)
+            fig.makeOnes(3, {x: 2, ySpace: 0}) 
+            fig.makeText("=", 3.5, 0.5)
+            fig.makeOnes(2, {x: 4, ySpace: 0}) 
+            fig.makeOnes(3, {x: 5, ySpace: 0}) 
+        },
+        "3_plus_2": () => {
+            const fig = new BookFigure("3_plus_2", oneSize)
+            fig.makeOnes(3, {ySpace: 0})
+            fig.makeText("+", 1.5, 0.5)
+            fig.makeOnes(2, {x: 2, ySpace: 0}) 
+            fig.makeText("=", 3.5, 0.5)
+            fig.makeOnes(3, {x: 4, ySpace: 0}) 
+            fig.makeOnes(2, {x: 5, ySpace: 0}) 
+        },
+        "2_plus_7": () => {
+            const fig = new BookFigure("2_plus_7", oneSize)
+            const numberLine = fig.makeVector([0, 0], [11, 0], {arrow: "axisArrow"})
+            for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+                fig.makeXTick(i, {fig: numberLine, label: i.toString()})
             }
-        }  
+            fig.makeVector([2,-0.5], [9, -0.5], {strokeColor: "blue"})
+            fig.makeXTick(2, {y: -0.5, strokeColor: "blue", addToSvg: true})
+            fig.makeText("7", 5.5, -1, {textColor: "blue"})
+            },
+        "4_plus_11": () => {
+            const fig = new BookFigure("4_plus_11", oneSize)
+            const numberLine = fig.makeVector([0, 0], [16, 0], {arrow: "axisArrow"})
+            for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) {
+                fig.makeXTick(i, {fig: numberLine, label: i.toString()})
+            }
+            fig.makeVector([4,-0.5], [15, -0.5], {strokeColor: "blue"})
+            fig.makeXTick(4, {y: -0.5, strokeColor: "blue", addToSvg: true})
+            fig.makeText("11", 9.5, -1, {textColor: "blue"})
+        },
+        "5_minus_3": () => {
+            const fig = new BookFigure("5_minus_3", oneSize) 
+            fig.makeOnes(5, {ySpace: 0})
+            fig.makeText("−", 1.5, 0.5)
+            fig.makeOnes(3, {x: 2, ySpace: 0, strokeColor: "red", fill: "rgb(255, 0, 0, 0.2)"}) 
+            fig.makeText("=", 3.5, 0.5)
+            fig.makeOnes(2, {x: 4, ySpace: 0})    
+        },
+        "6_minus_4": () => {
+            const fig = new BookFigure("6_minus_4", oneSize)
+            const numberLine = fig.makeVector([2, 0], [7, 0], {arrow: "axisArrow"})
+            for (let i of [2, 3, 4, 5, 6]) {
+                fig.makeXTick(i, {fig: numberLine, label: i.toString()})
+            }
+            fig.makeVector([2,-0.5], [6, -0.5], {strokeColor: "red"})
+            fig.makeXTick(2, {y: -0.5, strokeColor: "red", addToSvg: true})
+            fig.makeText("4", 4, -1, {textColor: "red"})
+        },      
+        "12_minus_7": () => {
+            const fig = new BookFigure("12_minus_7", oneSize)
+            const numberLine = fig.makeVector([5, 0], [13, 0], {arrow: "axisArrow"})
+            for (let i of [5, 6, 7, 8, 9, 10, 11, 12]) {
+                fig.makeXTick(i, {fig: numberLine, label: i.toString()})
+            }
+            fig.makeVector([5,-0.5], [12, -0.5], {strokeColor: "red"})
+            fig.makeXTick(5, {y: -0.5, strokeColor: "red", addToSvg: true})
+            fig.makeText("7", 8.5, -1, {textColor: "red"})
+        },        
+        "2_times_3": () => {
+            const fig = new BookFigure("2_times_3", oneSize)
+            fig.makeText("2 ⋅ 3", -1, 0.5, {horizontalAnchor: "end"})
+            fig.makeText("=", -0.5, 0.5)
+            fig.makeOnes(2, {ySpace: 0})
+            fig.makeText("+", 1.5, 0.5)
+            fig.makeOnes(2, {x: 2, ySpace: 0}) 
+            fig.makeText("+", 3.5, 0.5)
+            fig.makeOnes(2, {x: 4, ySpace: 0}) 
+            fig.makeText("=", 5.5, 0.5)
+            fig.makeOnes(2, {x: 6, ySpace: 0}) 
+            fig.makeOnes(2, {x: 7, ySpace: 0}) 
+            fig.makeOnes(2, {x: 8, ySpace: 0}) 
+        },  
+        "3_times_2": () => {
+            const fig = new BookFigure("3_times_2", oneSize)
+            fig.makeText("3 ⋅ 2", -1, 0.5, {horizontalAnchor: "end"})
+            fig.makeText("=", -0.5, 0.5)
+            fig.makeOnes(3, {ySpace: 0})
+            fig.makeText("+", 1.5, 0.5)
+            fig.makeOnes(3, {x: 2, ySpace: 0}) 
+            fig.makeText("=", 3.5, 0.5)
+            fig.makeOnes(3, {x: 4, ySpace: 0}) 
+            fig.makeOnes(3, {x: 5, ySpace: 0}) 
+        },
+        "2_times_4": () => {
+            const fig = new BookFigure("2_times_4", oneSize)
+            const numberLine = fig.makeVector([0, 0], [9, 0], {arrow: "axisArrow"})
+            for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
+                fig.makeXTick(i, {fig: numberLine, label: i.toString()})
+            }
+            for(let i of [0, 1, 2, 3]) {
+                fig.makeVector([i*2,-0.5], [2*(i+1), -0.5], {strokeColor: "var(--select-color1)"})
+                fig.makeXTick(i*2, {y: -0.5, strokeColor: "var(--select-color1)", addToSvg: true})
+                fig.makeText("2", 2*i+1, -1, {textColor: "var(--select-color1)"})
+            }
+        },
+        "4_times_2": () => {
+            const fig = new BookFigure("4_times_2", oneSize)
+            const numberLine = fig.makeVector([0, 0], [9, 0], {arrow: "axisArrow"})
+            for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
+                fig.makeXTick(i, {fig: numberLine, label: i.toString()})
+            }
+            for(let i of [0, 1]) {
+                fig.makeVector([i*4,-0.5], [4*(i+1), -0.5], {strokeColor: "var(--select-color1)"})
+                fig.makeXTick(i*4, {y: -0.5, strokeColor: "var(--select-color1)", addToSvg: true})
+                fig.makeText("2", 4*i+2, -1, {textColor: "var(--select-color1)"})
+            }
+        },
+        "12_div_4": () => {
+            const fig = new BookFigure("12_div_4", oneSize)
+            fig.makeOnes(4, {ySpace: 0})
+            fig.makeOnes(4, {x: 1, ySpace: 0}) 
+            fig.makeOnes(4, {x: 2, ySpace: 0}) 
+            fig.makeText("=", 3.5, 0.5)
+            fig.makeOnes(4, {x: 4, ySpace: 0}) 
+            fig.makeOnes(4, {x: 5.5, ySpace: 0})
+            fig.makeOnes(4, {x: 7, ySpace: 0}) 
+            fig.makeText("12", 1.5, -3.5)
+            fig.makeText("4", 4.5, -3.5)
+            fig.makeText("4", 6, -3.5)
+            fig.makeText("4", 7.5, -3.5)
+        },    
+        "12_div_4_num_line": () => {
+            const fig = new BookFigure("12_div_4_num_line", oneSize)
+            const numberLine = fig.makeVector([0, 0], [13, 0], {arrow: "axisArrow"})
+            for (let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
+                fig.makeXTick(i, {fig: numberLine, label: i.toString()})
+            }
+            for(let i of [0, 1, 2, 3]) {
+                fig.makeVector([i*3,-0.5], [3*(i+1), -0.5], {strokeColor: "var(--select-color1)"})
+                fig.makeXTick(i*3, {y: -0.5, strokeColor: "var(--select-color1)", addToSvg: true})
+                fig.makeText("3", 3*i+1.5, -1, {textColor: "var(--select-color1)"})
+            }
+        },
+        "4_times_3_eq_12": () => {
+            const fig = new BookFigure("4_times_3_eq_12", oneSize)
+            fig.makeOnes(4, {ySpace: 0})
+            fig.makeText("+", 1.5, 0.5)
+            fig.makeOnes(4, {x: 2, ySpace: 0}) 
+            fig.makeText("+", 3.5, 0.5)
+            fig.makeOnes(4, {x: 4, ySpace: 0}) 
+            fig.makeText("=", 5.5, 0.5)
+            fig.makeOnes(4, {x: 6, ySpace: 0})
+            fig.makeOnes(4, {x: 7, ySpace: 0})
+            fig.makeOnes(4, {x: 8, ySpace: 0})
+            fig.makeText("12", 7.5, -3.5)
+            fig.makeText("4", 0.5, -3.5)
+            fig.makeText("4", 2.5, -3.5)
+            fig.makeText("4", 4.5, -3.5)
+        }, 
+        "3_times_4_eq_12": () => {
+            const fig = new BookFigure("3_times_4_eq_12", oneSize)
+            fig.makeOnes(3, {ySpace: 0})
+            fig.makeText("+", 1.5, 0.5)
+            fig.makeOnes(3, {x: 2, ySpace: 0}) 
+            fig.makeText("+", 3.5, 0.5)
+            fig.makeOnes(3, {x: 4, ySpace: 0}) 
+            fig.makeText("+", 5.5, 0.5)
+            fig.makeOnes(3, {x: 6, ySpace: 0})
+            fig.makeText("=", 7.5, 0.5)
+            fig.makeOnes(3, {x: 8, ySpace: 0})
+            fig.makeOnes(3, {x: 9, ySpace: 0})
+            fig.makeOnes(3, {x: 10, ySpace: 0})
+            fig.makeOnes(3, {x: 11, ySpace: 0})
+            fig.makeText("12", 10, -2.5)
+            fig.makeText("3", 0.5, -2.5)
+            fig.makeText("3", 2.5, -2.5)
+            fig.makeText("3", 4.5, -2.5)
+            fig.makeText("3", 6.5, -2.5)
+        }, 
+    }  
 
-        mod["div_expl_3"]()
-        //showAllFigures()
+        //mod["3_times_4_eq_12"]()
+        showAllFigures()
 
 
         

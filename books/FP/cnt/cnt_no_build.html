@@ -172,27 +172,7 @@
     </body>
 
     <script>
-      async function getFigures() {
-            const url = "../fig/figures_rendered.html"
-            const figure_elements = document.getElementsByClassName("figure")
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                  throw new Error(`Response status: ${response.status}`);
-                }
-
-                const text = await response.text();
-                const parser = new DOMParser();
-                const figures = parser.parseFromString(text, "text/html")
-                for (let figure_element of figure_elements) {
-                  if (figures.getElementById(figure_element.id)) {
-                    figure_element.appendChild(figures.getElementById(figure_element.id))
-                  }
-                }
-            } catch (error) {
-                console.error(error.message);
-            }
-        }
+      
 
         getFigures()
     </script>

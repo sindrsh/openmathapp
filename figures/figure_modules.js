@@ -339,8 +339,8 @@ class BookFigure {
         let arrowHead = null
         if (arrow === "triangle") {
             let triangleLength = arrowScale*4
-            let triangleHeight = arrowScale*10
-            arrowHead = this.makePolygon([[0, -triangleLength], [triangleHeight, 0], [0, triangleLength]], {fill: strokeColor, strokeColor: strokeColor, addToSvg: false, xScale: 1, yScale: 1})
+            let triangleHeight = arrowScale*15
+            arrowHead = this.makePolygon([[0, -triangleLength], [triangleHeight, 0], [0, triangleLength]], {fill: strokeColor, strokeColor: "transparent", addToSvg: false, xScale: 1, yScale: 1})
             let direction = [B[0]-A[0], B[1]-A[1]]
             let directionLength = Math.sqrt(direction[0]**2 + direction[1]**2)
             direction = [triangleHeight*direction[0]/directionLength, triangleHeight*direction[1]/directionLength]  
@@ -526,4 +526,26 @@ class TaskFigure extends BookFigure {
 }
 
 
-export { TaskFigure, BookFigure }
+async function getFigures() {
+    const url = "../fig/figures_rendered.html"
+    const figure_elements = document.getElementsByClassName("figure")
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const text = await response.text();
+        const parser = new DOMParser();
+        const figures = parser.parseFromString(text, "text/html")
+        for (let figure_element of figure_elements) {
+          if (figures.getElementById(figure_element.id)) {
+            figure_element.appendChild(figures.getElementById(figure_element.id))
+          }
+        }
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+export { TaskFigure, BookFigure, getFigures }
