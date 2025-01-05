@@ -1,12 +1,11 @@
 function makeTopNav() {
     const bodyElement = document.getElementsByTagName("body")[0]
-    const mainDiv = document.createElement("div")
-    mainDiv.style.height = "50px"
-    const homeButton = document.createElement("button")
-    homeButton.innerHTML = 'heim'
-
-    mainDiv.appendChild(homeButton)
-    bodyElement.insertAdjacentElement('afterbegin', mainDiv)
+    const containerDiv = document.createElement("div")
+    containerDiv.innerHTML = `<span style="width: 50%;"></span>
+     <span style="width: 50%;">
+        <button>HEIM</button>
+     </span>`
+     bodyElement.insertAdjacentElement('beforebegin', containerDiv)
 }
 
 

@@ -1,39 +1,44 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-async function getClient() {
-    return client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3ZmtvYW9nd3FleWhreXN4c2FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjczOTM4ODIsImV4cCI6MTk4Mjk2OTg4Mn0.xIjkHy_RbQnNbYCob74L7kf4VAfyEgJwLvKT8wItaS4')
-}
+const client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3ZmtvYW9nd3FleWhreXN4c2FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjczOTM4ODIsImV4cCI6MTk4Mjk2OTg4Mn0.xIjkHy_RbQnNbYCob74L7kf4VAfyEgJwLvKT8wItaS4')
 
 async function getSession() {
-    let client = await getClient()
     const { data, error } = await client.auth.getSession()
     return data
 }
 
-async function syncTasks(tasks, data) {
-    let client = getClient()
-    const tasksFromDatabase = await client
-        .from('helland_skule_students')
-        .select("tasks")
-        .eq('user_id', data.session.user.id)
-
-    if (!tasksFromDatabase){
-        return
+async function signInWithMail(mail, password) {
+    const { data, error } = await client.auth.signInWithPassword({
+        email: mail,
+        password: password,
+      })
+    if (error) {
+        console.log(error)
     }
+    return data
+}
 
-    if (tasksFromDatabase.data[0]) {
-        const storedTasks = JSON.parse(tasksFromDatabase.data[0]["tasks"])    
 
+async function signOut() {
+    await client.auth.signOut()
+}
+
+async function syncTasks(tasks, userId) {
+    
+    const tasksFromDatabase = await getTasksFromDatabase(userId)
+    //console.log(tasksFromDatabase)
+
+    if (tasksFromDatabase) {
     for (let key of Object.keys(tasks)) {
-        if (key in storedTasks) {
-            if (storedTasks[key]["score"] > tasks[key]["score"]) {
-                tasks[key]["score"] = storedTasks[key]["score"]
+        if (key in tasksFromDatabase) {
+            if (tasksFromDatabase[key]["score"] > tasks[key]["score"]) {
+                tasks[key]["score"] = tasksFromDatabase[key]["score"]
             }
         }
     }
-        for (let key of Object.keys(storedTasks)) {
+        for (let key of Object.keys(tasksFromDatabase)) {
             if (!(key in tasks)) {
-                tasks[key] = storedTasks[key]
+                tasks[key] = tasksFromDatabase[key]
             }
         }
     }
@@ -41,7 +46,24 @@ async function syncTasks(tasks, data) {
     const { updateError } = await client
         .from('helland_skule_students')
         .update({ tasks: `${JSON.stringify(tasks)}`  })
-        .eq('user_id', data.session.user.id)
+        .eq('user_id', userId)
+}
+
+async function getTasksFromDatabase(userId) {
+    const { data, error } = await client
+        .from('helland_skule_students')
+        .select("tasks")
+        .eq('user_id', userId)
+    console.log(data)
+    if (error){
+        alert("Bad request.")
+        return null
+    } else if (!data[0]["tasks"]) {
+        return {}
+    } else {
+        console.log(JSON.parse(data[0]["tasks"]))
+        return JSON.parse(data[0]["tasks"])
+    }
 }
 
 function getLocalTasks() {
@@ -50,41 +72,58 @@ function getLocalTasks() {
     try {
         JSON.parse(testsFromLocalStorage)
         tests = JSON.parse(testsFromLocalStorage)
+        localStorage.removeItem("tests")
     } catch(error) {
-        localStorage.setItem("tasks", "{}")
+        tests = {}
     }
 
     let tasksFromLocalStorage = localStorage.getItem("tasks")
     let tasks = {}
     try {
-        JSON.parse(tasksFromLocalStorage)
-        tasks = JSON.parse(testsFromLocalStorage)
+        tasks = JSON.parse(tasksFromLocalStorage)
     } catch(error) {
         localStorage.setItem("tasks", "{}")
+        tasks = {}
     }
 
-    for (let key of Object.keys(tests)) {
-        if (!(key in tasks)) {
-            tasks[key] = tests[key]
+    if (tests) {
+        for (let key of Object.keys(tests)) {
+            if (!(key in tasks)) {
+                tasks[key] = tests[key]
+            }
         }
     }
+    if (!tasks) {
+        tasks = {}
+    }
+    
     return tasks
 }
 
-async function updateTasks(id) {
-    if (await getSession().session) {
-        
+async function updateTasks(taskId, userId) {
+    if (userId) {
+        let tasks = getTasksFromDatabase(userId)
+        if (tasks) {
+            tasks[taskId] = { "score": 2 }
+            const { updateError } = await client
+            .from('helland_skule_students')
+            .update({ tasks: tasks  })
+            .eq('user_id', userId)
+        }
     }
     else {
-        console.log("hei")
         let tasks = getLocalTasks()
-        tasks[id] = { "score": 2 }
+        console.log("before", tasks)
+        tasks[taskId] = { "score": 2 }
         localStorage.setItem("tasks", JSON.stringify(tasks))
+        console.log("after", tasks)
     }
 }
 
 
-export { getSession, getLocalTasks, syncTasks, updateTasks }
+
+
+export { getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase }
 /*
 
 var user = {}

@@ -13,13 +13,27 @@
                 width: 200px;
                 padding: 20px;
             }
+
+            #loginButton {
+                background-color: #04AA6D;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            #mainPage {
+                visibility: hidden;
+            }
         </style>
     </head>
 
     <body>
         <div id="loginPage">
-            <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required id="username">
+            <label for="uname"><b>mail</b></label>
+    <input type="text" placeholder="Enter mail" name="uname" required id="mail">
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required id="password">
@@ -38,54 +52,45 @@
 
     <script type="module">
         import { makeTopNav } from "./top_nav_module.js"
-
         makeTopNav()
-
-        /*
-        import { getSession, getLocalTasks, syncTasks } from "./data_modules.js"
         
+        import { getSession, getLocalTasks, syncTasks, signOut, signInWithMail } from "./data_modules.js"
         
-        let tasks = getLocalTasks()
-        getSession().then(()data => 
-            {
-                if (data) {
-                    document.getElementById("loginPage").hidden = true
-                    syncTasks(tasks, data)
+        //await signOut()
+        
+        getUserSession()
+        function getUserSession() {
+            let tasks = getLocalTasks()
+            getSession().then((sessionData) => {   
+            if (sessionData.session) {
+                document.getElementById("loginPage").hidden = true
+                syncTasks(tasks, sessionData.session.user.id)
+                document.getElementById("mainPage").style.visibility = "visible"
+            } else {
             }
         }
         )
-        //console.log(data)
-      
-
+        }
         
         let loginButton = document.getElementById("loginButton")
-
-        //loginButton.addEventListener("click", login)
-        /*
-        if (localStorage.getItem("username")) {
-            document.getElementById("username").value = localStorage.getItem("username")
-        }
-        if (localStorage.getItem("password")) {
-            document.getElementById("password").value = localStorage.getItem("password")
-        }
-        */
-
-        //await updateTasks()
-        /*
+        loginButton.addEventListener("click", login)
+        
+     
         async function login() {
-            let username = document.getElementById("username").value
+            let mail = document.getElementById("mail").value
             let password = document.getElementById("password").value
             
-            const { signInData, signInError } = await client.auth.signInWithPassword({
-                email: email,
-                password: password,
-            })
+            const signedInData = await signInWithMail(mail, password)
+            if (signedInData) {
+                getUserSession()
+            } else {
+                alert("Feil passord eller brukernavn.")
+            }
         } 
 
-        */
 
 
     </script>    
-    </body
+    </body>
 </html>
 

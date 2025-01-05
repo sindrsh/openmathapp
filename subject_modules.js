@@ -14,6 +14,7 @@ async function getSubjects() {
 }
 
 function makeTables(subject) {
+    localStorage.setItem("previous-page", location.href)
     const htmlElement = document.getElementsByTagName("html")[0]
     const link = document.createElement("link")
     link.setAttribute("rel", "stylesheet")

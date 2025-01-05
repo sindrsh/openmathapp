@@ -7,7 +7,7 @@
     <table class="topic-table">
         <tbody>
         <tr> 
-            <th rowspan="2"">Gangetabellen</th> 
+            <th rowspan="2">Gangetabellen</th> 
             <td> 
                 <div id="times-table" class="times-table static-task">
                     <a id="times0" href="./times0.html"> 0-gangen</a>
@@ -29,27 +29,29 @@
 </body>
 
 <script type="module">
-    import { getSession, getLocalTasks, syncTasks } from "../../data_modules.js"
-        
-    let tasks = getLocalTasks()
-    getSession().then((data) => 
+    import { getSession, getLocalTasks, syncTasks, getTasksFromDatabase } from "../../data_modules.js"
+     
+    localStorage.setItem("previous-page", location.href)
+    let tasks = {}
+    getSession().then((sessionData) => 
         {   
-            if (data) {
-                syncTasks(tasks, data)
+            if (sessionData.session) {
+                console.log(sessionData)
+                syncTasks(tasks, sessionData.session.user.id)
+                if (getTasksFromDatabase) {
+                    console.log("jeps")
+                    tasks = getTasksFromDatabase(sessionData.session.user.id)
+                }
         }
     }
     )
-    console.log(localStorage.getItem("tasks"))
-    if (localStorage.getItem("tasks")) {
-        tasks = JSON.parse(localStorage.getItem("tasks"))
-        
-    for (a of document.getElementById("times-table").getElementsByTagName("a")) {
+    console.log(tasks)
+    for (const a of document.getElementById("times-table").getElementsByTagName("a")) {
         if (a.id in tasks) {
             if (tasks[a.id].score == 2) {
                 a.style.backgroundColor = "green"
             }
         }
-    }
     } 
     
     

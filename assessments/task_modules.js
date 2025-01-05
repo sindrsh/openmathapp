@@ -1,4 +1,4 @@
-import { updateTasks } from "../data_modules.js"
+import { getSession, updateTasks } from "../data_modules.js"
 
 class Task {
 
@@ -10,6 +10,9 @@ class Task {
     timer
     hideInfoHeight
     showInfoHeight
+    userSession = null
+    userId = null
+    userName = null
 
     constructor(makeTask, tasksAmount) {
         this.id = window.location.href.split("/")[window.location.href.split("/").length-1].replace(".html", "")
@@ -35,6 +38,7 @@ class Task {
         this.infoDiv = document.createElement("div")
         this.containerDiv.appendChild(this.infoDiv)
 
+        this.getUser()
     }
 
     prepare({figure=null, mathElement=null, stack=false} = {}) {
@@ -189,6 +193,20 @@ class Task {
         }, interval);
     }
 
+    async getUser() {
+        this.userSession = await getSession.session
+        if (this.userSession) {
+            this.userId = this.userSession.user.id
+            const { data, error } = await client
+            .from('helland_skule_students')
+            .select("first_name")
+            .eq('user_id', this.userId)
+            if (data) {
+                this.userName = data[0]
+            }
+        }
+    }
+
     async correctAnswer() {
         if (this.circles.length > 0) {
             this.circles.pop().setAttribute("fill", "green")
@@ -205,11 +223,13 @@ class Task {
             }, 1000);
             }
         else {
-            updateTasks(this.id)
+            updateTasks(this.id, this.userId)
             
             alert("Flott! Fortsett på neste nivå.")
             setTimeout(() => {
-                window.location.href = "../../index.html"
+                if (localStorage.getItem("previous-page")) {
+                    //window.location.href = localStorage.getItem("previous-page")
+                } else { window.location.href = "../../index.html" }
             }, 1000);
         }
     }
@@ -271,13 +291,11 @@ class Task {
         const cheatButton = document.createElement("button")
         cheatButton.innerHTML = "CHEAT"
         this.body.appendChild(cheatButton)
-        console.log(this.circles.length)
         cheatButton.addEventListener("click", 
             () => {
                 while (this.circles.length > 1) {
                     this.circles.pop()
                 }
-                console.log(this.circles.length)
                 this.correctAnswer()
             }
         )
