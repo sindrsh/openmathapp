@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
         <script type="module">
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
@@ -12,42 +12,40 @@
             let marginTopBottom = 10
 
             shuffleArray(numbers)
-            const infoFig = new Figure()
-            infoFig.makeBoundingBox({xSize: 500, ySize: 170})
-            let one = infoFig.makeOnes({amount: 1})
-            let hundred = infoFig.makeHundreds({amount: 1})
+            const infoFig = new TaskFigure(20)
+            infoFig.makeBoundingBox(500, 170)
+            let one = infoFig.makeOnes(1)
+            let hundred = infoFig.makeHundreds(1)
             infoFig.move(hundred, 0, 10)
-            infoFig.makeEquals({number: 100, pos: [155, 60]})
+            infoFig.makeText("=", 155, 60)
             infoFig.move(one, 300, 75)
-            infoFig.makeEquals({number: 1, pos: [320, 60]})
+            infoFig.makeText("", 320, 60)
 
             const task = new CalcTask(makeTask, 5)
-            let fig = new Figure()
+            let fig = new TaskFigure(20)
+            fig.makeBoundingBox(650, 400, "black")
             var positions = []
-            fig.makeBoundingBox({xSize: x, ySize: y, strokeColor: "black"})
 
-            task.prepare({figure: fig, info: infoFig.svgElement})
+            task.prepare({figure: fig})
 
-           
-           
             function makeTask(){
                 let onesAmount = getRandomInt(0, 9)
-                let ones = fig.makeOnes({amount: onesAmount, addToSvg: true, ySpace: ySpace})
+                let ones = fig.makeOnes(onesAmount, {x: 30, y:13, addToSvg: true})
                 if (ones) {
-                    fig.move(ones, x - 40, marginTopBottom)
+                    fig.temporaryElements.push(ones)
                 }
                 let tensAmount = getRandomInt(0, 9)
                 if (onesAmount == 0) {
                     tensAmount = getRandomInt(1, 9)
                 }
-                let tens = fig.makeTens({amount: tensAmount, addToSvg: true, xSpace: 15})
+                let tens = fig.makeTens(tensAmount, {x: 28, y: 13, addToSvg: true})
                 if (tens) {
-                    fig.move(tens, x-90, 10)  
+                    fig.temporaryElements.push(tens)
                 }
                 let hundredsAmount = getRandomInt(0, 9)
-                let hundreds = fig.makeHundreds({amount: hundredsAmount, addToSvg:true})
+                let hundreds = fig.makeHundreds(hundredsAmount, {x:15, y: 14, addToSvg:true})
                     if (hundreds) {
-                        fig.move(hundreds, 100, 10)
+                        fig.temporaryElements.push(hundreds)
                     }
 
                 return onesAmount + 10*tensAmount + 100*hundredsAmount

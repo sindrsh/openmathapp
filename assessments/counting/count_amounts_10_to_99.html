@@ -31,12 +31,17 @@
             function makeTask(){
                 let onesAmount = getRandomInt(0, 9)
                 let ones = fig.makeOnes(onesAmount, {x: x - 2, y: y-2, ySpace: 0.5})
-            
+                if (ones) {
+                    fig.temporaryElements.push(ones)
+                }
                 let tensAmount = getRandomInt(0, 9)
                 if (onesAmount == 0) {
                     tensAmount = getRandomInt(1, 9)
                 }
-                let tens = fig.makeTens(tensAmount, {x: x-5, y:y-2, xSpace: 15})
+                let tens = fig.makeTens(tensAmount, {x: x-5, y:y-2, xSpace: 1})
+                if (tens) {
+                    fig.temporaryElements.push(tens)
+                }
                 return onesAmount + 10*tensAmount
             }
         </script>

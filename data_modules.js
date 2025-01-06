@@ -45,7 +45,7 @@ async function syncTasks(tasks, userId) {
 
     const { updateError } = await client
         .from('helland_skule_students')
-        .update({ tasks: `${JSON.stringify(tasks)}`  })
+        .update({ tasks: tasks })
         .eq('user_id', userId)
 }
 
@@ -54,15 +54,13 @@ async function getTasksFromDatabase(userId) {
         .from('helland_skule_students')
         .select("tasks")
         .eq('user_id', userId)
-    console.log(data)
     if (error){
         alert("Bad request.")
         return null
     } else if (!data[0]["tasks"]) {
         return {}
     } else {
-        console.log(JSON.parse(data[0]["tasks"]))
-        return JSON.parse(data[0]["tasks"])
+        return data[0]["tasks"]
     }
 }
 
@@ -105,9 +103,23 @@ function getLocalTasks() {
     return tasks
 }
 
+async function getUserName(userId) {
+    const { data, error } = await client
+        .from('helland_skule_students')
+        .select("first_name")
+        .eq('user_id', userId)
+    if (data) {
+        return data[0]
+    }
+    return null
+}
+
 async function updateTasks(taskId, userId) {
+    console.log(userId, "id")
     if (userId) {
+        console.log("hei")
         let tasks = getTasksFromDatabase(userId)
+        console.log("!", typeof(tasks))
         if (tasks) {
             tasks[taskId] = { "score": 2 }
             const { updateError } = await client
@@ -126,7 +138,7 @@ async function updateTasks(taskId, userId) {
 
 
 
-export { getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase }
+export { getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase, getUserName }
 /*
 
 var user = {}

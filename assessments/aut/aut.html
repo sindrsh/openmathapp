@@ -30,40 +30,41 @@
 
 <script type="module">
     import { getSession, getLocalTasks, syncTasks, getTasksFromDatabase } from "../../data_modules.js"
-    localStorage.setItem("tests", JSON.stringify({
-    "times0": {
-        "score": 2
-    },
-    "times1": {
-        "score": 2
-    },
-    "times2": {
-        "score": 2
-    },
-    "times8": {
-        "score": 2
-    }
-}))
+
     localStorage.setItem("previous-page", location.href)
-    let tasks = getLocalTasks()
+    let tasks = null
+    
     getSession().then((sessionData) => 
         {   
             if (sessionData.session) {
-                console.log(sessionData)
-                syncTasks(tasks, sessionData.session.user.id)
-                if (getTasksFromDatabase) {
-                    tasks = getTasksFromDatabase(sessionData.session.user.id)
+                syncTasks(getLocalTasks(), sessionData.session.user.id).then( () => {
+                    getTasksFromDatabase(sessionData.session.user.id).then( (tasksFromDataBase) => {
+                        console.log("tasks:", tasksFromDataBase)
+                        if (tasksFromDataBase) {
+                            tasks = tasksFromDataBase
+                        } else {
+                            tasks = {}
+                        }
+                        colorAs(tasks)
+                    })
                 }
+            )
+        } else {
+            tasks = getLocalTasks()
+            colorAs()
+            console.log("local")
         }
     }
     )
-    console.log(tasks)
-    for (const a of document.getElementById("times-table").getElementsByTagName("a")) {
-        if (a.id in tasks) {
-            if (tasks[a.id].score == 2) {
-                a.style.backgroundColor = "green"
+   
+    function colorAs(tasks) {
+        for (const a of document.getElementById("times-table").getElementsByTagName("a")) {
+            if (a.id in tasks) {
+                if (tasks[a.id].score == 2) {
+                    a.style.backgroundColor = "green"
+                }
             }
-        }
+    }
     } 
     
     

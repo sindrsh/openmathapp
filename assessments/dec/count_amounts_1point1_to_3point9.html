@@ -2,27 +2,27 @@
 <html>
         <script type="module">
 
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
-            const infoFig = new Figure()
+            const infoFig = new TaskFigure()
             let oneSize = 15
-            infoFig.makeBoundingBox({xSize: 500, ySize: 180})
-            infoFig.makeRectangle({x: 0, y: 0, width: 10*oneSize, height: 10*oneSize, fill: "green"})
-            infoFig.makeEquals({number: 1, pos: [150, 70]})
+            infoFig.makeBoundingBox(500, 180)
+            infoFig.makeRectangle(10*oneSize, 10*oneSize, {fill: "green"})
+            infoFig.makeText("= 1", 150, 70)
             infoFig.move(infoFig.svgContainer, 2, 10)
 
-            let fig = new Figure()
-            fig.makeBoundingBox({xSize: 350, ySize: 350, strokeColor: "black"})
+            let fig = new TaskFigure()
+            fig.makeBoundingBox(350, 350, "black")
             
             let space = 10*oneSize + 10
-
             let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             shuffleArray(ints)
 
             let task = new CalcTask(makeTask, 5)
-            task.prepare({figure: fig, info: infoFig.svgElement})
+            task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
             
             function makeTask() {
                 

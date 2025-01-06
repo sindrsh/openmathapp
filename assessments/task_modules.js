@@ -1,4 +1,4 @@
-import { getSession, updateTasks } from "../data_modules.js"
+import { getSession, updateTasks, getUserName } from "../data_modules.js"
 
 class Task {
 
@@ -112,7 +112,7 @@ class Task {
         this.submitButton.addEventListener("click", () => { this.checkAnswer() })
         
         this.prepareSpecifics(answerColumn)
-        
+        this.addCheatButton()
         this.restartButton.addEventListener("click", () => { location.reload() })
         this.answer = this.makeTask(...this.taskArguments)
     }
@@ -193,15 +193,15 @@ class Task {
     }
 
     async getUser() {
-        this.userSession = await getSession.session
-        if (this.userSession) {
-            this.userId = this.userSession.user.id
-            const { data, error } = await client
-            .from('helland_skule_students')
-            .select("first_name")
-            .eq('user_id', this.userId)
-            if (data) {
-                this.userName = data[0]
+        
+        this.userSession = await getSession()
+        
+        if (this.userSession.session) {
+            
+            this.userId = this.userSession.session.user.id
+            const userName = await getUserName(this.userId)
+            if (userName) {
+                this.userName = userName
             }
         }
     }
