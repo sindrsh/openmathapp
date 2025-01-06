@@ -73,7 +73,6 @@ class Task {
         this.submitButton.setAttribute("type", "submit")
         this.restartButton.innerHTML= "Omstart"
         this.makeStatusBar()
-        this.addCheatButton()
         equalsColumn.style.fontSize = this.body.style.fontSize
         equalsColumn.innerHTML = "="
         
@@ -228,7 +227,7 @@ class Task {
             alert("Flott! Fortsett på neste nivå.")
             setTimeout(() => {
                 if (localStorage.getItem("previous-page")) {
-                    //window.location.href = localStorage.getItem("previous-page")
+                    window.location.href = localStorage.getItem("previous-page")
                 } else { window.location.href = "../../index.html" }
             }, 1000);
         }

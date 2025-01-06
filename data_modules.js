@@ -76,6 +76,9 @@ function getLocalTasks() {
     } catch(error) {
         tests = {}
     }
+    if (!tests) {
+        tests = {}
+    }
 
     let tasksFromLocalStorage = localStorage.getItem("tasks")
     let tasks = {}
@@ -86,6 +89,10 @@ function getLocalTasks() {
         tasks = {}
     }
 
+    if (!tasks) {
+        tasks = {}
+    }
+
     if (tests) {
         for (let key of Object.keys(tests)) {
             if (!(key in tasks)) {
@@ -93,9 +100,7 @@ function getLocalTasks() {
             }
         }
     }
-    if (!tasks) {
-        tasks = {}
-    }
+    
     
     return tasks
 }
@@ -113,10 +118,8 @@ async function updateTasks(taskId, userId) {
     }
     else {
         let tasks = getLocalTasks()
-        console.log("before", tasks)
         tasks[taskId] = { "score": 2 }
         localStorage.setItem("tasks", JSON.stringify(tasks))
-        console.log("after", tasks)
     }
 }
 
