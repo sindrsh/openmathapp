@@ -30,16 +30,28 @@
 
 <script type="module">
     import { getSession, getLocalTasks, syncTasks, getTasksFromDatabase } from "../../data_modules.js"
-     
+    localStorage.setItem("tests", JSON.stringify({
+    "times0": {
+        "score": 2
+    },
+    "times1": {
+        "score": 2
+    },
+    "times2": {
+        "score": 2
+    },
+    "times8": {
+        "score": 2
+    }
+}))
     localStorage.setItem("previous-page", location.href)
-    let tasks = {}
+    let tasks = getLocalTasks()
     getSession().then((sessionData) => 
         {   
             if (sessionData.session) {
                 console.log(sessionData)
                 syncTasks(tasks, sessionData.session.user.id)
                 if (getTasksFromDatabase) {
-                    console.log("jeps")
                     tasks = getTasksFromDatabase(sessionData.session.user.id)
                 }
         }

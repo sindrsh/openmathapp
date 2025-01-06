@@ -1,3 +1,5 @@
+import { getLocalTasks } from "./data_modules.js";
+
 
 async function getSubjects() {
     try {
@@ -96,16 +98,11 @@ function makeTables(subject) {
         
         bodyElement.appendChild(subjectDiv)
     
-        let tasksFromLocalStorage = {}
-        if (localStorage.getItem("tasks")) {
-            tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"))
-        } 
-
-
-
     
     let topicElements = document.getElementsByClassName("topic-table")
+    
     for (let topicElement of topicElements) {
+        console.log(topicElement)
         let bookRow = topicElement.getElementsByClassName("book")[0]
         let taskRow = topicElement.getElementsByClassName("tasks")[0]
         let tasks = Array.from(taskRow.getElementsByClassName("dynamic-task"))
@@ -119,23 +116,18 @@ function makeTables(subject) {
         tasks = tasks.slice(0)
         let cnt = 0
 
-        let tasksFromLocalStorage = {}
-        if (localStorage.getItem("tasks")) {
-            try {
-            tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"))
-            } catch {
-                tasksFromLocalStorage = {}
-            }
-        }
-        for (let i=0; i<tasks.length-1; ++i) {
+        let tasksFromLocalStorage = getLocalTasks()
+        for (let i=0; i <tasks.length; ++i) {
+            console.log(tasks[i].id)
             if (tasks[i].id in tasksFromLocalStorage) {
                 if (tasksFromLocalStorage[tasks[i].id]["score"] == 2) {
                     ++cnt
                     tasks[i].getElementsByTagName("a")[0].style.backgroundColor = "green"
-                    
-                    for (const element of [sections[i+1], tasks[i+1]]) {
-                        element.style.visibility = "visible"
-                        element.style.border = "1pt solid black"
+                    if (i < tasks.length -1) {
+                        for (const element of [sections[i+1], tasks[i+1]]) {
+                            element.style.visibility = "visible"
+                            element.style.border = "1pt solid black"
+                        }
                     }
                        
                 }

@@ -25,13 +25,12 @@
             }
 
             #mainPage {
-                visibility: hidden;
             }
         </style>
     </head>
 
     <body>
-        <div id="loginPage">
+        <div id="loginPage" hidden>
             <label for="uname"><b>mail</b></label>
     <input type="text" placeholder="Enter mail" name="uname" required id="mail">
 
@@ -51,13 +50,14 @@
 
 
     <script type="module">
+        /*
         import { makeTopNav } from "./top_nav_module.js"
         makeTopNav()
         
         import { getSession, getLocalTasks, syncTasks, signOut, signInWithMail } from "./data_modules.js"
         
         //await signOut()
-        
+        let t = null
         getUserSession()
         function getUserSession() {
             let tasks = getLocalTasks()
@@ -87,7 +87,7 @@
                 alert("Feil passord eller brukernavn.")
             }
         } 
-
+*/
 
 
     </script>    
