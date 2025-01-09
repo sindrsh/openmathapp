@@ -38,7 +38,7 @@
                 let answer = numbers.pop()
                 let centers = positions.slice(0, answer)
                 for (let center of centers) {
-                    fig.temporaryElements.push(fig.makeCircle(r, center[0], center[1], {fill: "rgb(0, 240, 0, 1)"}))
+                    fig.makeCircle(r, center[0], center[1], {fill: "rgb(0, 240, 0, 1)"})
                 }
                 return answer               
             }

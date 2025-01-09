@@ -1,5 +1,4 @@
-import { getLocalTasks } from "./data_modules.js";
-
+import { session, getTasksFromDatabase, syncTasks, getLocalTasks } from "./data_modules.js"
 
 async function getSubjects() {
     try {
@@ -97,6 +96,14 @@ function makeTables(subject) {
         }
         
         bodyElement.appendChild(subjectDiv)
+
+        if (sessionStorage.getItem("logged-in") == "false") {
+            for (const element of document.getElementsByClassName("dynamic-task")) {
+                console.log(element)
+                element.style.visibility = "visible"
+                element.style.border = "1pt solid black"
+            }
+        }
     
     
     let topicElements = document.getElementsByClassName("topic-table")
@@ -114,33 +121,56 @@ function makeTables(subject) {
             element.style.border = "1pt solid black"
         }
         tasks = tasks.slice(0)
-        let cnt = 0
 
-        let tasksFromLocalStorage = getLocalTasks()
-        for (let i=0; i <tasks.length; ++i) {
-            console.log(tasks[i].id)
-            if (tasks[i].id in tasksFromLocalStorage) {
-                if (tasksFromLocalStorage[tasks[i].id]["score"] == 2) {
-                    ++cnt
-                    tasks[i].getElementsByTagName("a")[0].style.backgroundColor = "green"
-                    if (i < tasks.length -1) {
-                        for (const element of [sections[i+1], tasks[i+1]]) {
-                            element.style.visibility = "visible"
-                            element.style.border = "1pt solid black"
+        let tasksRecord = null
+        if (session.session) {   
+                syncTasks().then( () => {
+                    getTasksFromDatabase().then( (tasksFromDataBase) => {
+                        if (tasksFromDataBase) {
+                            tasksRecord = tasksFromDataBase
+                        } else {
+                            tasksRecord = {}
                         }
+                        makeTasksVisible(sections, tasks, tasksRecord)
                     }
-                       
+                )
                 }
-                else {
-                    break
-                }
+            )
             } else {
-                break
+                if (sessionStorage.getItem("logged-in") == "false") {
+                    tasksRecord = getLocalTasks()
+                    makeTasksVisible(sections, tasks, tasksRecord)
+                }
+                
             }
+            
         }
     }
-    }
 )
+}
+
+function makeTasksVisible(sections, tasks, tasksRecord) {
+    let cnt = 0
+    for (let i=0; i <tasks.length; ++i) {
+        if (tasks[i].id in tasksRecord) {
+            if (tasksRecord[tasks[i].id]["score"] == 2) {
+                ++cnt
+                tasks[i].getElementsByTagName("a")[0].style.backgroundColor = "green"
+                if (i < tasks.length -1) {
+                    for (const element of [sections[i+1], tasks[i+1]]) {
+                        element.style.visibility = "visible"
+                        element.style.border = "1pt solid black"
+                    }
+                }
+                    
+            }
+            else {
+                break
+            }
+        } else {
+            break
+        }
+    }
 }
 
 function sectionChoice() {

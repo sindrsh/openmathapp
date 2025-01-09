@@ -1,4 +1,4 @@
-import { getSession, updateTasks, getUserName } from "../data_modules.js"
+import { updateTasks } from "../data_modules.js"
 
 class Task {
 
@@ -37,8 +37,6 @@ class Task {
         this.containerDiv.appendChild(this.menuContainer)
         this.infoDiv = document.createElement("div")
         this.containerDiv.appendChild(this.infoDiv)
-
-        this.getUser()
     }
 
     prepare({figure=null, mathElement=null, stack=false} = {}) {
@@ -113,6 +111,7 @@ class Task {
         
         this.prepareSpecifics(answerColumn)
         this.addCheatButton()
+        
         this.restartButton.addEventListener("click", () => { location.reload() })
         this.answer = this.makeTask(...this.taskArguments)
     }
@@ -192,20 +191,6 @@ class Task {
         }, interval);
     }
 
-    async getUser() {
-        
-        this.userSession = await getSession()
-        
-        if (this.userSession.session) {
-            
-            this.userId = this.userSession.session.user.id
-            const userName = await getUserName(this.userId)
-            if (userName) {
-                this.userName = userName
-            }
-        }
-    }
-
     async correctAnswer() {
         if (this.circles.length > 0) {
             this.circles.pop().setAttribute("fill", "green")
@@ -222,7 +207,7 @@ class Task {
             }, 1000);
             }
         else {
-            updateTasks(this.id, this.userId)
+            updateTasks(this.id)
             
             alert("Flott! Fortsett på neste nivå.")
             setTimeout(() => {

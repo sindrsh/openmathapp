@@ -23,14 +23,24 @@
                 cursor: pointer;
                 width: 100%;
             }
+            #no-log-in-button {
+                background-color: #aa8304;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
 
             #mainPage {
+                visibility: hidden;
             }
         </style>
     </head>
 
     <body>
-        <div id="loginPage" hidden>
+        <div id="loginPage">
             <label for="uname"><b>mail</b></label>
     <input type="text" placeholder="Enter mail" name="uname" required id="mail">
 
@@ -38,6 +48,7 @@
     <input type="password" placeholder="Enter Password" name="psw" required id="password">
 
     <button id="loginButton">Login</button>
+    <button id="no-log-in-button">Continue without login</button>
         </div>
         
         <div id="mainPage" class="subject-menu">
@@ -50,30 +61,27 @@
 
 
     <script type="module">
-        /*
-        import { makeTopNav } from "./top_nav_module.js"
-        makeTopNav()
         
         import { getSession, getLocalTasks, syncTasks, signOut, signInWithMail } from "./data_modules.js"
         
-        //await signOut()
-        let t = null
         getUserSession()
+
         function getUserSession() {
             let tasks = getLocalTasks()
             getSession().then((sessionData) => {   
             if (sessionData.session) {
                 document.getElementById("loginPage").hidden = true
-                syncTasks(tasks, sessionData.session.user.id)
+                syncTasks()
                 document.getElementById("mainPage").style.visibility = "visible"
             } else {
             }
         }
         )
         }
-        
         let loginButton = document.getElementById("loginButton")
         loginButton.addEventListener("click", login)
+        let noLogInButton = document.getElementById("no-log-in-button")
+        noLogInButton.addEventListener("click", noLogIn)
         
      
         async function login() {
@@ -87,8 +95,12 @@
                 alert("Feil passord eller brukernavn.")
             }
         } 
-*/
 
+        function noLogIn() {
+            sessionStorage.setItem("logged-in", "false")
+            document.getElementById("loginPage").hidden = true
+            document.getElementById("mainPage").style.visibility = "visible"
+        }
 
     </script>    
     </body>

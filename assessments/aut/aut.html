@@ -29,7 +29,7 @@
 </body>
 
 <script type="module">
-    import { getSession, getLocalTasks, syncTasks, getTasksFromDatabase } from "../../data_modules.js"
+    import { session, getSession, getLocalTasks, syncTasks, getTasksFromDatabase } from "../../data_modules.js"
 
     localStorage.setItem("previous-page", location.href)
     let tasks = null
@@ -39,7 +39,6 @@
             if (sessionData.session) {
                 syncTasks(getLocalTasks(), sessionData.session.user.id).then( () => {
                     getTasksFromDatabase(sessionData.session.user.id).then( (tasksFromDataBase) => {
-                        console.log("tasks:", tasksFromDataBase)
                         if (tasksFromDataBase) {
                             tasks = tasksFromDataBase
                         } else {

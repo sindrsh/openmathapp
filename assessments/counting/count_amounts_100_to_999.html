@@ -13,13 +13,13 @@
 
             shuffleArray(numbers)
             const infoFig = new TaskFigure(20)
-            infoFig.makeBoundingBox(500, 170)
+            infoFig.makeBoundingBox(500, 220)
             let one = infoFig.makeOnes(1)
             let hundred = infoFig.makeHundreds(1)
-            infoFig.move(hundred, 0, 10)
-            infoFig.makeText("=", 155, 60)
-            infoFig.move(one, 300, 75)
-            infoFig.makeText("", 320, 60)
+            infoFig.move(hundred, 200, 200)
+            infoFig.makeText("= 1", 11.5, 5)
+            infoFig.move(one, 300, 10)
+            infoFig.makeText("= 1", 17.5, 1)
 
             const task = new CalcTask(makeTask, 5)
             let fig = new TaskFigure(20)
@@ -27,26 +27,20 @@
             var positions = []
 
             task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
 
             function makeTask(){
                 let onesAmount = getRandomInt(0, 9)
                 let ones = fig.makeOnes(onesAmount, {x: 30, y:13, addToSvg: true})
-                if (ones) {
-                    fig.temporaryElements.push(ones)
-                }
+      
                 let tensAmount = getRandomInt(0, 9)
                 if (onesAmount == 0) {
                     tensAmount = getRandomInt(1, 9)
                 }
                 let tens = fig.makeTens(tensAmount, {x: 28, y: 13, addToSvg: true})
-                if (tens) {
-                    fig.temporaryElements.push(tens)
-                }
+         
                 let hundredsAmount = getRandomInt(0, 9)
                 let hundreds = fig.makeHundreds(hundredsAmount, {x:15, y: 14, addToSvg:true})
-                    if (hundreds) {
-                        fig.temporaryElements.push(hundreds)
-                    }
 
                 return onesAmount + 10*tensAmount + 100*hundredsAmount
             }

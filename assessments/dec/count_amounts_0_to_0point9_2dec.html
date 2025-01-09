@@ -36,7 +36,6 @@
                     for (let i=0; i<10; ++i) {
                         for (let j=0; j<10; ++j){
                             let square = fig.makeRectangle(oneSize, oneSize, 10+i*oneSize, 10+j*oneSize)
-                            fig.temporaryElements.push(square)
                             squares.push(square)
                             fig.move(square, pos[0], pos[1])
                         }

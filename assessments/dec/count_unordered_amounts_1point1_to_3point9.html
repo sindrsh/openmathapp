@@ -2,25 +2,26 @@
 <html>
         <script type="module">
 
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
-            let fig = new Figure()
-            const infoFig = new Figure()
+            let fig = new TaskFigure()
+            const infoFig = new TaskFigure()
             let oneSize = 15
-            infoFig.makeBoundingBox({xSize: 500, ySize: 180})
+            infoFig.makeBoundingBox(500, 180)
             for (let i=0; i<10; ++i) {
-                infoFig.makeRectangle({x: 2+i*oneSize, y: 10, width: oneSize, height: 10*oneSize, fill: "green"})
+                infoFig.makeRectangle(oneSize, 10*oneSize, 2+i*oneSize, 0, {fill: "green"})
             }
-            infoFig.makeEquals({number: 1, pos: [150, 70]})
-            fig.makeBoundingBox({xSize: 365, ySize: 370, strokeColor: "black"})
+            infoFig.makeText("= 1", 180, 70)
+            fig.makeBoundingBox(370, 370, "black")
             
             let space = 10*oneSize + 40
 
             
             let task = new CalcTask(makeTask, 4)
-            task.prepare({figure: fig, info: infoFig.svgElement})
+            task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
             
             function makeTask() {
                 let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -37,7 +38,7 @@
                     let pos = positions.pop()
                     let rectangles = []
                     for (let i=0; i<10; ++i) {
-                        rectangles.push(fig.makeRectangle({x: i*oneSize, y: 0, width: oneSize, height: 10*oneSize}))
+                        rectangles.push(fig.makeRectangle(oneSize, 10*oneSize, i*oneSize, 0))
                         fig.move(rectangles[i], 10 + pos[0], 10 + pos[1])
                     }
                     

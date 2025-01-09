@@ -9,8 +9,8 @@
             const infoFig = new TaskFigure()
             let oneSize = 15
             infoFig.makeBoundingBox(500, 180)
-            infoFig.makeRectangle(10*oneSize, 10*oneSize, {fill: "green"})
-            infoFig.makeText("= 1", 150, 70)
+            infoFig.makeRectangle(10*oneSize, 10*oneSize, 0, 0, {fill: "green"})
+            infoFig.makeText("= 1", 180, 70)
             infoFig.move(infoFig.svgContainer, 2, 10)
 
             let fig = new TaskFigure()
@@ -36,12 +36,12 @@
                 let pos = positions.pop()
                 let rectangles = []
                 for (let i=0; i<10; ++i) {
-                    rectangles.push(fig.makeRectangle({x: 10+i*oneSize, y: 10, width: oneSize, height: 10*oneSize}))
+                    rectangles.push(fig.makeRectangle(oneSize, 10*oneSize, 10+i*oneSize, 10))
                     fig.move(rectangles[i], pos[0], pos[1])
                 }
 
                 for (let i=0; i<b; ++i) { 
-                    let one = fig.makeRectangle({width: 10*oneSize, height: 10*oneSize, fill: "green"})
+                    let one = fig.makeRectangle(10*oneSize, 10*oneSize, 0, 0, {fill: "green"})
                     let pos = positions.pop()
                     fig.move(one, 10+pos[0], 10+pos[1])
                 }

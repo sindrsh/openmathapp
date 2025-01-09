@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
         <script type="module">
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
             let xStart = 10
 
-            let fig = new Figure()
-            fig.oneSize= 50
+            let fig = new TaskFigure(50)
             var numbers = [1, 2, 3, 4, 5, 6, 7, 8]
             shuffleArray(numbers)
-            fig.makeBoundingBox({xSize: 550, ySize: 90})
-            let numberLine = fig.makeVector({A: [10, 0],  B: [0, 0], arrow: "axisArrow", isTemp:false })
-            fig.makeXTick({x: 10, fig: numberLine, label: "0", isTemp: false})
-            fig.makeXTick({x: 9, fig: numberLine, label: "-1", isTemp: false})
+            fig.makeBoundingBox(550, 90)
+            let numberLine = fig.makeVector([10, 0], [0, 0], {arrow: "axisArrow", isTemp:false })
+            fig.makeXTick(10, {fig: numberLine, label: "0"})
+            fig.makeXTick(9, {fig: numberLine, label: "-1"})
             let task = new CalcTask(makeTask, numbers.length)
             
             
@@ -24,12 +23,11 @@
                 let a = numbers.pop()
                 
                 for (let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
-                    fig.makeXTick({x:i, fig: numberLine})
+                    fig.makeXTick(i, {fig: numberLine})
                 }
                 fig.move(numberLine, xStart, 50)
-                let taskVector = fig.makeVector({A:[10, 0], B: [a, 0], strokeColor: "blue" })
+                let taskVector = fig.makeVector([10, 0], [a,0], {strokeColor: "blue" })
                 fig.move(taskVector, xStart, 20)  
-                console.log(this.submitButton.disabled)
                 return -(10-a)
             }
         </script>
