@@ -3,12 +3,11 @@
 <html>
     <script type="module">
 
-        import { Figure } from "../../figures/figure_modules.js"
         import { CalcTask } from "../task_modules.js"
         import { getRandomInt } from "../global_modules.js"
         
         let task = new CalcTask(makeTask, 5)
-        let mathElement = document.createElement("math")
+        let mathElement = task.makeMathElement()
         task.prepare({mathElement: mathElement})
         
         

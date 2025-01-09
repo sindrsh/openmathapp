@@ -21,22 +21,21 @@
             infoFig.makeText("= 1", 3, 0.8)
 
             let fig = new TaskFigure(15)
-            fig.makeRectangle(x, y)
+            fig.makeRectangle(x, y, 0, 0, {isTemp: false})
             var positions = []
 
-            task.prepare({figure: fig, info: infoFig.svgElement})
-
+            task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
            
            
             function makeTask(){
                 let onesAmount = getRandomInt(0, 9)
                 let ones = fig.makeOnes(onesAmount, {x: x - 2, y: y-2, ySpace: 0.5})
-            
                 let tensAmount = getRandomInt(0, 9)
                 if (onesAmount == 0) {
                     tensAmount = getRandomInt(1, 9)
                 }
-                let tens = fig.makeTens(tensAmount, {x: x-5, y:y-2, xSpace: 15})
+                let tens = fig.makeTens(tensAmount, {x: x-5, y:y-2, xSpace: 1})
                 return onesAmount + 10*tensAmount
             }
         </script>

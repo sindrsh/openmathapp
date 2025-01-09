@@ -12,11 +12,17 @@ passwords = []
 for user in users_dict:
     passwords.append(users_dict[user]['password'])
 
-with open('students.csv', newline='') as csvfile:
+with open('../../users.csv', newline='') as csvfile:
     table = csv.reader(csvfile)
     for row in table:
-        if row[2]+ ' ' + row[3] + ' ' + row[1] not in users_dict:
-            
+        print(row)
+        name = row[2]
+        for i in range(3, 5):
+            if row[i] != '':
+                name += ' ' + row[i]
+        a = name
+        name += ' ' + row[1]
+        if name not in users_dict:
             check = True
             while check:
                 password = letter[random.randint(0, 25)]
@@ -24,10 +30,17 @@ with open('students.csv', newline='') as csvfile:
                     password += str(random.randint(0, 9))
                 password += letter[random.randint(0, 25)]
                 check = password in passwords
-            users_dict[row[2]+ ' ' + row[3] + ' ' + row[1]] = {"mail": "newmail", "password": password}
-            users_dict["class"] = row[4]
+      
+            users_dict[name] = {
+                "a": a,
+                "b": row[1],
+                "mail": row[6], 
+                "password": password,
+                "grade": row[5]
+                }
+         
 
-#print(users_dict)
+print(users_dict)
 users = open("users.json", "w")
 json.dump(users_dict, users)
 users.close()

@@ -1,4 +1,4 @@
-import { getSession, updateTasks } from "../data_modules.js"
+import { updateTasks } from "../data_modules.js"
 
 class Task {
 
@@ -37,8 +37,6 @@ class Task {
         this.containerDiv.appendChild(this.menuContainer)
         this.infoDiv = document.createElement("div")
         this.containerDiv.appendChild(this.infoDiv)
-
-        this.getUser()
     }
 
     prepare({figure=null, mathElement=null, stack=false} = {}) {
@@ -112,6 +110,7 @@ class Task {
         this.submitButton.addEventListener("click", () => { this.checkAnswer() })
         
         this.prepareSpecifics(answerColumn)
+        this.addCheatButton()
         
         this.restartButton.addEventListener("click", () => { location.reload() })
         this.answer = this.makeTask(...this.taskArguments)
@@ -192,20 +191,6 @@ class Task {
         }, interval);
     }
 
-    async getUser() {
-        this.userSession = await getSession.session
-        if (this.userSession) {
-            this.userId = this.userSession.user.id
-            const { data, error } = await client
-            .from('helland_skule_students')
-            .select("first_name")
-            .eq('user_id', this.userId)
-            if (data) {
-                this.userName = data[0]
-            }
-        }
-    }
-
     async correctAnswer() {
         if (this.circles.length > 0) {
             this.circles.pop().setAttribute("fill", "green")
@@ -222,7 +207,7 @@ class Task {
             }, 1000);
             }
         else {
-            updateTasks(this.id, this.userId)
+            updateTasks(this.id)
             
             alert("Flott! Fortsett på neste nivå.")
             setTimeout(() => {

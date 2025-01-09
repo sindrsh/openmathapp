@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
         <script type="module">
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
 
-            const infoFig = new Figure()
+            const infoFig = new TaskFigure()
             let oneSize = 30
-            infoFig.makeBoundingBox({xSize: 500, ySize: 320})
+            infoFig.makeBoundingBox(500, 320)
             for (let i=0; i<10; ++i) {
-                infoFig.makeRectangle({x: i*oneSize, y: 0, width: oneSize, height: 10*oneSize, fill: "green"})
+                infoFig.makeRectangle(oneSize, 10*oneSize, i*oneSize, 0, {fill: "green"})
             }
-            infoFig.makeEquals({number: 1, pos: [300, 140]})
+            infoFig.makeText("= 1", 340, 145)
             infoFig.move(infoFig.svgContainer, 2, 10)
 
-            let fig = new Figure()
+            let fig = new TaskFigure()
             
-            fig.makeBoundingBox({xSize: 305, ySize: 305})
+            fig.makeBoundingBox(305, 305)
             
             let ints = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             shuffleArray(ints)
 
             let task = new CalcTask(makeTask, 9)
-            task.prepare({figure: fig, info: infoFig.svgElement})
+            task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
             
             function makeTask() {
                 let a = ints.pop()
                 let rectangles = []
                 for (let i=0; i<10; ++i) {
-                    rectangles.push(fig.makeRectangle({x: 2+i*oneSize, y: 2, width: oneSize, height: 10*oneSize}))
+                    rectangles.push(fig.makeRectangle(oneSize, 10*oneSize, 2+i*oneSize, 2))
                 }
                 shuffleArray(rectangles)
 

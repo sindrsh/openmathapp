@@ -6,7 +6,7 @@
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
             let fig = new TaskFigure(50)
-            let numberLine = fig.makeVector([0, 0], [21, 0],{arrow: "axisArrow"})
+            let numberLine = fig.makeVector([0, 0], [21, 0],{isTemp: false, arrow: "axisArrow"})
             fig.makeXTick(0, {fig: numberLine, label: "0"})
             fig.makeXTick(10, {fig: numberLine, label: "10"})
             for (let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) {
@@ -20,7 +20,7 @@
             
             function makeTask() {
                 let a = numbers.pop()
-                fig.temporaryElements.push(fig.makeVector([0, -0.5], [a, -0.5], {strokeColor: "blue" }))
+                fig.makeVector([0, -0.5], [a, -0.5], {strokeColor: "blue" })
                 return a          
             }
         </script>

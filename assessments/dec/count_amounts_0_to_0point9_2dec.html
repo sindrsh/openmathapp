@@ -2,27 +2,28 @@
 <html>
         <script type="module">
 
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
-            const infoFig = new Figure()
+            const infoFig = new TaskFigure()
             let oneSize = 15
-            infoFig.makeBoundingBox({xSize: 500, ySize: 200})
+            infoFig.makeBoundingBox(500, 200)
             for (let i=0; i<10; ++i) {
                 for (let j=0; j<10; ++j){
-                    infoFig.makeRectangle({x: 10+i*oneSize, y: 10+j*oneSize, width: oneSize, height: oneSize, fill: "green"})
+                    infoFig.makeRectangle(oneSize, oneSize, 10+i*oneSize, 10+j*oneSize, {fill: "green"})
                 }
             }
             infoFig.makeEquals({number: 1, pos: [170, 80]})
             infoFig.move(infoFig.svgContainer, 2, 10)
 
-            let fig = new Figure()
+            let fig = new TaskFigure()
             const space = 200
-            fig.makeBoundingBox({xSize: 400, ySize: 400, strokeColor: "black"})
+            fig.makeBoundingBox(400, 400, "black")
             
             let task = new CalcTask(makeTask, 5)
-            task.prepare({figure: fig, info: infoFig.svgElement})
+            task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
             
             function makeTask() {
                 let positions = [[0, 0], [0, space], [space, space], [space, 0]]
@@ -34,7 +35,7 @@
                     let squares = []
                     for (let i=0; i<10; ++i) {
                         for (let j=0; j<10; ++j){
-                            let square = fig.makeRectangle({x: 10+i*oneSize, y: 10+j*oneSize, width: oneSize, height: oneSize})
+                            let square = fig.makeRectangle(oneSize, oneSize, 10+i*oneSize, 10+j*oneSize)
                             squares.push(square)
                             fig.move(square, pos[0], pos[1])
                         }

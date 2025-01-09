@@ -7,7 +7,7 @@
         
         let task = new CalcTask(makeTask, 5)
 
-        let mathElement = document.createElement("math")
+        let mathElement = task.makeMathElement()
         task.prepare({mathElement: mathElement})
         
         function makeTask() {

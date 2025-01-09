@@ -1,10 +1,13 @@
-function makeTopNav() {
+function makeTopNav(userName) {
     const bodyElement = document.getElementsByTagName("body")[0]
     const containerDiv = document.createElement("div")
-    containerDiv.innerHTML = `<span style="width: 50%;"></span>
-     <span style="width: 50%;">
-        <button>HEIM</button>
-     </span>`
+    containerDiv.innerHTML = 
+    `
+   <div class="top-nav-container">
+    <a href="https://openmathapp.netlify.app/" class="left">HOME</a>
+    <a class="right"> sign in </a>
+     </div>
+     `
      bodyElement.insertAdjacentElement('beforebegin', containerDiv)
 }
 

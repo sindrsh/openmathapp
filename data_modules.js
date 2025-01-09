@@ -2,6 +2,31 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 const client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3ZmtvYW9nd3FleWhreXN4c2FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjczOTM4ODIsImV4cCI6MTk4Mjk2OTg4Mn0.xIjkHy_RbQnNbYCob74L7kf4VAfyEgJwLvKT8wItaS4')
 
+const session = await getSession()
+
+
+const bodyElement = document.getElementsByTagName("body")[0]
+const containerDiv = document.createElement("div")
+containerDiv.innerHTML = `
+                            <div class="top-nav-container">
+                            <a href="https://openmathapp.netlify.app/" class="left">HOME</a>
+                            <a id="log-in-info" class="right"> sign in </a>
+                            </div>
+                        `
+bodyElement.insertAdjacentElement('beforebegin', containerDiv)
+
+let userName = null
+let userId = null
+if (session.session) {
+    userId = await session.session.user.id
+    userName = await getUserName(session.session.user.id)
+    if (userName) {
+        const logInInfo = document.getElementById("log-in-info")
+        logInInfo.innerHTML = `signed in as ${userName}`
+    }
+}
+
+
 async function getSession() {
     const { data, error } = await client.auth.getSession()
     return data
@@ -23,8 +48,8 @@ async function signOut() {
     await client.auth.signOut()
 }
 
-async function syncTasks(tasks, userId) {
-    
+async function syncTasks() {
+    let tasks = getLocalTasks()
     const tasksFromDatabase = await getTasksFromDatabase(userId)
     //console.log(tasksFromDatabase)
 
@@ -45,24 +70,22 @@ async function syncTasks(tasks, userId) {
 
     const { updateError } = await client
         .from('helland_skule_students')
-        .update({ tasks: `${JSON.stringify(tasks)}`  })
+        .update({ tasks: tasks })
         .eq('user_id', userId)
 }
 
-async function getTasksFromDatabase(userId) {
+async function getTasksFromDatabase() {
     const { data, error } = await client
         .from('helland_skule_students')
         .select("tasks")
         .eq('user_id', userId)
-    console.log(data)
     if (error){
         alert("Bad request.")
         return null
     } else if (!data[0]["tasks"]) {
         return {}
     } else {
-        console.log(JSON.parse(data[0]["tasks"]))
-        return JSON.parse(data[0]["tasks"])
+        return data[0]["tasks"]
     }
 }
 
@@ -105,9 +128,20 @@ function getLocalTasks() {
     return tasks
 }
 
+async function getUserName() {
+    const { data, error } = await client
+        .from('helland_skule_students')
+        .select("first_name")
+        .eq('user_id', userId)
+    if (data) {
+        return data[0]["first_name"]
+    }
+    return null
+}
+
 async function updateTasks(taskId, userId) {
     if (userId) {
-        let tasks = getTasksFromDatabase(userId)
+        let tasks = await getTasksFromDatabase(userId)
         if (tasks) {
             tasks[taskId] = { "score": 2 }
             const { updateError } = await client
@@ -126,7 +160,7 @@ async function updateTasks(taskId, userId) {
 
 
 
-export { getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase }
+export { session, getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase, getUserName }
 /*
 
 var user = {}

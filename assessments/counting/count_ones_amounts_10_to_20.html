@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
         <script type="module">
-            import { Figure } from "../../figures/figure_modules.js"
+            import { TaskFigure } from "../../figures/figure_modules.js"
             import { CalcTask }from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
@@ -10,24 +10,30 @@
             let x = 300
             let y = 245
             let r = Math.floor(x/10 - spacing)
+            
             let xLim = 5
             let yLim = 4
             shuffleArray(numbers)
-
-            const task = new CalcTask(makeTask, 5)
-            let fig = new Figure()
+            
+            
             var positions = []
-            fig.makeBoundingBox({xSize: x, ySize:y})
-            fig.makePolygon({
-                points: [[0, 0], [x, 0], [x, y], [0, y]], 
-                isTemp: false
-            })
             for (let i of Array(xLim).keys()) {
                 for (let j of Array(yLim).keys()) {
                     positions.push([(i+0.5)*2*(r + spacing), (0.5+j)*2*(r + spacing)])
                 }
             }
+
+            const task = new CalcTask(makeTask, 5)
+            let fig = new TaskFigure(1)
+            fig.makeBoundingBox(x, y, "black")
+            const infoFig = new TaskFigure()
+            infoFig.makeBoundingBox(x + 100, y, "transparent")
+            infoFig.makeRectangle(x, y)
+            infoFig.makeCircle(r, positions[4][0], positions[4][1], {fill: "rgb(240, 0, 0, 0.6)"})
+            infoFig.makeText("= 1", 320, 122.5)
+
             task.prepare({figure: fig})
+            task.makeInfo(infoFig.svgElement)
             
             
             function makeTask() {
@@ -35,11 +41,7 @@
                 let answer = numbers.pop()
                 let centers = positions.slice(0, answer)
                 for (let center of centers) {
-                    fig.makeCircle({
-                        r:r, 
-                        pos:center, 
-                        fill: "rgb(0, 240, 0, 1)"
-                    })
+                    fig.makeCircle(r, center[0], center[1], {fill: "rgb(240, 0, 0, 0.6)"})
                 }
                 return answer               
             }
