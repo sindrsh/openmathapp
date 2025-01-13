@@ -10,19 +10,21 @@
     <script type="module">
 
         import { CalcTask } from "../task_modules.js"
-        import { getRandomInt, shuffleArray } from "../global_modules.js"
+        import { getRandomInt, shuffleArray, getInts } from "../global_modules.js"
         
         let task = new CalcTask(makeTask, 5)
         let mathElement = task.makeMathElement()
         
-        let as = [2, 3, 4, 5, 6, 7, 8, 9]
+        let as = getInts(100, 999)
+        console.log(as)
         shuffleArray(as)
 
         task.prepare({mathElement: mathElement})
-
+        
         function makeTask() {
             let a = as.pop()
-            let b = getRandomInt(0, a-1)
+            let b = getRandomInt(1, a)
+            a += 10
             mathElement.innerHTML = `<mn>${a}</mn><mo> − </mo><mn>${b}</mn>`
             return a-b               
         }

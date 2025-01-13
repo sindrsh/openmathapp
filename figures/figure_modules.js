@@ -391,12 +391,16 @@ class BookFigure {
         return angle*180/Math.PI
     }
 
-    makeText(label= "", x, y, {textColor="black", verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp} = {}) {
+    makeText(label= "", x, y, {textColor="black", fontSize=null, verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp} = {}) {
         let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
         x*= xScale
         y*= yScale
         text.setAttribute("x", x.toString())
         text.setAttribute("y", y.toString())
+        
+        if (fontSize) {
+            text.style.fontSize = fontSize
+        }
         text.style.dominantBaseline = verticalAnchor
         text.style.textAnchor = horizontalAnchor
         text.style.fill = textColor
@@ -428,12 +432,15 @@ class BookFigure {
         }
         
         if (addToSvg) {
-            this.svgContainer.appendChild(text, isTemp)
+            this.svgContainer.appendChild(text)
+            if (isTemp) {
+                this.temporaryElements.push(text)
+            }
         }
         return text
     }
 
-    makeXTick(x, {fig=null, height= 5, label=null, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, xScale=this.xScale, yScale=this.yScale, visible=true, textColor=strokeColor, y=0, isTemp = this.isTemp}) {
+    makeXTick(x, {fig=null, height= 5, label=null, fontSize=null, addToSvg=false, strokeColor="black", strokeWidth=this.strokeWidth, xScale=this.xScale, yScale=this.yScale, visible=true, textColor=strokeColor, y=0, isTemp = this.isTemp}) {
         x = x*xScale
         y = y*yScale
         let tickContainer = document.createElementNS("http://www.w3.org/2000/svg", "g")
@@ -444,7 +451,12 @@ class BookFigure {
         tick.setAttribute("stroke-width", strokeWidth)
         tickContainer.appendChild(tick)
         if (label) {
-            let text = this.makeText(label, x, height + 10 + y, {yScale:1, xScale:1, textColor: textColor, verticalAnchor: "hanging"})
+            let text
+            if (fontSize) {
+                text = this.makeText(label, x, height + 10 + y, {yScale:1, xScale:1, fontSize: fontSize, textColor: textColor, verticalAnchor: "hanging", addToSvg: addToSvg, isTemp: isTemp})
+            } else {
+                text = this.makeText(label, x, height + 10 + y, {yScale:1, xScale:1, textColor: textColor, verticalAnchor: "hanging", addToSvg: addToSvg, isTemp: isTemp})
+            }
             tickContainer.appendChild(text)
         }
         if (!visible) {
@@ -453,7 +465,7 @@ class BookFigure {
         if (addToSvg) {
             this.addToSVGContainer(tickContainer, isTemp)
         }
-        if (fig) {
+        else if (fig) {
             fig.appendChild(tickContainer)
         }
         return tickContainer
@@ -515,6 +527,7 @@ class BookFigure {
 
     removeTemporaryElements() {
         for (let i of [...Array(this.temporaryElements.length).keys()]) {
+            console.log(this.temporaryElements[i])
             this.temporaryElements[i].remove()
         }
         this.temporaryElements = []

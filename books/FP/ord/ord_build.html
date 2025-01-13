@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Tall og telling </title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../book_styles.css">
+        
+    </head>
+
+<body>
+  <h2 class="section-title">Regnerekkefølge</h2>
+  <h3 class="subsection-title">Prioriteringen av regneartene</h3>
+  Se på følgende regnestykke:
+  <math class="display-math" display="block"> <mn>2</mn><mo>+</mo><mn>3</mn><mo>⋅</mo><mn>4</mn> </math>
+  Et slikt regnestykke <i>kunne </i> man tolket på to måter:
+  <ol type="i">
+    <li> ''2 pluss 3 er 5. 5 ganget med 4 er 20. Svaret er 20.''</li>
+    <li> ''3 ganget med 4 er 12. 2 pluss 12 er 14. Svaret er 14.''</li>
+  </ol>
+  Men svarene blir ikke like! Det er altså behov for å ha noen regler om hva vi skal regne ut først. Den ene regelen er at vi må regne ut ganging eller deling <i>før </i> vi legger sammen eller trekker ifra, dette betyr at 
+  <div class="statement"> 
+  <math class="display-math" display="block">
+    <mtable>
+      <mtr>
+        <mtd><mn>2</mn><mo>⋅</mo><mn>3</mn></mtd> 
+        <mtd><mo>=</mo></mtd>
+        <mtd><mtext>''Regn ut&nbsp; </mtext><mn>3</mn><mo>⋅</mo>4<mtext>, og legg sammen med 2''</mtext></mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd><mn>2</mn><mo>+</mo><mn>12</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>14</mtd>
+      </mtr>
+    </mtable>
+  </math>
+  </div>
+  Men hva om vi ønsket å legge sammen <math>  <mn>2</mn>  </math> og <math>  <mn>3</mn>  </math> først, og så gange summen med 4? Å fortelle at noe skal regnes ut først gjør vi ved hjelp av parenteser: 
+  <div class="statement">
+
+  <math class="display-math" display="block">
+    <mtable>
+      <mtr>
+        <mtd><mo>(</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo>)</mo><mo>⋅</mo><mn>4</mn></mtd> 
+        <mtd><mo>=</mo></mtd>
+        <mtd><mtext>''Legg sammen 2 og 3, og gang med 4 etterpå''</mtext></mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd><mn>5</mn><mo>⋅</mo><mn>4</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>20</mtd>
+      </mtr>
+    </mtable>
+  </math>
+  </div>
+  
+  <div class="rule"><h4>Regnerekkefølge </h4> 
+  <ol type="1">
+    <li> Uttrykk med parentes</li>
+    <li> Multiplikasjon eller divisjon</li>
+    <li> Addisjon eller subtraksjon</li>
+  </ol>
+</div>
+  
+  <div class="example">
+  Regn ut
+  <math class="display-math" display="block"> 
+    <mn>23</mn><mo>−</mo><mo>(</mo><mn>3</mn><mo>+</mo><mn>9</mn><mo>)</mo><mo>+</mo><mn>4</mn><mo>⋅</mo> <mn>7</mn> 
+  </math>
+  <p><b>Svar</b></p>
+  <math class="display-math" display="block">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mn>23</mn><mo>−</mo><mo>(</mo><mn>3</mn><mo>+</mo><mn>9</mn><mo>)</mo><mo>+</mo><mn>4</mn><mo>⋅</mo> <mn>7</mn> 
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd><mn>23</mn><mo>−</mo><mn>12</mn><mo>+</mo><mn>4</mn><mo>⋅</mo> <mn>7</mn> </mtd>
+        <mtd><mtext>Parentes</mtext></mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd><mn>23</mn><mo>−</mo><mn>12</mn><mo>+</mo><mn>28</mn></mtd>
+        <mtd>Ganging</mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>39</mtd>
+        <mtd><mtext>Addisjon og subtraksjon</mtext></mtd>
+      </mtr>
+    </mtable>
+  </math>
+  </div>
+  <div class="example">
+    Regn ut
+    <math class="display-math" display="block"> 
+      <mn>18</mn><mo> :</mo><mo>(</mo><mn>7</mn><mo>−</mo><mn>5</mn><mo>)</mo><mo>−</mo><mn>3</mn> 
+    </math>
+    <p><b>Svar</b></p>
+  <math class="display-math" display="block">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mn>18</mn><mo> :</mo><mo>(</mo><mn>7</mn><mo>−</mo><mn>5</mn><mo>)</mo><mo>−</mo><mn>3</mn> 
+        </mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd><mn>18</mn><mo> :</mo><mn>2</mn><mo>−</mo><mn>3</mn></mtd>
+        <mtd>Parentes</mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd> 
+          <mo>=</mo>
+        </mtd>
+        <mtd><mn>9</mn><mo>−</mo><mn>3</mn></mtd>
+        <mtd>Deling</mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <mn>6</mn>
+        </mtd>
+        <mtd>
+          <mtext>Subtraksjon</mtext>
+        </mtd>
+      </mtr>
+    </mtable>
+  </math>
+  </div>
+
+  <h3 class="subsection-title">Ganging med parentes</h3>
+  Hvor mange ruter ser vi i figuren under?
+  <div class="figure">gang</div>
+  To måter man kan tenke på er disse:
+  <ol type="i">
+    <li> Det er <math>  <mn>2</mn><mo>⋅</mo><mn>4</mn> <mo>=</mo><mn>8</mn>  </math> lilla ruter og <math>  <mn>3</mn><mo>⋅</mo><mn>4</mn><mo>=</mo><mn>12</mn>  </math> grønne ruter. Til sammen er det <math>  <mn>8</mn><mo>+</mo><mn>12</mn> <mo>=</mo><mn>20</mn>  </math> ruter. Dette kan vi skrive som
+  <math class="display-math" display="block"> <mn>2</mn><mo>⋅</mo> <mn><mn>4</mn></mn> <mo>+</mo> <mn>3</mn><mo>⋅</mo> <mn><mn>4</mn></mn> <mo>=</mo> <mn>20</mn>  </math> </li>
+    <li> Det er <math>  <mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>5</mn>  </math> ruter bortover og 4 ruter oppover. Altså er det <math>  <mn>5</mn><mo>⋅</mo><mn>4</mn> <mo>=</mo><mn>20</mn>  </math> ruter totalt. Dette kan vi skrive som
+    <math class="display-math" display="block"> <mo>(</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo>)</mo><mo>⋅</mo> <mn>4</mn> <mo>=</mo> <mn>20</mn> </math> </li>
+  </ol>
+  Av disse to utregningene har vi at
+  <math class="display-math" display="block"> <mo>(</mo><mn><mn>2</mn></mn><mo>+</mo><mn><mn>3</mn></mn><mo>)</mo><mo>⋅</mo><mn><mn><mn>4</mn></mn></mn> <mo>=</mo> <mn><mn>2</mn></mn><mo>⋅</mo> <mn><mn><mn>4</mn></mn></mn><mo>+</mo> <mn><mn>3</mn></mn><mo>⋅</mo><mn><mn><mn>4</mn></mn></mn> </math>
+  <div class="rule">
+  <h4>Ganging med parentes (distributiv lov)</h4>
+  Når et parentesuttrykk er en faktor, kan vi gange de andre faktorene med hvert enkelt ledd i parentesuttrykket.	 
+  <div class="figure">gang1</div>
+  </div>
+  <div class="example">
+    <h4></h4>
+    
+    <math class="display-math" display="block">
+      <mo>(</mo><mn style="color: var(--select-color4);">4</mn><mo>+</mo><mn style="color: var(--select-color2);">7</mn><mo>)</mo><mo>⋅</mo><mn style="color: var(--select-color1);">8</mn><mo>=</mo><mn style="color: var(--select-color4);">4</mn><mo>⋅</mo><mn style="color: var(--select-color1);">8</mn><mo>+</mo><mn style="color: var(--select-color2);">7</mn><mo>⋅</mo><mn style="color: var(--select-color1);">8</mn>
+    </math>
+  </div>
+
+  <div class="info">
+  <h4>Merk</h4>
+  Vi introduserte parenteser som en indikator på hva som skulle regnes ut først, men regel ?? gir en alternativ og likeverdig betydning av parenteser.
+  </div>
+  
+  <h4>Å gange med 0</h4>
+  Vi har tidligere sett at 0 kan skrives som en differanse mellom to tall, og dette kan vi nå utnytte til å finne produktet når vi ganger med 0. La oss se på regnestykket
+  <math class="display-math" display="block"> 
+    <mo>(</mo><mn><mn>2</mn></mn><mo>−</mo><mn><mn>2</mn></mn><mo>)</mo><mo>⋅</mo><mn>3</mn> </math>
+  Av regel ?? har vi at
+  <math class="display-math" display="block">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mo>(</mo><mn>2</mn><mo>−</mo><mn>2</mn><mo>)</mo><mo>⋅</mo><mn>3</mn>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd><mn>2</mn><mo>⋅</mo><mn>3</mn><mo>−</mo><mn>2</mn><mo>⋅</mo><mn>3</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd><mn>6</mn><mo>−</mo><mn>6</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>0</mtd>
+      </mtr>
+    </mtable>
+  </math>
+  Siden <math>  <mn>0</mn><mo>=</mo><mn><mn>2</mn></mn><mo>−</mo><mn><mn>2</mn></mn>  </math>, må dette bety at
+  <math class="display-math" display="block"> <mn><mn>0</mn></mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn><mn>0</mn></mn> </math>
+  
+  <div class="rule"><h4>Gonging med 0</h4> 
+    Viss 0 er en faktor, er produktet lik 0.
+  </div>
+  <div class="example">  
+    <h4></h4>
+    <math class="display-math" display="block">
+      <mtable>
+        <mtr>
+          <mtd>
+            <mn>7</mn><mo>⋅</mo><mn>0</mn>
+          </mtd>
+          <mtd>
+            <mo>=</mo>
+          </mtd>
+          <mtd><mn>0</mn></mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+        </mtr>
+        <mtr>
+          <mtd>
+            <mn>0</mn><mo>⋅</mo><mn>0</mn>
+          </mtd>
+          <mtd>
+            <mo>=</mo>
+          </mtd>
+          <mtd><mn>219</mn></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </div>
+  <h3 class="subsection-title">Assosiative lover</h3>
+  <div class="rule"><h4>Assosiativ lov ved addisjon</h4> 
+  Plasseringen av parenteser mellom ledd har ingen påvirkning på summen.
+  </div>
+  <div class="example">  
+  <math class="display-math" display="block">
+    <mo>(</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo>)</mo><mo>+</mo><mn>4</mn><mo>=</mo><mn>9</mn><mo>=</mo><mn>2</mn><mo>+</mo><mo>(</mo><mn>3</mn><mo>+</mo><mn>4</mn><mo>)</mo>  
+  </math>
+  </div>
+  
+  
+  <div class="rule"><h4>Assosiativ lov ved multiplikasjon</h4> 
+  Plasseringen av parenteser mellom faktorer har ingen påvirkning på produktet.
+  </div>
+  <div class="example">  
+    <math class="display-math" display="block">
+      <mo>(</mo><mn>2</mn><mo>⋅</mo><mn>3</mn><mo>)</mo><mo>⋅</mo><mn>4</mn><mo>=</mo><mn>24</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mo>(</mo><mn>3</mn><mo>⋅</mo><mn>4</mn><mo>)</mo>  
+    </math>
+  </div>  
+  
+  <h4>Retning på utregninger</h4>
+  I motsetning til addisjon og multiplikasjon, er hverken subtraksjon eller divisjon assosiative:
+  <math class="display-math" display="block">
+  <mtable>
+    <mtr>
+      <mtd><mo>(</mo><mn>12</mn><mo>−</mo><mn>5</mn><mo>)</mo><mo>−</mo><mn>4</mn></mtd>
+      <mtd><mo>=</mo> <mn>7</mn><mo>−</mo><mn>4</mn><mo>=</mo><mn>3</mn></mtd>
+    </mtr>
+    <mtr><mtd></mtd></mtr>
+    <mtr>
+      <mtd><mn>12</mn><mo>−</mo><mo>(</mo><mn>5</mn><mo>−</mo><mn>4</mn><mo>)</mo></mtd>
+      <mtd><mo>=</mo> <mn>12</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>11</mn></mtd>
+    </mtr>
+  </mtable>
+  </math>
+  <p></p>
+  <math class="display-math" display="block">
+    <mtable>
+      <mtr>
+        <mtd><mo>(</mo><mn>80</mn><mo> :</mo><mn>10</mn><mo>)</mo><mo>:</mo><mn>2</mn></mtd>
+        <mtd><mo>=</mo> <mn>8</mn><mo> :</mo><mn>2</mn><mo>=</mo><mn>4</mn></mtd>
+      </mtr>
+      <mtr><mtd></mtd></mtr>
+      <mtr>
+        <mtd><mn>80</mn><mo> : </mo><mo>(</mo><mn>10</mn><mo>:</mo><mn>2</mn><mo>)</mo></mtd>
+        <mtd><mo>=</mo> <mn>80</mn><mo>:</mo><mn>5</mn><mo>=</mo><mn>16</mn></mtd>
+      </mtr>
+    </mtable>
+    </math>
+
+  Vi har sett at parentesene hjelper oss med å si noe om <i>prioriteringen </i> av regneartene, men det at subtraksjon og divisjon ikke er assosiative fører til at vi også må ha en regel for hvilken <i>retning </i> vi skal regne i. 
+  <div class="rule"><h4>Retning på utregninger </h4> 
+		Regnearter som ut ifra regel ?? har lik prioritet, skal regnes fra venstre mot høyre.
+	</div>
+  <div class="example">  
+		<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>12</mn><mo>−</mo><mn>5</mn><mo>−</mo><mn>4</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mo>(</mo><mn>12</mn><mo>−</mo><mn>5</mn><mo>)</mo><mo>−</mo><mn>4</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>7</mn><mo>−</mo><mn>4</mn> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>3</mn> </mtd> </mtr><mtable></math>
+	</div>
+	<div class="example">  
+		<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>80</mn><mo>:</mo><mn>10</mn><mo>:</mo><mn>2</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mo>(</mo><mn>80</mn><mo>:</mo><mn>10</mn><mo>)</mo><mo>:</mo><mn>2</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>8</mn><mo>:</mo><mn>2</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>4</mn> </mtd> </mtr><mtable></math>
+	</div>
+	<div class="example">  
+		<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>6</mn><mo>:</mo> <mn>3</mn><mo>⋅</mo> <mn>4</mn>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mo>(</mo><mn>6</mn><mo>:</mo><mn>3</mn><mo>)</mo><mo>⋅</mo><mn>4</mn> </mtd> </mtr><mtr> <mtd>   </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>2</mn><mo>⋅</mo><mn>4</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mn>8</mn> </mtd> </mtr><mtable></math>
+	</div>
+	
+	<h2 class="section-title">\fak </h2>
+	Når en heltalls dividend og en heltalls divisor resulterer i en heltalls \\kvotient, sier vi at dividenden er <span class="outline">delelig</span> med divisoren. For eksempel er <math>  <mn>6</mn>  </math> delelig med <math>  <mn>3</mn>  </math> fordi <math>  <mrow><mn>6</mn><mo>:</mo><mn>3</mn><mo>=</mo><mn>2</mn></mrow>  </math>, og <math>  <mn>40</mn>  </math> er delelig med <math>  <mn>10</mn>  </math> fordi <math>  <mrow><mn><mn>4</mn>0</mn><mo>:</mo><mn>10</mn><mo>=</mo><mn>4</mn></mrow>  </math>. Begrepet delelig er med på å definere <span class="outline">primtall</span>:
+	
+	<div class="definition" data-title="Primtall">
+		Et naturlig tall som er større enn 1, og som bare er delelig med seg selv og 1, er et primtall.
+	</div>
+	<div class="example">
+		De fem første primtallene er <math>  <mn>2</mn><mo>,</mo> <mn>3</mn><mo>,</mo> <mn>5</mn> <mo>,</mo> <mn>7</mn>   </math> og <math>  <mn>11</mn>  </math>.
+	</div>  
+	
+	<div class="definition" data-title="Faktorisering">
+		Faktorisering innebærer å skrive et tall som et produkt av andre tall.
+	</div>
+	<div class="example">
+		Faktoriser 24 på tre forskjellige måter.
+		<p><b>Svar</b></p>    
+		<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>24</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>2</mn><mo>⋅</mo> 1<mn>2</mn>  </mtd> </mtr><mtr> <mtd> <mn>24</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>3</mn><mo>⋅</mo> <mn>8</mn>  </mtd> </mtr><mtr> <mtd> <mn>24</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>2</mn><mo>⋅</mo> <mn>3</mn> <mo>⋅</mo> <mn>4</mn> </mtd> </mtr><mtable></math>
+	</div> 
+	<div class="language-box">
+		Da 12 er delelig med 4, sier vi at 4 er en faktor i 12.
+	</div>
+	
+	<div class="rule"><h4>Primtallsfaktorisering</h4> 
+		Faktorisering med bare primtall som faktorer kalles <span class="outline">primtallsfaktorisering</span>.
+	</div>
+	<div class="example">
+		Skriv 12 på primtallsfaktorisert form.
+		
+	
+		<math class="display-math" display="block"> <mn>12</mn><mo>=</mo> <mn><mn>2</mn></mn> <mo>⋅</mo><mn><mn>2</mn></mn><mo>⋅</mo><mn>3</mn> </math>
+	</div>
+	<div class="info">
+    <h4>Primtallene mellom 1-100</h4>
+		<table id="primes1to100">
+    </table>
+	</div>
+  <script type="module">
+    const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    const primesTable = document.getElementById("primes1to100")
+    primesTable.style.borderCollapse = "collapse"
+    primesTable.style.margin = "auto"
+   
+    for (let i of [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]) {
+      let row = document.createElement("tr")
+      for (let j of [1, 2, 4, 5, 6, 7, 8, 9, 10]) {
+        let column = document.createElement("td")
+        column.innerHTML = `${i+j}`
+        column.style.textAlign = "center"
+        column.style.border = "1pt solid black"
+        column.style.padding = "5px"
+        if (primes.includes(i+j)) {
+          column.style.backgroundColor = "lightblue"
+        }
+        row.appendChild(column)
+      }
+      primesTable.appendChild(row)
+  }
+  </script>
+
+</body>
+</html>

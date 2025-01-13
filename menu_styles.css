@@ -100,3 +100,14 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+.top-nav-container {
+  font-size: 18px;
+  padding: 10px;
+  background-color: MediumTurquoise;
+  margin-bottom: 10px;
+}
+
+#log-in-info {
+  float: right;
+}

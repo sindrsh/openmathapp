@@ -13,7 +13,7 @@ containerDiv.innerHTML = `
                             <a id="log-in-info" class="right"> sign in </a>
                             </div>
                         `
-bodyElement.insertAdjacentElement('beforebegin', containerDiv)
+bodyElement.insertAdjacentElement('afterbegin', containerDiv)
 
 let userName = null
 let userId = null

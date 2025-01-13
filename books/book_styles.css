@@ -2,6 +2,7 @@
   --select-color1: rgb(0, 0, 255, 1);
   --select-color2: rgb(0, 255, 0, 1); 
   --select-color3: rgb(0, 200, 200, 1);   
+  --select-color4: rgb(150, 200, 200, 1);    
   --minus-color: rgb(255, 0, 0, 1);
 }
 
@@ -59,6 +60,10 @@ math {
 .display-math {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.standalone{
+  margin-bottom: 0px;
 }
 
 .subsubsection {

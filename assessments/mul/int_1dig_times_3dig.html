@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt, getInts } from "../global_modules.js"
+            
+            let task = new CalcTask(makeTask, 6)
+            let as = getInts(101, 999)
+            let bs = [2, 3, 4, 5, 6, 7, 8, 9]
+
+            shuffleArray(as)
+            shuffleArray(bs)
+            
+            let mathElement = task.makeMathElement()
+            task.prepare({mathElement: mathElement})
+
+            function makeTask() {
+                let a = as.pop()
+                let b = bs.pop()
+                if (getRandomInt(0, 1) == 0) {
+                    mathElement.innerHTML = `<mn>${a}</mn><mo>·</mo><mn>${b}</mo>`
+                } else {
+                    mathElement.innerHTML = `<mn>${b}</mn><mo>·</mo><mn>${a}</mo>`
+                }
+                
+                return a*b
+            }
+        </script>
+</html>
+

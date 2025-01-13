@@ -24,8 +24,9 @@
             shuffleArray(denominators)
             
             task.prepare({figure: fig, stack: true})
-            const numberline = fig.makeVector([0, 0], [11, 0], {arrow: "axisArrow"})
-            fig.makeXTick(10, {label: "1", addToSvg: true})
+            const numberline = fig.makeVector([0, 0], [11, 0], {arrow: "axisArrow", isTemp: false})
+            fig.makeXTick(10, {label: "1", addToSvg: true, isTemp: false})
+            fig.makeXTick(0, {label: "0", addToSvg: true, isTemp: false})
             function makeTask() {
                 let denominator = denominators.pop()
                 
