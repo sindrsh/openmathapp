@@ -99,7 +99,6 @@ function makeTables(subject) {
 
         if (sessionStorage.getItem("logged-in") == "false") {
             for (const element of document.getElementsByClassName("dynamic-task")) {
-                console.log(element)
                 element.style.visibility = "visible"
                 element.style.border = "1pt solid black"
             }

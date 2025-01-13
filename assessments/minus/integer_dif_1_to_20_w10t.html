@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            math {
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <script type="module">
+
+        import { CalcTask } from "../task_modules.js"
+        import { getRandomInt, shuffleArray } from "../global_modules.js"
+        
+        let task = new CalcTask(makeTask, 5)
+        let mathElement = task.makeMathElement()
+        
+        let as = [1, 2, 3, 4, 5, 6, 7, 8]
+        shuffleArray(as)
+
+        task.prepare({mathElement: mathElement})
+
+        function makeTask() {
+            let a = as.pop()
+            let b = getRandomInt(a+1, 9)
+            a += 10
+            mathElement.innerHTML = `<mn>${a}</mn><mo> − </mo><mn>${b}</mn>`
+            return a-b               
+        }
+    </script>
+</html>
+

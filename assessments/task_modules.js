@@ -15,6 +15,11 @@ class Task {
     userName = null
 
     constructor(makeTask, tasksAmount) {
+        const htmlElement = document.getElementsByTagName("html")[0]
+        const link = document.createElement("link")
+        link.setAttribute("rel", "stylesheet")
+        link.setAttribute("href", "../../menu_styles.css")
+        htmlElement.appendChild(link)
         this.id = window.location.href.split("/")[window.location.href.split("/").length-1].replace(".html", "")
         this.makeTask = makeTask
         this.tasksAmount = tasksAmount
@@ -110,7 +115,6 @@ class Task {
         this.submitButton.addEventListener("click", () => { this.checkAnswer() })
         
         this.prepareSpecifics(answerColumn)
-        this.addCheatButton()
         
         this.restartButton.addEventListener("click", () => { location.reload() })
         this.answer = this.makeTask(...this.taskArguments)
@@ -405,8 +409,79 @@ class FracCalcTask extends Task {
     }
 }
 
+class TypeTask extends Task {
+    constructor(makeTask, tasksAmount) {
+        super(makeTask, tasksAmount)
+        this.typeInput = document.createElement("div")
+        this.aInput = document.createElement("input")
+        this.bInput = document.createElement("input")
+        
+        this.operatorContainer = this.makeMathElement()
+    }
+
+    prepareSpecifics(answerColumn) {
+        this.bInput.style.textAlign = "center"
+        this.bInput.style.fontSize = this.body.style.fontSize
+        this.bInput.setAttribute("size", "3")
+        this.bInput.setAttribute("maxlength", "3")
+        this.aInput.style.fontSize = this.body.style.fontSize
+        this.aInput.setAttribute("size", "3")
+        this.aInput.setAttribute("maxlength", "3")
+        this.aInput.style.textAlign = "center"
+        this.aInput.style.fontSize = this.body.style.fontSize
+        
+        answerColumn.appendChild(this.bInput)
+        answerColumn.appendChild(this.operatorContainer)
+        answerColumn.appendChild(this.aInput)
+        
+        
+        this.bInput.addEventListener("keydown", (e) => {
+            if (e.key === 'Enter') {
+                this.checkAnswer()
+            }
+        })
+
+        this.aInput.addEventListener("keydown", (e) => {
+            if (e.key === 'Enter') {
+                this.checkAnswer()
+            }
+        })
+    }
+
+    setOperator(operator) {
+        this.operator = operator
+        this.operatorContainer.innerHTML = `<mo>${operator}</mo>`
+    }
+
+    evaluateAnswer() {
+        if (!(this.inputIsValid(this.bInput) && this.inputIsValid(this.aInput))) {
+            this.wrongAnswer()        
+        }
+        let userA = parseInt(this.bInput.value)
+        let userB = parseInt(this.aInput.value)
+        if (userA === this.answer[0] && userB === this.answer[1]) {
+            this.correctAnswer()
+        } else if (userB === this.answer[0] && userA === this.answer[1]) {
+            this.correctAnswer()
+        }  
+        else {
+            this.wrongAnswer()
+        }
+    }
+
+    resetInputFields() {
+        this.bInput.value = ""
+        this.bInput.readOnly = false
+        this.aInput.value = ""
+        this.aInput.readOnly = false
+    }
+
+    addAnswerContent() {
+        this.showAnswer.innerHTML = `Svar: <math><mn>${this.answer[0]}</mn><mo>${this.operator}</mo><mn>${this.answer[1]}</mn></math>`
+    }
+}
 
 
 
 
-export { CalcTask, FracCalcTask }
+export { CalcTask, FracCalcTask, TypeTask }

@@ -6,4 +6,11 @@ function shuffleArray(arr) {
     arr.sort((a, b) => 0.5 - Math.random())
 }
 
-export { getRandomInt, shuffleArray }
+function getInts(start, end) {
+    let ints = [];
+    [...Array(end + 1 - start).keys()].forEach((i) => ints.push(i + start))
+    return ints;
+}
+
+
+export { getRandomInt, shuffleArray, getInts }

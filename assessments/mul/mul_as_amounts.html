@@ -21,14 +21,11 @@
             function makeTask() {
                 let a = as.pop()
                 let b = bs.pop()
-                let numberLine = fig.makeVector([0, 0], [a*b+1, 0], {arrow: "axisArrow"})
-                fig.operator
-                for (let i of Array(a*b + 1).keys()) {
-                    fig.makeXTick(i, {fig: numberLine, fontSize: "14pt", label: i})
-                }
-
                 for (let i of Array(b).keys()) {
-                    fig.makeVector([a*i, -0.5], [a*(i+1), -0.5], {fill: "blue"})
+                    fig.makeOnes(a, {x: 3*i})
+                }
+                for (let i of Array(b-1).keys()) {
+                    fig.makeText("+", i*3+2, 0.5)
                 }
                 return [a, b]
             }

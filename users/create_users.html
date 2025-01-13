@@ -38,16 +38,23 @@
         */
 
         async function createUser(mail, password, a, b, grade) {
-            console.log(mail, password, a, b, grade)
-            const { signUpData, signUpError } = await client.auth.signUp({
+            //check if user exists
+            const sign = await client.auth.signInWithPassword({
+            email: mail,
+            password: password,
+            })
+            if (sign.error) {
+                console.log(a, b)
+                const { signUpData, signUpError } = await client.auth.signUp({
                 email: mail,
                 password: password,
                 })
             
-            const { insertError } = await client
-                .from('helland_skule_students')
-                .insert({ first_name: a, last_name: b, grade: grade })
-            
+                const { insertError } = await client
+                    .from('helland_skule_students')
+                    .insert({ first_name: a, last_name: b, grade: grade })
+            } 
+
             const { error } = await client.auth.signOut()
             return [error, a, b]
         }
@@ -55,13 +62,12 @@
         const users = await usersFile.json()
 
         for (const user of Object.values(users)) {
-            await new Promise(resolve => setTimeout(resolve, 4000));
+            await new Promise(resolve => setTimeout(resolve, 100));
             const data = await createUser(user["mail"], user["password"], user["a"], user["b"], user["grade"])
             if (data[0]) {
                 console.log(a, b)
             }
         }
-       
       </script>
     </body
 </html>
