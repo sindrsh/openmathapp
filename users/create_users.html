@@ -61,13 +61,37 @@
         const usersFile = await fetch("./users.json")
         const users = await usersFile.json()
 
+        async function createInstructor(mail, password, a, b, grades) {
+            const { signUpData, signUpError } = await client.auth.signUp({
+            email: mail,
+            password: password,
+            })
+        
+            const { insertError } = await client
+                .from('helland_skule_instructors')
+                .insert({ first_name: a, last_name: b, grades: grades })
+
+            const { error } = await client.auth.signOut()
+            return [error, a, b]
+        }
+
+        const { session } = await client.auth.getSession()
+        const { data, error } = await client
+        .from('helland_skule_students')
+        .select()
+        console.log(data)
+
+        //createInstructor("test.mailing@vestnes.skolene.no", "a654321b", "sindre", "heggen", "1, 2, 3, 4, 5, 6, 7")
+
+        /*
         for (const user of Object.values(users)) {
-            await new Promise(resolve => setTimeout(resolve, 100));
+            await new Promise(resolve => setTimeout(resolve, 10));
             const data = await createUser(user["mail"], user["password"], user["a"], user["b"], user["grade"])
             if (data[0]) {
                 console.log(a, b)
             }
         }
+        */
       </script>
     </body
 </html>

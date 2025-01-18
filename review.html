@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .subject-table th {
+                border: 1pt solid black;
+                width: 120px;
+                text-align: left;
+            }
+            .subject-table {
+                margin-bottom: 5px;
+                
+            }
+            .topic-table {
+                border: 1pt solid black;
+            }
+            .topic {
+                width: 120px;
+            }
+            .task-table td {
+                width: 500px;
+                border:  1pt solid black;
+            }
+
+            #grades-container button {
+                height: 20px;
+                border-radius: 1pt black solid;
+            }
+        </style>
+    </head>
+    <body>
+    <div id="grades-container"></div>
+    <div id="students-container"></div>
+    <div id="data-container">
+        <div id="individual-review-container">
+        </div>
+    </div>
+    </body>
+
+    <script type="module">
+        import { getSubjects, makeTable, studentsData, subjects } from "./review_modules.js"
+        //import { getStudentsData } from "./data_modules.js"
+
+
+        const dataContainer = document.getElementById("data-container")
+        const individulReviewContainer = document.getElementById("individual-review-container")
+        //const studentsData = await getStudentsData()
+        //const studentData = studentsData[11]
+        
+        const grades = {} 
+        for (let i=0; i<studentsData.length; ++i) {
+            let grade = studentsData[i]["grade"]
+            if (!(grade in grades)) {
+                grades[grade] = []
+            }
+            grades[grade].push(i)
+        }
+
+        const gradesContainer = document.getElementById("grades-container")
+        const gradesArray = Object.keys(grades).sort()
+        for (let grade of gradesArray) {
+            let gradeButton = document.createElement("button")
+            gradeButton.innerHTML = grade
+            gradeButton.addEventListener("click", showStudents)
+            gradeButton.setAttribute("data-active", "false")
+            gradeButton.style.backgroundColor = "teal"
+            gradesContainer.appendChild(gradeButton)
+        }
+        
+        function showStudents() {
+            const studentsContainer = document.getElementById("students-container")
+            if (this.dataset.active == "false") {
+                this.style.backgroundColor = "blue"
+                const gradeContainer = document.createElement("div")
+                gradeContainer.setAttribute("id", this.innerHTML)
+                for (let studentID of grades[this.innerHTML]) {
+                    let studentButton = document.createElement("button")
+                    studentButton.addEventListener("click", makeStudentReview)
+                    let student = studentsData[studentID]
+                    studentButton.innerHTML = student["first_name"] + student["last_name"]
+                    studentButton.setAttribute("id", studentID)
+                    gradeContainer.appendChild(studentButton)
+                }
+                studentsContainer.appendChild(gradeContainer)
+                this.dataset.active = "true"
+            } else {
+                this.style.backgroundColor = "teal"
+                studentsContainer.removeChild(document.getElementById(this.innerHTML))
+                this.dataset.active = "false"
+            }
+        }
+
+        function makeStudentReview() {
+            let studentData = studentsData[parseInt(this.id)]
+            makeStudentTables(studentData)
+        }
+
+        function makeStudentTables(studentData) {
+            const reviewContainer = document.getElementById("individual-review-container")
+            reviewContainer.innerHTML = ""
+            reviewContainer.innerHTML = `<p> ${studentData["first_name"]} ${studentData["last_name"]} </p>`
+            for (let subject of Object.keys(subjects)) {
+                reviewContainer.appendChild(makeTable(subject, studentData["tasks"]))
+            }
+        }
+    
+        
+
+        
+
+    </script>    
+    </body>
+</html>
+

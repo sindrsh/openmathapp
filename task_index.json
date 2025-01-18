@@ -1,118 +1,184 @@
 {
-    "counting": {
-        "topics": {
-            "amounts": {
-                "count_amounts_0_to_9": {
-                	"book-section": "numbers_as_amounts"
+    "subjects": {
+        "counting": {
+            "name": {
+                "nn": "Telling"
+            },
+            "topics": {
+                "amounts": {
+                    "count_amounts_0_to_9": {
+                        "description": {
+                            "no": "Kan gjengi sifrene til mengder mellom 0 til 9."
+                        },
+                        "book-section": "numbers_as_amounts"
+                    },
+                    "count_ones_amounts_10_to_20": {
+                        "description": {
+                            "no": "Kan skrive mengder mellom 10 til 20."
+                        }
+                    },
+                    "count_amounts_10_to_99": {
+                        "description": {
+                            "no": "Kan skrive mengder mellom 20 til 99."
+                        }
+                    }, 
+                    "count_amounts_100_to_999": {
+                        "description": {
+                            "no": "Kan skrive mengder mellom 100 til 999."
+                        }
+                    }
                 },
-                "count_ones_amounts_10_to_20": {},
-                "count_amounts_10_to_99": {}, 
-                "count_amounts_100_to_999": {}
+                "number_line": {
+                    "num_line_0_to_9": {
+                        "description": {
+                            "no": "Kan gjengi sifrene 0-9 på tallinja."
+                        }
+                    },
+                    "num_line_10_to_20": {
+                        "description": {
+                            "no": "Kan gjengi tallene 10-20 på tallinja"
+                        }
+                    },
+                    "num_line_20_to_100": {}
+                }
+            }
+        },
+        "neg": {
+            "name": {
+                "nn": "Negative tal"
             },
-            "number_line": {
-                "num_line_0_to_9": {},
-                "num_line_10_to_20": {},
-                "num_line_20_to_100": {}
+            "topics": {
+                "calculation": {
+                    "plus_on_interval_min9_to_9": {},
+                    "sub_on_interval_min9_to_9": {},
+                    "pos_times_neg": {},
+                    "neg_div_neg": {},
+                    "neg_times_neg": {},
+                    "pos_div_neg": {}
+                },
+                "number_line": {
+                    "num_line_0_to_min9": {}
+                }
             }
-        }
-    },
-    "neg": {
-    	"topics": {
-    		"calculation": {
-    			"plus_on_interval_min9_to_9": {},
-    			"sub_on_interval_min9_to_9": {},
-    			"pos_times_neg": {},
-				"neg_div_neg": {},
-				"neg_times_neg": {},
-				"pos_div_neg": {}
-    		},
-    		"number_line": {
-    			"num_line_0_to_min9": {}
-    		}
-    	}
-    },
-    "plus": {
-    	"topics": {
-    		"calculation": {
-    			"integer_sums_2_to_9": {},
-    			"integer_sums_10_to_18_w10t": {},
-                "integer_sums_11_to_99_e10t": {},
-    			"integer_sums_11_to_99_w10t": {},
-    			"integer_sums_100_to_999_e10t": {},
-				"integer_sums_4digits": {},
-				"sums_w1dig_dec": {},
-				"sums_w2dig_mix": {}
-    		}
-    	}
-    },
-    "minus": {
-        "topics": {
-            "calculation": {
-                "integer_dif_0_to_9": {},
-                "integer_dif_1_to_20_e10t": {},
-                "integer_dif_1_to_20_w10t": {},
-                "integer_dif_1_to_99": {},
-                "integer_dif_1_to_999": {}
-            }
-        }
-    },
-    "mul": {
-        "topics": {
-            "amounts": { 
-                "mul_as_amounts": {}
+        },
+        "plus": {
+            "name": {
+                "nn": "Addisjon"
             },
-            "number_line": {
-                "mul_on_num_line": {}
+            "topics": {
+                "calculation": {
+                    "integer_sums_2_to_9": {},
+                    "integer_sums_10_to_18_w10t": {},
+                    "integer_sums_11_to_99_e10t": {},
+                    "integer_sums_11_to_99_w10t": {},
+                    "integer_sums_100_to_999_e10t": {},
+                    "integer_sums_4digits": {},
+                    "sums_w1dig_dec": {},
+                    "sums_w2dig_mix": {}
+                }
+            }
+        },
+        "minus": {
+            "name": {
+                "nn": "Subtraksjon"
             },
-            "calculation": {
-                "int_times_10_100_1000": {},
-                "int_1dig_times_2dig": {},
-                "int_1dig_times_3dig": {}
+            "topics": {
+                "calculation": {
+                    "integer_dif_0_to_9": {},
+                    "integer_dif_1_to_20_e10t": {},
+                    "integer_dif_1_to_20_w10t": {},
+                    "integer_dif_1_to_99": {},
+                    "integer_dif_1_to_999": {}
+                }
             }
-        }
-    },
-    "pro": {
-        "topics": {
-            "calculation": {
-                "100frac_to_dec": {},
-                "100frac_to_pro": {}
-            }
-        }
-    },
-    "dec": {
-        "topics": {
-            "amounts": {
-                "count_amounts_0_to_0point9": {},
-                "count_unordered_amounts_1point1_to_3point9": {},
-                "count_amounts_1point1_to_3point9": {},
-                "count_amounts_0_to_0point9_2dec": {}
-            }
-        }
-    },
-    "frac": {
-        "topics": {
-            "amounts": {
-                "frac_fig_to_number": {}
+        },
+        "mul": {
+            "name": {
+                "nn": "Multiplikasjon"
             },
-            "number_line": {
-                "frac_fig_to_number_num_line": {}
+            "topics": {
+                "amounts": { 
+                    "mul_as_amounts": {}
+                },
+                "number_line": {
+                    "mul_on_num_line": {}
+                },
+                "calculation": {
+                    "int_times_10_100_1000": {},
+                    "int_1dig_times_2dig": {},
+                    "int_1dig_times_3dig": {}
+                }
+            }
+        },
+        "pro": {
+            "name": {
+                "nn": "Prosent"
+            },
+            "topics": {
+                "calculation": {
+                    "100frac_to_dec": {},
+                    "100frac_to_pro": {}
+                }
+            }
+        },
+        "dec": {
+            "name": {
+                "nn": "Desimaltal"
+            },
+            "topics": {
+                "amounts": {
+                    "count_amounts_0_to_0point9": {},
+                    "count_unordered_amounts_1point1_to_3point9": {},
+                    "count_amounts_1point1_to_3point9": {},
+                    "count_amounts_0_to_0point9_2dec": {}
+                }
+            }
+        },
+        "frac": {
+            "name": {
+                "nn": "Brøk"
+            },
+            "topics": {
+                "amounts": {
+                    "frac_fig_to_number": {}
+                },
+                "number_line": {
+                    "frac_fig_to_number_num_line": {}
+                }
+            }
+        },
+        "automatization": {
+            "name": {
+                "nn": "Automatisering"
+            },
+            "topics": {
+                "times_table": {
+                    "times1": {},
+                    "times2": {},
+                    "times3": {},
+                    "times4": {},
+                    "times5": {},
+                    "times6": {},
+                    "times7": {},
+                    "times8": {},
+                    "times9": {},
+                    "times10": {}
+                }
             }
         }
     },
-    "automatization": {
-        "topics": {
-            "times_table": {
-                "times1": {},
-                "times2": {},
-                "times3": {},
-                "times4": {},
-                "times5": {},
-                "times6": {},
-                "times7": {},
-                "times8": {},
-                "times9": {},
-                "times10": {}
-            }
+    "topics": {
+        "amounts": {
+            "nn": "Mengder"
+        },
+        "number_line": {
+            "nn": "Tallinja"
+        },
+        "calculation": {
+            "nn": "Utrekning"
+        },
+        "times_table": {
+            "nn": "Gongetabellen"
         }
     }
 }

@@ -41,11 +41,12 @@
 
     <body>
         <div id="loginPage">
-            <label for="uname"><b>mail</b></label>
-    <input type="text" placeholder="Enter mail" name="uname" required id="mail">
+    
+    <label for="uname"><b>mail</b></label>
+    <input type="text" autocomplete="on" placeholder="Enter mail" name="uname" required id="mail">
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required id="password">
+    <input type="password" autocomplete="on" placeholder="Enter Password" name="psw" required id="password">
 
     <button id="loginButton">Login</button>
     <button id="no-log-in-button">Continue without login</button>
@@ -67,9 +68,8 @@
     <script type="module">
         
         import { getSession, getLocalTasks, syncTasks, signOut, signInWithMail } from "./data_modules.js"
-        
         getUserSession()
-
+        
         function getUserSession() {
             let tasks = getLocalTasks()
             getSession().then((sessionData) => {   
@@ -93,7 +93,7 @@
             let password = document.getElementById("password").value
             
             const signedInData = await signInWithMail(mail, password)
-            if (signedInData) {
+            if (signedInData.session) {
                 getUserSession()
             } else {
                 alert("Feil passord eller brukernavn.")

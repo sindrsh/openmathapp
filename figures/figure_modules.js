@@ -27,6 +27,7 @@ class BookFigure {
     oneStrokeColor = "blue"
     tenColor = "#98FB98"
     tenStrokeColor = "#006400"
+    numeratorColor = "blue"
 
     constructor(id, oneSize, useViewBox=true, appendToBody=true) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
@@ -314,27 +315,60 @@ class BookFigure {
         equals.setAttribute("height", height)
     }
 
-    makeMathText({mathContent, pos= [0, 0], height="0", width="0", dir="ltr", isTemp = this.isTemp} = {}) {
-        let container = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject")
+    makeMathText(mathContent, x, y, {verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp} = {}) {
+        x = x*xScale
+        y = y*yScale
+        let text = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject")
         let math = document.createElementNS("http://www.w3.org/1998/Math/MathML", "math")
         math.innerHTML = `${mathContent}`
-        math.setAttribute("dir", dir)
-        container.appendChild(math)
         
-        this.addToSVGContainer(container, isTemp)
+        text.style.dominantBaseline = verticalAnchor
+        text.style.textAnchor = horizontalAnchor
+        text.innerHTML = `${mathContent}`
         
-        let heightFloat = parseFloat(window.getComputedStyle(math).getPropertyValue("font-size")) + 2
-        if (width == "0") {
-            width = window.getComputedStyle(math).getPropertyValue("width")
-        }        
-        if (height == "0") {
-            height = heightFloat.toString()
+       
+        let textRect = document.createElement("span")
+        textRect.appendChild(math)
+        textRect.style.visibility = "hidden"
+        let body = document.getElementsByTagName("body")[0]
+        body.appendChild(textRect)
+        let boundingRect = textRect.getBoundingClientRect()
+        console.log(boundingRect)
+        body.removeChild(textRect)
+
+        let textX = x
+        if (horizontalAnchor === "middle") {
+            textX = x - boundingRect.width/2
+            x = textX
+        }
+        if (horizontalAnchor === "end") {
+            textX = x - boundingRect.width
         }
 
-        container.setAttribute("x", pos[0])
-        container.setAttribute("y", pos[1] - heightFloat/2)
-        container.setAttribute("width", width)
-        container.setAttribute("height", height)
+        let textY = y
+        if (verticalAnchor === "middle") {
+            console.log("vertcialmiddle")
+            textY = y - boundingRect.height/2
+            y = textY
+        }
+
+        text.setAttribute("x", x.toString())
+        text.setAttribute("y", y.toString())
+
+        text.setAttribute("width", boundingRect.width.toString())
+        text.setAttribute("height", boundingRect.height.toString())
+        if (this.useViewBox) {
+            this.updateBoundingBox(textX, textY, textX + boundingRect.width, textY + boundingRect.height)
+        }
+        if (addToSvg) {
+            this.svgContainer.appendChild(text)
+            if (isTemp) {
+                this.temporaryElements.push(text)
+            }
+        }
+        return text
+
+      
     }
     
     makeVector(A, B, {arrow="triangle", xScale=this.xScale, yScale=this.yScale, arrowScale=1, x=0, y=0, strokeWidth=this.strokeWidth, addToSvg=true, strokeColor="black", oneLength=this.oneSize, isTemp = this.isTemp} = {} ) {
@@ -523,6 +557,27 @@ class BookFigure {
             }
         }
         
+    }
+
+    makeFractionRect(a, b, n, {fill= this.numeratorColor, addToSvg=true, isTemp=true}={}) {
+        let dx = 1/a
+        let dy = 1/b
+        let numerators = []
+        let fraction = document.createElementNS("http://www.w3.org/2000/svg", "g")
+        for (let i of Array(a).keys()) {
+            for (let j of Array(b).keys()) {
+                let part = this.makeRectangle(dx, dy, i*dx, j*dy)
+                numerators.push(part)
+                fraction.appendChild(part)
+            } 
+        }
+        for (let i of Array(n).keys()) {
+            numerators[i].setAttribute("fill", fill)
+        }
+        if (addToSvg) {
+            this.addToSVGContainer(fraction, isTemp)
+        }
+        return fraction
     }
 
     removeTemporaryElements() {
