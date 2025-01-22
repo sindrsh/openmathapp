@@ -5,7 +5,7 @@
             import { CalcTask } from "../task_modules.js"
             import { shuffleArray, getRandomInt } from "../global_modules.js"
             
-            const task = new CalcTask("100frac_to_pro", makeTask, 1)
+            const task = new CalcTask(makeTask, 5)
             task.unit = "%"
             let mathElement = task.makeMathElement()
             

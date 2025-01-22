@@ -13,6 +13,7 @@
         const tenColor = "#98FB98"
         const tenStrokeColor = "#006400"
         const decNumLineScale = 40
+        const fracOne = 100
 
 
         function showAllFigures() {
@@ -592,11 +593,34 @@
             fig.makeText("3", 2.5, -2.5)
             fig.makeText("3", 4.5, -2.5)
             fig.makeText("3", 6.5, -2.5)
-        }, 
+        },
+        "parentheses": () => {
+            const fig = new BookFigure("parentheses", oneSize)
+            for (let j of [0, 1, 2, 3, 4]) {
+                for (let i of [0, 1]) {
+                    fig.makeRectangle(1, 1, i, j, {fill: "purple"})
+             }
+             for (let i of [2, 3, 4]) {
+                fig.makeRectangle(1, 1, i, j, {fill: "green"})
+             }
+             fig.makeText("2",1, -0.5)
+             fig.makeText("3",3.5, -0.5)
+             fig.makeText("4", 5.5, 2.5)
+            }
+        },
+        "one_frac": () => {
+            const fig = new BookFigure("one_frac", fracOne)
+            fig.makeFractionRect(1, 1, 1)
+            fig.makeText("1", 0.5, 0.5)
+        },
+        "one_fourth": () => {
+            const fig = new BookFigure("one_frac", fracOne)
+            fig.makeRectangle(1/4, 1/4, 0, 0)
+            fig.makeMathText("<mo>=</mo><mfrac><mn>1</mn> <mn>0</mn></mfrac>", 0.35, 0.125)
+        }  
     }  
 
-        //mod["3_times_4_eq_12"]()
-        showAllFigures()
+        mod["one_fourth"]()
 
 
         

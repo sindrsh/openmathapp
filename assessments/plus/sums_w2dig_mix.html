@@ -20,13 +20,12 @@
                 a += getRandomInt(1, 99)/10
             }
             
-            
             if (getRandomInt(0, 1) == 1) {
                 mathElement.innerHTML = `<mn>${a}</mn><mo> + </mo><mn>${b}</mn>`
             } else {
                 mathElement.innerHTML = `<mn>${b}</mn><mo> + </mo><mn>${a}</mn>`
             }
-            return a+b            
+            return (a+b).toFixed(2)            
         }
     </script>
 </html>

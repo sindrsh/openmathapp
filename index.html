@@ -41,11 +41,12 @@
 
     <body>
         <div id="loginPage">
-            <label for="uname"><b>mail</b></label>
-    <input type="text" placeholder="Enter mail" name="uname" required id="mail">
+    
+    <label for="uname"><b>mail</b></label>
+    <input type="text" autocomplete="on" placeholder="Enter mail" name="uname" required id="mail">
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required id="password">
+    <input type="password" autocomplete="on" placeholder="Enter Password" name="psw" required id="password">
 
     <button id="loginButton">Login</button>
     <button id="no-log-in-button">Continue without login</button>
@@ -57,8 +58,10 @@
             <a href="./assessments/minus/minus.html">Subtraksjon (−)</a>
             <a href="./assessments/mul/mul.html">Multiplikasjon (·)</a>
             <a href="./assessments/frac/frac.html">Brøk</a>
+            <a href="./assessments/div/div.html">Divisjon (:)</a>
             <a href="./assessments/dec/dec.html">Desimaltall</a>
             <a href="./assessments/neg/neg.html">Negative tal</a>
+            <a href="./assessments/pro/pro.html">Prosent</a>
             <a href="./assessments/aut/aut.html">Automatisering</a>
         <div> 
     </body>
@@ -66,14 +69,17 @@
 
     <script type="module">
         
-        import { getSession, getLocalTasks, syncTasks, signOut, signInWithMail } from "./data_modules.js"
+        import { getSession, getLocalTasks, syncTasks, signOut, signInWithMail, role } from "./data_modules.js"
         
         getUserSession()
-
+        
         function getUserSession() {
             let tasks = getLocalTasks()
             getSession().then((sessionData) => {   
             if (sessionData.session) {
+                if (role == "instructor") {
+                    window.location.href = "./review.html"
+                }
                 document.getElementById("loginPage").hidden = true
                 syncTasks()
                 document.getElementById("mainPage").style.visibility = "visible"
@@ -93,7 +99,7 @@
             let password = document.getElementById("password").value
             
             const signedInData = await signInWithMail(mail, password)
-            if (signedInData) {
+            if (signedInData.session) {
                 getUserSession()
             } else {
                 alert("Feil passord eller brukernavn.")

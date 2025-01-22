@@ -4,7 +4,6 @@ const client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGc
 
 const session = await getSession()
 
-
 const bodyElement = document.getElementsByTagName("body")[0]
 const containerDiv = document.createElement("div")
 containerDiv.innerHTML = `
@@ -17,9 +16,12 @@ bodyElement.insertAdjacentElement('afterbegin', containerDiv)
 
 let userName = null
 let userId = null
+let role = null
+
+
 if (session.session) {
     userId = await session.session.user.id
-    userName = await getUserName(session.session.user.id)
+    userName = await getUserName()
     if (userName) {
         const logInInfo = document.getElementById("log-in-info")
         logInInfo.innerHTML = `signed in as ${userName}`
@@ -50,8 +52,7 @@ async function signOut() {
 
 async function syncTasks() {
     let tasks = getLocalTasks()
-    const tasksFromDatabase = await getTasksFromDatabase(userId)
-    //console.log(tasksFromDatabase)
+    const tasksFromDatabase = await getTasksFromDatabase()
 
     if (tasksFromDatabase) {
     for (let key of Object.keys(tasks)) {
@@ -67,11 +68,13 @@ async function syncTasks() {
             }
         }
     }
-
-    const { updateError } = await client
+    if (tasks) {
+        const { updateError } = await client
         .from('helland_skule_students')
         .update({ tasks: tasks })
         .eq('user_id', userId)
+    }
+    
 }
 
 async function getTasksFromDatabase() {
@@ -129,19 +132,43 @@ function getLocalTasks() {
 }
 
 async function getUserName() {
-    const { data, error } = await client
+    const instrucurData = await client
+        .from('helland_skule_instructors')
+        .select("first_name")
+        .eq('user_id', userId)
+        
+    if (!instrucurData.error) {
+        if (instrucurData.data.length > 0) {
+            role = "instructor"
+            return instrucurData.data[0]["first_name"]
+        } else {
+            const { data, error } = await client
+            .from('helland_skule_students')
+            .select("first_name")
+            .eq('user_id', userId)
+            if (data) {
+                role = "student"
+                return data[0]["first_name"]
+            }
+        }
+        
+    } else {
+        const { data, error } = await client
         .from('helland_skule_students')
         .select("first_name")
         .eq('user_id', userId)
-    if (data) {
-        return data[0]["first_name"]
+        if (data) {
+            role = "student"
+            return data[0]["first_name"]
+        }
     }
+     
     return null
 }
 
-async function updateTasks(taskId, userId) {
+async function updateTasks(taskId) {
     if (userId) {
-        let tasks = await getTasksFromDatabase(userId)
+        let tasks = await getTasksFromDatabase()
         if (tasks) {
             tasks[taskId] = { "score": 2 }
             const { updateError } = await client
@@ -157,10 +184,22 @@ async function updateTasks(taskId, userId) {
     }
 }
 
+async function getStudentsData() {
+    const { data, error } = await client
+        .from('helland_skule_students')
+        .select()
+    if (data) {
+        return data
+    } else {
+        alert("An error occured when loading student tasks at" + location.href)
+        return null
+    }
+}
 
 
 
-export { session, getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase, getUserName }
+
+export { session, getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase, getUserName, getStudentsData, role }
 /*
 
 var user = {}

@@ -23,8 +23,7 @@
             } else {
                 mathElement.innerHTML = `<mn>${b10*10+b1+ bd1/10}</mn><mo> + </mo><mn>${a10*10+a1 + ad1/10}</mn>`
             }
-            console.log(a100, b100)
-            return a100*100 + a10*10 + a1 + b100*100 + b10*10 + b1               
+            return (a10*10+a1 + ad1/10 + b10*10+b1 + bd1/10).toFixed(1)           
         }
     </script>
 </html>
