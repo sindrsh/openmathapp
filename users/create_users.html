@@ -75,13 +75,6 @@
             return [error, a, b]
         }
 
-        const { session } = await client.auth.getSession()
-        const { data, error } = await client
-        .from('helland_skule_students')
-        .select()
-        console.log(data)
-
-        //createInstructor("test.mailing@vestnes.skolene.no", "a654321b", "sindre", "heggen", "1, 2, 3, 4, 5, 6, 7")
 
         /*
         for (const user of Object.values(users)) {

@@ -38,14 +38,13 @@
     </body>
 
     <script type="module">
-        import { getSubjects, makeTable, studentsData, subjects } from "./review_modules.js"
-        //import { getStudentsData } from "./data_modules.js"
+        import { getSubjects, makeTable, subjects } from "./review_modules.js"
+        import { getStudentsData } from "./data_modules.js"
 
 
         const dataContainer = document.getElementById("data-container")
         const individulReviewContainer = document.getElementById("individual-review-container")
-        //const studentsData = await getStudentsData()
-        //const studentData = studentsData[11]
+        const studentsData = await getStudentsData()
         
         const grades = {} 
         for (let i=0; i<studentsData.length; ++i) {

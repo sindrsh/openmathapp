@@ -55,7 +55,6 @@ class BookFigure {
     addToSVGContainer(fig, isTemp=true) {
         this.svgContainer.appendChild(fig)
         if (this.useViewBox) {
-            
             let boundingBox = this.svgContainer.getBBox()
             this.updateBoundingBox(boundingBox.x, boundingBox.y, boundingBox.x + boundingBox.width, boundingBox.y + boundingBox.height)
         }
@@ -590,8 +589,6 @@ class BookFigure {
 }
 
 class TaskFigure extends BookFigure {
-
-    temporaryElements = []
 
     constructor(oneSize=1) {
         super(null, oneSize, true, false)

@@ -4,7 +4,6 @@ const client = createClient('https://ewfkoaogwqeyhkysxsar.supabase.co', 'eyJhbGc
 
 const session = await getSession()
 
-
 const bodyElement = document.getElementsByTagName("body")[0]
 const containerDiv = document.createElement("div")
 containerDiv.innerHTML = `
@@ -54,7 +53,6 @@ async function signOut() {
 async function syncTasks() {
     let tasks = getLocalTasks()
     const tasksFromDatabase = await getTasksFromDatabase()
-    //console.log(tasksFromDatabase)
 
     if (tasksFromDatabase) {
     for (let key of Object.keys(tasks)) {
@@ -138,13 +136,22 @@ async function getUserName() {
         .from('helland_skule_instructors')
         .select("first_name")
         .eq('user_id', userId)
+        
     if (!instrucurData.error) {
-        role = "instructor"
-        const { data, error } = await client
-        .from('helland_skule_students')
-        .select("first_name")
-        .eq('user_id', userId)
-        return instrucurData.data[0]["first_name"]
+        if (instrucurData.data.length > 0) {
+            role = "instructor"
+            return instrucurData.data[0]["first_name"]
+        } else {
+            const { data, error } = await client
+            .from('helland_skule_students')
+            .select("first_name")
+            .eq('user_id', userId)
+            if (data) {
+                role = "student"
+                return data[0]["first_name"]
+            }
+        }
+        
     } else {
         const { data, error } = await client
         .from('helland_skule_students')
@@ -192,7 +199,7 @@ async function getStudentsData() {
 
 
 
-export { session, getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase, getUserName, getStudentsData }
+export { session, getSession, getLocalTasks, syncTasks, updateTasks, signOut, signInWithMail, getTasksFromDatabase, getUserName, getStudentsData, role }
 /*
 
 var user = {}

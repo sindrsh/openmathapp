@@ -54,7 +54,7 @@ function makeTable(subject, studentData) {
             if (task in studentData) {
                 if (studentData[task]["score"] == 2) {
                     taskCompleted = true
-                } else {
+                } else if (subject != "automatization") {
                     break
                 }
             }
@@ -64,9 +64,8 @@ function makeTable(subject, studentData) {
         
             if ("description" in taskObjects[task]) {
                 //alert("description missing!")
-                if ("no" in taskObjects[task]["description"]) {
-                    //alert("descriptio[no] missing")
-                    tasksTableTd.innerHTML = `${taskObjects[task]["description"]["no"]}`
+                if ("nn" in taskObjects[task]["description"]) {
+                    tasksTableTd.innerHTML = `${taskObjects[task]["description"]["nn"]}`
                 }
             } else {
                 tasksTableTd.innerHTML = "-!-!-"

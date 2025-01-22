@@ -8,7 +8,7 @@ async function getSubjects() {
         }
 
         const subjects = await response.json();
-        return subjects
+        return subjects["subjects"]
     } catch (error) {
         console.error(error.message);
     }
@@ -27,6 +27,7 @@ function makeTables(subject) {
     getSubjects().then( (subjects) => {
         const subjectDiv = document.createElement("div")
         subjectDiv.setAttribute("class", "subject-div")
+        console.log(subjects[subject])
         let topics = subjects[subject]["topics"]
         const topicsArray = Object.keys(topics)
         
