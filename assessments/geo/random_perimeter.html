@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+        <script type="module">
+            import { TaskFigure } from "../../figures/figure_modules.js"
+            import { CalcTask } from "../task_modules.js"
+            import { shuffleArray, getRandomInt } from "../global_modules.js"
+          
+            const task = new CalcTask(makeTask, 5)
+            const fig = new TaskFigure(20)
+
+            const positions = []
+            for (let i of Array(4).keys()) {
+                for (let j of Array(5).keys()) {
+                    positions.push([i, j])
+                }
+            }
+
+            const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+            task.prepare({figure: fig, stack: true})
+            document.getElementById("equals-column").innerHTML = "Omkrets = "
+
+            function makeTask() {
+                let cnt = 1
+                let lim = 18
+                let tempPositions = Array.from(positions)
+                shuffleArray(tempPositions)
+                let chosenPositions = []
+                let pos = tempPositions.pop()
+                chosenPositions.push(pos)
+                while (cnt < lim) {
+                    let allowed_dirs = []
+                    if (pos[0] > 0) {
+                        allowed_dirs.push(directions[2])
+                    }
+                    if (pos[0] < 2) {
+                        allowed_dirs.push(directions[0])
+                    }
+                    if (pos[1] > 0) {
+                        allowed_dirs.push(directions[3])
+                    }
+                    if (pos[1] < 3) {
+                        allowed_dirs.push(directions[1])
+                    }
+                    shuffleArray(allowed_dirs)
+                    let direction = allowed_dirs.pop()
+                    pos = [pos[0] + direction[0], pos[1] + direction[1]]
+                    if (pos[0] == chosenPositions[chosenPositions.length-1][0] && pos[1] == chosenPositions[chosenPositions.length-1][1]) {
+                        direction = allowed_dirs.pop()
+                        pos = [pos[0] + direction[0], pos[1] + direction[1]]
+                    }
+                    let allowedPos = true
+                    for (let p of chosenPositions) {
+                        if (p[0] == pos[0] && p[1] == pos[1]) {
+                            allowedPos = false
+                        }
+                    }
+                    if (!allowedPos) {
+                        break
+                    } else {
+                        chosenPositions.push(pos)
+                    }
+                    ++cnt
+                }
+                let linePairs = []
+                for (let position of chosenPositions) {
+                    fig.makeRectangle(1, 1, position[0], position[1], {fill: "rgb(0, 0, 0, 0.1)", strokeColor: "rgb(0, 0, 0, 0.05)",})
+                    linePairs = linePairs.concat([
+                        [position, [position[0] + 1, position[1]]], 
+                        [[position[0] + 1, position[1]], [position[0] + 1, position[1] + 1]], 
+                        [[position[0] + 1, position[1] + 1], [position[0], position[1] + 1]],
+                        [[position[0], position[1] + 1], position]
+                    ])
+                }
+                let circumference = []
+                for (let i=0; i<linePairs.length; ++i) {
+                    let unique = true
+                    for (let j=0; j<linePairs.length; ++j) {
+                        if (i != j) {
+                            if (linePairs[i][0][0] == linePairs[j][0][0] && linePairs[i][0][1] == linePairs[j][0][1] && linePairs[i][1][0] == linePairs[j][1][0] && linePairs[i][1][1] == linePairs[j][1][1]) {
+                                unique = false
+                                break
+                            }
+                            if (linePairs[i][0][0] == linePairs[j][1][0] && linePairs[i][0][1] == linePairs[j][1][1] && linePairs[i][1][0] == linePairs[j][0][0] && linePairs[i][1][1] == linePairs[j][0][1]) {
+                                unique = false
+                                break
+                            }
+                        }
+                    }
+                    if (unique){
+                        circumference.push(linePairs[i])
+                    }
+                }
+                let peri = 0
+                for (let line of circumference){
+                    fig.makeLine(line[0], line[1], {strokeColor: "green"})
+                    peri += 1
+                }
+                return peri
+            }
+            
+        </script>
+</html>
+

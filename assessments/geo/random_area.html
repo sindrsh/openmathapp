@@ -17,7 +17,8 @@
 
             const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
-            task.prepare({figure: fig})
+            task.prepare({figure: fig, stack: true})
+            document.getElementById("equals-column").innerHTML = "Areal = "
 
             function makeTask() {
                 let cnt = 1
@@ -63,14 +64,39 @@
                 }
                 let linePairs = []
                 for (let position of chosenPositions) {
-                    fig.makeRectangle(1, 1, position[0], position[1], {isTemp: false, fill: "rgb(1, 0, 0, 0.1)"})
-                    linePairs.concat([
+                    fig.makeRectangle(1, 1, position[0], position[1], {fill: "rgb(0, 0, 0, 0.1)", strokeColor: "rgb(0, 0, 0, 0.05)",})
+                    linePairs = linePairs.concat([
                         [position, [position[0] + 1, position[1]]], 
                         [[position[0] + 1, position[1]], [position[0] + 1, position[1] + 1]], 
                         [[position[0] + 1, position[1] + 1], [position[0], position[1] + 1]],
                         [[position[0], position[1] + 1], position]
                     ])
                 }
+                let circumference = []
+                for (let i=0; i<linePairs.length; ++i) {
+                    let unique = true
+                    for (let j=0; j<linePairs.length; ++j) {
+                        if (i != j) {
+                            if (linePairs[i][0][0] == linePairs[j][0][0] && linePairs[i][0][1] == linePairs[j][0][1] && linePairs[i][1][0] == linePairs[j][1][0] && linePairs[i][1][1] == linePairs[j][1][1]) {
+                                unique = false
+                                break
+                            }
+                            if (linePairs[i][0][0] == linePairs[j][1][0] && linePairs[i][0][1] == linePairs[j][1][1] && linePairs[i][1][0] == linePairs[j][0][0] && linePairs[i][1][1] == linePairs[j][0][1]) {
+                                unique = false
+                                break
+                            }
+                        }
+                    }
+                    if (unique){
+                        circumference.push(linePairs[i])
+                    }
+                }
+                let peri = 0
+                for (let line of circumference){
+                    fig.makeLine(line[0], line[1], {strokeColor: "green"})
+                    peri += 1
+                }
+                return cnt
             }
             
         </script>

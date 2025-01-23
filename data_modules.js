@@ -140,6 +140,7 @@ async function getUserName() {
     if (!instrucurData.error) {
         if (instrucurData.data.length > 0) {
             role = "instructor"
+            console.log(instrucurData.data)
             return instrucurData.data[0]["first_name"]
         } else {
             const { data, error } = await client

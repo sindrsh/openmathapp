@@ -115,7 +115,9 @@ class BookFigure {
         return circle
     }
     
-    makeLine({A, B, strokeColor = "black", addToSvg=true, strokeWidth= this.strokeWidth, isTemp = this.isTemp} = {}) {
+    makeLine(A, B, {xScale=this.oneSize, yScale=this.oneSize, strokeColor = "black", addToSvg=true, strokeWidth= this.strokeWidth, isTemp = this.isTemp} = {}) {
+        A = [A[0]*xScale, A[1]*yScale]
+        B = [B[0]*xScale, B[1]*yScale]
         let line = document.createElementNS("http://www.w3.org/2000/svg", "line")
         line.setAttribute("stroke", strokeColor)
         line.setAttribute("stroke-width", strokeWidth)

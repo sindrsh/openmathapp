@@ -78,6 +78,7 @@ class Task {
         this.makeStatusBar()
         equalsColumn.style.fontSize = this.body.style.fontSize
         equalsColumn.innerHTML = "="
+        equalsColumn.setAttribute("id", "equals-column")
         
 
         submitColumn.appendChild(this.submitButton)
@@ -385,6 +386,8 @@ class FracCalcTask extends Task {
     }
 
     evaluateAnswer() {
+        this.numeratorInput.disabled = true
+        this.denominatorInput.disabled = true
         if (!(this.inputIsValid(this.numeratorInput) && this.inputIsValid(this.denominatorInput))) {
             this.wrongAnswer()        
         }
@@ -399,9 +402,9 @@ class FracCalcTask extends Task {
 
     resetInputFields() {
         this.numeratorInput.value = ""
-        this.numeratorInput.readOnly = false
+        this.numeratorInput.disabled = false
         this.denominatorInput.value = ""
-        this.denominatorInput.readOnly = false
+        this.denominatorInput.disabled = false
     }
 
     addAnswerContent() {
@@ -454,6 +457,9 @@ class TypeTask extends Task {
     }
 
     evaluateAnswer() {
+        this.aInput.disabled = true
+        this.bInput.disabled = true
+        
         if (!(this.inputIsValid(this.bInput) && this.inputIsValid(this.aInput))) {
             this.wrongAnswer()        
         }
@@ -471,15 +477,16 @@ class TypeTask extends Task {
 
     resetInputFields() {
         this.bInput.value = ""
-        this.bInput.readOnly = false
+        this.bInput.disabled = false
         this.aInput.value = ""
-        this.aInput.readOnly = false
+        this.aInput.disabled = false
     }
 
     addAnswerContent() {
         this.showAnswer.innerHTML = `Svar: <math><mn>${this.answer[0]}</mn><mo>${this.operator}</mo><mn>${this.answer[1]}</mn></math>`
     }
 }
+
 
 
 

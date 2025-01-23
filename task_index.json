@@ -280,6 +280,19 @@
                 }
             }
         },
+        "geo": {
+            "name": {
+                "nn": ""
+            },
+            "topics": {
+                "perimeter": {
+                    "random_perimeter": {}
+                },
+                "area": {
+                    "random_area": {}
+                }
+            }
+        },
         "automatization": {
             "name": {
                 "nn": "Automatisering"
