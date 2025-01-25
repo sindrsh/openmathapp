@@ -1,0 +1,475 @@
+
+
+
+
+
+<h2 class="section-title">\brgrpr </h2>
+<div class="rule"><h4>\brdef </h4> 
+	En brøk er en annen måte å skrive et delestykke på. I en brøk kaller vi dividenden for <span class="outline">teller</span> og divisoren for <span class="outline">nevner</span>.
+	\begin{figure</div>
+		\centering
+		\includegraphics[]{\figp{br0_bm}}
+	\end{figure}
+}
+
+<div class="language-box">
+Vanlige måter å si <math>  <mfrac>1 4</mfrac>  </math> på er.</div>
+<ul>
+	\item ''én firedel''
+	\item ''1 av 4''
+	\item ''1 over 4''
+</ul>
+}
+\subsubsection{Brøk som mengde}
+La oss se på brøken <math>  <mfrac>1 4</mfrac>  </math> som en mengde. Vi starter da med å tenke på tallet 1 som en rute.}: 
+\begin{figure}[hbt]
+	\centering
+	\includegraphics{\figp{br1}}
+\end{figure}
+
+Så  deler vi denne ruten inn i fire mindre ruter som er like store. Hver av disse rutene blir da <math>  <mfrac>1 4</mfrac>  </math> (1 av 4):
+\begin{figure}[hbt]
+	\centering
+	\includegraphics{\figp{br2}}
+\end{figure} 
+
+Har vi én slik rute, har vi altså 1 firedel:
+\begin{figure}[hbt]
+	\centering
+	\includegraphics{\figp{br3a}}
+\end{figure} 
+Men skal man bare ut ifra en figur kunne se hvor stor en brøk er, må man vite hvor stor 1 er, og for å få dette lettere til syne skal vi også ta med de ''tomme'' rutene:
+<div class="figure">br3</div>
+Slik vil de blå og de tomme rutene fortelle oss hvor mange biter 1 er delt inn i, mens de blå rutene alene forteller oss hvor mange slike biter det <i>egentlig </i> er. Slik kan vi si at
+ 
+<div class="statement"> 
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mtext>antall blå ruter</mtext> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mtext>teller</mtext>  </mtd> </mtr><mtr> <mtd> <mtext>antall blå ruter</mtext><mo>+</mo><mtext>antall tommme ruter</mtext> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mtext>nevner</mtext>  </mtd> </mtr><mtable></math>
+<div class="figure">br0a</div>
+</div>
+
+
+\subsubsection{Brøk på tallinja}
+På tallinja deler vi lengden mellom 0 og 1 inn i like mange lengder som nevneren angir. Har vi en brøk med 4 i nevner, deler vi lengden mellom 0 og 1 inn i 4 like lengder:
+<div class="figure">br9</div>
+Tallinja er også fin å bruke for å tegne inn brøker som er større enn 1:
+<div class="figure">br9a</div>
+\subsubsection{Teller og nevner oppsummert}
+Selv om vi har vært innom det allerede, er det så avgjørende å forstå hva telleren og nevneren sier oss at vi tar en kort oppsummering:
+<div class="statement">
+<ul>
+	\item Nevneren forteller hvor mange biter 1 er delt inn i.
+	\item Telleren forteller hvor mange slike biter det er.
+</ul>
+</div>
+
+<h2 class="section-title">\brvu</h2>
+<div class="rule"><h4>Verdien til en brøk</h4> Verdien til en brøk finner vi ved å dele telleren med nevneren.</div>
+<div class="example">
+Finn verdien til <math>  <mi>dfrac</mi><mrow><mn>1</mn><mrow><mn>4</mn></mrow>  </math>.
+
+ 
+<math class="display-math" display="block"> <mfrac>1 4</mfrac><mo>=</mo><mn>0</mn><mo>,</mo><mn>25</mn> </math>
+(Se \refkap{Utrekning} for hvordan man kan finne at <math>  <mn>1</mn><mo>:</mo><mn>4</mn><mo>=</mo><mn>0</mn><mo>,</mo><mn>25</mn>  </math>.)
+}
+\subsubsection{Brøker med samme verdi}
+Brøker kan ha samme verdi selv om de ser forskjellige ut. Hvis du regner ut <math>  <mn>1</mn><mo>:</mo><mn>2</mn>  </math>, <math>  <mn>2</mn><mo>:</mo><mn>4</mn>  </math> og <math>  <mn>4</mn><mo>:</mo><mn>8</mn>  </math>, får du i alle tilfeller 0,5 som svar. Dette betyr at
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>1 2</mfrac><mfrac>2 4</mfrac><mfrac>4 8</mfrac></mi><mn>0</mn><mo>,</mo><mn>5</mn> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math> \\[5pt]
+<div class="figure">br12</div> 
+<div class="figure">br12a</div>
+\subsubsection{Utviding}
+At brøker kan se forskjellige ut, men ha samme verdi, betyr at vi kan endre på utseendet til en brøk uten å endre verdien. La oss som eksempel gjøre om <math>  <mfrac>3 5</mfrac>  </math> til en brøk med samme verdi, men med 10 som nevner:
+\begin{itemize}
+	\item <math>  <mfrac>3 5</mfrac>  </math> kan vi gjøre om til en brøk med 10 i nevner om vi deler hver femdel inn i 2 like biter, for da blir 1 til sammen delt inn i\\ <math>  <mrow><mn>5</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>10</mn></mrow>  </math> biter.
+	\item Telleren i <math>  <mfrac>3 5</mfrac>  </math> forteller at der er 3 femdeler. Når disse blir delt i to, blir de totalt til <math>  <mn>3</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>6</mn>  </math> tideler. Altså har <math>  <mfrac>3 5</mfrac>  </math> samme verdi som <math>  <mfrac>6 10</mfrac>  </math>.
+\end{itemize}
+<math class="display-math" display="block"> <mfrac>3 5</mfrac><mo>=</mo><mfrac>3<mo>⋅</mo>2 5<mo>⋅</mo>2</mfrac><mo>=</mo><mfrac>6 10</mfrac> </math>
+<div class="figure">br13</div>
+<div class="figure">br13a</div>
+
+\subsubsection{Forkorting}
+Vi kan også gå ''motsatt vei''. <math>  <mfrac>6 10</mfrac>  </math> kan vi gjøre om til en brøk med 5 i nevner ved å dele både teller og nevner med 2:
+<math class="display-math" display="block"> <mfrac>6 10</mfrac><mo>=</mo><mfrac>6:2 10:2</mfrac><mo>=</mo><mfrac>3 5</mfrac> </math>
+
+<div class="rule"><h4>Utviding og forkorting av brøk</h4> 
+Vi kan gange eller dele teller og nevner med det samme tallet uten at brøken endrer verdi. 
+
+Å gange med et tall større enn 1 kalles å <span class="outline">utvide</span> brøken. Å dele med et tall større enn 1 kalles å <span class="outline">forkorte</span> brøken.
+</div>
+<div class="example">Utvid <math>  <mfrac>3 5</mfrac>  </math> til en brøk med 20 som nevner.
+	
+	
+	Da <math>  <mrow><mn>5</mn><mo>⋅</mo><mn>4</mn><mo>=</mo><mn>20</mn>  </math>, ganger vi både teller og nevner med 4:
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>3 5</mfrac>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>3<mo>⋅</mo>4 5<mo>⋅</mo>4</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>12 20</mfrac> </mtd> </mtr><mtable></math>
+}
+<div class="example">
+	Utvid <math>  <mfrac>150 50</mfrac>  </math> til en brøk med 100 som nevner.\os
+	
+	
+	Da <math>  <mrow><mn>50</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>100</mn>  </math>, ganger vi både teller og nevner med 2:
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>150 50</mfrac>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>150<mo>⋅</mo>2 50<mo>⋅</mo>2</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>300 100</mfrac> </mtd> </mtr><mtable></math>
+	
+}
+<div class="example">
+	Forkort <math>  <mfrac>18 30</mfrac>  </math> til en brøk med 5 som nevner.
+	
+	
+	Da <math>  <mn>30</mn><mo>:</mo><mn>6</mn><mo>=</mo><mn>5</mn>  </math>, deler vi både teller og nevner med 6:
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>18 30</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>18:6 30:6</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>3 5</mfrac> </mtd> </mtr><mtable></math> 
+</div>
+
+<h2 class="section-title">\bradsub</h2>
+Addisjon og subtraksjon av brøker handler i stor grad om nevnerne. Husk at nevnerne forteller oss om inndelingen av 1. Hvis brøker har lik nevner, representerer de et antall biter med lik størrelse. Da gir det mening å regne addisjon eller subtraksjon mellom tellerne. Hvis brøker har ulike nevnere, representerer de et antall biter med ulik størrelse, og da gir ikke addisjon eller subtraksjon mellom tellerne direkte mening.
+\subsubsection{Lik nevner}
+Om vi for eksempel har 2 seksdeler og adderer 3 seksdeler, ender vi opp med 5 seksdeler:
+<math class="display-math" display="block"> <mfrac>2 6</mfrac><mo>+</mo><mfrac>3 6</mfrac><mo>=</mo><mfrac>5 6</mfrac> </math>
+<div class="figure">br4</div>
+<div class="figure">br4a</div>
+
+<div class="rule"><h4>Addisjon/subtraksjon av brøkar med lik nevner </h4> 
+Når vi regner addisjon/subtraksjon mellom brøker med lik nevner, finner vi summen/differansen av tellerne, og beholder nevneren.
+</div>
+<div class="example"> 
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>2 7</mfrac><mo>+</mo><mfrac>8 7</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>2+8 7</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>10 7</mfrac> </mtd> </mtr><mtable></math>
+</div>
+
+<div class="example"> 
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>7 9</mfrac><mo>−</mo><mfrac>5 9</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>7−5 9</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>2 9</mfrac> </mtd> </mtr><mtable></math>
+</div>
+<h3 class="subsection-title">Ulike nevnere</h3>
+La oss se på regnestykket
+<math class="display-math" display="block"> <mfrac>3 5</mfrac><mo>−</mo><mfrac>1 2</mfrac> </math>
+<div class="figure">br7</div>
+<div class="figure">br7t</div>
+Skal vi skrive differansen som en brøk, må vi sørge for at brøkene har samme nevner. De to brøkene våre kan begge ha 10 som nevner:
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>3 5</mfrac><mfrac>3<mo>⋅</mo>2 5<mo>⋅</mo>2</mfrac><mfrac>6 10</mfrac>qquadquadqquad</mi> <mi><mfrac>1 2</mfrac><mfrac>1<mo>⋅</mo>5 2<mo>⋅</mo>5</mfrac><mfrac>5 10</mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+Dette betyr at
+<math class="display-math" display="block"> <mfrac>3 5</mfrac><mo>−</mo><mfrac>1 2</mfrac><mo>=</mo><mfrac>6 10</mfrac><mo>−</mo><mfrac>5 10</mfrac> </math>
+<div class="figure">br7a</div>
+<div class="figure">br7ta</div>
+Det vi har gjort, er å utvide begge brøkene slik at de har samme nevner, nemlig 10. Når nevnerne i brøkene er like, kan vi regne ut subtraksjons-stykket for tellerne:
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>3 5</mfrac><mo>−</mo><mfrac>1 2</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>6 10</mfrac><mo>−</mo><mfrac>5 10</mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>1 10</mfrac> </mtd> </mtr><mtable></math>
+<div class="rule"><h4>Addisjon/subtraksjon av brøkar med ulik\\ nevner </h4> 
+Når vi regner addisjon/subtraksjon mellom brøker med ulik nevner, må vi utvide brøkene slik at de har lik nevner, for så å bruke regel ??.
+</div>
+<div class="example"> 
+Regn ut
+<math class="display-math" display="block"> <mfrac>2 colb{9</mfrac><mo>+</mo><mfrac>6 colo{7</mfrac></mrow> </math>
+Begge nevnerne kan bli <math>  <mn>63</mn>  </math> hvis vi ganger med rett heltal. Vi utvider derfor til brøker med 63 i nevner:
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi>frac</mi><mrow><mn>2</mn><mi><mo>⋅</mo>colo</mi><mrow><mn>7</mn> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>}{9<mo>⋅</mo> \colo{7}}+\frac{6<mo>⋅</mo>\colb{9}}{7<mo>⋅</mo>\colb{9}}&=<mfrac>14 63</mfrac>+<mfrac>54 63</mfrac> \br
+&=<mfrac>68 63</mfrac>
+}
+}
+
+<div class="info" data-title="Fellesnevner">
+I <i>Eksempel 1 </i> på side \pageref{eksadbrok</div> blir 63 kalt en <span class="outline">fellesnevner</span>. Dette fordi det finnes heltall vi kan gange nevnerne med som gir oss tallet 63:
+\algv{
+	9<mo>⋅</mo>7 &= 63 \\
+	7<mo>⋅</mo> 9 &= 63 
+}
+Hvis vi ganger sammen alle nevnerne i et regnestykke, finner vi alltid en fellesnevner, men vi sparer oss for store tall om vi finner den <i>minste </i> fellesnevneren. Ta for eksempel regnestykket
+<math class="display-math" display="block"> <mfrac>7 6</mfrac><mo>+</mo><mfrac>5 3</mfrac> </math>
+Her kan vi bruke fellesnevneren <math>  <mrow><mn>6</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>18</mn></mrow>  </math>, men det er bedre å merke seg at <math>  <mn><mn>6</mn></mn><mo>⋅</mo><mn>1</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn><mn>6</mn></mn>  </math> også er en fellesnevner. Altså er
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>7 6</mfrac><mo>+</mo><mfrac>5 3</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>7 6</mfrac><mo>+</mo><mfrac>5<mo>⋅</mo>2 3<mo>⋅</mo>2</mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>7 6</mfrac><mo>+</mo><mfrac>10 6</mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>17 6</mfrac> </mtd> </mtr><mtable></math>
+
+}
+<div class="example">
+	Regn ut
+	<math class="display-math" display="block"> <mfrac>3 2</mfrac><mo>−</mo><mfrac>5 8</mfrac><mo>+</mo><mfrac>10 4</mfrac> </math>
+	
+	
+	Alle nevnerne kan bli 8 hvis vi ganger med rett heltall. Vi utvider derfor til brøker med 8 i nevner:
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>3 2</mfrac><mo>−</mo><mfrac>5 8</mfrac><mo>+</mo><mfrac>10 4</mfrac>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>3<mo>⋅</mo>4 2<mo>⋅</mo>4</mfrac><mo>−</mo><mfrac>5 8</mfrac><mo>+</mo><mfrac>10<mo>⋅</mo>2 4<mo>⋅</mo>2</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>12 8</mfrac><mo>−</mo><mfrac>5 8</mfrac><mo>+</mo><mfrac>20 8</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>27 8</mfrac> </mtd> </mtr><mtable></math>
+</div>
+
+<h2 class="section-title">\brgngheil</h2>
+I seksjon ?? så vi at ganging med heltall er det samme som gjentatt addisjon. Skal vi for eksempel regne ut <math>  <mi><mfrac>2 5</mfrac><mfrac>2 5</mfrac></mi> <mn>3</mn>  </math>, kan vi derfor regne slik:
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>2 5</mfrac><mfrac>2 5</mfrac></mi> <mn>3</mn>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>2 5</mfrac><mo>+</mo><mfrac>2 5</mfrac><mo>+</mo><mfrac>2 5</mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>2+2+2 5</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>6 5</mfrac> </mtd> </mtr><mtable></math>
+<div class="figure">br14</div>
+Men vi vet også at \y{2+2+2=2<mo>⋅</mo>3}, og derfor kan vi forenkle regnestykket vårt:
+\algv{
+	<mfrac>2 5</mfrac><mo>⋅</mo> 3 &= <mfrac>2<mo>⋅</mo>3 5</mfrac>\br
+	&= <mfrac>6 5</mfrac> 
+}
+Multiplikasjon mellom heltall og brøk er også kommutativ{5} <math>  <mi>bare</mi> <mi>er</mi> <mi>en</mi> <mi>omskriving</mi> <mi>av</mi>  </math> 2:5 $, og at vi av regel ?? regner fra venstre mot høyre. }:
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>3</mn><mi><mfrac>2 5</mfrac><mfrac>2 5</mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>3</mn><mo>⋅</mo><mn>2</mn><mo>:</mo><mn>5</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>6</mn><mo>:</mo><mn>5</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>6 5</mfrac> </mtd> </mtr><mtable></math>
+
+<div class="rule"><h4>Brøk ganget med heltal</h4> 
+Når vi ganger en brøk med et heltall, ganger vi heltallet med telleren i brøken.
+</div>
+<div class="example"> 
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>1 3</mfrac><mfrac>1 3</mfrac></mi> <mn>4</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>1<mo>⋅</mo> 4 3</mfrac>  </mtd> </mtr><mtr> <mtd>   </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>4 3</mfrac> </mtd> </mtr><mtable></math>
+</div>
+<div class="example"> 
+
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>3</mn><mi><mfrac>2 5</mfrac><mfrac>2 5</mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>3<mo>⋅</mo> 2 5</mfrac>  </mtd> </mtr><mtr> <mtd>   </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac>6 5</mfrac> </mtd> </mtr><mtable></math>
+</div>
+<div class="info" data-title="En tolkning av ganging med brøk ">
+Av regel ?? kan vi også danne en tolkning av hva å gange med en brøk innebærer. For eksempel, å gange <math>  <mn>3</mn>  </math> med <math>  <mfrac>2 5</mfrac>  </math> kan tolkes på disse to måtene:
+<ul>
+	\item Vi ganger <math>  <mn>3</mn>  </math> med <math>  <mn>2</mn>  </math>, og deler produktet med <math>  <mn>5</mn>  </math>:
+	<math class="display-math" display="block"> <mn>3</mn><mfrac>6 5</mfrac><mn>2</mn><mo>=</mo><mn><mn>6</mn></mn><mi><mi>quad</mi></mi><mo>,</mo><mi><mi>quad</mi></mi> <mn><mn>6</mn></mn><mo>:</mo><mn>5</mn><mo>=</mo><mfrac>6 5</mfrac></math>
+	\item Vi deler <math>  <mn>3</mn>  </math> med <math>  <mn>5</mn>  </math>, og ganger kvotienten med <math>  <mn>2</mn>  </math>:
+	<math class="display-math" display="block"> <mn>3</mn><mo>:</mo><mn>5</mn><mo>=</mo><mfrac>3 5</mfrac> <mi><mi>quad</mi></mi><mo>,</mo><mi><mi>quad</mi></mi> <mi><mfrac>3 5</mfrac><mfrac>3 5</mfrac></mi><mn>2</mn><mo>=</mo><mfrac>3<mo>⋅</mo>2 5</mfrac><mo>=</mo><mfrac>6 5</mfrac></math>
+	
+</ul>
+</div>
+
+
+<h2 class="section-title">\brdelheil</h2> 
+Det er nå viktig å huske på to ting:
+<ul>
+	\item Deling kan man se på som en lik fordeling av et antall.
+	\item I en brøk er det telleren som forteller noe om antallet (nevneren forteller om inndelingen av 1).
+</ul>
+\subsubsection{Tilfellet der telleren er delelig med divisoren}
+La oss regne ut <math>  <mfrac>6 8</mfrac>  </math> delt på 2:
+<math class="display-math" display="block"> <mfrac>6 8</mfrac><mo>:</mo><mn>2</mn> </math>
+<div class="figure">br15</div>
+<div class="figure">br15t</div>
+Vi har her 6 åttedeler som vi skal fordele likt på 2. Dette blir <math>  <mn>6</mn><mo>:</mo><mn>2</mn><mo>=</mo><mn>3</mn>  </math> åttedeler.
+<div class="figure">br15a</div>
+<div class="figure">br15ta</div>
+Altså er
+<math class="display-math" display="block"> <mfrac>6 8</mfrac><mo>:</mo><mn>2</mn><mo>=</mo><mfrac>3 8</mfrac> </math>
+%<div class="figure">br15b</div>
+
+\subsubsection{Tilfellet der telleren ikke er delelig med divisoren}
+Hva nå om vi skal dele <math>  <mfrac>3 4</mfrac>  </math> på 2? 
+<math class="display-math" display="block"> <mfrac>3 4</mfrac><mo>:</mo><mn>2</mn> </math>
+<div class="figure">br5</div>
+<div class="figure">br5t</div>
+Vi kan alltid utivde brøken vår slik at telleren blir delelig med divisoren. Siden vi skal dele med 2, utvider vi brøken vår med 2:
+<math class="display-math" display="block"> <mfrac>3 4</mfrac><mo>=</mo><mfrac>3<mo>⋅</mo>2 4<mo>⋅</mo>2</mfrac><mo>=</mo><mfrac>6 8</mfrac> </math>
+<div class="figure">br5c</div>
+<div class="figure">br5ct</div>
+Nå har vi 6 åttedeler. 6 åttedeler delt på 2 blir 3 åttedeler:
+<div class="figure">br5a</div>
+<div class="figure">br5at</div>
+Altså er
+<math class="display-math" display="block"> <mfrac>3 4</mfrac><mo>:</mo><mn>2</mn><mo>=</mo><mfrac>3 8</mfrac> </math>
+%<div class="figure">br5b</div>
+Rent matematisk har vi rett og slett ganget nevneren til <math>  <mfrac>3 4</mfrac>  </math> med 2:
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>3 4</mfrac><mo>:</mo><mn>2</mn>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>3 4<mo>⋅</mo>2</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>3 8</mfrac> </mtd> </mtr><mtable></math>
+<div class="rule"><h4>Brøk delt med heltal </h4> 
+Når vi deler en brøk med et heltall, ganger vi nevneren med heltallet.
+</div>
+<div class="example">
+\algv{
+<mfrac>5 3</mfrac>:6 &= <mfrac>5 3<mo>⋅</mo> 6</mfrac> \br
+&= <mfrac>5 18</mfrac>
+</div>
+}
+<div class="info" data-title="\note">
+På side \pageref{brdelheil</div> fant vi at
+<math class="display-math" display="block"> <mfrac>6 8</mfrac><mo>:</mo><mn>2</mn><mo>=</mo><mfrac>3 8</mfrac> </math>
+Da ganget vi ikke nevneren med 2, slik regel ?? tilsier. Om vi gjør det, får vi 
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>6 8</mfrac><mo>:</mo><mn>2</mn><mi><mfrac>6 8<mo>⋅</mo>2</mfrac><mfrac>6 16</mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+Men 
+<math class="display-math" display="block"> <mi><mi><mi>dfrac</mi></mi></mi><mrow><mn><mn>3</mn></mn></mrow><mrow><mn><mn>8</mn></mn></mrow><mo>=</mo><mi><mi><mi>dfrac</mi></mi></mi><mrow><mn><mn>3</mn></mn><mo>⋅</mo><mn><mn>2</mn></mn></mrow><mrow><mn><mn>8</mn></mn><mo>⋅</mo><mn><mn>2</mn></mn></mrow><mo>=</mo><mi><mi><mi>dfrac</mi></mi></mi><mrow><mn>6</mn></mrow><mrow>1<mn>6</mn></mrow> </math>
+De to svarene har altså samme verdi. Skal vi dele en brøk på et heltall, og telleren er delelig med heltallet, kan vi direkte dele telleren på heltallet. I slike tilfeller er det altså ikke <i>feil </i>, men heller <i>ikke nødvendig </i> å bruke regel ??.
+}
+<h2 class="section-title">\brgngbr </h2>		
+Vi har sett på side \pageref{brtolk}.} hvordan å gange med en brøk innebærer å gange det andre tallet med telleren, og så dele produktet med nevneren. La oss bruke dette til å regne ut
+<math class="display-math" display="block">  <mrow><mi><mfrac>5 4</mfrac><mfrac>5 4</mfrac><mfrac>3 2</mfrac></mi></mrow></math> 
+Da skal vi først gange <math>  <mfrac>5 4</mfrac>  </math> med 3, og så dele produktet med 2. Av regel ?? er
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>5 4</mfrac><mfrac>5 4</mfrac></mi><mn>3</mn> <mfrac>5<mo>⋅</mo> 3 4</mfrac> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+Og av regel ?? er
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>5<mo>⋅</mo>3 4</mfrac><mo>:</mo><mn>2</mn><mfrac>5<mo>⋅</mo>3 4<mo>⋅</mo>2</mfrac> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+Altså er 
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>5 4</mfrac><mfrac>5 4</mfrac></mi> <mi><mfrac>3 2</mfrac><mfrac>5<mo>⋅</mo> 3 4<mo>⋅</mo>2</mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+<div class="rule"><h4>\brtbr</h4> 
+Når vi ganger to brøker med hverandre, ganger vi teller med teller og nevner med nevner.
+</div>
+<div class="example">
+\algvv{
+<mfrac>4 7</mfrac><mo>⋅</mo> <mfrac>6 9</mfrac>&= <mfrac>4<mo>⋅</mo>6 7<mo>⋅</mo>9</mfrac> \br
+&= <mfrac>24 63</mfrac>
+</div>
+}
+<div class="example">
+\algvv{
+	<mfrac>1 2</mfrac><mo>⋅</mo><mfrac>9 10</mfrac>&=<mfrac>1<mo>⋅</mo>9 2<mo>⋅</mo>10</mfrac> \br
+		&=<mfrac>9 20</mfrac>
+	</div>
+
+}
+
+<h2 class="section-title">\brkans</h2>
+Når telleren og nevneren har lik verdi, er verdien til brøken alltid 1. For eksempel er \y{<mfrac>3 3</mfrac>=1}, \y{<mfrac>25 25</mfrac>=1} og så videre. Dette kan vi utnytte for å forenkle brøkuttrykk. 
+
+La oss forenkle brøkuttrykket
+<math class="display-math" display="block"> <mfrac>8<mo>⋅</mo> 5 9<mo>⋅</mo>8</mfrac> </math>
+Da <math>  <mrow><mn><mn>8</mn></mn><mo>⋅</mo><mn><mn>5</mn></mn></mrow><mo>=</mo><mrow><mn><mn>5</mn></mn><mo>⋅</mo><mn><mn>8</mn></mn></mrow>  </math>, kan vi skrive
+<math class="display-math" display="block"> <mfrac>8<mo>⋅</mo>5 9<mo>⋅</mo>8</mfrac><mo>=</mo><mfrac>5<mo>⋅</mo>8 9<mo>⋅</mo>8</mfrac> </math>
+Og som vi nylig har sett (regel ??) er
+<math class="display-math" display="block"><mfrac>5<mo>⋅</mo>8 9<mo>⋅</mo>8</mfrac><mo>=</mo> <mi><mfrac>5 9</mfrac><mfrac>5<mo>⋅</mo>8 9<mo>⋅</mo>8</mfrac><mfrac>8 8</mfrac></mi></math>
+Siden <math>  <mrow><mfrac>8 8</mfrac><mo>=</mo><mn>1</mn></mrow>  </math>, har vi at
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>5 9</mfrac><mfrac>5 9</mfrac><mfrac>8 8</mfrac></mi>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mi><mfrac>5 9</mfrac><mfrac>5 9</mfrac></mi><mn>1</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>5 9</mfrac> </mtd> </mtr><mtable></math>
+Når bare ganging er til stede i brøker, kan man alltid omrokkere slik vi har gjort over, men når man har forstått hva omrokkeringen ender med, er det bedre å bruke <span class="outline">kansellering</span>. Man setter da en strek over to og to like faktorer for å indikere at de utgjør en brøk med verdien 1. Tilfellet vi akkurat så på skriver vi da som 
+<math class="display-math" display="block"> <mi>frac</mi><mrow><mi>cancel</mi><mrow><mn><mn>8</mn></mn></mrow><mfrac>5 9</mfrac> <mn>5</mn></mrow><mrow><mn>9</mn><mfrac>5 9</mfrac><mi>cancel</mi><mrow><mn><mn>8</mn></mn></mrow></mrow><mo>=</mo><mfrac>5 9</mfrac> </math>
+
+<div class="rule"><h4>Kansellering av faktorer</h4> Når bare ganging er til stede i en brøk, kan vi kansellere par av like faktorer i teller og nevner.</div>
+<div class="example">
+	Kanseller så mange faktorer som mulig i brøken
+	<math class="display-math" display="block"> <mfrac>3<mo>⋅</mo>12<mo>⋅</mo>7 7<mo>⋅</mo> 4 <mo>⋅</mo> 12</mfrac> </math>
+	 
+	\algvv{
+		\frac{3<mo>⋅</mo>\cancel{12</div><mo>⋅</mo>\cancel{7}}{\cancel{7}<mo>⋅</mo> 4 <mo>⋅</mo> \cancel{12}} &= <mfrac>3 4</mfrac> 
+	}
+}
+<div class="example"> 
+	Forkort brøken <math>  <mfrac>12 42</mfrac>  </math>.
+	
+	 
+	Vi legger merke til at <math>  <mn>6</mn>  </math> er en faktor i både <math>  <mn>12</mn>  </math> og <math>  <mn>42</mn>  </math>, altså er	
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>12 42</mfrac>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mi>frac</mi><mrow><mi>cancel</mi><mrow><mn>6</mn> </mtd> </mtr><mtable></math><mo>⋅</mo>2</div>{\cancel{6}<mo>⋅</mo>7}\br
+		&= <mfrac>2 7</mfrac>
+	}
+}
+<div class="example">
+	Forkort brøken <math>  <mfrac>48 16</mfrac>   </math>.
+	
+	
+	Vi legger merke til at <math>  <mn>16</mn>  </math> er en faktor i <math>  <mn>48</mn>  </math>, altså er
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>48 16</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mi>frac</mi><mrow><mn>3</mn><mi><mo>⋅</mo>cancel</mi><mrow><mn>16</mn> </mtd> </mtr><mtable></math></div>{\cancel{16}}\br
+		&= <mfrac>3 1</mfrac>\br
+		&= 3
+	}
+	\mers{Hvis alle faktorer er kansellert i teller eller nevner, er dette det samme som at tallet 1 står der.}
+}
+
+<div class="info" data-title="Forkorting via primtalsfaktorisering">
+	Det er ikke alltid like lett å legge merke til en felles faktor, slik vi har gjort i <i>Eksempel 2 </i> og <i>Eksempel 3 </i> på side \pageref{eksbrkan</div>. Vil man være helt sikker på at man ikke har oversett felles faktorer, kan man alltid primtalsfaktorisere (se \refsec{Faktorisering}) både teller og nevner. For eksempel har vi at
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>12 42</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mi>frac</mi><mrow><mi>cancel</mi><mrow><mn>2</mn> </mtd> </mtr><mtable></math><mo>⋅</mo>2<mo>⋅</mo>\cancel{3}}{\cancel{2}<mo>⋅</mo>\cancel{3}<mo>⋅</mo>7}\br
+		&=<mfrac>2 7</mfrac>
+	}
+}
+
+<div class="info" data-title="Brøker forenkler utregninger">
+	Desmialtallet <math>  <mn>0</mn><mo>,</mo><mn>125</mn>  </math> kan vi skrive som brøken <math>  <mfrac>1 8</mfrac>  </math>. Regnestykket
+	<math class="display-math" display="block"> <mn>0</mn><mo>,</mo><mn>125</mn><mo>⋅</mo><mn>16</mn> </math>
+	vil for de fleste av oss ta en stund å løse for hand med vanlige multiplikasjonsregler. Men bruker vi brøkuttrykket, får vi at
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>0</mn><mo>,</mo><mn>125</mn><mo>⋅</mo><mn>16</mn>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mi><mfrac>1 8</mfrac><mfrac>1 8</mfrac></mi><mn>16</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mi>frac</mi><mrow><mn>2</mn> <mi><mo>⋅</mo>cancel</mi><mrow><mn>8</mn> </mtd> </mtr><mtable></math></div>{\cancel{8}}\\
+		&= 2
+	}
+} 
+
+<div class="info" data-title="''Å stryke nuller''">
+	Et tall som 3000 kan vi skrive som <math>  <mn>3</mn><mo>⋅</mo><mn><mn><mn>10</mn></mn></mn><mo>⋅</mo><mn><mn><mn>10</mn></mn></mn><mo>⋅</mo><mn><mn><mn>10</mn></mn></mn>  </math>, mens 700 kan vi skrive som <math>  <mn>7</mn><mo>⋅</mo><mn><mn>10</mn></mn><mo>⋅</mo><mn><mn>10</mn></mn>  </math>. Brøken <math>  <mfrac>3000 700</mfrac>  </math> kan vi derfor forkorte slik:
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>3000 700</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mi>frac</mi><mrow><mn>3</mn><mi><mo>⋅</mo>cancel</mi><mrow><mn>10</mn> </mtd> </mtr><mtable></math><mo>⋅</mo>\cancel{10</div><mo>⋅</mo>10}{7<mo>⋅</mo>\cancel{10}<mo>⋅</mo>\cancel{10}}\br
+		&= <mfrac>3<mo>⋅</mo>10 7</mfrac> \br
+		&= <mfrac>30 7</mfrac>
+	}
+	I praksis er dette det samme som ''å stryke nuller'':
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi>frac</mi><mrow><mn>30</mn><mi>cancel</mi><mrow><mn>00</mn> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>}{7\cancel{00}}&= <mfrac>30 7</mfrac>
+	}
+	<i>Obs! </i> Nuller er de eneste sifrene vi kan ''stryke'' slik, for eksempel kan vi ikke forkorte <math>  <mfrac>123 13</mfrac>  </math> på noen som helst måte. I tillegg kan vi bare ''stryke'' nuller som står som bakerste siffer, for eksempel kan vi ikke ''stryke'' nuller i brøken <math>  <mfrac>101 10</mfrac>  </math>.  
+}
+
+<h2 class="section-title">\brdelmbr</h2>
+\subsubsection{Deling ved å se på tallinja}
+La oss regne ut <math>  <mrow><mn>4</mn><mo>:</mo><mfrac>2 3</mfrac> </mrow>  </math>. Siden brøken vi deler 4 på har 3 i nevner, kan det være en idé å gjøre om også 4 til en brøk med <math>  <mn>3</mn>  </math> i nevner. Vi har at 
+<math class="display-math" display="block"> <mn>4</mn><mo>=</mo><mi>dfrac</mi><mrow><mn>12</mn></mrow><mrow><mn>3</mn></mrow> </math>
+<div class="figure">br10c4</div>
+Husk nå at en betydning av <math>  <mn>4</mn><mo>:</mo><mfrac>2 3</mfrac>  </math> er
+
+	''Hvor mange ganger <math>  <mfrac>2 3</mfrac>  </math> går på 4.''
+
+Ved å se på tallinja, finner vi at <math>  <mfrac>2 3</mfrac>  </math> går 6 ganger på 4. Altså er
+<math class="display-math" display="block"> <mn>4</mn><mo>:</mo><mfrac>2 3</mfrac><mo>=</mo><mn>6</mn> </math>
+<div class="figure">br10c</div>
+
+\subsubsection{En generell metode}
+Vi kan ikke se på en tallinje hver gang vi skal dele med brøker, så nå skal vi komme fram til en generell regnemetode ved igjen å bruke <math>  <mn>4</mn><mo>:</mo><mfrac>2 3</mfrac>  </math> som eksempel. For denne metoden bruker vi denne betydningen av divisjon:
+
+	<math>   <mn>4</mn><mo>:</mo><mi>dfrac</mi><mrow><mn>2</mn></mrow><mrow><mn>3</mn></mrow><mo>=</mo>  </math> ''Tallet vi må gange <math>  <mfrac>2 3</mfrac>  </math> med for å få 4.''
+
+For å finne dette tallet starter vi med å gange <math>  <mfrac>2 3</mfrac>  </math> med tallet som gjør at produktet blir 1. Det er <span class="outline">den omvendte brøken</span> av <math>  <mfrac>2 3</mfrac>  </math>, som er <math>  <mfrac>3 2</mfrac>  </math>:
+<math class="display-math" display="block"> <mi><mfrac>2 3</mfrac><mfrac>2 3</mfrac><mfrac>3 2</mfrac></mi><mo>=</mo><mn>1</mn> </math>
+Nå gjenstår det bare å gange med 4 for å få 4:
+<math class="display-math" display="block"> <mi><mfrac>2 3</mfrac><mfrac>2 3</mfrac><mfrac>3 2</mfrac><mfrac>2 3</mfrac></mi><mn><mn>4</mn></mn><mo>=</mo><mn><mn>4</mn></mn> </math>
+<math>  <mi>dfrac</mi><mrow><mn>3</mn></mrow><mrow><mn>2</mn></mrow><mo>⋅</mo><mn>4</mn>  </math> er altså tallet vi må gange <math>  <mfrac>2 3</mfrac>  </math> med for å få 4 . Dette betyr at
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>4</mn><mo>:</mo><mfrac>2 3</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mi><mfrac>3 2</mfrac><mfrac>3 2</mfrac></mi><mn>4</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>6</mn> </mtd> </mtr><mtable></math>
+<div class="rule"><h4>\delmbr </h4> 
+Når vi deler et tall med en brøk, ganger vi tallet med den omvendte brøken.
+</div>
+<div class="example">
+	\algv{
+			3:\frac{\color{c1</div>2}{\color{c2}9}&=3<mo>⋅</mo>\frac{\color{c2}9}{\color{c1}2}\br
+		&=<mfrac>27 2</mfrac>
+	}
+}
+<div class="example">
+	\algv{
+		<mfrac>4 3</mfrac>:\frac{\color{c1</div>5}{\color{c2}8}&= <mfrac>4 3</mfrac><mo>⋅</mo>\frac{\color{c2}8}{\color{c1}5} \br
+		&= <mfrac>32 15</mfrac>
+	}
+}
+
+<div class="example">
+	\algv{
+		<mfrac>3 5</mfrac>:<mfrac>3 10</mfrac>&= <mfrac>3 5</mfrac><mo>⋅</mo><mfrac>10 3</mfrac> \br
+		&= <mfrac>30 15</mfrac> </div>
+	Her bør vi også se at brøken kan forkortes:
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>30 15</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mi>frac</mi><mrow><mn>2</mn><mi><mo>⋅</mo>cancel</mi><mrow><mn>15</mn> </mtd> </mtr><mtable></math>}{ \cancel{15}} \br
+		&= 2
+	}
+\mer Vi kan spare oss for store tall hvis vi kansellerer faktorer underveis i utregninger:
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac>3 5</mfrac><mfrac>3 5</mfrac><mfrac>10 3</mfrac></mi>   </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mi>frac</mi><mrow><mi>cancel</mi><mrow><mn>3</mn> </mtd> </mtr><mtable></math><mo>⋅</mo>2<mo>⋅</mo>\cancel{5}}{\cancel{5}<mo>⋅</mo>\cancel{3}} \br
+		&= 2 
+	}
+}
+
+<h2 class="section-title">\Rasjtal </h2>
+<div class="rule"><h4>Rasjonale tall</h4> 
+Et hvert tall som kan bli skrevet som en brøk med heltalls teller og nevner, er et <span class="outline">rasjonalt tall</span>.
+</div>
+<div class="info" data-title="Merk">Rasjonale tall gir oss en samlebetegnelse for
+\begin{itemize</div>
+	\item \textbf{Heltall} \\
+	For eksempel <math>  <mn>4</mn><mo>=</mo><mfrac>4 1</mfrac>  </math>.
+	\item \textbf{Desimaltall med endelig antall desimaler}\\
+	For eksempel <math>  <mn>0</mn><mo>,</mo><mn>2</mn><mo>=</mo><mfrac>1 5</mfrac>  </math>.
+	\item \textbf{Desimaltall med repeterende desimalmønster} \\
+	For eksempel  <math> </mrow> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo><mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>nd<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>k<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>er<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>er<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo><mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo><mo>><<mo>/</mo>mo>at<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo><mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mn<mo>><<mo>/</mo>mo>3<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mn<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo><mo>><<mo>/</mo>mo>fortset<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>te<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>r<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo><mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>det<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo> uendel<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>ge<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>.<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>En<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>annen<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>å<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>te<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>å<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>nd<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>i<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>k<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>er<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>e <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo>det<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>i<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>te<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>p<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>å<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>er<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>å<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>bruke<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo> sy<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>bolet <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>s<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>p<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>an <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>class<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo>=<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo>"<<mo>/</mo>mo<mo>><<mo>/</mo>mo>sy<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>m<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>bol<mo<mo>><<mo>/</mo>mo>"<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>.<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>.<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>.<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>s<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>p<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>an<mo>><<mo>/</mo>mo><mo>,</mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>.<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>Alts<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mo<mo>><<mo>/</mo>mo>å<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mo<mo>><<mo>/</mo>mo> <mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo>mi<mo>><<mo>/</mo>mo>er<mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo><mo<mo>><<mo>/</mo>mo><<<mo>/</mo>mo<mo>><<mo>/</mo>mo><mo>/</mo>mi<mo>><<mo>/</mo>mo>  </math> 0,08\bar{3}=0,08333333 ... <math> </mrow>  </math> 0,08\bar{3}=<mfrac>1 12</mfrac> $. 
+\end{itemize}} 
+
+<div class="rule"><h4>Blanda tall</h4> 
+	Om vi adderer et heltal med en brøk der telleren er mindre enn nevneren, får vi et <span class="outline">blanda tall</span>.
+</div>
+<div class="example">
+	Tre forskjellige blanda tall:
+	\[   2+\dfrac{5</div>{7} \qquad\qquad
+	8+\dfrac{2}{7} \qquad\qquad
+	\dfrac{1}{10}+4  \]
+}
+<div class="info" data-title="Obs!">
+	I mange tekster vil du finne tall som dem fra <i>Eksempel 1 </i> skrevet slik:
+	\[   2\dfrac{5</div>{7} \qquad\qquad
+	8\dfrac{2}{7} \qquad\qquad
+	4\dfrac{1}{10}  \]
+}
+
+<div class="example">
+	Skriv om brøken <math>  <mfrac>17 3</mfrac>  </math> til et blanda tall.
+	
+	 
+	Vi legger merke til at telleren er 17 og nevneren er 3. Det største heltalet vi kan gange med 3 uten at produktet blir større enn 17, er 5. Altså kan vi skrive
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>17 colb{3</mfrac> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>&=\frac{5<mo>⋅</mo>\colb{3</div>+2}{\colb{3}}\br
+		&= \frac{5<mo>⋅</mo>\colb{\cancel{3}}}{\colb{\cancel{3}}}+<mfrac>2 \colb{3</mfrac>} \\
+		&=5+<mfrac>2 3</mfrac>
+	}
+}
+<div class="example">
+	Skriv om det blanda tallet <math>  <mn>3</mn><mo>+</mo><mfrac>4 5</mfrac>  </math> til en brøk.
+	
+	
+	
+	Vi har at <math>  <mn>3</mn><mo>=</mo><mfrac>3 1</mfrac>  </math>, altså er
+	<math class="display-math" display="block"> <mn>3</mn><mo>+</mo><mfrac>4 5</mfrac><mo>=</mo><mfrac>3 1</mfrac><mo>+</mo><mfrac>4 5</mfrac> </math>
+	Videre har vi at.</div>
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac>3 1</mfrac><mo>+</mo><mfrac>4 5</mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>3<mo>⋅</mo>5 1<mo>⋅</mo>5</mfrac><mo>+</mo><mfrac>4 5</mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>15 5</mfrac><mo>+</mo><mfrac>4 5</mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac>19 5</mfrac> </mtd> </mtr><mtable></math>
+}
+
+
+

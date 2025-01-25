@@ -316,50 +316,53 @@ class BookFigure {
         equals.setAttribute("height", height)
     }
 
-    makeMathText(mathContent, x, y, {verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp} = {}) {
+    makeMathText(mathContent, x, y, {verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp, displayStyle="true"} = {}) {
         x = x*xScale
         y = y*yScale
         let text = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject")
-        let math = document.createElementNS("http://www.w3.org/1998/Math/MathML", "math")
-        math.innerHTML = `${mathContent}`
+        let mathRect = document.createElementNS("http://www.w3.org/1998/Math/MathML", "math")
+        mathRect.setAttribute("displaystyle", displayStyle)
+        mathRect.innerHTML = `${mathContent}`
         
-        text.style.dominantBaseline = verticalAnchor
         text.style.textAnchor = horizontalAnchor
-        text.innerHTML = `${mathContent}`
+        text.innerHTML = `<math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle=${displayStyle}> ${mathContent} </math>`
         
        
-        let textRect = document.createElement("span")
-        textRect.appendChild(math)
-        textRect.style.visibility = "hidden"
+        //mathRect.style.visibility = "hidden"
         let body = document.getElementsByTagName("body")[0]
-        body.appendChild(textRect)
-        let boundingRect = textRect.getBoundingClientRect()
-        console.log(boundingRect)
-        body.removeChild(textRect)
+        body.appendChild(mathRect)
+        console.log(mathRect.getBoundingClientRect())
+        let boundingRect = mathRect.getBoundingClientRect()
+        
+        let width = boundingRect.width
+        let height = boundingRect.height
+       
 
         let textX = x
+        if (horizontalAnchor === "start") {
+            x = textX
+        }
         if (horizontalAnchor === "middle") {
-            textX = x - boundingRect.width/2
+            textX = x - width/2
             x = textX
         }
         if (horizontalAnchor === "end") {
-            textX = x - boundingRect.width
+            textX = x - width
         }
 
         let textY = y
         if (verticalAnchor === "middle") {
-            console.log("vertcialmiddle")
-            textY = y - boundingRect.height/2
+            textY = y - height/2
             y = textY
         }
-
+        height = height + 5
         text.setAttribute("x", x.toString())
         text.setAttribute("y", y.toString())
 
-        text.setAttribute("width", boundingRect.width.toString())
-        text.setAttribute("height", boundingRect.height.toString())
+        text.setAttribute("width", width.toString())
+        text.setAttribute("height", height.toString())
         if (this.useViewBox) {
-            this.updateBoundingBox(textX, textY, textX + boundingRect.width, textY + boundingRect.height)
+            this.updateBoundingBox(textX, textY, textX + width, textY + height)
         }
         if (addToSvg) {
             this.svgContainer.appendChild(text)
@@ -368,8 +371,6 @@ class BookFigure {
             }
         }
         return text
-
-      
     }
     
     makeVector(A, B, {arrow="triangle", xScale=this.xScale, yScale=this.yScale, arrowScale=1, x=0, y=0, strokeWidth=this.strokeWidth, addToSvg=true, strokeColor="black", oneLength=this.oneSize, isTemp = this.isTemp} = {} ) {
@@ -581,9 +582,35 @@ class BookFigure {
         return fraction
     }
 
+    makeTriangle(a, b, c, {xScale=this.oneSize, yScale=this.oneSize, fill="transparent", strokeColor= "black", addToSvg=true, isTemp= this.isTemp} = {}) {
+        const abc = [a, b, c].sort((a,b) => a-b)
+        if (a[0]+a[1]<a[2]) {
+            console.log("Triangle cannot be created!")
+            return null
+        }
+        const B = [c, 0]
+        const x = (c**2-a**2+b**2)/(2*c)
+        const h = Math.sqrt(b**2-x**2)
+        const C = [x, -h]
+        const triangleObject = {}
+        triangleObject.triangle = this.makePolygon([[0,0], B, C], {fill: fill, strokeColor: strokeColor, xScale: xScale, yScale: xScale, addToSvg: addToSvg, isTemp: isTemp})
+        triangleObject.A = [0, 0]
+        triangleObject.B = [B[0]*xScale, B[1]*yScale]
+        triangleObject.C = [C[0]*xScale, C[1]*yScale]
+        return triangleObject
+    }
+
+    makeLineLabel(label, A, B, {sign=-1, factor=10, pos=0.5} = {}) {
+        const AB = [B[0]-A[0], B[1]-A[1]]
+        const C = [A[0] + pos*AB[0], A[1] + pos*AB[1]]
+        const lenAB = Math.sqrt(AB[0]**2+AB[1]**2)
+        const normalizedAB = [AB[0]/lenAB, AB[1]/lenAB]
+        const perpendicularAB = [normalizedAB[1]*sign*factor, -normalizedAB[0]*sign*factor]
+        this.makeMathText(label, C[0] + perpendicularAB[0], C[1] + perpendicularAB[1], {xScale:1, yScale: 1})
+    }
+
     removeTemporaryElements() {
         for (let i of [...Array(this.temporaryElements.length).keys()]) {
-            console.log(this.temporaryElements[i])
             this.temporaryElements[i].remove()
         }
         this.temporaryElements = []

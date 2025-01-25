@@ -73,7 +73,6 @@
         import { getSession, getLocalTasks, syncTasks, signOut, signInWithMail, role } from "./data_modules.js"
         
         getUserSession()
-        
         function getUserSession() {
             let tasks = getLocalTasks()
             getSession().then((sessionData) => {   

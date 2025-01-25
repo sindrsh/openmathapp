@@ -1,6 +1,6 @@
 import re
 
-f = open("rrek_bm.tex", "r")
+f = open("brok_bm.tex", "r")
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 substitutes = [
     ['\\\\label{ ( [^}]* ) }', ''],
@@ -17,7 +17,7 @@ substitutes = [
     ['\\\\textit{ ( [^}]* ) }', r'<i>\1</i>'],
     ['\\\\textsl{ ( [^}]* ) }', r'<i>\1 </i>'],
     ['\\\\text{ ( [^}]* ) }', r'<mtext>\1</mtext>'],
-    ['\\\\frac{ ( [^}]* ) }{ ( [^}]* ) }', r'<mfrac>\1 \2</mfrac>'],
+    ['\\\\frac{ ( [^}]* ) }{ ( [^}]* ) }', r'<mfrac>{\1} {\2}</mfrac>'],
     ['\\\\alg{ ( [^}]* ) }', r'<math class="aligned-math" display="block">\1</math>'],
     ['\\\\sym{ ( [^}]* ) }', r'<span class="symbol"> \1</span>'],
     ['\\\\item{ ( [^\\\\item]* )', r'<li> /1 </li>'],
@@ -160,7 +160,6 @@ for aligned in aligned_math:
 print(table_math)
 
 for i in range(len(aligned_math)):
-    print(i, "hei")
     print(table_math[i])
     content = re.sub(r'<math class="aligned-math" display="block">(.*?)</math>', r'<math class="display-math" display="block"><mtable>%s<mtable></math>' % table_math[i], content, 1, re.DOTALL)
 

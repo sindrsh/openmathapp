@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
+<html>
     <link rel="stylesheet" href="../../book_styles.css">
     <script type="module">
         import { BookFigure } from "../../../figures/figure_modules.js"
@@ -616,8 +616,15 @@
         "one_fourth": () => {
             const fig = new BookFigure("one_frac", fracOne)
             fig.makeRectangle(1/4, 1/4, 0, 0)
-            fig.makeMathText("<mo>=</mo><mfrac><mn>1</mn> <mn>0</mn></mfrac>", 0.35, 0.125)
-        }  
+            fig.makeMathText("<mo>=</mo><mfrac><mn>1</mn> <mn>4</mn></mfrac>", 0.25, 0.125, {horizontalAnchor: "start"})
+        }, 
+        "perimeter_triangle": () => {
+            const fig = new BookFigure("perimeter_triangle", 40)
+            const tri = fig.makeTriangle(2, 4, 5)
+            fig.makeLineLabel("<mn>2</mn>", tri.B, tri.C)
+            fig.makeLineLabel("<mn>5</mn>", tri.A, tri.B)
+            fig.makeLineLabel("<mn>3</mn>", tri.A, tri.C, {sign:1})
+        } 
     }  
 
         mod["one_fourth"]()

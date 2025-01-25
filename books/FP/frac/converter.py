@@ -1,12 +1,11 @@
 import re
 
-f = open("rrek_bm.tex", "r")
+f = open("brok_bm.tex", "r")
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 substitutes = [
     ['\\\\label{ ( [^}]* ) }', ''],
     ['\\\\section{ ( [^}]* ) }', r'<h2 class="section-title">\1</h2>'],
     ['\\\\subsection[*]{ ( [^}]* ) }', r'<h3 class="subsection-title">\1</h3>'],
-    ['\\\\subsubsection[*]{ ( [^}]* ) }', r'<h4 class="subsubsection-title">\1</h4>'],
     ['\\\\index{ ( [^}]* ) }', ''],
     ['\\\\footnote{ ( [^}]* ) }', r''],
     ['\\\\cdot', r'<mo>⋅</mo>'],
@@ -171,7 +170,6 @@ latex_lines_to_math(inline_math)
 
 for math in inline_math:
     content = re.sub('\\$(.*?)\\$', r'<math> %s </math>' % math, content, 1)
-content = content.replace(r"<mo>:", r"<mo> :")
 
 outfile = open("converted_html.txt", "w")
 outfile.write(content)

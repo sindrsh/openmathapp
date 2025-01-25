@@ -29,6 +29,7 @@
         </style>
     </head>
     <body>
+    <div id="topic-filter-container"></div>
     <div id="grades-container"></div>
     <div id="students-container"></div>
     <div id="data-container">
@@ -38,13 +39,17 @@
     </body>
 
     <script type="module">
-        import { getSubjects, makeTable, subjects } from "./review_modules.js"
+        import { getSubjects, makeTable, subjects, taskCompletedColor, taskNotCompletedColor } from "./review_modules.js"
         import { getStudentsData } from "./data_modules.js"
-
-
+        
         const dataContainer = document.getElementById("data-container")
         const individulReviewContainer = document.getElementById("individual-review-container")
+        
         const studentsData = await getStudentsData()
+
+        const subjectFilters = []
+        const chosenSubjectFilters = []
+        
         
         const grades = {} 
         for (let i=0; i<studentsData.length; ++i) {
@@ -93,11 +98,18 @@
             let studentData = studentsData[parseInt(this.id)]
             makeStudentTables(studentData)
         }
-
+        
         function makeStudentTables(studentData) {
             const reviewContainer = document.getElementById("individual-review-container")
             reviewContainer.innerHTML = ""
-            reviewContainer.innerHTML = `<p> ${studentData["first_name"]} ${studentData["last_name"]} </p>`
+            reviewContainer.innerHTML = `<p> ${studentData["first_name"]} ${studentData["last_name"]} </p>
+                <p> <span style="color: transparent; background-color: ${taskCompletedColor}">lengde </span> Mål nådd.
+                    <span style="width: 100px"></span> <span style="color: transparent; background-color: ${taskNotCompletedColor}">lengde </span>
+                    Det må jobbast vidare med målet </p>
+            `
+
+            
+            
             for (let subject of Object.keys(subjects)) {
                 reviewContainer.appendChild(makeTable(subject, studentData["tasks"]))
             }

@@ -13,6 +13,9 @@ async function getSubjects() {
     }
 }
 
+const taskCompletedColor = "rgb(0, 255, 0, 0.4)"
+const taskNotCompletedColor = "rgb(179, 240, 255, 0.4)"
+
 const indexes = await getSubjects()
 const subjects = indexes[0]
 const topics = indexes[1]
@@ -54,9 +57,7 @@ function makeTable(subject, studentData) {
             if (task in studentData) {
                 if (studentData[task]["score"] == 2) {
                     taskCompleted = true
-                } else if (subject != "automatization") {
-                    break
-                }
+                } 
             }
             const tasksTableRow = document.createElement("tr")
             const tasksTableTd = document.createElement("td")
@@ -75,10 +76,13 @@ function makeTable(subject, studentData) {
             tasksTable.appendChild(tasksTableRow)
 
             if (taskCompleted) {
-                tasksTableTd.style.backgroundColor = "rgb(0, 255, 0, 0.4)"
+                tasksTableTd.style.backgroundColor = taskCompletedColor
             } else {
-                tasksTableTd.style.backgroundColor = "rgb(0, 120, 120, 0.4)"
-                break
+                tasksTableTd.style.backgroundColor = taskNotCompletedColor
+                if (subject != "automatization") {
+                    break
+                }
+                
             }
         }
         topicTableTaskTd.appendChild(tasksTable)
@@ -7840,4 +7844,4 @@ const studentsData = [
     }
 ]
 
-export { getSubjects, makeTable, studentsData, subjects }
+export { getSubjects, makeTable, studentsData, subjects, taskCompletedColor, taskNotCompletedColor }

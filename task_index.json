@@ -247,12 +247,24 @@
                 "amounts": {
                     "count_amounts_0_to_0point9": {
                         "description": {
-                            "nn": "Kan gjengi tala 0,1-0,9"
+                            "nn": "Kan gjengi tala til mengder mellom 0,1-0,9"
                         }
                     },
-                    "count_unordered_amounts_1point1_to_3point9": {},
-                    "count_amounts_1point1_to_3point9": {},
-                    "count_amounts_0_to_0point9_2dec": {}
+                    "count_amounts_1point1_to_3point9": {
+                        "description": {
+                            "nn": "Kan gjengi tala til mengder satt saman av einarar og tidelar, fra og med 1,1"
+                        }
+                    },
+                    "count_unordered_amounts_1point1_to_3point9": {
+                        "description": {
+                            "nn": "Kan gjengi tala til mengder satt saman av tidelar, fra og med 1.1"
+                        }
+                    },
+                    "count_amounts_0_to_0point9_2dec": {
+                        "description": {
+                            "nn": "Kan gjengi tala til mengder satt saman av hundredelar, fra og med 1.1"
+                        }
+                    }
                 }
             }
         },
@@ -262,10 +274,18 @@
             },
             "topics": {
                 "amounts": {
-                    "frac_fig_to_number": {}
+                    "frac_fig_to_number": {
+                        "description": {
+                            "nn": "Kan gjengi tala til brøkmengder"
+                        }
+                    }
                 },
                 "number_line": {
-                    "frac_fig_to_number_num_line": {}
+                    "frac_fig_to_number_num_line": {
+                        "description": {
+                            "nn": "Kan gjengi tala til brøkar på ei tallinje"
+                        }
+                    }
                 }
             }
         },
@@ -275,21 +295,16 @@
             },
             "topics": {
                 "calculation": {
-                    "div_2dig_divisor_1dig_dividend_2dig_quotient": {},
-                    "div_3dig_divisor_1dig_dividend_3dig_quotient": {}
-                }
-            }
-        },
-        "geo": {
-            "name": {
-                "nn": ""
-            },
-            "topics": {
-                "perimeter": {
-                    "random_perimeter": {}
-                },
-                "area": {
-                    "random_area": {}
+                    "div_2dig_divisor_1dig_dividend_2dig_quotient": {
+                        "description": {
+                            "nn": "Kan utføre divisjon med 2-sifra divisor, 1-sifra dividend, og 2-sifra kvotient"
+                        }
+                    },
+                    "div_3dig_divisor_1dig_dividend_3dig_quotient": {
+                        "description": {
+                            "nn": "Kan utføre divisjon med 3-sifra divisor, 1-sifra dividend, og 2-sifra kvotient"
+                        }
+                    }
                 }
             }
         },
