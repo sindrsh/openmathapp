@@ -185,67 +185,103 @@
 	</div>
 	
 	<div class="info" data-title="Fellesnevner">
-	I <i>Eksempel 1 </i> på side \pageref{eksadbrok</div> blir 63 kalt en <span class="outline">fellesnevner</span>. Dette fordi det finnes heltall vi kan gange nevnerne med som gir oss tallet 63:
-	\algv{
-		9<mo>⋅</mo>7 &= 63 \\
-		7<mo>⋅</mo> 9 &= 63 
-	}
-	Hvis vi ganger sammen alle nevnerne i et regnestykke, finner vi alltid en fellesnevner, men vi sparer oss for store tall om vi finner den <i>minste </i> fellesnevneren. Ta for eksempel regnestykket
-	<math class="display-math" display="block"> <mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mn>5</mn> <mn>3</mn></mfrac> </math>
-	Her kan vi bruke fellesnevneren <math>  <mrow><mn>6</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>18</mn></mrow>  </math>, men det er bedre å merke seg at <math>  <mn><mn>6</mn></mn><mo>⋅</mo><mn>1</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn><mn>6</mn></mn>  </math> også er en fellesnevner. Altså er
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mn>5</mn> <mn>3</mn></mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mn>5<mo>⋅</mo>2</mn> <mn>3<mo>⋅</mo>2</mn></mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mn>10</mn> <mn>6</mn></mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>17</mn> <mn>6</mn></mfrac> </mtd> </mtr><mtable></math>
+	I <i>Eksempel 1 </i> på side ?? blir 63 kalt en <span class="outline">fellesnevner</span>. Dette fordi det finnes heltall vi kan gange nevnerne med som gir oss tallet 63:
+	<math class="display-math" display="block">
+		<mtable>
+			<mtr>
+				<mtd><mn>9</mn><mo>⋅</mo><mn>7</mn></mtd>
+				<mtd><mo>=</mo></mtd>
+				<mtd><mn>63</mn></mtd>
+			</mtr>
+			<mtr>
+				<mtd><mn>7</mn><mo>⋅</mo><mn>9</mn></mtd>
+				<mtd><mo>=</mo></mtd>
+				<mtd><mn>63</mn></mtd>
+			</mtr>
+		</mtable>
+	</math>
 	
-	}
+	
+	Hvis vi ganger sammen alle nevnerne i et regnestykke, finner vi alltid en fellesnevner, men vi sparer oss for store tall om vi finner den <i>minste </i> fellesnevneren. Ta for eksempel regnestykket
+	<math class="display-math" display="block"> 
+		<mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mn>5</mn> <mn>3</mn></mfrac> 
+	</math>
+	Her kan vi bruke fellesnevneren <math>  <mrow><mn>6</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>18</mn></mrow>  </math>, men det er bedre å merke seg at <math>  <mn><mn>6</mn></mn><mo>⋅</mo><mn>1</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn><mn>6</mn></mn>  </math> også er en fellesnevner. Altså er
+	<math class="display-math" display="block">
+		<mtable displaystyle="true">
+			<mtr> <mtd> <mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mn>5</mn> <mn>3</mn></mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mrow><mn>5</mn><mo>⋅</mo><mn>2</mn></mrow> <mrow><mn>3</mn><mo>⋅</mo><mn>2</mn></mrow></mfrac> </mtd> 
+			</mtr>
+			<mtr>
+				<mtd></mtd> 
+				<mtd> <mo>=</mo> </mtd>
+				<mtd> <mfrac><mn>7</mn> <mn>6</mn></mfrac><mo>+</mo><mfrac><mn>10</mn> <mn>6</mn></mfrac> </mtd> </mtr>
+				<mtr> 
+					<mtd></mtd>
+					<mtd> <mo>=</mo> </mtd>
+					<mtd> <mfrac><mn>17</mn> <mn>6</mn></mfrac> </mtd> </mtr>
+					<mtable>
+					</math>
+	</div>
+
 	<div class="example">
 		Regn ut
-		<math class="display-math" display="block"> <mfrac><mn>3</mn> <mn>2</mn></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mn>10</mn> <mn>4</mn></mfrac> </math>
-		
+		<math class="display-math" display="block"> 
+			<mfrac><mn>3</mn> <mn>2</mn></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mn>10</mn> <mn>4</mn></mfrac> </math>
 		
 		Alle nevnerne kan bli 8 hvis vi ganger med rett heltall. Vi utvider derfor til brøker med 8 i nevner:
-		<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac><mn>3</mn> <mn>2</mn></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mn>10</mn> <mn>4</mn></mfrac>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>3<mo>⋅</mo>4</mn> <mn>2<mo>⋅</mo>4</mn></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mn>10<mo>⋅</mo>2</mn> <mn>4<mo>⋅</mo>2</mn></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>12</mn> <mn>8</mn></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mn>20</mn> <mn>8</mn></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>27</mn> <mn>8</mn></mfrac> </mtd> </mtr><mtable></math>
+		<math class="display-math" display="block"><mtable displaystyle="true"><mtr> <mtd> <mfrac><mn>3</mn> <mn>2</mn></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mn>10</mn> <mn>4</mn></mfrac>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mrow><mn>3</mn><mo>⋅</mo><mn>4</mn></mrow> <mrow><mn>2</mn><mo>⋅</mo><mn>4</mn></mrow></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mrow><mn>10</mn><mo>⋅</mo><mn>2</mn></mrow> <mrow><mn>4</mn><mo>⋅</mo><mn>2</mn></mrow></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>12</mn> <mn>8</mn></mfrac><mo>−</mo><mfrac><mn>5</mn> <mn>8</mn></mfrac><mo>+</mo><mfrac><mn>20</mn> <mn>8</mn></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>27</mn> <mn>8</mn></mfrac> </mtd> </mtr><mtable></math>
 	</div>
 	
-	<h2 class="section-title">\brgngheil</h2>
-	I seksjon ?? så vi at ganging med heltall er det samme som gjentatt addisjon. Skal vi for eksempel regne ut <math>  <mi><mfrac><mn>2</mn> <mn>5</mn></mfrac><mfrac><mn>2</mn> <mn>5</mn></mfrac></mi> <mn>3</mn>  </math>, kan vi derfor regne slik:
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac><mn>2</mn> <mn>5</mn></mfrac><mfrac><mn>2</mn> <mn>5</mn></mfrac></mi> <mn>3</mn>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>+</mo><mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>+</mo><mfrac><mn>2</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>2+2+2</mn> <mn>5</mn></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>6</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtable></math>
+	<h2 class="section-title">Brøk ganget med heltall</h2>
+	I seksjon ?? så vi at ganging med heltall er det samme som gjentatt addisjon. Skal vi for eksempel regne ut <math> <mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>⋅</mo> <mn>3</mn>  </math>, kan vi derfor regne slik:
+	<math class="display-math" display="block">
+		<mtable displaystyle="true">
+			<mtr> 
+				<mtd> <mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>⋅</mo> <mn>3</mn>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>+</mo><mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>+</mo><mfrac><mn>2</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mrow><mn>2</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>2</mn></mrow> <mn>5</mn></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>6</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtable></math>
 	<div class="figure">br14</div>
-	Men vi vet også at \y{2+2+2=2<mo>⋅</mo>3}, og derfor kan vi forenkle regnestykket vårt:
-	\algv{
-		<mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>⋅</mo> 3 &= <mfrac><mn>2<mo>⋅</mo>3</mn> <mn>5</mn></mfrac>\br
-		&= <mfrac><mn>6</mn> <mn>5</mn></mfrac> 
-	}
-	Multiplikasjon mellom heltall og brøk er også kommutativ{5} <math>  <mi>bare</mi> <mi>er</mi> <mi>en</mi> <mi>omskriving</mi> <mi>av</mi>  </math> 2:5 $, og at vi av regel ?? regner fra venstre mot høyre. }:
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>3</mn><mi><mfrac><mn>2</mn> <mn>5</mn></mfrac><mfrac><mn>2</mn> <mn>5</mn></mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>3</mn><mo>⋅</mo><mn>2</mn><mo> :</mo><mn>5</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>6</mn><mo> :</mo><mn>5</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>6</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtable></math>
+	Men vi vet også at <math><mn>2</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>2</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>3</mn></math>, og derfor kan vi forenkle regnestykket vårt:
+	<math class="display-math" display="block">
+		<mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>⋅</mo> <mn>3</mn><mo>=</mo>
+			<mfrac><mrow><mn>2</mn><mo>⋅</mo><mn>3</mn></mrow> <mn>5</mn></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>5</mn></mfrac>
+	</math>
+
+	Multiplikasjon mellom heltall og brøk er også kommutativ :
+	<math class="display-math" display="block">
+		<mtable displaystyle="true"><mtr> <mtd> <mn>3</mn><mo>⋅</mo><mfrac><mn>2</mn> <mn>5</mn></mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>3</mn><mo>⋅</mo><mn>2</mn><mo> :</mo><mn>5</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>6</mn><mo> :</mo><mn>5</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>6</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtable></math>
 	
 	<div class="rule"><h4>Brøk ganget med heltal</h4> 
 	Når vi ganger en brøk med et heltall, ganger vi heltallet med telleren i brøken.
 	</div>
 	<div class="example"> 
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac><mn>1</mn> <mn>3</mn></mfrac><mfrac><mn>1</mn> <mn>3</mn></mfrac></mi> <mn>4</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>1<mo>⋅</mo> 4</mn> <mn>3</mn></mfrac>  </mtd> </mtr><mtr> <mtd>   </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>4</mn> <mn>3</mn></mfrac> </mtd> </mtr><mtable></math>
+	<math class="display-math" display="block">
+		<mfrac><mn>1</mn> <mn>3</mn></mfrac><mo>⋅</mo><mn>4</mn><mo>=</mo><mfrac><mrow><mn>1</mn><mo>⋅</mo><mn>4</mn></mrow> <mn>3</mn></mfrac><mo>=</mo><mfrac><mn>4</mn> <mn>3</mn></mfrac>
+	</math>
 	</div>
 	<div class="example"> 
-	
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>3</mn><mi><mfrac><mn>2</mn> <mn>5</mn></mfrac><mfrac><mn>2</mn> <mn>5</mn></mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>3<mo>⋅</mo> 2</mn> <mn>5</mn></mfrac>  </mtd> </mtr><mtr> <mtd>   </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mn>6</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtable></math>
+		<math class="display-math" display="block">
+			<mn>3</mn><mo>⋅</mo><mfrac><mn>2</mn> <mn>5</mn></mfrac><mo>=</mo><mfrac><mrow><mn>3</mn><mo>⋅</mo><mn>2</mn></mrow> <mn>5</mn></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>5</mn></mfrac>
+		</math>
 	</div>
 	<div class="info" data-title="En tolkning av ganging med brøk ">
 	Av regel ?? kan vi også danne en tolkning av hva å gange med en brøk innebærer. For eksempel, å gange <math>  <mn>3</mn>  </math> med <math>  <mfrac><mn>2</mn> <mn>5</mn></mfrac>  </math> kan tolkes på disse to måtene:
 	<ul>
 		<li> Vi ganger <math>  <mn>3</mn>  </math> med <math>  <mn>2</mn>  </math>, og deler produktet med <math>  <mn>5</mn>  </math>:
-		<math class="display-math" display="block"> <mn>3</mn><mfrac><mn>6</mn> <mn>5</mn></mfrac><mn>2</mn><mo>=</mo><mn><mn>6</mn></mn><mi><mi>quad</mi></mi><mo>,</mo><mi><mi>quad</mi></mi> <mn><mn>6</mn></mn><mo> :</mo><mn>5</mn><mo>=</mo><mfrac><mn>6</mn> <mn>5</mn></mfrac></math>
+		<math class="display-math" display="block"> 
+			<mn>3</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>6</mn><mtext>&nbsp;&nbsp; , &nbsp;&nbsp;</mtext><mn>6</mn><mo> :</mo><mn>5</mn><mo>=</mo><mfrac><mn>6</mn> <mn>5</mn></mfrac></math>
 		<li> Vi deler <math>  <mn>3</mn>  </math> med <math>  <mn>5</mn>  </math>, og ganger kvotienten med <math>  <mn>2</mn>  </math>:
-		<math class="display-math" display="block"> <mn>3</mn><mo> :</mo><mn>5</mn><mo>=</mo><mfrac><mn>3</mn> <mn>5</mn></mfrac> <mi><mi>quad</mi></mi><mo>,</mo><mi><mi>quad</mi></mi> <mi><mfrac><mn>3</mn> <mn>5</mn></mfrac><mfrac><mn>3</mn> <mn>5</mn></mfrac></mi><mn>2</mn><mo>=</mo><mfrac><mn>3<mo>⋅</mo>2</mn> <mn>5</mn></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>5</mn></mfrac></math>
+		<math class="display-math" display="block"> <mn>3</mn><mo> :</mo><mn>5</mn><mo>=</mo><mfrac><mn>3</mn> <mn>5</mn></mfrac><mtext>&nbsp;&nbsp;,&nbsp;&nbsp;</mtext> <mfrac><mn>3</mn> <mn>5</mn></mfrac><mo>⋅</mo><mn>2</mn><mo>=</mo><mfrac><mrow><mn>3</mn><mo>⋅</mo><mn>2</mn></mrow> <mn>5</mn></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>5</mn></mfrac></math>
 		
 	</ul>
 	</div>
 	
 	
-	<h2 class="section-title">\brdelheil</h2> 
+	<h2 class="section-title">Brøk delt med heltall</h2> 
 	Det er nå viktig å huske på to ting:
 	<ul>
 		<li> Deling kan man se på som en lik fordeling av et antall.
 		<li> I en brøk er det telleren som forteller noe om antallet (nevneren forteller om inndelingen av 1).
 	</ul>
-	\subsubsection{Tilfellet der telleren er delelig med divisoren}
+	<h4 class="subsubsection-title">Tilfellet der telleren er delelig med divisoren</h4>
 	La oss regne ut <math>  <mfrac><mn>6</mn> <mn>8</mn></mfrac>  </math> delt på 2:
 	<math class="display-math" display="block"> <mfrac><mn>6</mn> <mn>8</mn></mfrac><mo> :</mo><mn>2</mn> </math>
 	<div class="figure">br15</div>
@@ -257,13 +293,13 @@
 	<math class="display-math" display="block"> <mfrac><mn>6</mn> <mn>8</mn></mfrac><mo> :</mo><mn>2</mn><mo>=</mo><mfrac><mn>3</mn> <mn>8</mn></mfrac> </math>
 	%<div class="figure">br15b</div>
 	
-	\subsubsection{Tilfellet der telleren ikke er delelig med divisoren}
+	<h4 class="subsubsection-title">Tilfellet der telleren ikke er delelig med divisoren</h4>
 	Hva nå om vi skal dele <math>  <mfrac><mn>3</mn> <mn>4</mn></mfrac>  </math> på 2? 
 	<math class="display-math" display="block"> <mfrac><mn>3</mn> <mn>4</mn></mfrac><mo> :</mo><mn>2</mn> </math>
 	<div class="figure">br5</div>
 	<div class="figure">br5t</div>
 	Vi kan alltid utivde brøken vår slik at telleren blir delelig med divisoren. Siden vi skal dele med 2, utvider vi brøken vår med 2:
-	<math class="display-math" display="block"> <mfrac><mn>3</mn> <mn>4</mn></mfrac><mo>=</mo><mfrac><mn>3<mo>⋅</mo>2</mn> <mn>4<mo>⋅</mo>2</mn></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>8</mn></mfrac> </math>
+	<math class="display-math" display="block"> <mfrac><mn>3</mn> <mn>4</mn></mfrac><mo>=</mo><mfrac><mrow><mn>3</mn><mo>⋅</mo><mn>2</mn></mrow> <mrow><mn>4</mn><mo>⋅</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>8</mn></mfrac> </math>
 	<div class="figure">br5c</div>
 	<div class="figure">br5ct</div>
 	Nå har vi 6 åttedeler. 6 åttedeler delt på 2 blir 3 åttedeler:
@@ -273,25 +309,30 @@
 	<math class="display-math" display="block"> <mfrac><mn>3</mn> <mn>4</mn></mfrac><mo> :</mo><mn>2</mn><mo>=</mo><mfrac><mn>3</mn> <mn>8</mn></mfrac> </math>
 	%<div class="figure">br5b</div>
 	Rent matematisk har vi rett og slett ganget nevneren til <math>  <mfrac><mn>3</mn> <mn>4</mn></mfrac>  </math> med 2:
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac><mn>3</mn> <mn>4</mn></mfrac><mo> :</mo><mn>2</mn>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>3</mn> <mn>4<mo>⋅</mo>2</mn></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>3</mn> <mn>8</mn></mfrac> </mtd> </mtr><mtable></math>
+	<math class="display-math" display="block">
+	<mfrac><mn>3</mn> <mn>4</mn></mfrac><mo> :</mo><mn>2</mn><mo>=</mo><mfrac><mn>3</mn> <mrow><mn>4</mn><mo>⋅</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>3</mn> <mn>8</mn></mfrac>	
+	</math>
 	<div class="rule"><h4>Brøk delt med heltal </h4> 
 	Når vi deler en brøk med et heltall, ganger vi nevneren med heltallet.
 	</div>
 	<div class="example">
-	\algv{
-	<mfrac><mn>5</mn> <mn>3</mn></mfrac>:6 &= <mfrac><mn>5</mn> <mn>3<mo>⋅</mo> 6</mn></mfrac> \br
-	&= <mfrac><mn>5</mn> <mn>18</mn></mfrac>
+		<math class="display-math" display="block">
+			<mfrac><mn>5</mn> <mn>3</mn></mfrac><mo> :</mo><mn>6</mn><mo>=</mo><mfrac><mn>5</mn> <mrow><mn>3</mn><mo>⋅</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mfrac><mn>5</mn> <mn>18</mn></mfrac>	
+		</math>
 	</div>
-	}
 	<div class="info" data-title="\note">
-	På side \pageref{brdelheil</div> fant vi at
+	På side ?? fant vi at
 	<math class="display-math" display="block"> <mfrac><mn>6</mn> <mn>8</mn></mfrac><mo> :</mo><mn>2</mn><mo>=</mo><mfrac><mn>3</mn> <mn>8</mn></mfrac> </math>
 	Da ganget vi ikke nevneren med 2, slik regel ?? tilsier. Om vi gjør det, får vi 
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac><mn>6</mn> <mn>8</mn></mfrac><mo> :</mo><mn>2</mn><mi><mfrac><mn>6</mn> <mn>8<mo>⋅</mo>2</mn></mfrac><mfrac><mn>6</mn> <mn>16</mn></mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+	<math class="display-math" display="block">
+		<mfrac><mn>6</mn> <mn>8</mn></mfrac><mo> :</mo><mn>2</mn><mo>=</mo><mfrac><mn>6</mn> <mrow><mn>8</mn><mo>⋅</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>16</mn></mfrac>	
+		</math>
 	Men 
-	<math class="display-math" display="block"> <mi><mi><mi>dfrac</mi></mi></mi><mrow><mn><mn>3</mn></mn></mrow><mrow><mn><mn>8</mn></mn></mrow><mo>=</mo><mi><mi><mi>dfrac</mi></mi></mi><mrow><mn><mn>3</mn></mn><mo>⋅</mo><mn><mn>2</mn></mn></mrow><mrow><mn><mn>8</mn></mn><mo>⋅</mo><mn><mn>2</mn></mn></mrow><mo>=</mo><mi><mi><mi>dfrac</mi></mi></mi><mrow><mn>6</mn></mrow><mrow>1<mn>6</mn></mrow> </math>
+	<math class="display-math" display="block">
+	<mfrac><mn>3</mn> <mn>8</mn></mfrac><mo>=</mo><mfrac><mrow><mn>3</mn><mo>⋅</mo><mn>2</mn></mrow> <mrow><mn>8</mn><mo>⋅</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>6</mn> <mn>16</mn></mfrac>
+	</math>
 	De to svarene har altså samme verdi. Skal vi dele en brøk på et heltall, og telleren er delelig med heltallet, kan vi direkte dele telleren på heltallet. I slike tilfeller er det altså ikke <i>feil </i>, men heller <i>ikke nødvendig </i> å bruke regel ??.
-	}
+	</div>
 	<h2 class="section-title">\brgngbr </h2>		
 	Vi har sett på side \pageref{brtolk}.} hvordan å gange med en brøk innebærer å gange det andre tallet med telleren, og så dele produktet med nevneren. La oss bruke dette til å regne ut
 	<math class="display-math" display="block">  <mrow><mi><mfrac><mn>5</mn> <mn>4</mn></mfrac><mfrac><mn>5</mn> <mn>4</mn></mfrac><mfrac><mn>3</mn> <mn>2</mn></mfrac></mi></mrow></math> 
