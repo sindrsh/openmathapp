@@ -1,6 +1,6 @@
 import re
 
-f = open("alg_bm.tex", "r")
+f = open("geo_bm.tex", "r")
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 substitutes = [
     ['\\\\label{ ( [^}]* ) }', ''],
@@ -29,7 +29,7 @@ substitutes = [
     ['\\\\st{ ( [^}]* ) }', r'<div class="statement">\1</div>'],
     ['\\\\reg\\[([^\\[]*)\\]{( [^}]* ) }', r'<div class="rule"><h4>\1</h4> \2</div>'],
     ['\\\\regdef\\[([^\\[]*)\\]{( [^}]* ) }', r'<div class="definition" data-title="\1">\2</div>'],
-    ['\\\\info{([^}]*)}{( [^}]* ) }', r'<div class="info"> <h4>\1</h4> \2</div>'],
+    ['\\\\info{([^}]*)}{( [^}]* ) }', r'<div class="info" data-title="\1">\2</div>'],
     ['\\\\eks\\[\\]{ ( [^}]* ) }', r'<div class="example">\1</div>'],
     ['\\\\eks{ ( [^}]* ) }', r'<div class="example">\1</div>'],
     ['\\\\eks\\[1\\]{ ( [^}]* ) }', r'<div class="example">\1</div>'],

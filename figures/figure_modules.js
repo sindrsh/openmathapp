@@ -331,9 +331,8 @@ class BookFigure {
         //mathRect.style.visibility = "hidden"
         let body = document.getElementsByTagName("body")[0]
         body.appendChild(mathRect)
-        console.log(mathRect.getBoundingClientRect())
         let boundingRect = mathRect.getBoundingClientRect()
-        
+        body.removeChild(mathRect)
         let width = boundingRect.width
         let height = boundingRect.height
        

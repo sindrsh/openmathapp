@@ -29,7 +29,7 @@ substitutes = [
     ['\\\\st{ ( [^}]* ) }', r'<div class="statement">\1</div>'],
     ['\\\\reg\\[([^\\[]*)\\]{( [^}]* ) }', r'<div class="rule"><h4>\1</h4> \2</div>'],
     ['\\\\regdef\\[([^\\[]*)\\]{( [^}]* ) }', r'<div class="definition" data-title="\1">\2</div>'],
-    ['\\\\info{([^}]*)}{( [^}]* ) }', r'<div class="info"> <h4>\1</h4> \2</div>'],
+    ['\\\\info{([^}]*)}{( [^}]* ) }', r'<div class="info" data-title="\1">\2</div>'],
     ['\\\\eks\\[\\]{ ( [^}]* ) }', r'<div class="example">\1</div>'],
     ['\\\\eks{ ( [^}]* ) }', r'<div class="example">\1</div>'],
     ['\\\\eks\\[1\\]{ ( [^}]* ) }', r'<div class="example">\1</div>'],
@@ -168,15 +168,20 @@ latex_lines_to_math(inline_math)
 
 for math in inline_math:
     content = re.sub('\\$(.*?)\\$', r'<math> %s </math>' % math, content, 1)
-content = content.replace(r"<mo>:", r"<mo> :")
+
 
 frac_math = re.findall(r'<>(.*?)<>', content, re.DOTALL)
 latex_lines_to_math(frac_math)
 
 for element in frac_math:
     content = re.sub(r'<>(.*?)<>', r'<mrow> %s </mrow>' % element, content, 1)
+content = content.replace(r"<mo>:", r"<mo> :")
 
+for op in ["mi", "mn"]:
+    while re.findall(r"<%s><%s>" % (op, op), content) != []:
+        content = content.replace(r"<%s><%s>" % (op, op), r"<%s>" % op)
 
+    
 outfile = open("converted_html.txt", "w")
 outfile.write(content)
 outfile.close

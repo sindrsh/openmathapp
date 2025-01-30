@@ -315,6 +315,7 @@
 	<div class="rule"><h4>Brøk delt med heltal </h4> 
 	Når vi deler en brøk med et heltall, ganger vi nevneren med heltallet.
 	</div>
+	
 	<div class="example">
 		<math class="display-math" display="block">
 			<mfrac><mn>5</mn> <mn>3</mn></mfrac><mo> :</mo><mn>6</mn><mo>=</mo><mfrac><mn>5</mn> <mrow><mn>3</mn><mo>⋅</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mfrac><mn>5</mn> <mn>18</mn></mfrac>	
@@ -334,37 +335,170 @@
 	De to svarene har altså samme verdi. Skal vi dele en brøk på et heltall, og telleren er delelig med heltallet, kan vi direkte dele telleren på heltallet. I slike tilfeller er det altså ikke <i>feil </i>, men heller <i>ikke nødvendig </i> å bruke regel ??.
 	</div>
 	<h2 class="section-title">\brgngbr </h2>		
-	Vi har sett på side \pageref{brtolk}.} hvordan å gange med en brøk innebærer å gange det andre tallet med telleren, og så dele produktet med nevneren. La oss bruke dette til å regne ut
-	<math class="display-math" display="block">  <mrow><mi><mfrac><mn>5</mn> <mn>4</mn></mfrac><mfrac><mn>5</mn> <mn>4</mn></mfrac><mfrac><mn>3</mn> <mn>2</mn></mfrac></mi></mrow></math> 
+	Vi har sett på side ?? hvordan å gange med en brøk innebærer å gange det andre tallet med telleren, og så dele produktet med nevneren. La oss bruke dette til å regne ut
+	<math class="display-math" display="block">  <mfrac><mn>5</mn> <mn>4</mn></mfrac><mo>⋅</mo><mfrac><mn>3</mn> <mn>2</mn></mfrac></mi></mrow></math> 
 	Da skal vi først gange <math>  <mfrac><mn>5</mn> <mn>4</mn></mfrac>  </math> med 3, og så dele produktet med 2. Av regel ?? er
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac><mn>5</mn> <mn>4</mn></mfrac><mfrac><mn>5</mn> <mn>4</mn></mfrac></mi><mn>3</mn> <mfrac><mn>5<mo>⋅</mo> 3</mn> <mn>4</mn></mfrac> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+	<math class="display-math" display="block">
+		<mfrac>
+			<mn>5</mn>
+			<mn>4</mn>
+		  </mfrac>
+		  <mo>⋅</mo>
+		  <mn>3</mn>
+		  <mo>=</mo>
+		  <mfrac>
+			<mrow>
+			  <mn>5</mn>
+			  <mo>⋅</mo>
+			  <mn>3</mn>
+			</mrow>
+			<mn>4</mn>
+		  </mfrac>
+	</math>
 	Og av regel ?? er
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac><mn>5<mo>⋅</mo>3</mn> <mn>4</mn></mfrac><mo> :</mo><mn>2</mn><mfrac><mn>5<mo>⋅</mo>3</mn> <mn>4<mo>⋅</mo>2</mn></mfrac> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+	<math class="display-math" display="block">
+		<mfrac>
+			<mrow>
+			  <mn>5</mn>
+			  <mo>⋅</mo>
+			  <mn>3</mn>
+			</mrow>
+			<mn>4</mn>
+		  </mfrac>
+		  <mo> :</mo>
+		  <mn>2</mn>
+		  <mo>=</mo>
+		  <mfrac>
+			<mrow>
+			  <mn>5</mn>
+			  <mo>⋅</mo>
+			  <mn>3</mn>
+			</mrow>
+			<mrow>
+			  <mn>4</mn>
+			  <mo>⋅</mo>
+			  <mn>2</mn>
+			</mrow>
+		  </mfrac>
+	</math>
+		
 	Altså er 
-	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac><mn>5</mn> <mn>4</mn></mfrac><mfrac><mn>5</mn> <mn>4</mn></mfrac></mi> <mi><mfrac><mn>3</mn> <mn>2</mn></mfrac><mfrac><mn>5<mo>⋅</mo> 3</mn> <mn>4<mo>⋅</mo>2</mn></mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
-	<div class="rule"><h4>\brtbr</h4> 
+	<math class="display-math" display="block">
+		<mfrac>
+			<mn>5</mn>
+			<mn>4</mn>
+		  </mfrac>
+		  <mo>⋅</mo>
+		  <mfrac>
+			<mn>3</mn>
+			<mn>2</mn>
+		  </mfrac>
+		  <mo>=</mo>
+		  <mfrac>
+			<mrow>
+			  <mn>5</mn>
+			  <mo>⋅</mo>
+			  <mn>3</mn>
+			</mrow>
+			<mrow>
+			  <mn>4</mn>
+			  <mo>⋅</mo>
+			  <mn>2</mn>
+			</mrow>
+		  </mfrac>
+	</math>
+		<div class="rule"><h4>Brøk ganget med brøk</h4> 
 	Når vi ganger to brøker med hverandre, ganger vi teller med teller og nevner med nevner.
 	</div>
 	<div class="example">
-	\algvv{
-	<mfrac><mn>4</mn> <mn>7</mn></mfrac><mo>⋅</mo> <mfrac><mn>6</mn> <mn>9</mn></mfrac>&= <mfrac><mn>4<mo>⋅</mo>6</mn> <mn>7<mo>⋅</mo>9</mn></mfrac> \br
-	&= <mfrac><mn>24</mn> <mn>63</mn></mfrac>
+	<math class="display-math" display="block">
+		<mfrac>
+			<mn>4</mn>
+			<mn>7</mn>
+		  </mfrac>
+		  <mo>⋅</mo>
+		  <mfrac>
+			<mn>6</mn>
+			<mn>9</mn>
+		  </mfrac>
+		  <mo>=</mo>
+		  <mfrac>
+			<mrow>
+			  <mn>4</mn>
+			  <mo>⋅</mo>
+			  <mn>6</mn>
+			</mrow>
+			<mrow>
+			  <mn>7</mn>
+			  <mo>⋅</mo>
+			  <mn>9</mn>
+			</mrow>
+		  </mfrac>
+		  <mo>=</mo>
+		  <mfrac>
+			<mn>24</mn>
+			<mn>63</mn>
+		  </mfrac>
+	</math>
 	</div>
-	}
 	<div class="example">
-	\algvv{
-		<mfrac><mn>1</mn> <mn>2</mn></mfrac><mo>⋅</mo><mfrac><mn>9</mn> <mn>10</mn></mfrac>&=<mfrac><mn>1<mo>⋅</mo>9</mn> <mn>2<mo>⋅</mo>10</mn></mfrac> \br
-			&=<mfrac><mn>9</mn> <mn>20</mn></mfrac>
-		</div>
-	
-	}
-	
-	<h2 class="section-title">\brkans</h2>
-	Når telleren og nevneren har lik verdi, er verdien til brøken alltid 1. For eksempel er \y{<mfrac><mn>3</mn> <mn>3</mn></mfrac>=1}, \y{<mfrac><mn>25</mn> <mn>25</mn></mfrac>=1} og så videre. Dette kan vi utnytte for å forenkle brøkuttrykk. 
+	<math class="display-math" display="block">
+		<mfrac>
+			<mn>1</mn>
+			<mn>2</mn>
+		  </mfrac>
+		  <mo>⋅</mo>
+		</mrow>
+		<mrow>
+		  <mfrac>
+			<mn>9</mn>
+			<mn>10</mn>
+		  </mfrac>
+		  <mo>=</mo>
+		</mrow>
+		<mrow>
+		  <mfrac>
+			<mrow>
+			  <mn>1</mn>
+			  <mo>⋅</mo>
+			  <mn>9</mn>
+			</mrow>
+			<mrow>
+			  <mn>2</mn>
+			  <mo>⋅</mo>
+			  <mn>10</mn>
+			</mrow>
+		  </mfrac>
+		  <mo>=</mo>
+		</mrow>
+		<mrow>
+		  <mfrac>
+			<mn>9</mn>
+			<mn>20</mn>
+		  </mfrac>
+	</math>
+	</div>
+	<h2 class="section-title">Kansellering av faktorer</h2>
+	Når telleren og nevneren har lik verdi, er verdien til brøken alltid 1. Dette kan vi utnytte for å forenkle brøkuttrykk. 
 	
 	La oss forenkle brøkuttrykket
-	<math class="display-math" display="block"> <mfrac><mn>8<mo>⋅</mo> 5</mn> <mn>9<mo>⋅</mo>8</mn></mfrac> </math>
-	Da <math>  <mrow><mn><mn>8</mn></mn><mo>⋅</mo><mn><mn>5</mn></mn></mrow><mo>=</mo><mrow><mn><mn>5</mn></mn><mo>⋅</mo><mn><mn>8</mn></mn></mrow>  </math>, kan vi skrive
+	<math class="display-math" display="block"> 
+		<mfrac>
+			<mrow>
+			  <mn>8</mn>
+			  <mo>⋅</mo>
+			  <mn>5</mn>
+			</mrow>
+			<mrow>
+			  <mn>9</mn>
+			  <mo>⋅</mo>
+			  <mn>8</mn>
+			</mrow>
+		  </mfrac>
+	</math>
+	Da <math>  
+		<mrow><mn><mn>8</mn></mn><mo>⋅</mo><mn><mn>5</mn></mn></mrow><mo>=</mo><mrow><mn><mn>5</mn></mn><mo>⋅</mo><mn><mn>8</mn></mn></mrow>  
+	</math>, kan vi skrive
 	<math class="display-math" display="block"> <mfrac><mn>8<mo>⋅</mo>5</mn> <mn>9<mo>⋅</mo>8</mn></mfrac><mo>=</mo><mfrac><mn>5<mo>⋅</mo>8</mn> <mn>9<mo>⋅</mo>8</mn></mfrac> </math>
 	Og som vi nylig har sett (regel ??) er
 	<math class="display-math" display="block"><mfrac><mn>5<mo>⋅</mo>8</mn> <mn>9<mo>⋅</mo>8</mn></mfrac><mo>=</mo> <mi><mfrac><mn>5</mn> <mn>9</mn></mfrac><mfrac><mn>5<mo>⋅</mo>8</mn> <mn>9<mo>⋅</mo>8</mn></mfrac><mfrac><mn>8</mn> <mn>8</mn></mfrac></mi></math>

@@ -1,0 +1,409 @@
+
+
+
+
+
+<h2 class="section-title">\algintro</h2>
+<span class="outline">Algebra</span> er matematikk der bokstaver representerer tall. Dette gjør at vi lettere kan jobbe med <i>generelle </i> tilfeller. For eksempel er <math>  <mrow><mn>3</mn></mn><mo>⋅</mo> <mn>2</mn></mn><mo>=</mo><mn>2</mn></mn><mo>⋅</mo><mn>3</mn></mn></mrow>  </math> og <math>  <mrow><mn>6</mn></mn><mo>⋅</mo><mn>7</mn></mn><mo>=</mo><mn>7</mn></mn><mo>⋅</mo><mn>6</mn></mn></mrow>  </math>, men disse er bare to av de uendelig mange eksemplene på at multiplikasjon er kommutativ! En av hensiktene med algebra er at vi ønsker å gi <i>ett </i> eksempel som forklarer <i>alle </i> tilfeller, og siden sifrene våre (0-9) er uløselig knyttet til bestemte tall, bruker vi bokstaver for å nå dette målet. 
+
+Verdien til tallene som er representert ved bokstaver vil ofte variere ut ifra en sammenheng, og da kaller vi disse bokstavtallene for <span class="outline">variabler</span>. Hvis bokstavtallene derimot har en bestemt verdi, kaller vi dem for <span class="outline">konstanter</span>.
+
+
+
+I <i>Del I </i> av boka har vi sett på regning med konkrete tal, likevel er de fleste reglene vi har utledet <i>generelle </i>; de gjelder for alle tall. På side \pageref{regstart}\,-\,\pageref{regslutt} har vi gjengitt mange av disse reglene på en mer generell form. En fin introduksjon til algebra er å sammenligne reglene du finner her med slik du finner dem står i parentes.} i <i>Del I </i>. 
+
+
+
+<div class="rule"><h4>\adkom\;(\ref{adkom}) </h4> 
+<math class="display-math" display="block"> <mi>a</mi></mi><mo>+</mo> <mi>b</mi></mi> <mo>=</mo><mi>b</mi></mi><mo>+</mo><mi>a</mi></mi> </math>
+</div>
+<div class="example"> 
+<math class="display-math" display="block"> <mn>7</mn></mn><mo>+</mo> <mn>5</mn></mn><mo>=</mo><mn>5</mn></mn><mo>+</mo><mn>7</mn></mn> </math>
+</div>  
+
+<div class="rule"><h4>\gangkom\;(\ref{gangkom})</h4> 
+	<math class="display-math" display="block"> <mi>a</mi>mtext<mi>a</mi></mi> <mi>b</mi> <mo>=</mo><mi>b</mi>mtext<mi>a</mi> <mi>a</mi> </math>
+</div>
+<div class="example"> 
+	<math class="display-math" display="block"> <mn>9</mn></mn><mo>⋅</mo> <mn>8</mn></mn><mo>=</mo><mn>8</mn></mn><mo>⋅</mo><mn>9</mn></mn> </math>
+</div>
+<div class="example"> 
+<math class="display-math" display="block">  <mn>8</mn></mn>mtext<mi>a</mi> <mi>a</mi><mo>=</mo> <mi>a</mi>mtext<mi>a</mi> <mn>8</mn></mn>  </math>
+</div>
+
+<div class="info" data-title="Ganging med bokstavuttrykk">Når man ganger sammen bokstaver, er det vanlig å utelate gangetegnet. Og om man ganger sammen en bokstav og et konkret tal, skriver man det konkrete tallet først. Dette betyr for eksempel at
+	<math class="display-math" display="block"> <mi>a<mo>⋅</mo></mi> <mi>b</mi><mo>=</mo> a<mi>b</mi> </math>
+	og at
+	<math class="display-math" display="block"> <mi>a</mi>mtext<mi>a</mi></mi> <mn>8</mn></mn> <mo>=</mo><mn>8</mn></mn><mi>a</mi> </math>
+I tillegg skriver vi også
+<math class="display-math" display="block"> <mn>1</mn>mtext<mi>a</mi></mi> <mi>a</mi></mi><mo>=</mo><mi>a</mi></mi> </math>
+Det er også vanlig å utelate gangetegn der parentesuttrykk er en faktor:\[ 
+3<mo>⋅</mo>(a+b)=3(a+b) \]
+</div>
+ 
+
+<div class="rule"><h4>\brdef\;(\ref{brdef})</h4> 
+<math class="display-math" display="block"> <mi>a</mi><mo> :</mo><mi>b</mi><mo>=</mo>mtext<mi>a</mi> </math>
+</div>
+<div class="example"> 
+<math class="display-math" display="block"><mi>a</mi><mo> :</mo><mn>2</mn><mo>=</mo> mtext<mi>a</mi> </math>
+</div>
+  
+
+<div class="rule"><h4>\brtbr\; (\ref{brtbr})</h4> 
+<math class="display-math" display="block"> <mi><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac><mfrac><mrow> <mi>c</mi> </mrow> <mrow> <mi>d</mi> </mrow></mfrac></mi><mo>=</mo><mfrac><mrow> <mi>a</mi> <mi>c</mi> </mrow> <mrow> <mi>b</mi> <mi>d</mi> </mrow></mfrac> </math>
+</div>
+<div class="example"> 
+\algv{
+<mfrac><mrow> <mn>2</mn> </mrow> <mrow> <mn>11</mn> </mrow></mfrac><mo>⋅</mo> <mfrac><mrow> <mn>13</mn> </mrow> <mrow> <mn>21</mn> </mrow></mfrac>&=<mfrac><mrow> <mn>2</mn><mo>⋅</mo> <mn>13</mn> </mrow> <mrow> <mn>11</mn><mo>⋅</mo><mn>21</mn> </mrow></mfrac> =<mfrac><mrow> <mn>26</mn> </mrow> <mrow> <mn>231</mn> </mrow></mfrac>
+</div>
+}
+<div class="example"> 
+	<math class="display-math" display="block"> <mi><mfrac><mrow> <mn>3</mn> </mrow> <mrow> <mi>b</mi> </mrow></mfrac><mfrac><mrow> <mn>3</mn> </mrow> <mrow> <mi>b</mi> </mrow></mfrac></mi> <mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mn>7</mn> </mrow></mfrac><mo>=</mo><mfrac><mrow> <mn>3</mn> <mi>a</mi> </mrow> <mrow> <mn>7</mn><mi>b</mi> </mrow></mfrac> </math>
+</div>
+
+<div class="rule"><h4>\brdelmbr\;(\ref{delmbr})</h4>  
+<math class="display-math" display="block"> <mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac><mo> :</mo><mfrac><mrow> <mi>c</mi> </mrow> <mrow> <mi>d</mi> </mrow></mfrac><mo>=</mo><mi><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac></mi> <mfrac><mrow> <mi>d</mi> </mrow> <mrow> <mi>c</mi> </mrow></mfrac> </math>
+</div>
+<div class="example"> 
+<math class="display-math" display="block"> <mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>2</mn> </mrow></mfrac><mo> :</mo><mfrac><mrow> <mn>5</mn> </mrow> <mrow> <mn>7</mn> </mrow></mfrac><mo>=</mo><mi><mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>2</mn> </mrow></mfrac><mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>2</mn> </mrow></mfrac></mi> <mfrac><mrow> <mn>7</mn> </mrow> <mrow> <mn>5</mn> </mrow></mfrac> </math>
+</div>
+<div class="example">  
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mn>13</mn> </mrow></mfrac><mo> :</mo><mfrac><mrow> <mi>b</mi> </mrow> <mrow> <mn>3</mn> </mrow></mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mi><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mn>13</mn> </mrow></mfrac><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mn>13</mn> </mrow></mfrac></mi> <mfrac><mrow> <mn>3</mn> </mrow> <mrow> <mi>b</mi> </mrow></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mfrac><mrow> <mn>3</mn><mi>a</mi> </mrow> <mrow> <mn>13</mn><mi>b</mi> </mrow></mfrac> </mtd> </mtr><mtable></math>
+</div>  
+
+<div class="rule"><h4>\gangpar\;(\ref{gangpar}) </h4>  
+<math class="display-math" display="block"> <mo>(</mo><mi>a</mi></mi><mo>+</mo><mi>b</mi></mi><mo>)</mo><mi>c</mi></mi></mi> <mo>=</mo> <mi>a</mi></mi> <mi>c</mi></mi></mi> <mo>+</mo> <mi>b</mi></mi> <mi>c</mi></mi></mi> </math>
+</div> 
+<div class="example"> 
+<math class="display-math" display="block"> <mo>(</mo><mn>2</mn></mn><mo>+</mo><mi>a</mi><mo>)</mo><mi>b</mi></mi> <mo>=</mo><mn>2</mn></mn><mi>b</mi></mi><mo>+</mo><mi>a</mi><mi>b</mi></mi> </math>
+</div>
+<div class="example">
+<math class="display-math" display="block"> <mi>a</mi></mi><mo>(</mo><mn>5</mn></mn><mi>b</mi><mo>−</mo><mn>3</mn></mn><mo>)</mo><mo>=</mo><mn>5</mn></mn><mi>a</mi></mi><mi>b</mi><mo>−</mo><mn>3</mn></mn><mi>a</mi></mi> </math>
+</div> 
+ 
+<div class="rule"><h4>\gangmnegto\;(\ref{gangmnegto})</h4> 
+<math class="display-math" display="block"> <mi>a<mo>⋅</mo></mi></mi><mo>(</mo><mo>−</mo><mi>b</mi></mi><mo>)</mo><mo>=</mo><mo>−</mo><mo>(</mo><mi>a<mo>⋅</mo></mi></mi> <mi>b</mi></mi><mo>)</mo> </math>
+</div>
+<div class="example">  
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mn>3</mn><mo>⋅</mo><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mo>−</mo><mo>(</mo><mn>3</mn><mo>⋅</mo> <mn>4</mn><mo>)</mo>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mo>−</mo><mn>12</mn> </mtd> </mtr><mtable></math>
+</div>
+
+<div class="example"> 
+	\algv{
+	(-a)<mo>⋅</mo>7&=-(a<mo>⋅</mo> 7)\\
+	&=-7a 
+</div>
+}  
+
+<div class="rule"><h4>\gangmnegtre\;(\ref{gangmnegtre}) </h4> 
+<math class="display-math" display="block"> <mo>(</mo><mo>−</mo><mi>a</mi><mo>)</mo>mtext<mi>a</mi><mo>(</mo><mo>−</mo><mi>b</mi></mi><mo>)</mo><mo>=</mo><mi>a</mi>mtext<mi>a</mi> <mi>b</mi></mi> </math>
+</div>
+<div class="example">  
+<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo>⋅</mo><mo>(</mo><mo>−</mo><mn>8</mn><mo>)</mo> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>2</mn><mo>⋅</mo> <mn>8</mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mn>16</mn> </mtd> </mtr><mtable></math>	
+</div>
+<div class="example">  
+<math class="display-math" display="block"> <mo>(</mo><mo>−</mo><mi>a</mi></mi><mo>)</mo>mtext<mi>a</mi></mi><mo>(</mo><mo>−</mo><mn>15</mn></mn><mo>)</mo><mo>=</mo><mn>15</mn></mn><mi>a</mi></mi> </math>
+</div>
+
+ 
+
+<div class="language-box">
+Hvis vi i et uttrykk har én variabel isolert på den ene siden av likhetstegnet, og konstanter og variabler på den andre siden, sier vi at den isolerte variabelen er <span class="outline">uttrykt ved</span> de andre tallene. For eksempel, om vi har uttrykket <math>  <mrow><mi>a</mi><mo>=</mo><mn>2</mn><mi>b</mi><mo>−</mo><mn>4</mn>  </math>, sier vi at ''<math>  <mi>a</mi>  </math> er uttrykt ved <math>  <mi>b</mi>  </math>''. Har vi uttrykket <math>  <mrow><mi>q</mi> <mo>=</mo> <mn>9</mn><mi>y</mi><mo>−</mo><mi>x</mi></mrow>  </math>, sier vi at ''<math>  <mi>q</mi>  </math> er uttrykt ved <math>  <mi>x</mi>  </math> og <math>  <mi>y</mi>  </math>''.
+}
+
+<div class="info" data-title="Utvidelser av reglene">
+Noe av styrken til algebra er at vi kan lage oss kompakte regler som det er lett å utvide også til andre tilfeller. La oss som et eksempel finne et annet uttrykk for
+	<math class="display-math" display="block"> <mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi><mo>)</mo><mi>d</mi> </math>
+\hrs{gangpara</div>{Regel} forteller oss ikke direkte hvordan vi kan regne mellom parentesuttrykket og <math>  <mi>d</mi>  </math>, men det er ingenting som hindrer oss i å omdøpe <math>  <mi>a</mi><mo>+</mo><mi>b</mi>  </math> til <math>  <mi>k</mi>  </math>:
+<math class="display-math" display="block"> <mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mi>k</mi> </math>
+Da er
+<math class="display-math" display="block"> <mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mi><mo>)</mo><mi>d</mi></mi><mo>=</mo><mo>(</mo><mi>k</mi><mo>+</mo><mi>c</mi></mi><mo>)</mo><mi>d</mi></mi> </math>
+Av regel ?? har vi nå at
+<math class="display-math" display="block"> <mo>(</mo><mi>k</mi><mo>+</mo><mi>c</mi><mo>)</mo><mi>d</mi> <mo>=</mo> <mi>k</mi><mi>d</mi><mo>+</mo><mi>c</mi><mi>d</mi> </math>
+Om vi setter inn igjen uttrykket for <math>  <mi>k</mi>  </math>, får vi 
+<math class="display-math" display="block"> <mi>k<mi>d</mi></mi><mo>+</mo><mi>c<mi>d</mi></mi><mo>=</mo><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo><mi>d</mi><mo>+</mo><mi>c<mi>d</mi></mi> </math>
+Ved å utnytte regel ?? enda en gang kan vi skrive
+<math class="display-math" display="block"> <mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo><mi>d</mi><mo>+</mo>c<mi>d</mi><mo>=</mo><mi>a</mi><mi>d</mi><mo>+</mo><mi>b</mi>c<mo>+</mo>c<mi>d</mi> </math>
+Altså er
+<math class="display-math" display="block"> <mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi><mo>)</mo><mi>d</mi><mo>=</mo><mi>a</mi><mi>d</mi><mo>+</mo><mi>b</mi><mi>c</mi><mo>+</mo><mi>c</mi><mi>d</mi> </math>
+{\footnotesize
+\it Obs! Dette eksempelet er <i>ikke </i> ment for å vise hvordan man skal gå fram når man har uttrykk som ikke direkte er omfattet av regel \ref{adkomalg}\,-\,\ref{gangmnegtrea}, men for å vise hvorfor det alltid er nok å skrive regler med færrest mulige ledd, faktorer og lignende. Oftest vil man bruke utvidelser av reglene uten engang å tenke over det, og i alle fall langt ifra så pertentlig som det vi gjorde her.}
+}
+
+<h2 class="section-title">\pot </h2>
+<div class="figure">pot</div>
+En potens består av et <span class="outline">grunntall</span> og en <span class="outline">eksponent</span>. For eksempel er <math> <mn>2</mn><mo>^</mo><mrow><mn>3</mn></mrow> </math> en potens med grunntall 2 og
+eksponent 3. En positiv, heltalls eksponent sier hvor mange eksemplar
+av grunntallet som skal ganges sammen, altså er
+<math class="display-math" display="block"> <mn>2</mn></mn></mn></mn><mo>^</mo><mn>3</mn> <mo>=</mo><mn>2</mn></mn></mn></mn><mo>⋅</mo><mn>2</mn></mn></mn></mn><mo>⋅</mo><mn>2</mn></mn></mn></mn> </math>
+
+<div class="rule"><h4>Potenstall</h4> 
+	<math>  <mrow><mi>a</mi><mo>^</mo><mi>n</mi>  </math> er et potenstall med grunntall <math>  <mi>a</mi>  </math> og eksponent <math>  <mi>n</mi>  </math>. 
+	
+	
+	Hvis <math>  <mi>n</mi>  </math> er et naturlig tall, vil <math>  <mi>a</mi><mo>^</mo><mi>n</mi>  </math> svare til <math>  <mi>n</mi>  </math> eksemplar av <math>  <mi>a</mi>  </math>\\ multiplisert med hverandre.
+}
+<div class="example"> 
+	\algv{
+		5^3 &= 5<mo>⋅</mo>5<mo>⋅</mo>5 \\
+		&= 125
+	</div>
+}
+<div class="example"> 
+	<math class="display-math" display="block"> <mi>c</mi></mi></mi></mi><mo>^</mo><mn>4</mn> <mo>=</mo> <mi>c</mi></mi></mi></mi><mo>⋅</mo> <mi>c</mi></mi></mi></mi> <mo>⋅</mo> <mi>c</mi></mi></mi></mi> <mo>⋅</mo> <mi>c</mi></mi></mi></mi> </math>
+</div>
+<div class="example">  
+	\algv{
+		(-7)^2 &= (-7)<mo>⋅</mo>(-7) \\
+		&= 49
+	</div>
+} 
+<div class="example"> 
+	<math class="display-math" display="block"> <mi>a</mi></mi><mo>^</mo><mn>1</mn><mo>=</mo><mi>a</mi></mi> </math>
+</div>
+<div class="language-box">
+	Vanlige måter å si <math>  <mn>2</mn><mo>^</mo><mn>3</mn>  </math> på er
+	<ul>
+		\item ''2 i tredje''
+		\item ''2 opphøyd i 3''
+	</ul>
+	I programmeringsspråk brukes gjerne symbolet <span class="symbol"> \^{</span></div> eller symbolene <span class="symbol"> **</span> mellom grunntall og eksponent.
+	
+	Å opphøye et tall i 2 kalles ''å kvadrere'' tallet.
+}
+
+<div class="info" data-title="Merk">
+	De kommende sidene vil inneholde regler for potenser med tilhørende forklaringer. Selv om det er ønskelig at de har en så generell form som mulig, har vi i forklaringene valgt å bruke eksempel der eksponentene ikke er variabler. Å bruke variabler som eksponenter ville gitt mye mindre leservennlige uttrykk, og vi vil påstå at de generelle tilfellene kommer godt til synes også ved å studere konkrete tilfeller. 
+</div>  
+
+<div class="rule"><h4>\potgang </h4> 
+	\begin{equation</div>
+		a^{m}<mo>⋅</mo> a^{n}=a^{m+n}	
+	\end{equation}
+}
+<div class="example"> 
+	\algv{3^{5</div><mo>⋅</mo>3^{2}&=3^{5+2}\\&=3^{7}}
+}
+<div class="example"> 
+	\algv{
+		b^4<mo>⋅</mo> b^{11</div>&= b^{3+11}\\
+		&=b^{14}
+	}
+}
+<div class="example">  
+	\algv{
+		a^5<mo>⋅</mo> a^{-7</div> &= a^{5+(-7)} \\
+		&=a^{5-7} \\
+		&= a^{-2} 
+	}
+	(Se regel ?? for hvordan en potens med negativ eksponent kan tolkes.)	
+} 
+
+\fork{\ref{potgang} \potgang}{
+	La oss se på tilfellet 
+	<math class="display-math" display="block"> <mi>a</mi></mi><mo>^</mo><mrow><mn>2</mn></mrow>mtext<mi>a</mi></mi> <mi>a</mi></mi><mo>^</mo><mrow><mn>3</mn></mrow> </math>
+	Vi har at
+	\algv{
+		a^{2} & =a<mo>⋅</mo> a\vn
+		a^{3} & =a<mo>⋅</mo> a<mo>⋅</mo> a
+	}
+	Med andre ord kan vi skrive 
+	\begin{align*}
+		a^{2}<mo>⋅</mo> a^{3} & =\overbrace{a <mo>⋅</mo> a}^{a^{2}}<mo>⋅</mo>\overbrace{a<mo>⋅</mo> a<mo>⋅</mo> a}^{a^{3}}\\
+		& =a^{5}
+	\end{align*}
+}
+<div class="rule"><h4>\potdivpot </h4> 
+	<math class="display-math" display="block"> <<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i>fr<<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><<mi>m</mi>i><<mi>m</mi>i>a</<mi>m</mi>i></<mi>m</mi>i></<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i>c</<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><mrow><<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><<mi>m</mi>i><<mi>m</mi>i>a</<mi>m</mi>i></<mi>m</mi>i></<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><mo>^</mo><mrow><<mi>m</mi>i><mi>m</mi></<mi>m</mi>i></mrow><mrow><<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><<mi>m</mi>i><<mi>m</mi>i>a</<mi>m</mi>i></<mi>m</mi>i></<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><mo>^</mo><mrow><<mi>m</mi>i><mi>n</mi></<mi>m</mi>i></mrow></mrow><mo>=</mo><<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><<mi>m</mi>i><<mi>m</mi>i>a</<mi>m</mi>i></<mi>m</mi>i></<<mi>m</mi>i><mi>m</mi></<mi>m</mi>i>i><mo>^</mo><mrow><<mi>m</mi>i><mi>m</mi></<mi>m</mi>i><mo>−</mo><<mi>m</mi>i><mi>n</mi></<mi>m</mi>i></mrow> </math> }
+
+<div class="example">pace{-20 pt</div>
+	\[
+	\frac{3^{5}}{3^{2}}=3^{5-2}=3^{3}
+	\]
+} 
+<div class="example">  
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi>frac</mi><mrow><mn>2</mn><mo>^</mo><mrow><mn>4</mn> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math><mo>⋅</mo> a^{7</div>}{a^{6}<mo>⋅</mo>2^{2}}&=2^{4-2}<mo>⋅</mo> a^{7-6}\\
+		&=2^{2}a \\
+		&=4a
+	}
+}
+
+\fork{\ref{potdivpot} \potdivpot}{
+	La
+	oss undersøke brøken
+	<math class="display-math" display="block"> <mi>fr<mi>a</mi></mi>c</mi><mrow><mi>a</mi></mi><mo>^</mo><mrow><mn>5</mn></mrow></mrow><mrow><mi>a</mi></mi><mo>^</mo><mrow><mn>2</mn></mrow></mrow> </math>
+	Vi skriver
+	ut potensene i teller og nevner: 
+	\begin{align*}
+		\frac{a^{5}}{a^{2}} & =<mfrac><mrow> <mi>a</mi>mtext<mi>a</mi></mi></mi></mi></mi> <mi>a</mi>mtext<mi>a</mi></mi></mi></mi></mi> <mi>a</mi>mtext<mi>a</mi></mi></mi></mi></mi> <mi>a</mi>mtext<mi>a</mi></mi></mi></mi></mi> <mi>a</mi> </mrow> <mrow> <mi>a</mi>mtext<mi>a</mi></mi> <mi>a</mi> </mrow></mfrac>\br
+		& =\frac{\bcancel{a}<mo>⋅</mo>\bcancel{a}<mo>⋅</mo> a<mo>⋅</mo> a<mo>⋅</mo> a}{\bcancel{a}<mo>⋅</mo>\bcancel{a}}\\
+		& =a<mo>⋅</mo> a<mo>⋅</mo> a\\
+		& =a^{3}
+	\end{align*}
+	Dette kunne vi ha skrevet som
+	\begin{align*}
+		\frac{a^{5}}{a^{2}} & =a^{5-2}\\
+		& =a^{3}
+	\end{align*}
+}  
+
+<div class="rule"><h4>\potanull </h4> 
+	\[
+	a^{0</div>=1
+	\]
+}
+<div class="example"> \[
+	1000^{0</div>=1
+	\]}
+<div class="example"> \[
+	(-b)^{0</div>=1
+	\]}
+\fork{\ref{pota0} \potanull}{
+	Et tall delt på seg selv er alltid lik 1, derfor er 
+	\[
+	\frac{a^{n}}{a^{n}}=1
+	\]
+	Av dette, og regel ??, har vi at
+	\algv{
+		1&=\frac{a^{n}}{a^{n}}
+		\\& =a^{n-n}\\
+		& =a^{0}
+	}
+}  
+
+<div class="rule"><h4>\potneg </h4> 
+	<math class="display-math" display="block"> <mi>a</mi><mo>^</mo><mrow><mo>−</mo><mi>n</mi><mo>=</mo>mtext<mi>a</mi> </math>
+}
+<div class="example">  
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi>a</mi><mo>^</mo><mrow><mo>−</mo><mn>8</mn> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>&=<mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mi>a</mi><mo>^</mo><mn>8</mn> </mrow></mfrac>  
+	</div>	
+}
+<div class="example">  
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo><mo>^</mo><mrow><mo>−</mo><mn>3</mn> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>&=<mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo><mo>^</mo><mn>3</mn> </mrow></mfrac> 
+		=-<mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>64</mn> </mrow></mfrac>
+	</div>
+}
+\fork{\ref{potneg} \potneg}{
+	Av regel ?? har vi at <math>  <mi>a</mi><mo>^</mo><mn>0</mn><mo>=</mo><mn>1</mn>  </math>. Altså er
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mi><mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mi>a</mi><mo>^</mo><mi>n</mi> </mrow></mfrac><mfrac><mrow> <mi>a</mi><mo>^</mo><mn>0</mn> </mrow> <mrow> <mi>a</mi><mo>^</mo><mi>n</mi> </mrow></mfrac></mi> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+	Av regel ??  er
+	\algv{
+		<mfrac><mrow> <mi>a</mi><mo>^</mo><mn>0</mn> </mrow> <mrow> <mi>a</mi><mo>^</mo><mi>n</mi> </mrow></mfrac>&=a^{0-n} \\
+		&=a^{-n}
+	}
+}  
+
+
+<div class="rule"><h4>\potbr </h4> 
+	\begin{equation</div>
+		\left(<mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac>\right)^{m}=\frac{a^{m}}{b^{m}}
+\end{equation}} 
+<div class="example">  
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mrow><mfrac><mrow> <mn>3</mn> </mrow> <mrow> <mn>4</mn> </mrow></mfrac></mrow><mo>)</mo><mo>^</mo><mn>2</mn><mfrac><mrow> <mn>3</mn><mo>^</mo><mn>2</mn> </mrow> <mrow> <mn>4</mn><mo>^</mo><mn>2</mn> </mrow></mfrac> <mfrac><mrow> <mn>9</mn> </mrow> <mrow> <mn>16</mn> </mrow></mfrac> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+</div>
+<div class="example">  
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mrow><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mn>7</mn> </mrow></mfrac></mrow><mo>)</mo><mo>^</mo><mn>3</mn><mfrac><mrow> <mi>a</mi><mo>^</mo><mn>3</mn> </mrow> <mrow> <mn>7</mn><mo>^</mo><mn>3</mn> </mrow></mfrac> <mfrac><mrow> <mi>a</mi><mo>^</mo><mn>3</mn> </mrow> <mrow> <mn>343</mn> </mrow></mfrac> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>
+</div>
+\fork{\ref{potbr} \potbr}{
+	La oss studere
+	<math class="display-math" display="block"> <mo>(</mo><mrow><mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac></mrow><mo>)</mo><mo>^</mo><mn>3</mn> </math>
+	Vi har at
+	\begin{align*}
+		\left(<mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac>\right)^3 	&=<mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac><mo>⋅</mo> <mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac><mo>⋅</mo> <mfrac><mrow> <mi>a</mi> </mrow> <mrow> <mi>b</mi> </mrow></mfrac>\br
+		& =<mfrac><mrow> <mi>a</mi>mtext<mi>a</mi></mi></mi> <mi>a</mi>mtext<mi>a</mi></mi></mi> <mi>a</mi> </mrow> <mrow> <mi>b</mi><mo>⋅</mo></mi></mi> <mi>b</mi><mo>⋅</mo></mi></mi> <mi>b</mi> </mrow></mfrac>\br
+		& =\frac{a^{3}}{b^{3}}
+	\end{align*}
+} 
+
+<div class="rule"><h4>\faktgr </h4> 
+	\begin{equation</div>
+		\left(ab\right)^{m}=a^{m}b^{m}
+	\end{equation}
+}
+<div class="example">   
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mn>3</mn><mi>a</mi><mo>)</mo><mo>^</mo><mn>5</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>3</mn><mo>^</mo><mn>5</mn></mn><mi>a</mi><mo>^</mo><mn>5</mn></mn>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>243</mn><mi>a</mi><mo>^</mo><mn>5</mn>  </mtd> </mtr><mtable></math>	
+</div>
+<div class="example">
+	\[
+	(ab)^{4</div>=a^{4}b^{4}
+	\]
+}
+\fork{\ref{faktgr} \faktgr}{
+	La oss
+	bruke <math> <mrow><mo>(</mo><mi>a<mo>⋅</mo></mi> <mi>b</mi><mo>)</mo><mo>^</mo><mrow><mn>3</mn></mrow></mrow> </math> som eksempel. Vi har at
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mi>a<mo>⋅</mo></mi> <mi>b</mi><mo>)</mo><mo>^</mo><mrow><mn>3</mn> </mtd> <mtd> <mo>=</mo> </mtd> </mtr><mtable></math>&=(a<mo>⋅</mo> b)<mo>⋅</mo>(a<mo>⋅</mo> b)<mo>⋅</mo>(a<mo>⋅</mo> b) \\
+		&=a<mo>⋅</mo> a<mo>⋅</mo> a <mo>⋅</mo> b <mo>⋅</mo> b <mo>⋅</mo> b \\
+		&=a^3b^3
+	}
+} 
+
+
+<div class="rule"><h4>\potsomgrunn </h4> 
+	\begin{equation</div>
+		\left(a^{m}\right)^{n}=a^{m<mo>⋅</mo> n}
+\end{equation}}
+<div class="example">  
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mrow><mi>c</mi><mo>^</mo><mn>4</mn></mrow><mo>)</mo><mo>^</mo><mn>5</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mi>c</mi><mo>^</mo><mrow><mn>4</mn><mo>⋅</mo><mn>5</mn> </mtd> </mtr><mtable></math>\\
+		&=c^{20</div>	
+	}	
+}
+<div class="example">   
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mrow><mn>3</mn><mo>^</mo><mfrac><mrow> <mn>5</mn> </mrow> <mrow> <mn>4</mn> </mrow></mfrac></mrow><mo>)</mo><mo>^</mo><mn>8</mn> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mn>3</mn><mo>^</mo><mrow><mi><mfrac><mrow> <mn>5</mn> </mrow> <mrow> <mn>4</mn> </mrow></mfrac><mfrac><mrow> <mn>5</mn> </mrow> <mrow> <mn>4</mn> </mrow></mfrac></mi><mn>8</mn> </mtd> </mtr><mtable></math> \\
+		&=3^{10</div>
+	}	
+}
+\fork{\ref{potsomgrunn} \potsomgrunn}{
+	La oss bruke <math> <mo>(</mo><mrow><mi>a</mi><mo>^</mo><mrow><mn>3</mn></mrow></mrow><mo>)</mo><mo>^</mo><mrow><mn>4</mn></mrow> </math> som eksempel. Vi har at
+	\begin{align*}
+		\left(a^{3}\right)^{4} & =a^{3}<mo>⋅</mo> a^{3}<mo>⋅</mo> a^{3}<mo>⋅</mo> a^{3}
+	\end{align*}
+	
+	
+	Av regel ?? er
+	\algv{
+		a^{3}<mo>⋅</mo> a^{3}<mo>⋅</mo> a^{3}<mo>⋅</mo> a^{3} & =a^{3+3+3+3}\\
+		& =a^{3<mo>⋅</mo>4}\\
+		&=a^{12}
+	}	
+}
+
+
+<div class="rule"><h4><i>n</i>-rot</h4>  
+	<math class="display-math" display="block"> <mi>a</mi></mi><mo>^</mo>mtext<mi>a</mi></mi><mo>=</mo><mi>sqrt</mi><mo>[</mo><mi>n</mi><mo>]</mo><mrow><mi>a</mi></mi> </math>
+	Symbolet <span class="symbol"> <math>  <mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo>mi<mo>></mo>sqrt<mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo><mo<mo>></mo>/</mo<mo>></mo>mi<mo>></mo><mrow><mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo>mi<mo>></mo>ph<mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo>mi<mo>></mo>a<mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo><mo<mo>></mo>/</mo<mo>></mo>mi<mo>></mo>ntom<mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo><mo<mo>></mo>/</mo<mo>></mo>mi<mo>></mo><mrow><mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo>mi<mo>></mo>a<mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo><mo<mo>></mo>/</mo<mo>></mo>mi<mo>></mo><mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo><mo<mo>></mo>/</mo<mo>></mo>sp<mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo>mi<mo>></mo>a<mo<mo>></mo><<<mo<mo>></mo>/</mo<mo>></mo>mo<mo>></mo><mo<mo>></mo>/</mo<mo>></mo>mi<mo>></mo>n<mo>></mo></mrow>  </math>} kalles et <span class="outline">rottegn</span>. For eksponenten <math>  <mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>2</mn> </mrow></mfrac>  </math> er det vanlig å utelate 2 i rottegnet:
+	<math class="display-math" display="block"> <mi>a</mi></mi><mo>^</mo>mtext<mi>a</mi></mi><mo>=</mo><mi>sqrt</mi><mrow><mi>a</mi></mi></mrow> </math>
+}
+<div class="example">
+	Av regel ?? har vi at
+	<math class="display-math" display="block"><mtable><mtr> <mtd> <mo>(</mo><mrow><mi>a</mi><mo>^</mo>b</mrow><mo>)</mo><mo>^</mo>mtext<mi>a</mi> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mi>a</mi><mo>^</mo><mrow>bmtext<mi>a</mi> mtext<mi>a</mi> </mtd> </mtr><mtable></math> \\
+		&=a	
+	</div>
+	For eksempel er	
+	\algv{
+		9^<mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>2</mn> </mrow></mfrac>=\sqrt{9}=3 &<mtext>, siden </mtext> 3^2 =9 \vn
+		125^<mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>3</mn> </mrow></mfrac>=\sqrt[3]{125}=5 &<mtext>, siden </mtext> 5^3 =125 \vn	
+		16^<mfrac><mrow> <mn>1</mn> </mrow> <mrow> <mn>4</mn> </mrow></mfrac>=\sqrt[4]{16}=2 &<mtext>, siden </mtext> 2^4 =16
+	}	
+}
+<div class="language-box">
+	<math> <mi>sqrt</mi><mrow><mn>9</mn>  </math> kalles ''kvadratrota til 9'' 
+	
+	<math>  <mi>sqrt</mi><mo>[</mo><mn>5</mn><mo>]</mo><mrow><mn>9</mn></mrow>  </math> kalles ''femterota til 9''.
+}
+
+<h2 class="section-title">\irrasj</h2>
+<div class="rule"><h4>Irrasjonale tall</h4> 
+	Et tall som <i>ikke </i> er et rasjonalt tall, er et irrasjonalt tall\footnotemark.
+	
+	Verdien til et irrasjonalt tall har uendelig mange desimaler med et ikke-repeterende mønster.
+</div>
+\footnotetext{Strengt tatt er irrasjonale tall alle <i>reelle</i> tall som ikke er rasjonale tall. Men for å forklare hva <i>reelle</i> tall er, må vi forklare hva <i>imaginære</i> tall er, og det har vi valgt å ikke gjøre i denne boka. }
+<div class="example">
+	<math>  <mi>sqrt</mi><mrow><mn>2</mn>  </math> er et irrasjonalt tall.
+	<math class="display-math" display="block"> <mi>sqrt</mi><mrow><mn>2</mn></mrow><mo>=</mo><mn>1</mn><mo>.</mo>4<mn>1</mn>4<mn>2</mn><mn>1</mn>356<mn>2</mn>373<mo>.</mo><mo>.</mo><mo>.</mo> </math>
+}
+
+
+
+

@@ -608,15 +608,51 @@
              fig.makeText("4", 5.5, 2.5)
             }
         },
+        "def_frac": () => {
+            const fig = new BookFigure("def_frac", 1)
+            fig.strokeWidth = 1
+            fig.makeMathText("<mn>1</mn><mo> :</mo><mn>4</mn><mo>=</mo><mfrac><mn>1</mn> <mn>4</mn></mfrac>", 0, 0, {horizontalAnchor: "start"})
+            fig.makeVector([100, -10], [70, -10], {arrow: "axisArrow", arrowScale: 0.6})
+            fig.makeVector([100, 10], [70, 10], {arrow: "axisArrow", arrowScale: 0.6})
+            fig.makeText("Teller", 105, -10, {horizontalAnchor: "start"})
+            fig.makeText("Nevner", 105, 10, {horizontalAnchor: "start"})
+        },
         "one_frac": () => {
             const fig = new BookFigure("one_frac", fracOne)
             fig.makeFractionRect(1, 1, 1)
             fig.makeText("1", 0.5, 0.5)
+            fig.makeMathText("<mo>=</mo><mn>1</mn>", 1, 0.5, {horizontalAnchor: "start"})
         },
+        "one_fourths": () => {
+            const fig = new BookFigure("one_fourths", fracOne)
+            fig.makeFractionRect(2, 2, 4)
+            fig.makeMathText("<mfrac><mn>1</mn> <mn>4</mn></mfrac>", 0.25, 0.25)
+            fig.makeMathText("<mfrac><mn>1</mn> <mn>4</mn></mfrac>", 0.75, 0.25)
+            fig.makeMathText("<mfrac><mn>1</mn> <mn>4</mn></mfrac>", 0.25, 0.75)
+            fig.makeMathText("<mfrac><mn>1</mn> <mn>4</mn></mfrac>", 0.75, 0.75)
+            fig.makeMathText("<mo>=</mo><mn>1</mn>>", 1, 0.5, {horizontalAnchor: "start"})
+
+        }, 
         "one_fourth": () => {
-            const fig = new BookFigure("one_frac", fracOne)
+            const fig = new BookFigure("one_fourth", fracOne)
             fig.makeRectangle(1/4, 1/4, 0, 0)
             fig.makeMathText("<mo>=</mo><mfrac><mn>1</mn> <mn>4</mn></mfrac>", 0.25, 0.125, {horizontalAnchor: "start"})
+        },
+        "one_fourths2": () => {
+            const fig = new BookFigure("one_fourths2", fracOne)
+            fig.makeFractionRect(2, 2, 1)
+            fig.makeMathText("<mo>=</mo><mfrac><mn>1</mn> <mn>4</mn></mfrac>", 1, 0.5, {horizontalAnchor: "start"})
+
+        },
+        "frac_count": () => {
+            const fig = new BookFigure("frac_count", fracOne)
+            fig.makeFractionRect(3, 1, 2)
+            fig.makeMathText("<mo>=</mo><mfrac><mn>2</mn> <mn>3</mn>", 1, 0.5, {horizontalAnchor: "start"})
+            fig.makeFractionRect(2, 5, 7, {x: 2})
+            fig.makeMathText("<mo>=</mo><mfrac><mn>7</mn> <mn>10</mn>", 3, 0.5, {horizontalAnchor: "start"})
+            fig.makeFractionRect(4, 5, 19, {x: 4})
+            fig.makeMathText("<mo>=</mo><mfrac><mn>19</mn> <mn>20</mn>", 5, 0.5, {horizontalAnchor: "start"})
+    
         }, 
         "perimeter_triangle": () => {
             const fig = new BookFigure("perimeter_triangle", 40)
@@ -627,7 +663,7 @@
         } 
     }  
 
-        mod["one_fourth"]()
+        mod["frac_count"]()
 
 
         
