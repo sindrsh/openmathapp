@@ -27,7 +27,7 @@ class BookFigure {
     oneStrokeColor = "blue"
     tenColor = "#98FB98"
     tenStrokeColor = "#006400"
-    numeratorColor = "blue"
+    numeratorColor = this.oneColor
 
     constructor(id, oneSize, useViewBox=true, appendToBody=true) {
         this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
@@ -316,7 +316,7 @@ class BookFigure {
         equals.setAttribute("height", height)
     }
 
-    makeMathText(mathContent, x, y, {verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp, displayStyle="true"} = {}) {
+    makeMathText(mathContent, x, y, {absoluteX=0, absoluteY=0, verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp, displayStyle="true", textColor=null} = {}) {
         x = x*xScale
         y = y*yScale
         let text = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject")
@@ -325,6 +325,9 @@ class BookFigure {
         mathRect.innerHTML = `${mathContent}`
         
         text.style.textAnchor = horizontalAnchor
+        if(textColor) {
+            text.style.color = "blue"
+        }
         text.innerHTML = `<math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle=${displayStyle}> ${mathContent} </math>`
         
        
@@ -332,9 +335,15 @@ class BookFigure {
         let body = document.getElementsByTagName("body")[0]
         body.appendChild(mathRect)
         let boundingRect = mathRect.getBoundingClientRect()
-        body.removeChild(mathRect)
-        let width = boundingRect.width
         let height = boundingRect.height
+        for (const c of mathRect.children) {
+            if (c.getBoundingClientRect().height > height) {
+                height = c.getBoundingClientRect().height
+            }
+        }
+        body.removeChild(mathRect)
+        
+        let width = boundingRect.width
        
 
         let textX = x
@@ -354,7 +363,10 @@ class BookFigure {
             textY = y - height/2
             y = textY
         }
-        height = height + 5
+
+        height += 5
+        x += absoluteX
+        y += absoluteY
         text.setAttribute("x", x.toString())
         text.setAttribute("y", y.toString())
 
@@ -426,10 +438,10 @@ class BookFigure {
         return angle*180/Math.PI
     }
 
-    makeText(label= "", x, y, {textColor="black", fontSize=null, verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp} = {}) {
+    makeText(label= "", x, y, {absoluteX=0, absoluteY=0, textColor="black", fontSize=null, verticalAnchor="middle", horizontalAnchor="middle", addToSvg=true, xScale=this.xScale, yScale=this.yScale, isTemp = this.isTemp} = {}) {
         let text = document.createElementNS("http://www.w3.org/2000/svg", "text")
-        x*= xScale
-        y*= yScale
+        x = x*xScale + absoluteX
+        y = y*yScale + absoluteY
         text.setAttribute("x", x.toString())
         text.setAttribute("y", y.toString())
         
@@ -560,14 +572,14 @@ class BookFigure {
         
     }
 
-    makeFractionRect(a, b, n, {fill= this.numeratorColor, addToSvg=true, isTemp=true}={}) {
+    makeFractionRect(a, b, n, {x=0, y=0, fill= this.numeratorColor, addToSvg=true, isTemp=true}={}) {
         let dx = 1/a
         let dy = 1/b
         let numerators = []
         let fraction = document.createElementNS("http://www.w3.org/2000/svg", "g")
         for (let i of Array(a).keys()) {
             for (let j of Array(b).keys()) {
-                let part = this.makeRectangle(dx, dy, i*dx, j*dy)
+                let part = this.makeRectangle(dx, dy, x + i*dx, y + j*dy)
                 numerators.push(part)
                 fraction.appendChild(part)
             } 

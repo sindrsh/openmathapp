@@ -4,11 +4,15 @@
   --select-color3: rgb(0, 200, 200, 1);   
   --select-color4: rgb(150, 200, 200, 1);    
   --minus-color: rgb(255, 0, 0, 1);
+  --fill-color-blue: rgb(0, 0, 255, 1);
+  --fill-color-red: rgb(255, 0, 0, 1);
+  --fill-color-green: rgb(0, 255, 0, 1);
+  --red-color: rgb(255, 0, 0);
 }
 
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
     width: 550px;
     margin: auto;
     font-size: 16px;
@@ -20,7 +24,7 @@ body {
 }
 
 math {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
 }
 
 .outline {

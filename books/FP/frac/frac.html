@@ -10,8 +10,10 @@
 
 <body>
 	<h2 class="section-title">Introduksjon </h2>
-	<div class="rule"><h4>\brdef </h4> 
+	<div class="rule"><h4>Definisjon </h4> 
 		En brøk er en annen måte å skrive et delestykke på. I en brøk kaller vi dividenden for <span class="outline">teller</span> og divisoren for <span class="outline">nevner</span>.
+	<div class="figure" id="def_frac">
+	</div>
 	</div>
 	<div class="language-box">
 	Vanlige måter å si <math>  <mfrac><mn>1</mn> <mn>4</mn></mfrac>  </math> på er.
@@ -24,27 +26,27 @@
 	<h4 class="subsubsection-title">Brøk som mengde</h4>
 	La oss se på brøken <math>  <mfrac><mn>1</mn> <mn>4</mn></mfrac>  </math> som en mengde. Vi starter da med å tenke på tallet 1 som en rute: 
 	
-	<div class="figure"></div>
+	<div class="figure" id="one_frac"></div>
 	Så  deler vi denne ruten inn i fire mindre ruter som er like store. Hver av disse rutene blir da <math>  <mfrac><mn>1</mn> <mn>4</mn></mfrac>  </math> (1 av 4):
-	<div class="figure"></div>
+	<div class="figure" id="one_fourths"></div>
 	
 	Har vi én slik rute, har vi altså 1 firedel:
-	<div class="figure"></div>
+	<div class="figure" id="one_fourth"></div>
 	Men skal man bare ut ifra en figur kunne se hvor stor en brøk er, må man vite hvor stor 1 er, og for å få dette lettere til syne skal vi også ta med de ''tomme'' rutene:
-	<div class="figure">br3</div>
+	<div class="figure" id="one_fourths2"></div>
 	Slik vil de blå og de tomme rutene fortelle oss hvor mange biter 1 er delt inn i, mens de blå rutene alene forteller oss hvor mange slike biter det <i>egentlig </i> er. Slik kan vi si at
 	 
 	<div class="statement"> 
 	<math class="display-math" display="block"><mtable><mtr> <mtd> <mtext>antall blå ruter</mtext> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mtext>teller</mtext>  </mtd> </mtr><mtr> <mtd> <mtext>antall blå ruter</mtext><mo>+</mo><mtext>antall tommme ruter</mtext> </mtd> <mtd> <mo>=</mo> </mtd><mtd> <mtext>nevner</mtext>  </mtd> </mtr><mtable></math>
-	<div class="figure">br0a</div>
+	<div class="figure" id="frac_count"></div>
 	</div>
 	
 	
 	<h4 class="subsubsection-title">Brøk på tallinja</h4>
 	På tallinja deler vi lengden mellom 0 og 1 inn i like mange lengder som nevneren angir. Har vi en brøk med 4 i nevner, deler vi lengden mellom 0 og 1 inn i 4 like lengder:
-	<div class="figure">br9</div>
+	<div class="figure" id="frac_on_num_line"></div>
 	Tallinja er også fin å bruke for å tegne inn brøker som er større enn 1:
-	<div class="figure">br9a</div>
+	<div class="figure" id="frac_on_num_line2">br9a</div>
 	<h4 class="subsubsection-title">Brøker og teller oppsummert</h4>
 	Selv om vi har vært innom det allerede, er det så avgjørende å forstå hva telleren og nevneren sier oss at vi tar en kort oppsummering:
 	<div class="statement">
@@ -67,8 +69,15 @@
 	<math class="display-math" display="block">
 		<mfrac><mn>1</mn> <mn>2</mn></mfrac><mo>=</mo><mfrac><mn>2</mn> <mn>4</mn></mfrac><mo>=</mo><mfrac><mn>4</mn> <mn>8</mn></mfrac><mo>=</mo><mn>0,5</mn>
 	</math>
-	<div class="figure">br12</div> 
-	<div class="figure">br12a</div>
+	<div class="statement">
+	<div class="figure" id="frac_eq_value"></div>
+	<div style="text-align: right;">Mengder</div> 
+	</div>
+	<div class="statement">
+	<div class="figure" id="frac_eq_value_on_num_line"></div>
+	<div style="text-align: right;">Tallinja</div> 
+	</div>
+
 	<h4 class="subsubsection-title">Utviding av brøk</h4>
 	At brøker kan se forskjellige ut, men ha samme verdi, betyr at vi kan endre på utseendet til en brøk uten å endre verdien. La oss som eksempel gjøre om <math>  <mfrac><mn>3</mn> <mn>5</mn></mfrac>  </math> til en brøk med samme verdi, men med 10 som nevner:
 	<ul>
@@ -669,5 +678,9 @@
 		Videre har vi at.</div>
 		<math class="display-math" display="block"><mtable><mtr> <mtd> <mfrac><mn>3</mn> <mn>1</mn></mfrac><mo>+</mo><mfrac><mn>4</mn> <mn>5</mn></mfrac> </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>3<mo>⋅</mo>5</mn> <mn>1<mo>⋅</mo>5</mn></mfrac><mo>+</mo><mfrac><mn>4</mn> <mn>5</mn></mfrac>  </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>15</mn> <mn>5</mn></mfrac><mo>+</mo><mfrac><mn>4</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtr> <mtd>  </mtd> <mtd> <mo>=</mo> </mtd><mtd>  <mfrac><mn>19</mn> <mn>5</mn></mfrac> </mtd> </mtr><mtable></math>
 	}
+	<script type="module">
+		import { getFigures } from "../../../figures/figure_modules.js"
+		getFigures()
+	  </script>
 	
 </body>
